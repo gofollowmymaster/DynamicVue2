@@ -1,0 +1,100 @@
+{
+  "id": "1390304",
+  "name": "carsvs",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "637617",
+      "name": "LC_icon_user_fill_3",
+      "font_class": "user_fill",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "790442",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e6af",
+      "unicode_decimal": 59055
+    },
+    {
+      "icon_id": "936705",
+      "name": "感叹号",
+      "font_class": "gantanhao",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1251245",
+      "name": "outgoing",
+      "font_class": "outgoing",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "3117331",
+      "name": "customermanager",
+      "font_class": "customermanager",
+      "unicode": "e8c7",
+      "unicode_decimal": 59591
+    },
+    {
+      "icon_id": "5394473",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "5394497",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "5524662",
+      "name": "password",
+      "font_class": "password",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "7685109",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e6fb",
+      "unicode_decimal": 59131
+    },
+    {
+      "icon_id": "8474292",
+      "name": "log-out",
+      "font_class": "log-out",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    },
+    {
+      "icon_id": "8802620",
+      "name": "设备维护",
+      "font_class": "shebeiweihu",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "9656637",
+      "name": "关机",
+      "font_class": "guanji",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "10206272",
+      "name": "history ",
+      "font_class": "history",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    }
+  ]
+}

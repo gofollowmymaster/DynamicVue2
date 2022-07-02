@@ -1,0 +1,678 @@
+@colorArr:green-dark,green-light2,green-light3, main-color,white, light, grey, red,grey-dark,grey-dark1, grey-dark2, grey-light, grey-light2, grey-light3, yellow, yellow-light, green, dark, blue, blue-light, blue-light2, blue-bright;
+
+  @colors: {
+      main-color :#9a51ca;
+      white     : #ffffff;
+      light     : #f6f9fb;
+      grey      : #b6b6b9;
+      grey-dark : #999999;
+      grey-dark2: #666666;
+      grey-dark1: rgba(0,0,0,0.36);
+      
+      grey-light  : #F1F6F6;
+      grey-light2 : #E9EBEA;
+      grey-light3 : #F5F6F8;
+      green       : #9a51ca;
+      green-dark  : #2F5B65;
+      green-light2  : #F8FDFF;
+      green-light3  : #EFF7F9;
+      dark        : #222222;
+      blue        : #4B76D1;
+      blue-dark   :#4B76D1;
+      blue-light  : #3a95f0;
+      blue-light2 : #F2F7FC;
+      blue-bright : #4984FF;
+      yellow      : #EB7E68;
+      yellow-light: #FFF4EC;
+      red : #e93a3a;
+  }
+
+
+  .hz-main-wrapper {
+      each(@colors, {
+              --@{key}: @value;
+          }
+      );
+  }
+
+  each(@colorArr, {
+          .bg-@{value} {
+              @valueVar       : e("--@{value}");
+              background-color: var(@valueVar);
+          }
+          .text-@{value} {
+              @valueVar: e("--@{value}");
+              color    : var(@valueVar);
+          }
+      }
+  );
+
+//  reset
+body {
+    min-height: 100vh;
+    font-size : 14px;
+}
+
+* {
+    padding   : 0;
+    margin    : 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    border: none;
+}
+  .hz-main-wrapper {
+      .cursor-point {
+          cursor: pointer;
+      }
+      .half {
+          width : 50%;
+          height: 100%;
+      }
+      .center {
+          display        : flex;
+          flex-direction : column;
+          justify-content: center;
+          align-items    : center;
+      }
+      .column-center {
+          display        : flex;
+          flex-direction : column;
+          justify-content: center;
+          align-items    : center;
+      }
+
+      .row-vertical-center {
+          display    : flex;
+          align-items: center;
+      }
+
+      .row-center {
+          display        : flex;
+          justify-content: center;
+          align-items    : center;
+      }
+
+      .absolute-center {
+          position : absolute;
+          top      : 50%;
+          left     : 50%;
+          transform: translate(-50%, -50%);
+      }
+
+      .absolute-vertical-center {
+          position : absolute;
+          top      : 50%;
+          transform: translateY(-50%);
+      }
+
+      //layout
+      .relative {
+          position: relative;
+      }
+
+      .absolute {
+          position: absolute;
+      }
+
+      .sticky {
+          position: sticky !important;
+          top     : 0;
+      }
+
+      .fixed {
+          position: fixed;
+      }
+
+      .ys-flex {
+          display: flex;
+      }
+
+      .ys-flex-direction {
+          flex-direction: column;
+      }
+
+      .ys-flex-wrap {
+          flex-wrap: wrap;
+      }
+
+      .ys-justify-center {
+          justify-content: center;
+      }
+
+      .ys-justify-around {
+          justify-content: space-around;
+      }
+
+      .ys-justify-between {
+          justify-content: space-between;
+      }
+
+      .ys-justify-end {
+          justify-content: flex-end;
+      }
+
+      .ys-align-center {
+          align-items: center;
+      }
+
+      .ys-align-self-start {
+          align-self: flex-start;
+      }
+
+      .ys-align-self-end {
+          align-self: flex-end;
+      }
+
+
+
+      .ys-align-end {
+          justify-content: flex-end;
+      }
+
+      .grid-wraper-2 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-wraper-1 {
+          display              : grid;
+          grid-template-columns: 1fr;
+      }
+
+      .grid-wraper-3 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-4 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-5 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-6 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-7 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-8 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-wraper-12 {
+          display              : grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      [class^="grid-"] {
+          grid-column-gap: 2%;
+          grid-row-gap   : 6px;
+      }
+
+
+
+
+      .gridGapLoop(@index) when(@index<=36) {
+          .grid-gap@{index} {
+              grid-row-gap   : @index * 1px;
+              grid-column-gap: @index * 1px;
+          }
+
+          .gridGapLoop(@index+1);
+      }
+
+      .gridGapLoop(1);
+
+      .gridSpanLoop(@index) when(@index<12) {
+          .grid-span@{index} {
+              grid-column-start: span @index;
+          }
+
+          // 
+          //递归调用 达到循环目的
+          .gridSpanLoop(@index+1);
+      }
+
+      .gridSpanLoop(1);
+
+
+      .gridLineLoop(@index) when(@index<12) {
+          .grid-line@{index} {
+              grid-row-start: span @index;
+          }
+
+          // 
+          //递归调用 达到循环目的
+          .gridLineLoop(@index+1);
+      }
+
+      .gridLineLoop(1);
+
+
+
+
+      .bg-none {
+          background-color: transparent;
+      }
+
+      .border-box {
+          box-sizing: border-box;
+      }
+
+
+      .flexLoop(@index) when(@index<10) {
+          .flex@{index} {
+              flex: @index;
+          }
+
+          //递归调用 达到循环目的
+          .flexLoop(@index+1);
+      }
+
+      .flexLoop(0);
+
+      .borderRLoop(@index) when(@index<10) {
+          .border-r@{index} {
+              border-radius: @index * 1px;
+          }
+
+          //递归调用 达到循环目的
+          .borderRLoop(@index+1);
+      }
+
+      .borderRLoop(1);
+
+      .border-none {
+          border: none;
+      }
+
+      .border {
+          border: solid 1px var(--grey);
+      }
+
+      .positionLoop(@index) when(@index<=50) {
+          .top@{index} {
+              top: @index * 1px;
+          }
+
+          .left@{index} {
+              left: @index * 1px;
+          }
+
+          .right@{index} {
+              right: @index * 1px;
+          }
+
+          .bottom@{index} {
+              bottom: @index * 1px;
+          }
+
+          //递归调用 达到循环目的
+          .positionLoop(@index+1);
+      }
+
+      .positionLoop(-20);
+
+      .zindexLoop(@index) when(@index<=10) {
+          .z-index@{index} {
+              z-index: @index;
+          }
+
+          //递归调用 达到循环目的
+          .zindexLoop(@index+1);
+      }
+
+      .zindexLoop(-1);
+
+
+      .circle {
+          border-radius: 50%;
+      }
+
+      a {
+          text-decoration: none;
+          cursor         : pointer;
+      }
+
+      .text-left {
+          text-align: left;
+      }
+
+      .text-center {
+          text-align: center;
+      }
+
+      .text-right {
+          text-align: right;
+      }
+
+
+      .text-weight-700 {
+          font-weight: 700;
+      }
+
+      .text-bold {
+          font-weight: 700;
+      }
+      .text-medium {
+        font-weight: 700;
+    }
+
+
+
+
+
+      .marginLoop(@index) when(@index<=50) {
+          .m@{index} {
+              margin: @index * 1px;
+          }
+
+          .mt@{index} {
+              margin-top: @index * 1px;
+          }
+
+          .mb@{index} {
+              margin-bottom: @index * 1px;
+          }
+
+          .ml@{index} {
+              margin-left: @index * 1px;
+          }
+
+          .mr@{index} {
+              margin-right: @index * 1px;
+          }
+
+          .mx@{index} {
+              margin-left : @index * 1px;
+              margin-right: @index * 1px;
+          }
+
+          .my@{index} {
+              margin-top   : @index * 1px;
+              margin-bottom: @index * 1px;
+          }
+
+
+
+          //递归调用 达到循环目的
+          .marginLoop(@index+1);
+      }
+
+      .marginLoop(0);
+
+
+      .paddingLoop(@index) when(@index<50) {
+          .p@{index} {
+              padding: @index * 1px;
+          }
+
+          .pt@{index} {
+              padding-top: @index * 1px;
+          }
+
+          .pb@{index} {
+              padding-bottom: @index * 1px;
+          }
+
+          .pl@{index} {
+              padding-left: @index * 1px;
+          }
+
+          .pr@{index} {
+              padding-right: @index * 1px;
+          }
+
+          .px@{index} {
+              padding-left : @index * 1px;
+              padding-right: @index * 1px;
+          }
+
+          .py@{index} {
+              padding-top   : @index * 1px;
+              padding-bottom: @index * 1px;
+          }
+
+
+
+          //递归调用 达到循环目的
+          .paddingLoop(@index+1);
+      }
+
+      .paddingLoop(1);
+
+
+
+      .textSizeLoop(@index) when(@index<48) {
+          .text-size@{index} {
+              font-size: @index * 1px;
+          }
+
+          .lh@{index} {
+              line-height: @index * 1px;
+          }
+
+          .textSizeLoop(@index + 1)
+      }
+
+      .textSizeLoop(8);
+
+      .widthLoop(@index) when(@index<100) {
+          .width@{index} {
+              width: @index * 1%;
+          }
+
+          .widthLoop(@index + 1)
+      }
+
+      .widthLoop(1);
+
+      .heightLoop(@index) when(@index<=100) {
+          .height@{index} {
+              height: @index * 1px;
+          }
+
+          .heightLoop(@index + 1)
+      }
+
+      .heightLoop(1);
+
+      .text-ellipsis {
+          white-space  : nowrap;
+          overflow     : hidden;
+          text-overflow: ellipsis;
+      }
+
+      .text-wrap-ellipsis {
+
+          // overflow: hidden;
+          // text-overflow: ellipsis;
+          display           : -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          overflow          : hidden;
+      }
+
+      .full-width {
+          width: 100%;
+      }
+
+      .full-height {
+          height: 100%;
+      }
+
+      .full-screen-height {
+          height: 100vh;
+      }
+
+      .block {
+          display: block;
+      }
+
+      .inline-block {
+          display: inline-block;
+      }
+
+      .over-hide {
+          overflow: hidden;
+      }
+
+      .over-scroll {
+          overflow: scroll;
+      }
+
+      button:disabled {
+          color: var(--grey);
+      }
+      .events-none{
+          pointer-events: none;
+      }
+
+      // component
+      ::-webkit-scrollbar {
+          /*滚动条整体样式*/
+          width : 2px;
+          /*高宽分别对应横竖滚动条的尺寸*/
+          height: 1px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+          /*滚动条里面小方块*/
+          border-radius: 10px;
+          box-shadow   : inset 0 0 5px #d7d9dc;
+          background   : #686868;
+      }
+
+      ::-webkit-scrollbar-track {
+          /*滚动条里面轨道*/
+          // box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+          // border-radius: 10px;
+          // background: #ededed;
+          // opacity: 0.5;
+      }
+
+      .scrollbar {
+          scrollbar-color   : transparent transparent;
+          // scrollbar-width: 2px ;
+
+          scrollbar-track-color       : transparent;
+          -ms-scrollbar-track-color   : transparent;
+          // -ms-scrollbar-track-width: 2px;
+      }
+
+
+      .divid-line {
+          width           : 100%;
+          height          : 1px;
+          background-color: #5b5f71;
+      }
+
+
+
+      .noselect {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    } 
+
+      //  三角形
+      [class*="triangle-"] {
+          position: relative;
+      }
+
+      .triangle-left::before {
+          content      : '';
+          display      : inline-block;
+          position     : absolute;
+          left         : -14px;
+          top          : 10px;
+          width        : 0;
+          height       : 0;
+          border-top   : 8px solid transparent;
+          border-right : 8px solid white;
+          border-left  : 8px solid transparent;
+          border-bottom: 8px solid transparent;
+
+      }
+      .triangle-bottom::before {
+        content      : '';
+        display      : inline-block;
+        position     : absolute;
+        bottom       : -14px;
+        left         : 48%;
+        width        : 0;
+        height       : 0;
+        border-top   : 12px solid white;
+        border-right : 8px solid transparent;
+        border-left  : 8px solid transparent;
+        border-bottom: 8px solid transparent;
+
+    }
+
+      .triangle-right::after {
+          content      : '';
+          display      : inline-block;
+          position     : absolute;
+          right        : -14px;
+          top          : 10px;
+          width        : 0;
+          height       : 0;
+          border-top   : 8px solid transparent;
+          border-right : 8px solid transparent;
+          border-left  : 8px solid var(--green-bright);
+          border-bottom: 8px solid transparent;
+
+      }
+
+
+
+
+
+      // 空列表显示提示信息
+      .if-empty-tip:empty {
+          height         : 40vh;
+          display        : flex;
+          justify-content: center;
+          align-items    : center;
+
+          &::after {
+              content  : '没有内容';
+              font-size: 36px;
+              display  : block;
+              color    : var(--grey-dark);
+          }
+      }
+
+  }
+
+
+
+
+  /* 适配UI要求 */
+.dy-page .dynamic-form     .block-content {
+    width:79%;
+  }
+  @media (max-width: 1280px){
+    .dy-page .dynamic-form     .block-content {
+      width:100%;
+    } 
+  }

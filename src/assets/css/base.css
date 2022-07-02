@@ -1,0 +1,19 @@
+
+  @import "./normalize.css";
+
+  @import "./element.mixin.css";
+
+:root {
+  --color-text: rgb(153, 153, 153);
+  --color-bold-text: #000000;
+  --color-tint: #ff8198;
+  --color-nav-background: rgb(154, 81, 202); /* #1C4A99 */
+  --color-nav-menu-background: white;
+  --color-router-view-background: white;
+  --color-nav-text: #fff;
+  --color-border-color: #eee;
+  --font-size: 14px;
+  --line-height: 1.5;
+}
+
+
