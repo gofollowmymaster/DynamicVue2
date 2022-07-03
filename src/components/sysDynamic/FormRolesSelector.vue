@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import FormMixin from '@/common/dynamicPage/components/formItems/mixin'
+import FormMixin from '@/packages/components/formItems/mixin'
 import rolesDialog from '@/components/sysSettingDialog/roles.dialog'
 
 export default {

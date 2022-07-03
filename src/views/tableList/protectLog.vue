@@ -205,7 +205,7 @@ const entityLabel = '养护记录'
   },
   
 ]
-import { appendToPreset } from '@/common/dynamicPage/utils/tool';
+import { appendToPreset } from '@/packages/utils/tool';
 
 export default {
   name: 'protectLog',
@@ -249,4 +249,4 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped></style>
+<style lang="css" scoped></style>

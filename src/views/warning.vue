@@ -1,8 +1,7 @@
 <template>
-    
-   <LayoutTabs  class="pt12">
+  <LayoutTabs class="pt12">
     <DynamicCurd
-    class=" "
+      class=""
       :entityLabel="entityLabel"
       :fields="warningFields"
       :optionsProps="pendingPageOptions"
@@ -11,7 +10,7 @@
       label="待处理警告"
     ></DynamicCurd>
     <DynamicCurd
-    class=" "
+      class=""
       scene="page"
       :entityLabel="entityLabel"
       :fields="warningProcessedFields"
@@ -20,8 +19,6 @@
       label="已处理警告"
     ></DynamicCurd>
   </LayoutTabs>
-
-  
 </template>
 <script>
 import {
@@ -30,27 +27,23 @@ import {
   warningDetailApi,
   warningPendingListApi,
   warningProcessedListApi,
-  warningInfoDeleteApi
-} from '@/network/oldtree.js'
+  warningInfoDeleteApi,
+} from "@/network/oldtree.js";
 import {
   eventFields,
   warningFields,
   handleFields,
   unhandleFields,
-  warningProcessedFields
-} from './warningFields'
-import {
-  appendToPreset,
-  buildFormFields
-} from '@/common/dynamicPage/utils/tool'
+  warningProcessedFields,
+} from "./warningFields";
+import { appendToPreset, buildFormFields } from "@/packages/utils/tool";
 
-
-const entityLabel = '告警信息'
+const entityLabel = "告警信息";
 
 export default {
-  name: 'warningManage',
-  components: { },
-  data () {
+  name: "warningManage",
+  components: {},
+  data() {
     return {
       entityLabel,
       // form字段
@@ -66,7 +59,6 @@ export default {
         list: warningProcessedListApi,
         detail: warningDetailApi,
         bulkdelete: warningInfoDeleteApi,
-
       },
 
       pendingPageOptions: {
@@ -74,95 +66,85 @@ export default {
         listOption: {
           lineActions: {
             update: null,
-            atransToEvent: appendToPreset('dialogFormActionOption', {
-              label: '转事件',
+            atransToEvent: {
+              actionType: "dialogFormAction",
+              label: "转事件",
               sort: 0,
-              permission: '',
+              permission: "",
               dialog: {
                 properties: {
-                  title: '转事件',
-                  width: '70%'
+                  title: "转事件",
+                  width: "70%",
                 },
-                body: {
-                  // props: formOption,
-                  formItemList: buildFormFields(eventFields),
-                  formDataUpdateHandle (formVm, param) {},
-                  actions: {
-                    save: {
-                      label: '转事件提交',
-                      apiPromise: () => Promise.resolve()
-                    }
-                  }
-                }
-              }
-            }),
-            handleForm: appendToPreset('dialogFormActionOption', {
-              label: '处理',
-              sort: 1,
-              permission: '',
-              dataAdapter:(data)=>{
-                return {treeGiveAnAlarmId:data.id,treatmentMethod:2}
+
+                // props: formOption,
+                formItemList: buildFormFields(eventFields),
+                formDataUpdateHandle(formVm, param) {},
+                saveAction: {
+                  label: "转事件提交",
+                  apiPromise: () => Promise.resolve(),
+                },
               },
-              dialog: {
-                properties: {
-                  title: '现场处理',
-                  width: '36%'
-                },
-                body: {
-                  formItemList: buildFormFields(handleFields),
-                  actions: {
-                    save: {
-                      label: '处理',
-                      apiPromise: warningHandleApi
-                    }
-                  }
-                }
-              }
-            }),
-            unhandleForm: appendToPreset('dialogFormActionOption', {
-              label: '不予处理',
+            },
+            handleForm: {
+              label: "处理",
+              actionType: "dialogFormAction",
               sort: 1,
-              permission: '',
-              dataAdapter:(data)=>{
-                debugger
-                return {treeGiveAnAlarmId:data.id,treatmentMethod:3}
+              permission: "",
+              dataAdapter: (data) => {
+                return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 };
               },
-              dialog: {
-                properties: {
-                  title: '不予处理',
-                  width: '36%'
-                },
-                body: {
-                  formOption: {
-                    singleCol:true,
-                  },
-                  formItemList: buildFormFields(unhandleFields),
-                  formDataUpdateHandle (formVm, param) {},
-                  actions: {
-                    save: {
-                      label: '不予处理',
-                      apiPromise: warningUnhandleApi
-                    }
-                  }
-                }
-              }
-            })
-          }
+              containertProperties: {
+                title: "现场处理",
+                width: "36%",
+              },
+
+              formItemList: buildFormFields(handleFields),
+
+              saveAction: {
+                label: "处理",
+                apiPromise: warningHandleApi,
+              },
+            },
+            unhandleForm: {
+              label: "不予处理",
+              actionType: "dialogFormAction",
+
+              sort: 1,
+              permission: "",
+              dataAdapter: (data) => {
+                debugger;
+                return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 };
+              },
+              containerProperties: {
+                title: "不予处理",
+                width: "36%",
+              },
+
+              singleCol: true,
+
+              formItemList: buildFormFields(unhandleFields),
+              formDataUpdateHandle(formVm, param) {},
+              saveAction: {
+                label: "不予处理",
+                apiPromise: warningUnhandleApi,
+              },
+            },
+          },
         },
-        treeOption: null
+        treeOption: null,
       },
       processedPageOptions: {
         topToolBar: null,
         listOption: {
-         lineActions: {
+          lineActions: {
             update: null,
-          }
+          },
         },
-        treeOption: null
 
-      }
-    }
-  }
-}
+      },
+    };
+  },
+};
 </script>
-<style lang="less" scoped></style>
+<style lang="css" scoped></style>

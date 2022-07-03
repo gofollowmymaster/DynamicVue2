@@ -57,7 +57,7 @@ import {
   buildSearchFields,
   deepMerge,
   appendToPreset
-} from '@/common/dynamicPage/utils/tool'
+} from '@/packages/utils/tool'
 import {
   treeStreetUpdateApi,
   treeStreetSaveApi,
@@ -65,10 +65,10 @@ import {
   treeStreetDetailApi,
   treeStreetDeleteApi
 } from '@/network/oldtree.js'
-import { pagination } from '@/common/dynamicPage/presetConfig'
+import { pagination } from '@/packages/presetConfig'
 import fields from './streetTreeFields'
 import BrandBar from 'components/content/BrandBar/BrandBar.vue'
-import {loadActionTipConfig} from "@/common/dynamicPage/utils/actionTools"
+import {loadActionTipConfig} from "@/packages/utils/actionTools"
 
 const formFields = buildFormFields(fields)
 const searchFields = buildSearchFields(fields)
@@ -103,7 +103,7 @@ export default {
           },
           formItemList: formFields,
           saveAction: {
-            actionType: 'submit',
+              actionType: 'submit',
               label: '保存',
               apiPromise: treeStreetSaveApi
           },
@@ -222,7 +222,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="css" scoped>
 .BackStageFrameWork {
   height: 100%;
   padding: 20px;

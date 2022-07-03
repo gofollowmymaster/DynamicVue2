@@ -14,7 +14,7 @@ export const searchOption = {
   trigger: 'click',
   resetable: true,
   searchLabel: '搜索',
-  searchClasses: [
+  searchClasses: [ 
     'grid-col-6',
     'grid-col-lg-4',
     'grid-col-sm-6',
@@ -126,122 +126,9 @@ export const dynamicFormOption = {
     }
   }
 }
+ 
+ 
 
-
-export const dialogFormOption = {
-  container: 'el-dialog',
-  properties: {
-    title: '',
-    width: '60%'
-  },
-  body: {
-    formOption,
-    formItemList: [],
-    data: {},
-    formDataUpdateHandle (formVm, param) {},
-    actions: {
-      save: deepMerge(submitActionOption, {
-        label: '保存'
-      }),
-      cancel: {
-        component: 'el-button',
-        properties: {
-          type: 'default',
-          size: 'small'
-        },
-        actionType: 'close',
-        label: '取消'
-      }
-    }
-  }
-}
-
-export const dialogPageActionOption = {
-  component: 'el-button',
-  label: '',
-  actionType: 'dialogPage',
-  isLoadData: true,
-  sort: 100,
-  properties: {
-    type: 'default',
-    size: 'small',
-    key: ''
-  },
-  permission: '',
-  dialog: {
-    properties: {
-      title: ''
-    },
-    container: 'dy-page',
-    layout: 'LayoutGrid',
-    // layout:{
-    //   name:'LayoutTabs',
-    //   properties:{
-    //       type:"card",
-    //   }
-    // },
-    body: []
-  }
-}
-
-export const routerDialogPageActionOption = deepMerge(dialogPageActionOption, {
-  actionType: 'routerDialogPage',
-  routerAction: 'push',
-  router: '', // String  or function
-})
-
-export const dialogFormActionOption = {
-  component: 'el-button',
-  label: '',
-  actionType: 'dialogForm',
-  permission: '',
-  isLoadData: true,
-  sort: 100,
-  properties: {
-    type: 'detault',
-    size: 'small',
-    key: ''
-  },
-  dialog: dialogFormOption
-}
-
-export const routerDialogFormActionOption = deepMerge(dialogFormActionOption, {
-  actionType: 'routerDialogForm',
-  routerAction: 'push',
-  router: '',
-  dialog: {
-    container: 'dy-page',
-    body: {
-      actions: {}
-    }
-  }
-})
-
-export const requestApiActionOption = {
-  component: 'el-button',
-  label: '',
-  permission: '',
-  sort: 100,
-  actionType: 'requestApi',
-  properties: {
-    type: 'default',
-    size: 'small'
-  },
-  actionPop: {
-    component:'popConfirm',
-    properties:{
-      'confirm-button-text': '好的',
-      'cancel-button-text': '不用了',
-      title: '确定执行该操作吗？',
-      icon: 'el-icon-warning'
-    }
-  },
-  apiPromise: () => Promise.resolve(),
-  callback: {
-    showTip: true,
-    refresh: true
-  }
-}
 
 export const dynamicConfig={
    actionTip:'tip'
@@ -249,7 +136,6 @@ export const dynamicConfig={
  
 export default {
   searchOption,tableOption,pagination,treeOption,formOption,dynamicFormOption,
-  dialogFormOption,dialogPageActionOption,dialogFormActionOption,requestApiActionOption,
-  routerDialogPageActionOption,routerDialogFormActionOption,submitActionOption
+  submitActionOption
 
 }

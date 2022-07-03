@@ -40,8 +40,8 @@
   </main>
 </template>
 <script>
-import { appendToPreset } from '@/common/dynamicPage/utils/tool'
-import FormMixin from '@/common/dynamicPage/components/formItems/mixin'
+import { appendToPreset } from '@/packages/utils/tool'
+import FormMixin from '@/packages/components/formItems/mixin'
 import { buildDynamicSelectOption } from '@/network/global'
 import { getListContractorPage } from '@/network/oldtree.js'
 

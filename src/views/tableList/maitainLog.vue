@@ -18,7 +18,7 @@ import {
  
 
 import { buildDynamicSelectOption } from "@/network/global";
-import { appendToPreset } from '@/common/dynamicPage/utils/tool';
+import { appendToPreset } from '@/packages/utils/tool';
 
 const entityLabel = '养护记录'
     const fields = [
@@ -238,4 +238,4 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped></style>
+<style lang="css" scoped></style>

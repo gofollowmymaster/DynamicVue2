@@ -22,7 +22,7 @@ import {
 
   buildDetailFields,
   appendToPreset
-} from '@/common/dynamicPage/utils/tool'
+} from '@/packages/utils/tool'
 import { oldtreeFields as fields} from "./oldtreeListField.js"
 import maitainLog  from "./maitainLog.vue"
 import protectLog  from "./protectLog.vue"
@@ -122,4 +122,4 @@ export default {
   }
 }
 </script>
-<style lang="less" scoped></style>
+<style lang="css" scoped></style>

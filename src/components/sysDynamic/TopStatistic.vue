@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { JSONDeepCopy } from '@/common/dynamicPage/utils/tool'
+import { JSONDeepCopy } from '@/packages/utils/tool'
 
 export default {
   name: 'TopStatistic',

@@ -69,15 +69,20 @@ export default {
     },
     origin:String
   },
-  // inject: [
-  //   'dyRefreshId',
-  // ],
+ 
   computed: {
         actionsOrdered(){
-      const actions=  Object.entries(this.body.actions).map(([key,value],index)=>{
-          const action = this.$generateActionOption(value.actionType,value)
-        return  {...action,actionKey:key}
-      })
+ 
+      const actions = Object.entries(this.body.actions)
+        .map(([key, value], index) => {
+          return { ...value, actionKey: key }
+        }).filter(action=>{
+          return action?.actionType})
+        .map((action, index) => {
+          debugger
+          return this.$generateActionOption(action.actionType,action)
+        })
+
       actions.sort((a,b)=>a.sort-b.sort)
         return actions
     },

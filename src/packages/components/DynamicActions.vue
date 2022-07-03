@@ -82,10 +82,14 @@ export default {
     actionAndData: {
       handler ({actions,actionData}) {
         debugger
-        actions = Object.entries(actions).map(([key, value], index) => {
-          const action = this.$generateActionOption(value.actionType,value)
-            // action.properties.type=this.mode=='table'?'text':action.properties.type
-          return { ...action, actionKey: key }
+        actions = Object.entries(actions)
+        .map(([key, value], index) => {
+          return { ...value, actionKey: key }
+        }).filter(action=>{
+          return action?.actionType})
+        .map((action, index) => {
+          debugger
+          return this.$generateActionOption(action.actionType,action)
         })
         actions = actions
           .sort((a, b) => a.sort - b.sort)

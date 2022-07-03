@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { JSONDeepCopy } from 'common/dynamicPage/utils/tool'
+import { JSONDeepCopy } from'@/packages/utils/tool'
 
 export default {
   name: 'leftPie',
@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="css">
 
  .pie-chart{
    height: 180px;

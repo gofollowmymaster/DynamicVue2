@@ -47,8 +47,8 @@
 import {
   buildFormFields,
   buildSearchFields,appendToPreset
-} from '@/common/dynamicPage/utils/tool'
-import {loadActionTipConfig} from "@/common/dynamicPage/utils/actionTools"
+} from '@/packages/utils/tool'
+import {loadActionTipConfig} from "@/packages/utils/actionTools"
 import {
   treeSpeciesUpdateApi,
   treeSpeciesSaveApi,
@@ -63,7 +63,7 @@ import BrandBar from 'components/content/BrandBar/BrandBar.vue'
 import BaseLazyTreeTable from '@/components/BaseBackend/BaseLazyTreeTable'
 import {
   tableOption,
-} from '@/common/dynamicPage/presetConfig'
+} from '@/packages/presetConfig'
 
 
 const formFields = buildFormFields(fields)
@@ -280,7 +280,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="css" scoped>
 .BackStageFrameWork {
   height: 100%;
   padding: 20px;

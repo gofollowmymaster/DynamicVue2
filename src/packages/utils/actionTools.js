@@ -1,4 +1,4 @@
-import {appendToPreset } from  "./tool"
+import {appendToPreset, deepMerge } from  "./tool"
  
 
 export function generateDefaultValue (fields) {
@@ -42,7 +42,7 @@ function setDialogPageAction (options) {
       body: options.body
     }
   }
-  return appendToPreset('dialogPageActionOption', actionOption)
+  return actionOption
 }
 
 function setSubmitAction (options) {
@@ -70,7 +70,7 @@ function setSubmitAction (options) {
       ...(options.callback || {})
     }
   }
-  return appendToPreset('submitActionOption', actionOption)
+  return  actionOption
 }
 function setCloseAction (options) {
   options=setDetaultOptions(options)
@@ -98,6 +98,7 @@ function setActionBaseOption (options) {
   
   return {
     component: options.component || 'el-button',
+    actionKey: options.actionKey||'undefined',
     properties: {
       type: 'default',
       size: 'small',
@@ -149,6 +150,7 @@ function setDialogFormAction (options) {
     isLoadData: options.isLoadData ?? true,
     actionType: 'dialogForm',
     apiPromise: options.apiPromise || '',
+    
     dialog: {
       origin:options.origin,
       key:options.key,
@@ -195,7 +197,7 @@ function setDialogFormAction (options) {
     }
   }
    
-  return appendToPreset('dialogFormActionOption', actionOption, true)
+  return actionOption
 }
 
 function setRequestApiAction (options) {

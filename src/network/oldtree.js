@@ -5,7 +5,7 @@ const defaultConfig = {
   refuseToken: false,
   json: true
 }
-import { filterObjEmptyField} from "@/common/dynamicPage/utils/tool"
+import { filterObjEmptyField} from "@/packages/utils/tool"
  
 //----------------------固定资产-------------------
 export function oldtreeListApi (params) {

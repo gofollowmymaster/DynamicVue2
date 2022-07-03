@@ -4,9 +4,9 @@
   </div>
 </template>
 <script>
-import {appendToPreset,buildSearchFields} from '@/common/dynamicPage/utils/tool'
+import {appendToPreset,buildSearchFields} from '@/packages/utils/tool'
 import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,treeSpeciesStatisticApi}from  '@/network/oldtree.js'
-import { deepCopy } from 'common/dynamicPage/utils/tool'
+import { deepCopy } from'@/packages/utils/tool'
 import {asyncAdministractiveTreeNode}  from "@/network/global"
 
 const searchFieldsTmpl=[
@@ -387,7 +387,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="css" scoped>
 .BackStageFrameWork {
   height: 100%;
   padding: 20px;

@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import FormMixin from '@/common/dynamicPage/components/formItems/mixin'
+import FormMixin from '@/packages/components/formItems/mixin'
 import administrativeDialog from '@/components/sysSettingDialog/administrative.dialog'
 
 export default {

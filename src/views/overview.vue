@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import {appendToPreset,buildSearchFields} from '@/common/dynamicPage/utils/tool' 
+import {appendToPreset,buildSearchFields} from '@/packages/utils/tool' 
 import MiddleStatistic  from "./components/MiddleStatistic.vue"
 import Vue  from  'vue'
 Vue.component('MiddleStatistic',MiddleStatistic)
@@ -143,7 +143,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="css" scoped>
  
 .over-scroll{
   overflow: scroll;

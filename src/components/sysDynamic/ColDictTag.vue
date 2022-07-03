@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import TableColMixin from '@/common/dynamicPage/components/tableColItem/mixin';
+    import TableColMixin from '@/packages/components/tableColItem/mixin';
 
     export default {
         name: 'ColDictTag',

@@ -47,7 +47,7 @@ VueAMap.initAMapApiLoader({
 
 Vue.config.productionTip = false
 // Vue.use(globalComponent)
-import dynamicPage from '@/common/dynamicPage/index.js'
+import dynamicPage from '@/packages/index.js'
 Vue.use(dynamicPage,{
   actionTip:'msg'
 })

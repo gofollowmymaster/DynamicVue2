@@ -142,7 +142,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="css">
 
 .bg-wave {
   background-image: url(/img/wave.png);
