@@ -38,7 +38,7 @@
 
 <script>
 import FormMixin from './mixin'
-import {gcj02ToWgs}  from  "@/common/mapClient/amap/utils/mapUtils"
+import {gcj02ToWgs}  from  "../../utils/mapUtils"
 
 export default {
   name: 'FormSelectPoint',

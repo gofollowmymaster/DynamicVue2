@@ -1,24 +1,44 @@
-import dynamicVue2 from  "@/packages/index"
-import DynamicFormContent from  "@/packages/components/DynamicFormContent"
-import DynamicForm from  "@/packages/components/DynamicForm"
-import DynamicSearchForm from  "@/packages/components/DynamicSearchForm"
-import DynamicTable from  "@/packages/components/DynamicTable"
-import DynamicSection from  "@/packages/components/DynamicSection"
-import DynamicCurd from  "@/packages/components/DynamicCurd"
-import DynamicActions from  "@/packages/components/DynamicActions"
-import DynamicPageWrapper from  "@/packages/components/DynamicPageWrapper"
-import DynamicCurdPage from  "@/packages/components/pageTemplate/DynamicCurdPage"
+import dynamicVue2 from  "./src/packages/index"
+import DynamicFormContent from  "./src/packages/components/DynamicFormContent"
+import DynamicForm from  "./src/packages/components/DynamicForm"
+import DynamicSearchForm from  "./src/packages/components/DynamicSearchForm"
+import DynamicTable from  "./src/packages/components/DynamicTable"
+import DynamicSection from  "./src/packages/components/DynamicSection"
+
+
+import TableColMixin from './src/packages/components/tableColItem/mixin';
+import FormMixin from './src/packages/components/formItems/mixin'
+import popMixin from './src/packages/components/popContents/mixin'
+import presetConfig from './src/packages/presetConfig'
+
+
+import {buildSearchFields,buildTableFields,buildDetailFields,buildFormFields,appendToPreset} from "./src/packages/utils/tool"
+import globalDialogForm from "./src/packages/utils/globalDialogForm"
+import globalDialogPage from "./src/packages/utils/globalDialogPage"
+import {generateActionOption} from "./src/packages/utils/actionTools"
+
+import './src/packages/css/index.less'
+
+ 
 
 
 
 
-
-
-export default {
+export   {
     dynamicVue2,
     DynamicFormContent,
     DynamicForm,
     DynamicSearchForm,
     DynamicTable,
     DynamicSection,
+    TableColMixin,
+    FormMixin,
+    popMixin,
+    presetConfig,
+    buildSearchFields,buildTableFields,buildDetailFields,buildFormFields,appendToPreset,
+    globalDialogForm,
+    globalDialogPage,
+    generateActionOption
 }
+
+export default dynamicVue2

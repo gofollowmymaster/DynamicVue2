@@ -4,9 +4,10 @@ context.resolve()、context.keys()、context.id
 
  import globalDialogForm from "./utils/globalDialogForm"
  import globalDialogPage from "./utils/globalDialogPage"
+ import {generateActionOption} from "./utils/actionTools"
+
  import bus from "./utils/bus"
  import {buildSearchFields,buildTableFields,buildDetailFields,buildFormFields,appendToPreset} from "./utils/tool"
- import {generateActionOption} from "./utils/actionTools"
  import {dynamicConfig} from  './presetConfig'
 
 
@@ -20,7 +21,7 @@ files.keys().forEach((url) => {
 });
 
 
-import './css/index.less'
+
 
 
 

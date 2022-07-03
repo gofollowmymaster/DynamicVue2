@@ -126,9 +126,6 @@ export const dynamicFormOption = {
     }
   }
 }
- 
- 
-
 
 export const dynamicConfig={
    actionTip:'tip'
@@ -137,5 +134,4 @@ export const dynamicConfig={
 export default {
   searchOption,tableOption,pagination,treeOption,formOption,dynamicFormOption,
   submitActionOption
-
 }
