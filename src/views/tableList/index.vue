@@ -3,7 +3,6 @@
     v-if="pageOptions"
     :entityLabel="entityLabel"
     :fields="fields"
-    :pageOptionsprops="pageOptions"
     :apiPromises="apiPromises"
   ></DynamicCurdPage>
 </template>

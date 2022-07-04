@@ -17,7 +17,10 @@
 export default {
   name: 'DynamicCurdPage',
   props: {
-    pageOptionsprops: { type: Object },
+    pageOptionsprops: { type: Object ,
+    default:function(){
+      return {}
+    }},
     fields: {
       type: Array,
       required: true

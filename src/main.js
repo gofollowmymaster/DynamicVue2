@@ -3,9 +3,9 @@ import App from './App.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'assets/css/element-variables.scss'
+
 import router from './router'
 
-// import {amapWebMapKey} from './config.js';
 import sysComponents from '@/components/index.js'
 Vue.use(sysComponents)
 
@@ -16,13 +16,9 @@ import Echarts from 'vue-echarts'
 import '@/common/directive.js'
 
 
-// 注册全局组件
 Vue.config.productionTip = false
-// Vue.prototype.$echarts=echarts;
 Vue.component('VUeEcharts', Echarts)
-
 Vue.use(ElementUI)
-
 const amapWebMapKey = window._config.amapWebMapKey
 
 Vue.use(VueAMap)
@@ -48,6 +44,8 @@ VueAMap.initAMapApiLoader({
 Vue.config.productionTip = false
 // Vue.use(globalComponent)
 import dynamicPage from '@/packages/index.js'
+import   '@/packages/css/index.less'
+
 Vue.use(dynamicPage,{
   actionTip:'msg'
 })

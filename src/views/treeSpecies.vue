@@ -1,8 +1,8 @@
 <template>
   <div class="main-container hz-low-code flex flex-direction">
-    <BrandBar>
+    <dyBrandBar>
       <span slot="title">资产类型管理</span>
-    </BrandBar>
+    </dyBrandBar>
       <DynamicPageWrapper class="flex1   "   :actions="{...topToolBar,...lineActions}"   entityLabel="不动产管理"     >
      <curdLayout mode="tb" scene="page">
       <DynamicSearchForm

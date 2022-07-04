@@ -1,37 +1,6 @@
 import moment from 'moment'
-
-export function treeToMap (tree, childrenKey, key) {
-  return tree.reduce((prev, item, index) => {
-    if (!item[key]) {
-      console.log('---------warn-------', `key:${key} undefined in tree item`)
-      return prev
-    }
-    if (item[childrenKey]) {
-      const childrenList = item[childrenKey]
-      prev[item[key]] = item
-      return Object.assign(prev, treeToMap(childrenList, childrenKey, key))
-    }
-    prev[item[key]] = item
-    return prev
-  }, {})
-}
-
-export function treeToLineMap (tree, childrenKey, key) {
-  let res = {}
-  tree.forEach((item, index) => {
-    if (item[childrenKey]) {
-      const childrenList = item[childrenKey]
-      res = { ...res, ...treeToMap(childrenList, childrenKey, key) }
-      return
-    }
-    if (!item[key]) {
-      console.warn('---------warn-------', `key:${key} undefined in tree item`)
-      return
-    }
-    res[item[key]] = item
-  })
-  return res
-}
+ 
+ 
 
 export function arrayToObject (arr, key) {
   return arr.reduce((prev, next) => {
@@ -114,38 +83,7 @@ export function deepCopy (origin) {
   }
   return target
 }
-// 对象扁平化
-export function objFlat (obj) {
-  var result = {}
-
-  function recurse (src, prop) {
-    var toString = Object.prototype.toString
-    if (toString.call(src) === '[object Object]') {
-      var isEmpty = true
-      for (var p in src) {
-        isEmpty = false
-        recurse(src[p], prop ? prop + '.' + p : p)
-      }
-      if (isEmpty && prop) {
-        result[prop] = {}
-      }
-    } else if (toString.call(src) === '[object Array]') {
-      var len = src.length
-      if (len > 0) {
-        src.forEach(function (item, index) {
-          recurse(item, prop ? prop + '.[' + index + ']' : index)
-        })
-      } else {
-        result[prop] = []
-      }
-    } else {
-      result[prop] = src
-    }
-  }
-  recurse(obj, '')
-
-  return result
-}
+ 
 
 export function isNullOrUndefined (variable) {
   return variable === null || variable === undefined
@@ -295,113 +233,7 @@ export function pureType (value) {
     return rest[1]
   })
 }
-
-/* BaseModal组件数据纯净化(过滤空值，将对象直接取value，将日期格式的数据直接转格式，有格式函数的执行格式函数)
-一般用作提交数据时处理参数
-@createTime 2022-04-22
-@createUser luyi
-@updateTime 2022-04-22
-@updateUser luyi
-
-@params items:[]，modalItems数组
-@params data，获取到的formData
-*/
-
-export function formDataPureValue (items, data) {
-  const result = { ...data }
-  console.log('纯化值，之前=', result)
-  for (const key in result) {
-    if (pureType(result[key]) === 'object') {
-      result[key] = result[key].value
-    }
-  }
-  for (const index in items) {
-    const item = items[index]
-    const key = item.key
-    if (item.ignore) {
-      delete result[key]
-      continue
-    }
-    if (hasValue(result[key])) {
-      // 有值的时候
-      if (item.type === 'date' && item.moment) {
-        // 有moment配置，直接格式日期
-        result[key] = moment(result[key]).format(item.moment)
-      }
-      if (item.formater) {
-        // 有格式函数
-        result[key] = item.formater(result, result[key])
-      }
-    } else {
-      // 去掉空值
-      delete result[key]
-    }
-    if (item.type === 'slot' || item.slot) {
-      // 去掉slot项
-      delete result[key]
-    }
-  }
-  function hasValue (val) {
-    if (val === '' || val === undefined || val === null) {
-      return false
-    }
-    if (val instanceof Array) {
-      if (val.length) {
-        return true
-      } else {
-        return false
-      }
-    }
-    return true
-  }
-  console.log('纯化值，之后=', result)
-  return result
-}
-
-/* BaseModal组件回显数据
-@createTime 2022-04-22
-@createUser luyi
-@updateTime 2022-04-22
-@updateUser luyi
-
-@params items:[]，modalItems数组
-@params data:{}||null，后端响应的数据，若配置为null，则不做数据回显
-@params echo:{}，需要回显的字段，例如key1字段需要回显成key2字段，{key1(data){return data[key2]}}，最终都以此配置为准
-@params httpDict:function(dictKey){}，用于select，有此配置时，对应项会自动请求数据字典(数据字典为公用方法)
-@params httpPromise:boolean，用于select，有此配时置，对应项会自动请求数据字典
-*/
-
-export function formDataEchoData ({
-  items = [],
-  data,
-  echo = {},
-  httpDict = true, // 用于select
-  httpPromise = true // 用于select
-} = {}) {
-  for (const index in items) {
-    const unit = items[index]
-    const key = unit.key
-    if (unit.type === 'select') {
-      if (httpPromise && unit.httpPromise) {
-        // 对应项，需要请求后台
-        unit.httpPromise(unit)
-      }
-    }
-    if (data) {
-      // 需要回显数据
-      unit.data = data[key]
-      if (unit.type === 'select') {
-        unit.data = { value: data[key] }
-      }
-    }
-    if (key in echo) {
-      unit.data = echo[key](data, unit)
-    }
-  }
-  console.log('回显值为=', items)
-  return items
-}
-
+  
 
 export function isEmpty (value, containEmptyString = false) {
   let emptyValues = ['', undefined, null]

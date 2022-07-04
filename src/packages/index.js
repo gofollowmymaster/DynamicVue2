@@ -22,9 +22,6 @@ files.keys().forEach((url) => {
 
 
 
-
-
-
 export default {
   install(Vue,options) {
     if (this.install.installed) return;

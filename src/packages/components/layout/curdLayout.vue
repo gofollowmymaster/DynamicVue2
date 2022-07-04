@@ -3,11 +3,11 @@
     <aside class="left-section">  
       <slot name="left"></slot>
     </aside>
-    <main class="main-section flex1">
+    <main class="main-section flex1  ">
       <section class="top-section">
         <slot name="top"></slot>
       </section>
-      <div class="middle-gap"></div>
+      <div class="middle-gap "></div>
       <article class="bottom-section">
         <slot name="bottom"></slot>
       </article>
@@ -41,9 +41,10 @@ export default {
     padding: 0px 24px 12px;
   }
   .middle-gap {
-    height: 16px;
-    width: 100%;
-    background-color: rgba(149, 54, 179, 0.15);
+    height: 1px;
+    width: calc(100% - 48px);
+    margin: 0 auto;
+    background-color: var(--main-color);
   }
 
   .main-section {

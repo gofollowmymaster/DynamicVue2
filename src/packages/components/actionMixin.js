@@ -68,7 +68,7 @@ export default {
         if(typeof action.router === 'function'){
           path =  action.router(actionData)
         }else {
-          path = this.$route.fullPath.replace(/[\/|\\]$/,'')+'/'
+          path = this.$route.fullPath.split('#')[0].replace(/[\/|\\]$/,'')+'/'
           const actionKey=(action.router&&(typeof action.router =='string'))?(action.router.replace(/[\/|\\]$/,'')+'/'):(action.actionKey)
           //path =path
           query = {id:actionData?.[mainKey],action:actionKey}

@@ -1,8 +1,8 @@
 <template>
   <div class="main-container hz-low-code flex flex-direction">
-    <BrandBar>
+    <dyBrandBar>
       <span slot="title">不动产管理</span>
-    </BrandBar>
+    </dyBrandBar>
     <DynamicPageWrapper
       class="flex1"
       :actions="{ ...topToolBar, ...tableOption.lineActions }"
@@ -21,7 +21,7 @@
             :actionData="selected"
             :actionBarWraper="$el"
           ></DynamicActions>
-          <section class="grid-wrap margin-top16 full-width">
+          <section class="grid-wrap mt24 full-width">
             <section class="flex flex-direction" :class="['grid-col-24']">
               <DynamicTable
                 class="table-wraper flex1"
@@ -31,7 +31,7 @@
                 @selection-change="selectChange"
               ></DynamicTable>
               <el-pagination
-                class="margin-top16 text-right"
+                class="mt24 text-right"
                 background
                 v-bind="pagination"
                 :total="total"
@@ -87,7 +87,7 @@ export default {
       },
       searchFields,
       searchOption: appendToPreset("searchOption", {
-        properties: { "label-width": "100px" },
+        // properties: { "label-width": "100px" },
       }),
       topToolBar: {
         create: {
@@ -225,9 +225,7 @@ export default {
   height: 100%;
   padding: 20px;
 }
-.margin-top16 {
-  margin-top: 16px;
-}
+ 
 .table-wraper {
   height: 540px;
 }

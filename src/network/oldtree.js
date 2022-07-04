@@ -20,11 +20,7 @@ export function oldtreeListApi (params) {
   })
 }
 
-export function getListContractorPage(){
-  return Promise.resolve({
-    data:{}
-  })
-}
+ 
 
 
 export function oldtreeUpdateApi (params) {
