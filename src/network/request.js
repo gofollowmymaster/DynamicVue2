@@ -53,6 +53,9 @@ const request = function (config) {
           config.data = JSON.stringify(config.data || config.params)
         }
       }
+      const token = localStorage.getItem('token')
+      token && (config.headers.token = token)
+      
       if (config.downLoadfile) {
         config.responseType = 'blob'
       }

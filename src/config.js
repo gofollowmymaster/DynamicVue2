@@ -26,5 +26,6 @@ export default {
     amapWebMapKey,
     tandiMapKey,
     amapStyleConfig,
-    regionCode:'500103000000'
+    regionCode:'500103000000',
+    defaultDialogMode:'dialog'
 }

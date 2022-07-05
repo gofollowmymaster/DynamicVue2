@@ -60,7 +60,7 @@ export default {
       }
     },
     actionBarWraper: {
-      type: [ Object]
+      type: [ , Object]
     },
     mode:{
       type:String,

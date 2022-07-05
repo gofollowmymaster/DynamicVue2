@@ -1,4 +1,6 @@
 <template>
+     <DynamicPageWrapper     :actions="{...pendingPageOptions.listOption.lineActions}"  :apiPromises="pendingApiPromises"  entityLabel="不动产管理"     >
+
   <LayoutTabs class="pt12">
     <DynamicCurd
       class=""
@@ -7,8 +9,9 @@
       :optionsProps="pendingPageOptions"
       :apiPromises="pendingApiPromises"
       scene="page"
-      label="待处理警告"
+      label="待处理警告" 
     ></DynamicCurd>
+
     <DynamicCurd
       class=""
       scene="page"
@@ -19,6 +22,8 @@
       label="已处理警告"
     ></DynamicCurd>
   </LayoutTabs>
+     </DynamicPageWrapper>
+
 </template>
 <script>
 import {
@@ -71,8 +76,8 @@ export default {
               label: "转事件",
               sort: 0,
               permission: "",
-              dialog: {
-                properties: {
+              
+                containerProperties: {
                   title: "转事件",
                   width: "70%",
                 },
@@ -84,7 +89,7 @@ export default {
                   label: "转事件提交",
                   apiPromise: () => Promise.resolve(),
                 },
-              },
+          
             },
             handleForm: {
               label: "处理",
@@ -147,4 +152,8 @@ export default {
   },
 };
 </script>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+/deep/ .el-tabs__content{
+  position: static;
+}
+</style>

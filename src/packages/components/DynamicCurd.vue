@@ -94,7 +94,7 @@ export default {
       require: true
     },
  
-    mode: { type: String, default: 'dialog' },
+    mode: { type: String,  },
     apiPromises: {
       type: Object,
       default () {
@@ -129,13 +129,14 @@ export default {
 
   computed: {
     options () {
+      const mode=this.mode||this.$dynamicConfig.defaultDialogMode||'dialog'
       const {
         createOptions,
         bulkdeleteOptions,
         updateOptions,
         detailOptions,
         deleteOptions
-      } = this.generateActionOptions(this.mode)
+      } = this.generateActionOptions(mode)
       const searchFields = buildSearchFields(this.fields)
       const tableFields = buildTableFields(this.fields)
 

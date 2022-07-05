@@ -1,6 +1,6 @@
 {
   "name": "dyvue2",
-  "version": "0.0.47",
+  "version": "0.0.50",
   "author": "hua zheng <1850796924@qq.com>",
   "description": "a vue component drived by json",
   "main": "lib/dyvue2.umd.js",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name dyvue2  --dest lib ./index.js" 
   },

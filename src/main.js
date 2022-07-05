@@ -44,7 +44,7 @@ Vue.config.productionTip = false
 // Vue.use(globalComponent)
 import dynamicPage from '@/packages/index.js'
 import   '@/packages/css/index.less'
-import dyConfig from "config"
+import dyConfig from "./config"
 Vue.use(dynamicPage,dyConfig)
 
 new Vue({

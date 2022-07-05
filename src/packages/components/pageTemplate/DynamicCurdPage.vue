@@ -38,7 +38,7 @@ export default {
       }
     },
     entityLabel:String,
-    mode:{type:String,default:'router'},
+    mode:{type:String},
     
   },
   computed: {

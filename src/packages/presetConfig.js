@@ -128,7 +128,8 @@ export const dynamicFormOption = {
 }
 
 export const dynamicConfig={
-   actionTip:'tip'
+   actionTip:'tip',
+   defaultDialogMode:'router'
 }
  
 export default {

@@ -162,7 +162,7 @@ export default {
             label: '操作',
             fixed: 'right'
           },
-          actions: actions
+          actions: lineActions    //引用在map中被修改
         })
       }
 
@@ -185,7 +185,7 @@ export default {
       handler (tableData) {
         this.$nextTick(() => {
           debugger
-          this.$refs.table.doLayout()
+          // this.$refs.table&&this.$refs.table.doLayout()
           this.$forceUpdate()
 
           this.selectRefresh()
