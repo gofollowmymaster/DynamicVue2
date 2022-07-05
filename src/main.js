@@ -19,7 +19,6 @@ import '@/common/directive.js'
 Vue.config.productionTip = false
 Vue.component('VUeEcharts', Echarts)
 Vue.use(ElementUI)
-const amapWebMapKey = window._config.amapWebMapKey
 
 Vue.use(VueAMap)
 VueAMap.initAMapApiLoader({
@@ -45,10 +44,8 @@ Vue.config.productionTip = false
 // Vue.use(globalComponent)
 import dynamicPage from '@/packages/index.js'
 import   '@/packages/css/index.less'
-
-Vue.use(dynamicPage,{
-  actionTip:'msg'
-})
+import dyConfig from "config"
+Vue.use(dynamicPage,dyConfig)
 
 new Vue({
   router,

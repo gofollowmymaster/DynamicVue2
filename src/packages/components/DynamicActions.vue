@@ -60,7 +60,7 @@ export default {
       }
     },
     actionBarWraper: {
-      type: [HTMLElement, Object]
+      type: [ Object]
     },
     mode:{
       type:String,

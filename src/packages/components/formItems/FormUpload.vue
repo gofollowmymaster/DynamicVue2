@@ -94,8 +94,7 @@
 <script>
 import FormMixin from './mixin'
 import moment from 'moment'
-
-const host = window._config?.staticHost
+ 
 
 const fileFields = [
   {
@@ -164,7 +163,7 @@ export default {
       dialogImageUrl: '',
       dialogVisible: false,
       fileFields,
-      imgPrevUrl: host,
+      imgPrevUrl: this.$dyConfig.staticHost,
       apiPromises: {
         bulkdelete: (file) => {
           const fileListNew = []

@@ -47,7 +47,6 @@
 </template>
 
 <script>
-const amapStyleConfig = window._config?.amapStyleConfig
 // import {regionPath}   from  "@/network/amapData/region.js"
 // import {gcj02ToWgs}  from  "@/common/mapClient/amap/utils/mapUtils"
 const TK_KEY = 'af3a42f19a33f75acc37a6f5b7e81331'
@@ -93,7 +92,7 @@ export default {
   },
   data () {
     return {
-      amapStyleConfig,
+      amapStyleConfig:this.$dyConfig.amapStyleConfig,
       path: regionPath||[],
       center: [106.680603, 29.402348],
       text: '',

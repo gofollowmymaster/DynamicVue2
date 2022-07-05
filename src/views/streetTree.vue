@@ -69,7 +69,6 @@ import {
 } from "@/network/oldtree.js";
 import { pagination } from "@/packages/presetConfig";
 import fields from "./streetTreeFields";
-import BrandBar from "components/content/BrandBar/BrandBar.vue";
 import { loadActionTipConfig } from "@/packages/utils/actionTools";
 
 const formFields = buildFormFields(fields);
@@ -78,7 +77,6 @@ const tableFields = buildTableFields(fields);
 
 export default {
   name: "streetTree",
-  components: { BrandBar },
   data: function () {
     return {
       fields,

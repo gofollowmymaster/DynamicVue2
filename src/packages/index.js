@@ -7,7 +7,7 @@ context.resolve()、context.keys()、context.id
  import {generateActionOption} from "./utils/actionTools"
 
  import bus from "./utils/bus"
- import {buildSearchFields,buildTableFields,buildDetailFields,buildFormFields,appendToPreset} from "./utils/tool"
+ import {buildSearchFields,buildTableFields,buildDetailFields,buildFormFields,appendToPreset,deepMerge} from "./utils/tool"
  import {dynamicConfig} from  './presetConfig'
 
 
@@ -43,7 +43,7 @@ export default {
     Vue.prototype.$appendToPreset=appendToPreset
     Vue.prototype.$generateActionOption=generateActionOption 
 
-    Vue.prototype.$dynamicConfig={...dynamicConfig,...options}
+    Vue.prototype.$dynamicConfig=deepMerge(dynamicConfig,options)
 
 
 

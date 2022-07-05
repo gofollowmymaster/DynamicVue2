@@ -59,7 +59,6 @@ import {
 } from '@/network/oldtree.js'
 
 import fields from './treeSpecies'
-import BrandBar from 'components/content/BrandBar/BrandBar.vue'
 import BaseLazyTreeTable from '@/components/BaseBackend/BaseLazyTreeTable'
 import {
   tableOption,
@@ -78,7 +77,7 @@ const searchFieldsEmptyValues = searchFields[0].children.reduce(
 
 export default {
   name: 'treeSpecies',
-  components: { BrandBar, BaseLazyTreeTable },
+  components: {   BaseLazyTreeTable },
   data: function () {
     return {
       searching: false,

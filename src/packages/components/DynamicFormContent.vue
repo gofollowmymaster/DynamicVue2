@@ -78,7 +78,7 @@
       </template>
     </el-form>
     <testTool
-      v-if="showTestTool&&!textModel"
+      v-if="showTestTool&&!textModel&&$dyConfig.isDebug"
       :fields="formItemList"
       refFormName="form"
     ></testTool>

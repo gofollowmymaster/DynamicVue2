@@ -1,6 +1,6 @@
 import {appendToPreset, deepMerge} from "./utils/tool"
-const isDebug=window._config?.isDebug
-const showTestTool=process.env.NODE_ENV == 'development'?true:isDebug
+ 
+const showTestTool=process.env.NODE_ENV == 'development'?true:false
 // const showTestTool=false
 
 export const searchOption = {
