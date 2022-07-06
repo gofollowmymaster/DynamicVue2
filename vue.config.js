@@ -2,6 +2,7 @@
 module.exports = {
   // devtool: 'source-map',
   // publicPath:'/dyvue2-admin/',
+  assetsDir:'./dyvue2-admin/',
   lintOnSave: true,
   configureWebpack: {
     resolve: {
