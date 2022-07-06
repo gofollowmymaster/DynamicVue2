@@ -40,7 +40,7 @@ import TreeTableSelectPersonDialog from '@/components/source/TreeTableSelectPers
 import {
   GlobalAsyncLoadTreeSelectTreeData,
   GlobalLoadTreeSelectSearchData
-} from 'network/home'
+} from '@/network/home'
 
 export default {
   components: {

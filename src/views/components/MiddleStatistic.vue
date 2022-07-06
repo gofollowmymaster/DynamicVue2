@@ -25,7 +25,7 @@
 
 <script>
 import leftPie  from "./leftPie"
-import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,cureTypeCountNumStatisticsApi,protectTypeCountNumStatisticsApi}from  '@/network/oldtree.js'
+import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,cureTypeCountNumStatisticsApi,protectTypeCountNumStatisticsApi}from  '@/network/assets.js'
 
 export default {
   name: 'MiddleStatistic',

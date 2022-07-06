@@ -31,7 +31,7 @@ import TreeSelect from '@/components/source/TreeSelectDialog'
 import {
   GlobalAsyncLoadTreeSelectTreeData,
   GlobalLoadTreeSelectSearchData
-} from 'network/home'
+} from '@/network/home'
 
 export default {
   components: {

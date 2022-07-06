@@ -14,7 +14,7 @@ import {
   maintainDetailApi,
   maintainListApi,
   maintainDeleteApi
-} from '@/network/oldtreeMaintain.js'
+} from '@/network/assetsMaintain.js'
  
 
 import { buildDynamicSelectOption } from "@/network/global";
@@ -223,8 +223,8 @@ export default {
                 label: '查看',
                 actionType:'routerAction',
                 router:(data)=>{
-                  // return `/oldtree/manage/maitain/${data.id}`
-                    return `/oldtree/manage/maitain?id=${data.id}&action=detail`
+                  // return `/assets/manage/maitain/${data.id}`
+                    return `/assets/manage/maitain?id=${data.id}&action=detail`
                 },
                 routerAction:'push',
              },

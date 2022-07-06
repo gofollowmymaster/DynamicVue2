@@ -1,6 +1,7 @@
 module.exports = {
   // devtool: 'source-map',
-  lintOnSave: false,
+  publicPath:'/dyvue2-admin/',
+  lintOnSave: true,
   configureWebpack: {
     resolve: {
       alias: {

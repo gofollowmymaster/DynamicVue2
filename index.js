@@ -19,10 +19,6 @@ import {generateActionOption} from "./src/packages/utils/actionTools"
 
 import './src/packages/css/index.less'
 
- 
-
-
-
 
 export   {
     dynamicVue2,

@@ -9,20 +9,20 @@
 <script>
 
 import {
-  oldtreeUpdateApi,
-  oldtreeSaveApi,
-  oldtreeDetailApi,
-  oldtreeListApi,
-  oldtreeDeleteApi,
-  oldtreeEditDetailApi,
+  assetsUpdateApi,
+  assetsSaveApi,
+  assetsDetailApi,
+  assetsListApi,
+  assetsDeleteApi,
+  assetsEditDetailApi,
   exportOldtreeApi
-} from '@/network/oldtree.js'
+} from '@/network/assets.js'
 import {
 
   buildDetailFields,
   appendToPreset
 } from '@/packages/utils/tool'
-import { oldtreeFields as fields} from "./oldtreeListField.js"
+import { assetsFields as fields} from "./assetsListField.js"
 import maitainLog  from "./maitainLog.vue"
 import protectLog  from "./protectLog.vue"
 import transLog  from "./transLog.vue"
@@ -38,7 +38,7 @@ const entityLabel = '固定资产'
  
   
 export default {
-  name: 'oldtreeManage',
+  name: 'assetsManage',
   data () {
     debugger
     return {
@@ -47,11 +47,11 @@ export default {
       fields,
       // 页面配置
       apiPromises:{
-        create:oldtreeSaveApi,
-        bulkdelete:oldtreeDeleteApi,
-        list:oldtreeListApi,
-        detail:oldtreeEditDetailApi,
-        update:oldtreeUpdateApi
+        create:assetsSaveApi,
+        bulkdelete:assetsDeleteApi,
+        list:assetsListApi,
+        detail:assetsEditDetailApi,
+        update:assetsUpdateApi
       },
       pageOptions: {
         topToolBar:{
@@ -82,7 +82,7 @@ export default {
                   label:'基本信息',
                   props: appendToPreset('dynamicFormOption',
                   {
-                      apiPromise: oldtreeDetailApi,
+                      apiPromise: assetsDetailApi,
                       formItemList: buildDetailFields(fields),
                       formOption: {
                         borderForm:false,

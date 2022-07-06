@@ -33,7 +33,7 @@ import {
   warningPendingListApi,
   warningProcessedListApi,
   warningInfoDeleteApi,
-} from "@/network/oldtree.js";
+} from "@/network/assets.js";
 import {
   eventFields,
   warningFields,

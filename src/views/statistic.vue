@@ -5,7 +5,7 @@
 </template>
 <script>
 import {appendToPreset,buildSearchFields} from '@/packages/utils/tool'
-import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,treeSpeciesStatisticApi}from  '@/network/oldtree.js'
+import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,treeSpeciesStatisticApi}from  '@/network/assets.js'
 import { deepCopy } from'@/packages/utils/tool'
 import {asyncAdministractiveTreeNode}  from "@/network/global"
 
@@ -69,7 +69,7 @@ const searchFieldsTmpl=[
     ]
 
 export default {
-  name: 'oldtreeStatistic',
+  name: 'assetsStatistic',
   data: function () {
     return {
       pageData: {
@@ -117,7 +117,6 @@ export default {
                     'label-width': '80px',
                     'label-position': 'right'
                   },
-                  showTestTool: false,
                   borderForm: false,
                   trigger:'change',
                   resetable:false,

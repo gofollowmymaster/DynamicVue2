@@ -1,6 +1,6 @@
 <template>
   <main class="flex relative search-container">
-    <DynamicFormContent :formItemList="formFields" ref="searchOption" @formDataUpdated="change" :showTestTool="false" 
+    <DynamicFormContent :formItemList="formFields" ref="searchOption" @formDataUpdated="change"  
       v-bind="options"  :formProperties="options.properties"  :data="data" >
       <template  #actionBtnSlot>
         <section class="  "  >

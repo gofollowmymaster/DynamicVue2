@@ -390,41 +390,41 @@ export const featureData={
 
   ],
 
-  // oldtreelevel1:[
+  // assetslevel1:[
   //   {
   //     id:23,
   //     name:'一级',
-  //     type:'oldtreelevel1',
+  //     type:'assetslevel1',
   //     subContent:'一级1',
   //     center:[106.55575275421143,29.644986391067505]
   //   },
 
   // ],
-  // oldtreelevel2:[
+  // assetslevel2:[
   //   {
   //     id:24,
   //     name:'二级',
-  //     type:'oldtreelevel2',
+  //     type:'assetslevel2',
   //     subContent:'二级1',
   //     center:[106.5562355518341,29.64462161064148]
   //   },
 
   // ],
-  // oldtreelevel3:[
+  // assetslevel3:[
   //   {
   //     id:25,
   //     name:'三级',
-  //     type:'oldtreelevel3',
+  //     type:'assetslevel3',
   //     subContent:'三级',
   //     center:[106.56017303466797,29.64512586593628]
   //   },
 
   // ],
-  // oldtreeother:[
+  // assetsother:[
   //   {
   //     id:26,
   //     name:'后备资源',
-  //     type:'oldtreeother',
+  //     type:'assetsother',
   //     subContent:'后备资源',
   //     center:[106.55817303466797,29.64522586593628]
   //   },

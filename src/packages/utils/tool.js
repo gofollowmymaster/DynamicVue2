@@ -237,15 +237,21 @@ export function deepMergeByKey (obj1, obj2, clone = true) {
 }
 
 export function loadPresetConfig (presetKey) {
-  return presetConfig[presetKey]
+  return presetConfig.getConfig[presetKey]
 }
 export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
-  const preset = loadPresetConfig(presetKey)
+  const preset = presetConfig.getConfig(presetKey)
 
   if (!preset) {
     throw new Error('没有找到指定预设配置' + presetKey)
   }
-  return deepMerge(preset, obj, isDeleteNull)
+  if(superType(preset)!=superType(obj)){
+    throw new Error('自定义配置与预设配置类型不同' + presetKey+'自定义：'+JSON.stringify(obj),)
+  }
+  if(['array','object'].includes(superType(preset))){
+    return deepMerge(preset, obj, isDeleteNull)
+  }
+ 
 }
 
 const formOptionDefault = {

@@ -17,6 +17,18 @@ export function defaultAxios (axios = {}) {
 }
 
  
+// treeSelect搜索查询列表数据
+export function GlobalLoadTreeSelectSearchData (axios = {}) {
+  return request({
+    ...axios
+  })
+}
+// treeSelect异步加载tree数据
+export function GlobalAsyncLoadTreeSelectTreeData (axios = {}) {
+  return request({
+    ...axios
+  })
+}
 
  
 /*

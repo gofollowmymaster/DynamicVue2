@@ -35,7 +35,7 @@ const treeRootCode=window._config.regionCode
 import {
   GlobalAsyncLoadTreeSelectTreeData,
   GlobalLoadTreeSelectSearchData
-} from 'network/home'
+} from '@/network/home'
 
 export default {
   components: {

@@ -1,4 +1,3 @@
-import { selectDictDataInfoApi, } from '@/network/oldtree'
 import { elementUploadFileApi } from "@/network/global"
   
 
@@ -146,16 +145,7 @@ export default [
     label: '行政区划',
     formSection: '基本信息',
     searchable: true,
-    options: {
-      key: 'id',
-      value: 'dictValue',
-      label: 'dictLabel',
-      apiPromise: () => {
-        return selectDictDataInfoApi({
-          dictType: 'park_type'
-        }).then((res) => res.data || [])
-      }
-    },
+ 
     tableOption: {
       width: 180,
       sortable: true,

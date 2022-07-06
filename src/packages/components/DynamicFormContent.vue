@@ -78,7 +78,7 @@
       </template>
     </el-form>
     <testTool
-      v-if="showTestTool&&!textModel&&$dyConfig.isDebug"
+      v-if="showTestTool&&!textModel&&$dynamicConfig.isDebug"
       :fields="formItemList"
       refFormName="form"
     ></testTool>
@@ -108,7 +108,7 @@ export default {
       type: Array,
       default: () => []
     },
-    showTestTool: Boolean,
+  
     // 是否显示收起、展开按钮
     showFoldBtn: {
       type: Boolean,
@@ -144,6 +144,7 @@ export default {
   },
   data () {
     return {
+      showTestTool:process.env.NODE_ENV == 'development'?true:false,
       changeData: {
         // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
         allDisabled: this.allDisabled,

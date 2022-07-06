@@ -1,7 +1,6 @@
-import {appendToPreset, deepMerge} from "./utils/tool"
+import { deepMerge,superType,deepCopy} from "./utils/tool"
  
-const showTestTool=process.env.NODE_ENV == 'development'?true:false
-// const showTestTool=false
+ 
 
 export const searchOption = {
   properties: {
@@ -9,7 +8,6 @@ export const searchOption = {
     'label-position': 'right',
     size:'small'
   },
-  // showTestTool,
   borderForm: false,
   trigger: 'click',
   resetable: true,
@@ -85,7 +83,7 @@ export const formOption = {
   },
   borderForm: false,
   showFoldBtn: true,
-  showTestTool
+  
 }
 
 export const submitActionOption = {
@@ -127,12 +125,35 @@ export const dynamicFormOption = {
   }
 }
 
-export const dynamicConfig={
+export let presetConfig={
+    data:{
+      
    actionTip:'tip',
-   defaultDialogMode:'router'
+   defaultDialogMode:'router',
+   searchOption,
+   tableOption,
+   pagination,
+   treeOption,
+   formOption,
+   dynamicFormOption,
+  },
+
+   setCustomConfig(config){
+     Object.keys(config).forEach((key)=>{
+      if(['array','object'].includes(superType(this.data[key]))){
+      this.data[key]=deepMerge(this.data[key],config[key])
+      return
+      }
+      this.data[key]=config[key]
+     })
+     return this.data
+  },
+  getConfig(key){
+    return deepCopy(this.data[key])
+  }
 }
+
  
-export default {
-  searchOption,tableOption,pagination,treeOption,formOption,dynamicFormOption,
-  submitActionOption
-}
+
+ 
+export default presetConfig

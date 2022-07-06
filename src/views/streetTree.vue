@@ -66,7 +66,7 @@ import {
   treeStreetListApi,
   treeStreetDetailApi,
   treeStreetDeleteApi,
-} from "@/network/oldtree.js";
+} from "@/network/assets.js";
 import { pagination } from "@/packages/presetConfig";
 import fields from "./streetTreeFields";
 import { loadActionTipConfig } from "@/packages/utils/actionTools";
@@ -84,9 +84,7 @@ export default {
         save: treeStreetSaveApi,
       },
       searchFields,
-      searchOption: appendToPreset("searchOption", {
-        // properties: { "label-width": "100px" },
-      }),
+      searchOption:this.$dynamicConfig.searchOption,
       topToolBar: {
         create: {
           isLoadData: false,
@@ -115,8 +113,7 @@ export default {
           ...loadActionTipConfig(this),
         },
       },
-      tableOption: appendToPreset("tableOption", {
-        hasCheckbox: true,
+      tableOption: this.$appendToPreset("tableOption", {
         loadListApi: treeStreetListApi,
         "current-change": "handleCurrentChange", // 事件 暂不支持
         lineActions: {

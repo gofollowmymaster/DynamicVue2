@@ -7,7 +7,7 @@
   ></DynamicCurd>
 </template>
 <script>
-import { transDetailApi, transListApi } from '@/network/oldtreeMaintain.js'
+import { transDetailApi, transListApi } from '@/network/assetsMaintain.js'
 
 import { appendToPreset } from '@/packages/utils/tool'
 
@@ -287,7 +287,7 @@ export default {
               label: '查看',
                actionType:'routerAction',
               router: (data) => {
-                return `/oldtree/manage/trans?id=${data.id}&action=detail`
+                return `/assets/manage/trans?id=${data.id}&action=detail`
               },
               routerAction: 'push'
             },

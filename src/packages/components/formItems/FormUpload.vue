@@ -163,7 +163,7 @@ export default {
       dialogImageUrl: '',
       dialogVisible: false,
       fileFields,
-      imgPrevUrl: this.$dyConfig.staticHost,
+      imgPrevUrl: this.$dynamicConfig.staticHost,
       apiPromises: {
         bulkdelete: (file) => {
           const fileListNew = []

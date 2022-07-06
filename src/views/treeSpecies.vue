@@ -46,7 +46,7 @@
 <script>
 import {
   buildFormFields,
-  buildSearchFields,appendToPreset
+  buildSearchFields, 
 } from '@/packages/utils/tool'
 import {loadActionTipConfig} from "@/packages/utils/actionTools"
 import {
@@ -56,13 +56,11 @@ import {
   treeSpeciesDetailApi,
   treeSpeciesDeleteApi,
   treeSpeciesTreeApi
-} from '@/network/oldtree.js'
+} from '@/network/assets.js'
 
 import fields from './treeSpecies'
 import BaseLazyTreeTable from '@/components/BaseBackend/BaseLazyTreeTable'
-import {
-  tableOption,
-} from '@/packages/presetConfig'
+import presetConfig from '@/packages/presetConfig'
 
 
 const formFields = buildFormFields(fields)
@@ -74,7 +72,7 @@ const searchFieldsEmptyValues = searchFields[0].children.reduce(
   },
   {}
 )
-
+const tableBtnType=presetConfig.getConfig('tableOption').actionBtnType
 export default {
   name: 'treeSpecies',
   components: {   BaseLazyTreeTable },
@@ -146,9 +144,7 @@ export default {
         }
       },
       searchFields,
-      searchOption: appendToPreset('searchOption', {
-        // properties: { 'label-width': '100px' }
-      }),
+      searchOption:presetConfig.getConfig('searchOption'),
       topToolBar: {
         create: {
           label:'新增',
@@ -185,7 +181,7 @@ export default {
           actionType:'dialogFormAction',
           apiPromise: treeSpeciesDetailApi,
           componentProperties:{
-             type:tableOption.actionBtnType
+             type:tableBtnType
           },
             containerProperties:{
               title: "更新资产类型",
@@ -204,7 +200,7 @@ export default {
           actionType:'dialogFormAction',
           apiPromise: treeSpeciesDetailApi,
           componentProperties:{
-             type:tableOption.actionBtnType
+             type:tableBtnType
           },
           containerProperties:{
               title: "资产类型详情",

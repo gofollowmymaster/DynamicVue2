@@ -9,12 +9,12 @@ import MiddleStatistic  from "./components/MiddleStatistic.vue"
 import Vue  from  'vue'
 Vue.component('MiddleStatistic',MiddleStatistic)
 
-import { quantityStatisticsApi,treeAndReserveRegionStatisticApi}from  '@/network/oldtree.js'
+import { quantityStatisticsApi,treeAndReserveRegionStatisticApi}from  '@/network/assets.js'
 
 
 
 export default {
-  name: 'oldtreeOverview',
+  name: 'assetsOverview',
   data: function () {
     return {
       pageData: {

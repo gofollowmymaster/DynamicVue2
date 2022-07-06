@@ -40,10 +40,9 @@
   </main>
 </template>
 <script>
-import { appendToPreset } from '@/packages/utils/tool'
 import FormMixin from '@/packages/components/formItems/mixin'
 import { buildDynamicSelectOption } from '@/network/global'
-import { oldtreeListApi } from '@/network/oldtree.js'
+import { assetsListApi } from '@/network/assets.js'
 const fields = [
   {
     key: 'keyWord',
@@ -146,7 +145,6 @@ export default {
       fields,
       pageOptions: {
         searchOption: {
-          showTestTool: false,
           searchClasses: ['grid-col-8'],
           properties: {
             'label-width': '70px',
@@ -154,7 +152,7 @@ export default {
           }
         },
         tableOption: {
-          loadListApi: oldtreeListApi
+          loadListApi: assetsListApi
         }
       }
     }

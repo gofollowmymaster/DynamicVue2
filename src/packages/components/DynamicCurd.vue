@@ -68,11 +68,12 @@ import {
 } from '../utils/tool'
 import { generateDefaultValue } from '../utils/actionTools'
 import {
-  searchOption,
+ 
   pagination,
   tableOption,
-  treeOption
+ 
 } from '../presetConfig'
+import presetConfig from '../presetConfig'
 import actionPresetMixin from './actionPresetMixin'
 
 export default {
@@ -120,7 +121,7 @@ export default {
       searchParams: { refreshKey: '' },
       pagination: {
         pageNo: 1,
-        pageSize: pagination.pageSize
+        pageSize: 10
       },
       total: 1,
       selected: []
@@ -129,7 +130,7 @@ export default {
 
   computed: {
     options () {
-      const mode=this.mode||this.$dynamicConfig.defaultDialogMode||'dialog'
+      const mode=this.mode||presetConfig.defaultDialogMode||'dialog'
       const {
         createOptions,
         bulkdeleteOptions,
@@ -142,9 +143,9 @@ export default {
 
       const optionsOrigin = deepMerge(
         {
-          searchOption,
+          searchOption:presetConfig.getConfig('searchOption'),
           // treeOption,
-          pagination,
+          pagination:presetConfig.getConfig('pagination'),
           topToolBar: {
             create: createOptions,
             bulkdelete: bulkdeleteOptions
@@ -152,7 +153,7 @@ export default {
           searchFields,
           tableFields,
           listOption: {
-            ...tableOption,
+            ...presetConfig.getConfig('tableOption'),
             loadListApi: this.apiPromises.list,
             lineActions: {
               update: updateOptions,
