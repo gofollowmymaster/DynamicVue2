@@ -31,11 +31,11 @@
 
 <script>
 import TreeSelect from '@/components/source/TreeSelectDialog'
-const treeRootCode=window._config.regionCode
 import {
   GlobalAsyncLoadTreeSelectTreeData,
   GlobalLoadTreeSelectSearchData
 } from '@/network/home'
+const treeRootCode = window._config.regionCode
 
 export default {
   components: {

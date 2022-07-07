@@ -19,27 +19,27 @@ export default {
     return {
     }
   },
-  computed:{
-    content(){
-       const content = this.rowData[this.field]
-    if (typeof this.colOptions.tableOption?.template === 'function') {
-       return  this.colOptions.tableOption?.template(
-        this.rowData,
-        this.field
-      )
-    }
-    if (['FormSelect', 'FormRadio'].includes(this.colOptions.type)) {
-      const optionMap = this.colOptions.options.reduce((prev, next) => {
-        prev[next.value] = next.label
-        return prev
-      }, {})
-      return optionMap[content]
-    }
-     return content
+  computed: {
+    content () {
+      const content = this.rowData[this.field]
+      if (typeof this.colOptions.tableOption?.template === 'function') {
+        return this.colOptions.tableOption?.template(
+          this.rowData,
+          this.field
+        )
+      }
+      if (['FormSelect', 'FormRadio'].includes(this.colOptions.type)) {
+        const optionMap = this.colOptions.options.reduce((prev, next) => {
+          prev[next.value] = next.label
+          return prev
+        }, {})
+        return optionMap[content]
+      }
+      return content
     }
   },
   mounted () {
-    
+
   }
 }
 </script>

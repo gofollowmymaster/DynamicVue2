@@ -58,161 +58,161 @@ import {
   buildTableFields,
   buildSearchFields,
   deepMerge,
-  appendToPreset,
-} from "@/packages/utils/tool";
+  appendToPreset
+} from '@/packages/utils/tool'
 import {
   treeStreetUpdateApi,
   treeStreetSaveApi,
   treeStreetListApi,
   treeStreetDetailApi,
-  treeStreetDeleteApi,
-} from "@/network/assets.js";
-import { pagination } from "@/packages/presetConfig";
-import fields from "./streetTreeFields";
-import { loadActionTipConfig } from "@/packages/utils/actionTools";
+  treeStreetDeleteApi
+} from '@/network/assets.js'
+import { pagination } from '@/packages/presetConfig'
+import fields from './streetTreeFields'
+import { loadActionTipConfig } from '@/packages/utils/actionTools'
 
-const formFields = buildFormFields(fields);
-const searchFields = buildSearchFields(fields);
-const tableFields = buildTableFields(fields);
+const formFields = buildFormFields(fields)
+const searchFields = buildSearchFields(fields)
+const tableFields = buildTableFields(fields)
 
 export default {
-  name: "streetTree",
+  name: 'streetTree',
   data: function () {
     return {
       fields,
       apiPromises: {
-        save: treeStreetSaveApi,
+        save: treeStreetSaveApi
       },
       searchFields,
-      searchOption:this.$dynamicConfig.searchOption,
+      searchOption: this.$dynamicConfig.searchOption,
       topToolBar: {
         create: {
           isLoadData: false,
-          label: "新增",
-          actionType: "routerDialogFormAction",
+          label: '新增',
+          actionType: 'routerDialogFormAction',
           componentProperties: {
-            icon: "el-icon-plus",
-            type: "primary",
+            icon: 'el-icon-plus',
+            type: 'primary'
           },
-          container: "dy-page",
+          container: 'dy-page',
           containerProperties: {
-            title: "新增不动产",
+            title: '新增不动产'
           },
           formItemList: formFields,
           saveAction: {
-            actionType: "submit",
-            label: "保存",
-            apiPromise: treeStreetSaveApi,
-          },
+            actionType: 'submit',
+            label: '保存',
+            apiPromise: treeStreetSaveApi
+          }
         },
 
         bulkdelete: {
-          label: "批量删除",
-          actionType: "requestApiAction",
+          label: '批量删除',
+          actionType: 'requestApiAction',
           apiPromise: treeStreetDeleteApi,
-          ...loadActionTipConfig(this),
-        },
+          ...loadActionTipConfig(this)
+        }
       },
-      tableOption: this.$appendToPreset("tableOption", {
+      tableOption: this.$appendToPreset('tableOption', {
         loadListApi: treeStreetListApi,
-        "current-change": "handleCurrentChange", // 事件 暂不支持
+        'current-change': 'handleCurrentChange', // 事件 暂不支持
         lineActions: {
           update: {
-            label: "编辑",
-            actionType: "routerDialogFormAction",
+            label: '编辑',
+            actionType: 'routerDialogFormAction',
             apiPromise: treeStreetDetailApi,
-            container: "dy-page",
+            container: 'dy-page',
             containerProperties: {
-              title: "更新不动产",
+              title: '更新不动产'
             },
             formItemList: formFields,
             saveAction: {
-              apiPromise: treeStreetUpdateApi,
-            },
+              apiPromise: treeStreetUpdateApi
+            }
           },
           detail: {
-            label: "查看",
-            actinType: "routerDialogFormAction",
-            container: "dy-page",
+            label: '查看',
+            actinType: 'routerDialogFormAction',
+            container: 'dy-page',
             apiPromise: treeStreetDetailApi,
             containerProperties: {
-              title: "查看不动产",
-              width: "60%",
+              title: '查看不动产',
+              width: '60%'
             },
             borderForm: false,
             textModel: true,
-            "label-position": "right",
+            'label-position': 'right',
             // 'label-width': '140px'
-            formItemList: formFields,
+            formItemList: formFields
           },
           delete: {
-            label: "删除",
-            actinType: "requestApiAction",
+            label: '删除',
+            actinType: 'requestApiAction',
             componentProperties: {
-              class: ["text-grey-dark2"],
+              class: ['text-grey-dark2']
             },
             apiPromise: treeStreetDeleteApi,
-            ...loadActionTipConfig(this),
-          },
-        },
+            ...loadActionTipConfig(this)
+          }
+        }
       }),
       tableFields,
       pagination,
 
-      searchParams: { refreshKey: "" },
+      searchParams: { refreshKey: '' },
       selected: [],
       total: 1,
       currentDialogForm: {
-        visible: { value: false },
+        visible: { value: false }
       },
       currentDialogPage: {
-        visible: { value: false },
-      },
-    };
+        visible: { value: false }
+      }
+    }
   },
 
   computed: {
-    queryParams() {
-      return { ...this.searchParams, ...this.pagination };
+    queryParams () {
+      return { ...this.searchParams, ...this.pagination }
     },
-    loadListApi() {
+    loadListApi () {
       return this.tableOption.loadListApi(this.queryParams).then((data) => {
-        data = data.data || data;
-        this.total = data.totalCount;
-        return data.list;
-      });
-    },
+        data = data.data || data
+        this.total = data.totalCount
+        return data.list
+      })
+    }
   },
-  created() {},
-  mounted() {
-    this.$dynamicBus.$on("dynamicRefresh", () => {
-      this.refresh();
-    });
+  created () {},
+  mounted () {
+    this.$dynamicBus.$on('dynamicRefresh', () => {
+      this.refresh()
+    })
   },
 
   methods: {
-    refresh() {
-      const refreshKey = this.searchParams.refreshKey++;
-      this.onSearch({ refreshKey });
+    refresh () {
+      const refreshKey = this.searchParams.refreshKey++
+      this.onSearch({ refreshKey })
     },
-    handleSizeChange(pageSize) {
-      this.refresh();
+    handleSizeChange (pageSize) {
+      this.refresh()
     },
-    handleCurrentChange(pageNo) {
-      this.pagination.pageNo = pageNo;
-      this.onSearch({ pageNo });
-    },
-
-    onSearch(params) {
-      this.searchParams = { ...this.searchParams, ...params };
+    handleCurrentChange (pageNo) {
+      this.pagination.pageNo = pageNo
+      this.onSearch({ pageNo })
     },
 
-    selectChange(selected) {
-      debugger;
-      this.selected = selected;
+    onSearch (params) {
+      this.searchParams = { ...this.searchParams, ...params }
     },
-  },
-};
+
+    selectChange (selected) {
+      debugger
+      this.selected = selected
+    }
+  }
+}
 </script>
 
 <style lang="css" scoped>
@@ -220,7 +220,7 @@ export default {
   height: 100%;
   padding: 20px;
 }
- 
+
 .table-wraper {
   height: 540px;
 }

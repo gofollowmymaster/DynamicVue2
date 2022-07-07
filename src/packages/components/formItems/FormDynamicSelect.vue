@@ -25,50 +25,47 @@
 </template>
 
 <script>
-import FormMixin from "./mixin";
-
+import FormMixin from './mixin'
 
 export default {
-  name: "FormDynamicSelect",
+  name: 'FormDynamicSelect',
   mixins: [FormMixin],
 
   data: function () {
     return {
       dynamicDict: {},
-      dictKey: "id",
-      dictLabel: "dictLabel",
-      dictValue: "dictValue",
-    };
+      dictKey: 'id',
+      dictLabel: 'dictLabel',
+      dictValue: 'dictValue'
+    }
   },
-  mounted() {
- 
+  mounted () {
     if (this.item.options.key) {
-      this.dictKey = this.item.options.key;
+      this.dictKey = this.item.options.key
     }
     if (this.item.options.label) {
-      this.dictLabel = this.item.options.label;
+      this.dictLabel = this.item.options.label
     }
     if (this.item.options.value) {
-      this.dictValue = this.item.options.value;
+      this.dictValue = this.item.options.value
     }
 
     this.item.options.apiPromise(this.formData()).then((res) => {
       this.dynamicDict = res.reduce((prev, next) => {
-        prev[next[this.dictKey]+''] = next;
-        return prev;
-      }, {});
-    });
+        prev[next[this.dictKey] + ''] = next
+        return prev
+      }, {})
+    })
   },
   computed: {
-    textModelValue() {
-      
-      const content = this.dynamicDict[this.val] 
-      return (content && content[this.dictLabel]) || this.val;
-    },
-  },
-};
+    textModelValue () {
+      const content = this.dynamicDict[this.val]
+      return (content && content[this.dictLabel]) || this.val
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">
- 
+
 </style>

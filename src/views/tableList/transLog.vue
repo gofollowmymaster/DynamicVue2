@@ -283,9 +283,9 @@ export default {
         listOption: {
           lineActions: {
             update: null,
-            detail:  {
+            detail: {
               label: '查看',
-               actionType:'routerAction',
+              actionType: 'routerAction',
               router: (data) => {
                 return `/assets/manage/trans?id=${data.id}&action=detail`
               },
@@ -293,7 +293,7 @@ export default {
             },
             delete: null
           }
-        },
+        }
       }
     }
   }

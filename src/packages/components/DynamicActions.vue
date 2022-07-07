@@ -36,8 +36,7 @@
         >{{item.label}} </component>
       </span>
     </template>
-       
-   
+
   </main>
 </template>
 <script>
@@ -60,11 +59,11 @@ export default {
       }
     },
     actionBarWraper: {
-      type: [ Object]
+      type: [Object]
     },
-    mode:{
-      type:String,
-      default:''
+    mode: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -73,24 +72,25 @@ export default {
       actionsOrdered: []
     }
   },
-  computed:{
-    actionAndData(){
-      return {actions:this.actions,actionData:this.actionData}
+  computed: {
+    actionAndData () {
+      return { actions: this.actions, actionData: this.actionData }
     }
   },
   watch: {
     actionAndData: {
-      handler ({actions,actionData}) {
+      handler ({ actions, actionData }) {
         debugger
         actions = Object.entries(actions)
-        .map(([key, value], index) => {
-          return { ...value, actionKey: key }
-        }).filter(action=>{
-          return action?.actionType})
-        .map((action, index) => {
-          debugger
-          return this.$generateActionOption(action.actionType,action)
-        })
+          .map(([key, value], index) => {
+            return { ...value, actionKey: key }
+          }).filter(action => {
+            return action?.actionType
+          })
+          .map((action, index) => {
+            debugger
+            return this.$generateActionOption(action.actionType, action)
+          })
         actions = actions
           .sort((a, b) => a.sort - b.sort)
           .filter((action) => {
@@ -155,10 +155,9 @@ export default {
             }
           }
         }).then((operate) => {})
-        return 
+        return
       }
       this.actionHandle(action, actionData)
-
     },
     actionHandle (action, actionData) {
       if (typeof action.actionHook === 'function') {
@@ -179,8 +178,7 @@ export default {
 }
 </script>
 <style lang="css"  scoped>
- 
- 
+
 .actions-wrap .action-btn:last-of-type {
   border-right: none;
 }

@@ -24,33 +24,33 @@
 </template>
 
 <script>
-    // 普通数字输入框
-    import FormMixin from './mixin';
+// 普通数字输入框
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormIntNumber',
-        mixins: [ FormMixin ],
-        computed: {
-            // 前置符号
-            prepend () {
-                // 兼容性处理
-                if (this.item.prepend) {
-                    return this.item.prepend;
-                } else {
-                    return '';
-                }
-            },
-            // 后置符号
-            append () {
-                // 兼容性处理
-                if (this.item.append) {
-                    return this.item.append;
-                } else {
-                    return '';
-                }
-            },
-        }
-    };
+export default {
+  name: 'FormIntNumber',
+  mixins: [FormMixin],
+  computed: {
+    // 前置符号
+    prepend () {
+      // 兼容性处理
+      if (this.item.prepend) {
+        return this.item.prepend
+      } else {
+        return ''
+      }
+    },
+    // 后置符号
+    append () {
+      // 兼容性处理
+      if (this.item.append) {
+        return this.item.append
+      } else {
+        return ''
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -66,5 +66,4 @@
         // }
     }
 
- 
 </style>

@@ -3,24 +3,25 @@
     <dyBrandBar >
       <span slot="title" >{{ entityLabel }}</span>
     </dyBrandBar>
-    <DynamicPageWrapper class="flex1   "   :actions="actionList" :fields="fields"  :entityLabel="entityLabel" 
+    <DynamicPageWrapper class="flex1   "   :actions="actionList" :fields="fields"  :entityLabel="entityLabel"
        :apiPromises="apiPromises"  :formSections="formSections"  >
-    
-      <DynamicCurd   :optionsProps="pageOptionsprops" :fields="fields"  :entityLabel="entityLabel" 
+
+      <DynamicCurd   :optionsProps="pageOptionsprops" :fields="fields"  :entityLabel="entityLabel"
        :apiPromises="apiPromises" :mode="mode" :formSections="formSections" scene="page" ></DynamicCurd>
     </DynamicPageWrapper>
   </div>
 </template>
 <script>
- 
 
 export default {
   name: 'DynamicCurdPage',
   props: {
-    pageOptionsprops: { type: Object ,
-    default:function(){
-      return {}
-    }},
+    pageOptionsprops: {
+      type: Object,
+      default: function () {
+        return {}
+      }
+    },
     fields: {
       type: Array,
       required: true
@@ -33,33 +34,33 @@ export default {
     },
     apiPromises: {
       type: Object,
-      default(){
+      default () {
         return {}
       }
     },
-    entityLabel:String,
-    mode:{type:String},
-    
+    entityLabel: String,
+    mode: { type: String }
+
   },
   computed: {
-    actionList(){
+    actionList () {
       debugger
-        const {topToolBar:customTopActions={},listOption={}} =this.pageOptionsprops
-        const {lineActions:customLineActions={}} = listOption
-      console.log('----actionList---',{...customTopActions,...customLineActions})
+      const { topToolBar: customTopActions = {}, listOption = {} } = this.pageOptionsprops
+      const { lineActions: customLineActions = {} } = listOption
+      console.log('----actionList---', { ...customTopActions, ...customLineActions })
 
-        return {...customTopActions,...customLineActions}
+      return { ...customTopActions, ...customLineActions }
     }
   },
   data: function () {
     return {
-       
+
     }
-  },
- 
+  }
+
 }
 </script>
 
 <style lang="less" scoped>
- 
+
 </style>

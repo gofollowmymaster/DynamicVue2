@@ -50,8 +50,7 @@
           >{{ unit.name }}</el-menu-item
         >
       </el-submenu>
-   
-      
+
     </el-menu>
     <!-- <el-menu
       :default-active="getCurrentRoute"
@@ -170,9 +169,9 @@ export default {
         this.$router.push(row.path)
       }
     },
-    openPage(link,event){
-        debugger
-       window.open(link,'_blank')
+    openPage (link, event) {
+      debugger
+      window.open(link, '_blank')
     }
   },
   mounted () {
@@ -263,7 +262,7 @@ export default {
   &:hover {
     background: #8541b1;
   }
- 
+
 }
 /deep/ .nav-horizontal-menu  {
      .a-link{

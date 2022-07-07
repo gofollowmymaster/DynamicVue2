@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     valueObj () {
-      if (this.value instanceof Array) return this.value.filter(item=>item)
+      if (this.value instanceof Array) return this.value.filter(item => item)
       return []
     },
     val: {
@@ -69,7 +69,6 @@ export default {
       set (value) {
         debugger
         this.$emit('input', value)
-        this._valueLink(value)
         // 更新数据
         this.statusChangeFn.valueUpdateEvent({
           [this.item.key]: value

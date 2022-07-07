@@ -7,26 +7,26 @@
 </template>
 
 <script>
-    import TableColMixin from '@/packages/components/tableColItem/mixin';
+import TableColMixin from '@/packages/components/tableColItem/mixin'
 
-    export default {
-        name: 'ColDictTag',
-        mixins: [ TableColMixin ],
-        data(){
-            return {
-                content:'',
-                style:''
-            }
-        },
-        computed: {
-        },
-        mounted(){
-            this.content=this.rowData[this.item.dictInfoKey]?.dictLabel
-            this.style=this.rowData[this.item.dictInfoKey]?.listClass
-        }
-    };
+export default {
+  name: 'ColDictTag',
+  mixins: [TableColMixin],
+  data () {
+    return {
+      content: '',
+      style: ''
+    }
+  },
+  computed: {
+  },
+  mounted () {
+    this.content = this.rowData[this.item.dictInfoKey]?.dictLabel
+    this.style = this.rowData[this.item.dictInfoKey]?.listClass
+  }
+}
 </script>
 
 <style scoped lang="less">
-    
+
 </style>

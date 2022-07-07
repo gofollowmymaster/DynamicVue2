@@ -18,36 +18,34 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormSelect',
-        mixins: [ FormMixin ],
-        computed: {
-            textModelValue () {
-                if (this.item.options) {
-                    let val = '';
-                    this.item.options.forEach(item => {
-                        if (item.value === this.value) {
-                            val = item.label;
-                        }
-                    });
-                    return val;
-                } else {
-                    return '';
-                }
-            },
-           
-        }
-    };
+export default {
+  name: 'FormSelect',
+  mixins: [FormMixin],
+  computed: {
+    textModelValue () {
+      if (this.item.options) {
+        let val = ''
+        this.item.options.forEach(item => {
+          if (item.value === this.value) {
+            val = item.label
+          }
+        })
+        return val
+      } else {
+        return ''
+      }
+    }
+
+  }
+}
 </script>
 
 <style scoped lang="less">
 
-
     // .form-item-box {
     //     /deep/ .el-input {
- 
 
     //         .el-input__inner {
     //             position: absolute;

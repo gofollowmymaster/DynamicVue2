@@ -1,19 +1,19 @@
 import { getRule } from './validate'
 import presetConfig from '../presetConfig'
 
-export function parseExpression(tmpl,obj){
+export function parseExpression (tmpl, obj) {
   let expression = tmpl.replace(/#\{(.+?)\}/g, 'obj.$1')
-  if(expression.indexOf('return')==-1){
-      expression=    `return ${expression}`
+  if (expression.indexOf('return') == -1) {
+    expression = `return ${expression}`
   }
   const func = new Function('obj', expression)
   const res = func(obj)
   return res
 }
-export function parseTemplate(tmpl,obj){
-  let template = '`'+tmpl.replace(/#\{(.+?)\}/g, '${obj.$1}')+'`'
-  if(template.indexOf('return')==-1){
-    template=    `return ${template}`
+export function parseTemplate (tmpl, obj) {
+  let template = '`' + tmpl.replace(/#\{(.+?)\}/g, '${obj.$1}') + '`'
+  if (template.indexOf('return') == -1) {
+    template = `return ${template}`
   }
   const func = new Function('obj', template)
   const res = func(obj)
@@ -28,21 +28,20 @@ export function isEmpty (value, containEmptyString = false) {
 }
 
 export function superType (data) {
-    const type = Object.prototype.toString.call(data).toLowerCase()
-    return type.replace(/^\[object\s(\w+)\]$/, (...rest) => {
-      return rest[1]
-    })
+  const type = Object.prototype.toString.call(data).toLowerCase()
+  return type.replace(/^\[object\s(\w+)\]$/, (...rest) => {
+    return rest[1]
+  })
 }
-export function objType(data){
-  if([undefined,null].includes(data)){
+export function objType (data) {
+  if ([undefined, null].includes(data)) {
     const type = Object.prototype.toString.call(data).toLowerCase()
     return type.replace(/^\[object\s(\w+)\]$/, (...rest) => {
       return rest[1]
     })
-     
-  } 
-  const type =  data.constructor.toString().toLowerCase()
-  if(type.startsWith('function')){
+  }
+  const type = data.constructor.toString().toLowerCase()
+  if (type.startsWith('function')) {
     return type.replace(/^function\s(\w+?)\s/, (...rest) => {
       return rest[1]
     }).split('(')[0]
@@ -96,23 +95,22 @@ export function JSONDeepCopy (data) {
 }
 
 export function deepCopy (origin) {
-  const valueTypes = ['object', 'array', ] // 后面可以支持下 map、set 等
-  const objTypes = ['vnode','htmlelement']
-  const objType1=objType(origin)
-  if(objTypes.includes(objType1)){
-    return origin  // 若是特殊对象则结束
+  const valueTypes = ['object', 'array'] // 后面可以支持下 map、set 等
+  const objTypes = ['vnode', 'htmlelement']
+  const objType1 = objType(origin)
+  if (objTypes.includes(objType1)) {
+    return origin // 若是特殊对象则结束
   }
   if (!valueTypes.includes(superType(origin))) {
-    return origin  // 若不是对象则结束
+    return origin // 若不是对象则结束
   }
 
   const target = Array.isArray(origin) ? [] : {} // 判别是数组还是对象
   for (const k in origin) {
     // 循环拷贝
-    if(typeof origin.hasOwnProperty !=='function'){
+    if (typeof origin.hasOwnProperty !== 'function') {
       debugger
-  let objType2=objType(origin)
-
+      const objType2 = objType(origin)
     }
     if (origin.hasOwnProperty(k)) {
       // 判断属性是否在对象自身上（非原型链上的父级属性）
@@ -245,18 +243,17 @@ export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
   if (!preset) {
     throw new Error('没有找到指定预设配置' + presetKey)
   }
-  if(superType(preset)!=superType(obj)){
-    throw new Error('自定义配置与预设配置类型不同' + presetKey+'自定义：'+JSON.stringify(obj),)
+  if (superType(preset) != superType(obj)) {
+    throw new Error('自定义配置与预设配置类型不同' + presetKey + '自定义：' + JSON.stringify(obj))
   }
-  if(['array','object'].includes(superType(preset))){
+  if (['array', 'object'].includes(superType(preset))) {
     return deepMerge(preset, obj, isDeleteNull)
   }
- 
 }
 
 const formOptionDefault = {
   wraperProperties: {
-    class: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24']
+    class: presetConfig.getConfig('formWraperClass')
   },
   rules: [],
   properties: {
@@ -299,13 +296,14 @@ export function buildFormFields (fields, formSections = {}) {
           return getRule(rule, item.type, item.label)
         })
 
-        if(item.span){
-          item.wraperProperties.class = item.wraperProperties.class
-          .filter((classList) =>{
-           return classList.startsWith('grid-col')
-          } )
-          item.wraperProperties.class= item.wraperProperties.class.concat('grid-col-'+item.span)
-        }
+      if (item.span) {
+        item.wraperProperties.class = item.wraperProperties.class
+          .filter((classList, index) => {
+            return index !== 0
+          //  return classList.startsWith('grid-col-')
+          })
+        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
+      }
       return item
     })
     .reduce((prev, next) => {
@@ -333,7 +331,7 @@ export function buildFormFields (fields, formSections = {}) {
 
 const detailOptionDefault = {
   wraperProperties: {
-    class: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24']
+    class: presetConfig.getConfig('detailWraperClass')
   },
   rules: [],
   properties: {
@@ -374,6 +372,16 @@ export function buildDetailFields (fields, formSections = {}) {
       item.type = item.type || 'FormInput'
 
       return { ...item, ...detailOption, ...extra }
+    }).map((item) => {
+      if (item.span) {
+        item.wraperProperties.class = item.wraperProperties.class
+          .filter((classList, index) => {
+            return index !== 0
+            //  return classList.startsWith('grid-col-')
+          })
+        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
+      }
+      return item
     })
     .reduce((prev, next) => {
       // 按formSection分组
@@ -434,14 +442,7 @@ export function buildTableFields (fields) {
 
 const searchOptionDefault = {
   wraperProperties: {
-    class: [
-      'grid-col-8',
-      'grid-col-lg-6',
-      'grid-col-sm-8',
-      'grid-col-ss-8',
-      'grid-col-xs-12',
-      'grid-col-pp-24'
-    ]
+    class: presetConfig.getConfig('searchFormWraperClass')
   },
   properties: {
     // size:'small'
@@ -468,6 +469,17 @@ export function buildSearchFields (fields) {
       const type = item.type
 
       return { ...item, type, sort: 10, ...searchOption }
+    })
+    .map((item) => {
+      if (item.span) {
+        item.wraperProperties.class = item.wraperProperties.class
+          .filter((classList, index) => {
+            return index !== 0
+            //  return classList.startsWith('grid-col-')
+          })
+        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
+      }
+      return item
     })
     .sort((prev, next) => {
       return prev.sort - next.sort

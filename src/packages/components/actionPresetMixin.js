@@ -2,26 +2,25 @@ import {
   appendToPreset,
   deepMerge,
   buildFormFields,
-  buildDetailFields,
+  buildDetailFields
 } from '../utils/tool'
 import {
-  generateActionOption,loadActionTipConfig
+  generateActionOption, loadActionTipConfig
 } from '../utils/actionTools'
 import Vue from 'vue'
-
 
 export default {
   props: {},
   computed: {},
   methods: {
-    
+
     generateCreateOptions (mode = 'dialog') {
       const actionType =
         mode == 'router'
           ? 'routerDialogFormActionOption'
           : 'dialogFormActionOption'
 
-      return   { 
+      return {
         label: '新增',
         permission: '新增',
         actionType,
@@ -29,11 +28,10 @@ export default {
         isLoadData: false,
         componentProperties: {
           icon: 'el-icon-plus',
-          type: 'primary',
+          type: 'primary'
         },
         containerProperties: {
-          title: '新增' + this.entityLabel,
-          width: '60%'
+          title: '新增' + this.entityLabel
         },
         formItemList: buildFormFields(this.fields, this.formSections),
 
@@ -43,26 +41,25 @@ export default {
       }
     },
     generateBulkDeleteOptions () {
-      
-      const actionTipConfig=loadActionTipConfig(this)
-      return   {
+      const actionTipConfig = loadActionTipConfig(this)
+      return {
         label: '批量删除',
         permission: '批量删除',
-        actionType:'requestApiAction',
+        actionType: 'requestApiAction',
         actionDataKey: 'selected',
         apiPromise: this.apiPromises.bulkdelete || this.apiPromises.delete,
         ...actionTipConfig
       }
     },
     generateDeleteOptions () {
-      const actionTipConfig=loadActionTipConfig(this)
-      return   {
+      const actionTipConfig = loadActionTipConfig(this)
+      return {
         sort: 200,
-        actionType:'requestApiAction',
+        actionType: 'requestApiAction',
         label: '删除',
         permission: '删除',
-        componentProperties:{
-          class:['text-grey-dark2']
+        componentProperties: {
+          class: ['text-grey-dark2']
         },
         apiPromise: this.apiPromises.delete || this.apiPromises.bulkdelete,
         ...actionTipConfig
@@ -74,19 +71,17 @@ export default {
           ? 'routerDialogFormAction'
           : 'dialogFormAction'
 
-      return   {
+      return {
         label: '编辑',
         actionType,
         router: 'update',
         permission: '编辑',
         apiPromise: this.apiPromises.detail,
         containerProperties: {
-          title: '编辑' + this.entityLabel,
-          width: '60%'
+          title: '编辑' + this.entityLabel
         },
 
         formItemList: buildFormFields(this.fields, this.formSections),
-
         saveAction: {
           label: '保存',
           apiPromise: this.apiPromises.update
@@ -99,7 +94,7 @@ export default {
           ? 'routerDialogFormActionOption'
           : 'dialogFormActionOption'
 
-      return  {
+      return {
         label: '详情',
         actionType,
         permission: '详情',
@@ -111,12 +106,6 @@ export default {
           title: this.entityLabel + '详情'
         },
         textModel: true,
-
-        formProperties: {
-          'label-position': 'right',
-          'label-width': '150px'
-        },
-
         formItemList: buildDetailFields(this.fields, this.formSections),
         saveAction: null
       }

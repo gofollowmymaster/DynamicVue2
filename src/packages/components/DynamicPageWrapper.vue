@@ -4,12 +4,11 @@
     <!-- 弹窗表单 -->
     <DynamicFormDialog v-bind="currentDialogForm"  > </DynamicFormDialog>
     <!-- 頁面表单 -->
-    <DynamicFormDialog v-bind="currentPageForm"  > </DynamicFormDialog>  
+    <DynamicFormDialog v-bind="currentPageForm"  > </DynamicFormDialog>
     <!-- 页面内容 -->
     <DynamicPageDialog v-bind="currentDialogPage"  > </DynamicPageDialog>
     <DynamicDetailPage   v-bind="$props"   :detailId='detailId'   :actionKey='actionKey'></DynamicDetailPage>
 
- 
   </main>
 </template>
 <script>
@@ -33,13 +32,13 @@ export default {
         return {}
       }
     },
-    formSections:{
+    formSections: {
       type: Object,
       default () {
         return {}
       }
     },
-    entityLabel: String,
+    entityLabel: String
   },
   data () {
     return {
@@ -49,11 +48,11 @@ export default {
       currentDialogPage: {
         visible: { value: false }
       },
-      currentPageForm:{
+      currentPageForm: {
         visible: { value: false }
       },
-        detailId:'',
-        actionKey:'detail'
+      detailId: '',
+      actionKey: 'detail'
     }
   },
 
@@ -61,17 +60,17 @@ export default {
     return {
       setGlobalDialogForm: this.setCurrentDialogForm,
       setGlobalDialogPage: this.setCurrentDialogPage,
-      isGlobalDialogFormActive:this.isGlobalDialogFormActive,
+      isGlobalDialogFormActive: this.isGlobalDialogFormActive
     }
   },
-  created(){
-     this.$watch(
+  created () {
+    this.$watch(
       '$route',
       (toParams, previousParams) => {
         // 对路由变化做出响应...
         this.getRouterIdInParams()
-      },{
-        immediate:true
+      }, {
+        immediate: true
       }
     )
   },
@@ -79,20 +78,19 @@ export default {
   components: {},
 
   methods: {
-    getRouterIdInParams(){
-       debugger
-       this.detailId=this.$route.params?.id||this.$route.query?.id
-       this.actionKey=this.$route.params?.action||this.$route.query.action
-     },
+    getRouterIdInParams () {
+      debugger
+      this.detailId = this.$route.params?.id || this.$route.query?.id
+      this.actionKey = this.$route.params?.action || this.$route.query.action
+    },
     setCurrentDialogForm (currentDialogForm) {
-      if(['dy-page','DyPage'].includes(currentDialogForm.container)){
+      if (['dy-page', 'DyPage'].includes(currentDialogForm.container)) {
         currentDialogForm.visible = { value: true }
         this.currentPageForm = currentDialogForm
-      }else{
-          currentDialogForm.visible = { value: true }
+      } else {
+        currentDialogForm.visible = { value: true }
         this.currentDialogForm = currentDialogForm
       }
-      
     },
 
     setCurrentDialogPage (currentDialogPage) {
@@ -100,32 +98,29 @@ export default {
       this.currentDialogPage = currentDialogPage
     },
 
-    //关闭弹窗  兜底
-    close(){
+    // 关闭弹窗  兜底
+    close () {
       debugger
-      if(this.currentDialogForm.visible.value){
-        this.currentDialogForm ={visible: { value: false }}
+      if (this.currentDialogForm.visible.value) {
+        this.currentDialogForm = { visible: { value: false } }
         this.clearRouteQuery(this.currentDialogForm)
-        return 
+        return
       }
-      this.currentDialogPage = {visible: { value: false }}
+      this.currentDialogPage = { visible: { value: false } }
       this.clearRouteQuery(this.currentDialogPage)
-
-
     },
-    clearRouteQuery(){
-     const {id,action}= this.$route.query
-     if(id||action){
-       const query={...this.$route.query}
-       delete query.id
-       delete query.action
+    clearRouteQuery () {
+      const { id, action } = this.$route.query
+      if (id || action) {
+        const query = { ...this.$route.query }
+        delete query.id
+        delete query.action
 
-       this.$router.replace(this.$route.path,query)
-     }
-
+        this.$router.replace(this.$route.path, query)
+      }
     },
-    
-    isGlobalDialogFormActive(){
+
+    isGlobalDialogFormActive () {
       return this.currentDialogForm.visible.value
     }
   }

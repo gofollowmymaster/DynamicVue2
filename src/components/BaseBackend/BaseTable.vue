@@ -135,9 +135,9 @@ export default {
     isTemplateFun (item) {
       return item.template && item.template instanceof Function
     },
-    filterHtml(string){
-      let reg=/<(\w+).*>(.*)<\/\1>/
-      return string.replace(reg,"$2")
+    filterHtml (string) {
+      const reg = /<(\w+).*>(.*)<\/\1>/
+      return string.replace(reg, '$2')
     },
     selectableFun (row, index) {
       if (row.checkable === false) return false

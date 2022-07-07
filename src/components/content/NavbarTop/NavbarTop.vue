@@ -24,7 +24,7 @@
 import Menu from './NavbarMenu.vue'
 export default {
   components: {
-    Menu,
+    Menu
   },
   data () {
     return {
@@ -35,9 +35,9 @@ export default {
   },
   methods: {
     exit () {
- 
-    },
- 
+
+    }
+
   }
 }
 </script>

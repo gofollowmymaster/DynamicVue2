@@ -1,5 +1,5 @@
 <template>
-    
+
     <div :style="item.style||{}"
          :class="`form-unqiue-${item.key} `"
          class="form-input-box form-item-box">
@@ -10,17 +10,17 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormText',
-        mixins: [ FormMixin ],
-        computed: {
-            
-        }
-    };
+export default {
+  name: 'FormText',
+  mixins: [FormMixin],
+  computed: {
+
+  }
+}
 </script>
 
 <style scoped lang="less">
- 
+
 </style>

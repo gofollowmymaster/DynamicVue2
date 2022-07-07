@@ -29,7 +29,7 @@ export default {
     return {}
   },
   computed: {
-    
+
     bindOptions () {
       let obj = Object.assign({}, this.item)
 
@@ -47,12 +47,12 @@ export default {
       return obj
     },
     textModelValue () {
-      return  this.val==this.bindOptions['active-value']?this.bindOptions['active-text']:this.bindOptions['inactive-text']
-    },
+      return this.val == this.bindOptions['active-value'] ? this.bindOptions['active-text'] : this.bindOptions['inactive-text']
+    }
   }
 }
 </script>
 
 <style scoped lang="less">
- 
+
 </style>

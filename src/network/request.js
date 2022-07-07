@@ -55,11 +55,11 @@ const request = function (config) {
       }
       const token = localStorage.getItem('token')
       token && (config.headers.token = token)
-      
+
       if (config.downLoadfile) {
         config.responseType = 'blob'
       }
- 
+
       if (!config.loading) {
       } else {
         // console.log('----config---', config.loading, config.url)
@@ -124,7 +124,7 @@ const request = function (config) {
         switch (status) {
           case 403:
             message({ type: 'error', message: '登录过期！' })
-            
+
             setTimeout(() => {
               localStorage.clear()
               sessionStorage.clear()

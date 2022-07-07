@@ -1,6 +1,6 @@
 <template>
   <main class="flex relative search-container">
-    <DynamicFormContent :formItemList="formFields" ref="searchOption" @formDataUpdated="change"  
+    <DynamicFormContent :formItemList="formFields" ref="searchOption" @formDataUpdated="change"
       v-bind="options"  :formProperties="options.properties"  :data="data" >
       <template  #actionBtnSlot>
         <section class="  "  >
@@ -15,42 +15,41 @@
   </main>
 </template>
 <script>
-import { deepCopy ,loadPresetConfig} from '../utils/tool';
- 
+import { deepCopy, loadPresetConfig } from '../utils/tool'
+
 export default {
-  name:'DymamicSearchForm',
+  name: 'DymamicSearchForm',
   props: {
-    data:{
-      type:[Object],
-      default(){
+    data: {
+      type: [Object],
+      default () {
         return {}
       }
     },
     fields: {
       type: Array,
       default: function () {
-        return [];
-      },
+        return []
+      }
     },
     options: {
       type: Object,
       default: function () {
-        return loadPresetConfig('searchOption');
-      },
-    },
+        return loadPresetConfig('searchOption')
+      }
+    }
   },
   data: function () {
     return {
-      isExpand:false
-    };
+      isExpand: false
+    }
   },
   computed: {
-    formFields(){
-
-      const fieldsClone= deepCopy(this.fields)
-      if(!this.isExpand){
-        const mainNum=this.options.mainNum||5
-        if(fieldsClone[0].children.length>=mainNum){
+    formFields () {
+      const fieldsClone = deepCopy(this.fields)
+      if (!this.isExpand) {
+        const mainNum = this.options.mainNum || 5
+        if (fieldsClone[0].children.length >= mainNum) {
           fieldsClone[0].children.splice(mainNum)
         }
       }
@@ -60,44 +59,43 @@ export default {
         key: 'actionBtnSlot',
         label: '',
         wraperProperties: {
-          class:this.isExpand?['grid-col-24']:this.options.searchClasses,
-          style:{'margin-left':this.isExpand?(this.options.properties['label-width']||'100px'):'12px'}
+          class: this.isExpand ? ['grid-col-24'] : this.options.searchClasses,
+          style: { 'margin-left': this.isExpand ? (this.options.properties['label-width'] || '100px') : '12px' }
         }
       })
-      return  fieldsClone
+      return fieldsClone
     }
-     
+
   },
   components: {},
-  mounted(){
-    
+  mounted () {
+
   },
   methods: {
-    switchSearchBar(){
+    switchSearchBar () {
       debugger
-        this.isExpand=!this.isExpand
+      this.isExpand = !this.isExpand
     },
-    change(){
-      if(this.options.trigger=='change'){
-        this.$nextTick(()=>{
+    change () {
+      if (this.options.trigger == 'change') {
+        this.$nextTick(() => {
           this.submit()
         })
-
       }
     },
-    submit() {
-       const data=this.$refs["searchOption"].getData() 
-       delete data.actionBtnSlot
-       this.$emit('search',data)
-    },
-    reset() {
-      this.$refs["searchOption"].resetFields();
-      const data=this.$refs["searchOption"].getData()
+    submit () {
+      const data = this.$refs.searchOption.getData()
       delete data.actionBtnSlot
       this.$emit('search', data)
     },
-  },
-};
+    reset () {
+      this.$refs.searchOption.resetFields()
+      const data = this.$refs.searchOption.getData()
+      delete data.actionBtnSlot
+      this.$emit('search', data)
+    }
+  }
+}
 </script>
 <style lang="css" scoped>
  .search-container {

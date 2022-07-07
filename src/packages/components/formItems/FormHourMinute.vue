@@ -20,18 +20,17 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormHourMinute',
-        mixins: [ FormMixin ],
-        methods: {}
-    };
+export default {
+  name: 'FormHourMinute',
+  mixins: [FormMixin],
+  methods: {}
+}
 </script>
 
 <style scoped lang="less">
     .form-item-box /deep/ .el-input {
- 
 
         .el-input__inner {
             position: absolute;

@@ -24,118 +24,121 @@
 </template>
 
 <script>
-import leftPie  from "./leftPie"
-import { protectLevStatisticApi,growthSituationStatisticApi,treeAgeStatisticApi,cureTypeCountNumStatisticsApi,protectTypeCountNumStatisticsApi}from  '@/network/assets.js'
+import leftPie from './leftPie'
+import { protectLevStatisticApi, growthSituationStatisticApi, treeAgeStatisticApi, cureTypeCountNumStatisticsApi, protectTypeCountNumStatisticsApi } from '@/network/assets.js'
 
 export default {
   name: 'MiddleStatistic',
-  components:{leftPie},
+  components: { leftPie },
   props: {
     data: {
       type: [Object, Array],
       default () {
         return {}
       }
-    },
+    }
   },
   data: function () {
     return {
       cardList: [],
-      protectLevData:[],
-       treeAgeData:{'':[]},
-       treeSpecies:{
-                  '收费公园': [
-                    {
-                      value: 320,
-                      label: '2万以下'
-                    },
-                    {
-                      value: 301,
-                      label: '2万-20万'
-                    },
-                    {
-                      value: 320,
-                      label: '20万-100万'
-                    },
-                    {
-                      value: 130,
-                      label: '100万以上'
-                    },
-                  ],
-                  '收费公园1': [
-                    {
-                      value: 320,
-                      label: '2万以下'
-                    },
-                    {
-                      value: 301,
-                      label: '2万-20万'
-                    },
-                    {
-                      value: 320,
-                      label: '20万-100万'
-                    },
-                    {
-                      value: 130,
-                      label: '100万以上'
-                    },
-                  ],
-                },
-      growthSituationData:{'':[]},
-             
-                protectTypeCountNum:{'':[]},
-                cureTypeCountNum:{'':[]},
+      protectLevData: [],
+      treeAgeData: { '': [] },
+      treeSpecies: {
+        收费公园: [
+          {
+            value: 320,
+            label: '2万以下'
+          },
+          {
+            value: 301,
+            label: '2万-20万'
+          },
+          {
+            value: 320,
+            label: '20万-100万'
+          },
+          {
+            value: 130,
+            label: '100万以上'
+          }
+        ],
+        收费公园1: [
+          {
+            value: 320,
+            label: '2万以下'
+          },
+          {
+            value: 301,
+            label: '2万-20万'
+          },
+          {
+            value: 320,
+            label: '20万-100万'
+          },
+          {
+            value: 130,
+            label: '100万以上'
+          }
+        ]
+      },
+      growthSituationData: { '': [] },
+
+      protectTypeCountNum: { '': [] },
+      cureTypeCountNum: { '': [] }
 
     }
   },
-  computed: {'':[]},
+  computed: { '': [] },
 
   mounted () {
     this.loadData()
   },
-  methods:{
-    loadData(){
-      protectLevStatisticApi().then((data)=>{
-
+  methods: {
+    loadData () {
+      protectLevStatisticApi().then((data) => {
         debugger
-          this.protectLevData= data.map((item)=>{
-          return {value:item.countNumber,label:item.categoryName}
+        this.protectLevData = data.map((item) => {
+          return { value: item.countNumber, label: item.categoryName }
         })
-
-
       })
-      growthSituationStatisticApi().then((data)=>{
+      growthSituationStatisticApi().then((data) => {
         debugger
-        this.growthSituationData={'使用状况':data.map((item)=>{
-          return {value:item.countNumber,label:item.categoryName}
-        })}
-
+        this.growthSituationData = {
+          使用状况: data.map((item) => {
+            return { value: item.countNumber, label: item.categoryName }
+          })
+        }
       })
-      treeAgeStatisticApi().then((data)=>{
+      treeAgeStatisticApi().then((data) => {
         debugger
-           this.treeAgeData={'使用年数':data.map((item)=>{
-          return {value:item.countNumber,label:item.categoryName}
-        })}
-
+        this.treeAgeData = {
+          使用年数: data.map((item) => {
+            return { value: item.countNumber, label: item.categoryName }
+          })
+        }
       })
-      cureTypeCountNumStatisticsApi().then((data)=>{
-          debugger
-        this.cureTypeCountNum={'今年新增量':data.map((item)=>{
-          return {value:item.newYearQuantity,label:item.type}
-        }),
-        '总数量':data.map((item)=>{
-          return {value:item.totalNum,label:item.type}
-        })}
-
+      cureTypeCountNumStatisticsApi().then((data) => {
+        debugger
+        this.cureTypeCountNum = {
+          今年新增量: data.map((item) => {
+            return { value: item.newYearQuantity, label: item.type }
+          }),
+          总数量: data.map((item) => {
+            return { value: item.totalNum, label: item.type }
+          })
+        }
       })
 
-       protectTypeCountNumStatisticsApi().then((data)=>{
-         debugger
-                this.protectTypeCountNum={'今年新增量':data.map((item)=>{
-          return {value:item.newYearQuantity,label:item.type}
-        }),'总数量':data.map((item)=>{
-          return {value:item.totalNum,label:item.type}
-        })}
+      protectTypeCountNumStatisticsApi().then((data) => {
+        debugger
+        this.protectTypeCountNum = {
+          今年新增量: data.map((item) => {
+            return { value: item.newYearQuantity, label: item.type }
+          }),
+          总数量: data.map((item) => {
+            return { value: item.totalNum, label: item.type }
+          })
+        }
       })
     }
   }
@@ -150,7 +153,7 @@ export default {
 .card-item {
   height: 160px;
   width: 310px;
-  
+
 }
 .border{
   border: solid 1px var(--main-color);

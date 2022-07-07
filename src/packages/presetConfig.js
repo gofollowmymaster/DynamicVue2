@@ -1,25 +1,23 @@
-import { deepMerge,superType,deepCopy} from "./utils/tool"
- 
- 
+import { deepMerge, superType, deepCopy } from './utils/tool'
 
 export const searchOption = {
   properties: {
     'label-width': '108px',
     'label-position': 'right',
-    size:'small'
+    size: 'small'
   },
   borderForm: false,
   trigger: 'click',
   resetable: true,
   searchLabel: '搜索',
-  searchClasses: [ 
+  searchClasses: [
     'grid-col-6',
     'grid-col-lg-4',
     'grid-col-sm-6',
     'grid-col-ss-8',
     'grid-col-xs-12'
   ],
-  mainNum:3
+  mainNum: 3
 }
 export const tableOption = {
   hasCheckbox: true,
@@ -37,8 +35,8 @@ export const tableOption = {
     'header-align': 'left',
     'row-style': { height: '48px' },
     // 'cell-style' :{padding:'4px 8px'},
-    'header-row-style':{height:'48px','line-height':'48px',padding:'0px 8px',},
-    'header-cell-style':{'text-overflow':'ellipsis',padding:'0px 0px 0px 0px',height:'36px','line-height':'36px',}
+    'header-row-style': { height: '48px', 'line-height': '48px', padding: '0px 8px' },
+    'header-cell-style': { 'text-overflow': 'ellipsis', padding: '0px 0px 0px 0px', height: '36px', 'line-height': '36px' }
   },
   colOptions: {
     // width:120,
@@ -47,8 +45,8 @@ export const tableOption = {
     align: 'left',
     'header-align': 'left'
   },
-  actionColWidth:0,    //操作栏宽度
-  actionBtnType:'text',  //操作按钮类型
+  actionColWidth: 0, // 操作栏宽度
+  actionBtnType: 'text' // 操作按钮类型
 }
 
 export const pagination = {
@@ -77,15 +75,34 @@ export const treeOption = {
 export const formOption = {
   formProperties: {
     'hide-required-asterisk': false,
-    'label-width': '160px',
-    'label-position': 'right',
+    pageLabelWidth: '160px',
+    labelWidth: '130px',
+    labelPosition: 'right'
+    // "inline-message":true,
     // size:'medium'
   },
   borderForm: false,
   showFoldBtn: true,
-  
+  'label-width': '160px',
+  'label-position': 'right'
+
+}
+export const actionPopProperties = {
+  'confirm-button-text': '好的',
+  'cancel-button-text': '不用了',
+  title: '确定执行该操作吗？',
+  icon: 'el-icon-warning'
 }
 
+export const msgBoxProperties = {
+  title: '提示',
+  message: '确定执行该操作吗？',
+  showCancelButton: true,
+  confirmButtonText: '确定',
+  cancelButtonText: '取消',
+  type: 'warning',
+  lockScroll: true
+}
 export const submitActionOption = {
   component: 'el-button',
   permission: '',
@@ -125,35 +142,46 @@ export const dynamicFormOption = {
   }
 }
 
-export let presetConfig={
-    data:{
-      
-   actionTip:'tip',
-   defaultDialogMode:'router',
-   searchOption,
-   tableOption,
-   pagination,
-   treeOption,
-   formOption,
-   dynamicFormOption,
+export const presetConfig = {
+  data: {
+    dialogWidth: '50%',
+    btnSize: 'small',
+    actionTip: 'tip',
+    mainKey: 'id',
+    defaultDialogMode: 'router',
+    searchOption,
+    tableOption,
+    pagination,
+    treeOption,
+    formOption,
+    dynamicFormOption,
+    actionPopProperties,
+    msgBoxProperties,
+    formWraperClass: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24'],
+    detailWraperClass: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24'],
+    searchFormWraperClass: [
+      'grid-col-8',
+      'grid-col-lg-6',
+      'grid-col-sm-8',
+      'grid-col-ss-8',
+      'grid-col-xs-12',
+      'grid-col-pp-24'
+    ]
   },
 
-   setCustomConfig(config){
-     Object.keys(config).forEach((key)=>{
-      if(['array','object'].includes(superType(this.data[key]))){
-      this.data[key]=deepMerge(this.data[key],config[key])
-      return
+  setCustomConfig (config) {
+    Object.keys(config).forEach((key) => {
+      if (['array', 'object'].includes(superType(this.data[key]))) {
+        this.data[key] = deepMerge(this.data[key], config[key])
+        return
       }
-      this.data[key]=config[key]
-     })
-     return this.data
+      this.data[key] = config[key]
+    })
+    return this.data
   },
-  getConfig(key){
+  getConfig (key) {
     return deepCopy(this.data[key])
   }
 }
 
- 
-
- 
 export default presetConfig

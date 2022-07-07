@@ -3,7 +3,7 @@ import callbackActionHandles from './actions/callback.js'
 export default {
   props: {},
   computed: {},
-  inject: ['setGlobalDialogForm', 'setGlobalDialogPage','isGlobalDialogFormActive'],
+  inject: ['setGlobalDialogForm', 'setGlobalDialogPage', 'isGlobalDialogFormActive'],
   methods: {
     actionHandles (action = {}, actionData = {}) {
       debugger
@@ -24,12 +24,12 @@ export default {
             this[action.actionType + 'Handle'](action, actionData)
           }
           if (callbackActionHandles[action.actionType]) {
-            callbackActionHandles[action.actionType](this,action.backStep||-1)
+            callbackActionHandles[action.actionType](this, action.backStep || -1)
           }
-          break;
-          case 'routerDialogPage':
-          case 'routerDialogForm':
-            this.routerDialogHandle(action,actionData)
+          break
+        case 'routerDialogPage':
+        case 'routerDialogForm':
+          this.routerDialogHandle(action, actionData)
           break
         default:
           this.customActionHandle(action, actionData)
@@ -54,7 +54,6 @@ export default {
       window.open(action.link, action.window)
     },
     routerHandle (action, actionData) {
-     
       const path =
         typeof action.router === 'function'
           ? action.router(actionData)
@@ -63,17 +62,17 @@ export default {
     },
 
     routerDialogHandle (action, actionData) {
-      const mainKey=action.mainKey||'id'
-      let path,query={}
-        if(typeof action.router === 'function'){
-          path =  action.router(actionData)
-        }else {
-          path = this.$route.fullPath.split('#')[0].replace(/[\/|\\]$/,'')+'/'
-          const actionKey=(action.router&&(typeof action.router =='string'))?(action.router.replace(/[\/|\\]$/,'')+'/'):(action.actionKey)
-          //path =path
-          query = {id:actionData?.[mainKey],action:actionKey}
-        }
-        this.$router[action.routerAction||'push']({path,query})
+      const mainKey = action.mainKey || 'id'
+      let path; let query = {}
+      if (typeof action.router === 'function') {
+        path = action.router(actionData)
+      } else {
+        path = this.$route.fullPath.split('#')[0].replace(/[\/|\\]$/, '') + '/'
+        const actionKey = (action.router && (typeof action.router === 'string')) ? (action.router.replace(/[\/|\\]$/, '') + '/') : (action.actionKey)
+        // path =path
+        query = { id: actionData?.[mainKey], action: actionKey }
+      }
+      this.$router[action.routerAction || 'push']({ path, query })
     },
 
     customActionHandle (action, actionData) {
@@ -85,4 +84,3 @@ export default {
     }
   }
 }
-

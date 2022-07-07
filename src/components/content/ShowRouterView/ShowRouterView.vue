@@ -8,24 +8,23 @@ export default {
   data () {
     return {
       routerContainerLeft: 280,
-      isAmap:false
+      isAmap: false
     }
   },
-  watch:{
-      $route:{
-        handler(){
-          debugger
-           this.module=this.$route.fullPath.split('/').pop() 
-           if(this.module=='amap'){
-            this.isAmap=true
-            return
-           }
-            this.isAmap=false
-
-        },
-        deep:true,
-        immediate:true
-      }
+  watch: {
+    $route: {
+      handler () {
+        debugger
+        this.module = this.$route.fullPath.split('/').pop()
+        if (this.module == 'amap') {
+          this.isAmap = true
+          return
+        }
+        this.isAmap = false
+      },
+      deep: true,
+      immediate: true
+    }
   },
   methods: {
     changeRouterLeftClose () {

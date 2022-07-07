@@ -11,11 +11,11 @@
 <script>
 // 自动测试工具
 // 目的是通过 refForm 获取表单组件，以及 fields 获取表单结构，自动推断出表单应该填写的内容
-import TestValueCreator from "./TestValueCreator";
-import MockValueCreator from "./MockValueCreator";
+import TestValueCreator from './TestValueCreator'
+import MockValueCreator from './MockValueCreator'
 
 export default {
-  name: "TestTool",
+  name: 'TestTool',
   props: {
     // 数据状态
     // standard 合法标准随机数据
@@ -27,55 +27,54 @@ export default {
     customizeFn: {
       type: Object,
       default: () => {
-        return {};
-      },
+        return {}
+      }
     },
     // 超限数据的 key 的集合。只有启用超限模式才生效
     exceptOutLimitKeys: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
-    fields:{
+    fields: {
       type: Array,
       default: () => {
-        return [];
-      },
-    },  
+        return []
+      }
+    }
   },
-  created() {
-    if( this.$parent.$options.name!=='DynamicFormContent' ){
+  created () {
+    if (this.$parent.$options.name !== 'DynamicFormContent') {
       console.error('获取表单示例失败!表单测试数据填充器必须包裹在DynamicFormContent内')
-    } 
+    }
     // this.TestValueCreator = new TestValueCreator(this.$parent);
-    this.TestValueCreator =   process.env.NODE_ENV == 'development'?new MockValueCreator(this.$parent):new TestValueCreator(this.$parent);
-
+    this.TestValueCreator = process.env.NODE_ENV == 'development' ? new MockValueCreator(this.$parent) : new TestValueCreator(this.$parent)
   },
-  data() {
+  data () {
     return {
       TestValueCreator: null,
-      dataStatus: "standard",
-    };
+      dataStatus: 'standard'
+    }
   },
   methods: {
     // getFields() {
     //   return this.$parent.formItemList;
     // },
-    makeTestData() {
+    makeTestData () {
       // const fields = this.fields||this.getFields();
       // 更新生成数据类型
-      this.TestValueCreator.setDataType(this.dataStatus);
+      this.TestValueCreator.setDataType(this.dataStatus)
       // 更新自定义生成数据函数
-      this.TestValueCreator.customizeFn = this.customizeFn;
+      this.TestValueCreator.customizeFn = this.customizeFn
       // 更新超限数据 key
-      this.TestValueCreator.exceptOutLimitKeys = this.exceptOutLimitKeys;
+      this.TestValueCreator.exceptOutLimitKeys = this.exceptOutLimitKeys
       // 随机生成数据
-      const obj = this.TestValueCreator.makeValue();
+      const obj = this.TestValueCreator.makeValue()
       console.table(obj)
       // 更新数据
-      this.$parent.updateFormData(obj);
-    },
-  },
-};
+      this.$parent.updateFormData(obj)
+    }
+  }
+}
 </script>
 <style scoped lang="less">
 #test-tools {

@@ -16,33 +16,33 @@ export default {
   name: 'popConfirm',
   mixins: [poplMixin],
   computed: {},
-  props:{
-    title:{
-       type:String,
-      default:'el-icon-info'
+  props: {
+    title: {
+      type: String,
+      default: 'el-icon-info'
     },
-    'icon':{
-      type:String,
-      default:'el-icon-info'
+    icon: {
+      type: String,
+      default: 'el-icon-info'
     },
-    'icon-color':{
-      type:Boolean,
-      default:false
+    'icon-color': {
+      type: Boolean,
+      default: false
     },
-    'hide-icon':{
-      type:Boolean,
-      default:false
-    },
-  
+    'hide-icon': {
+      type: Boolean,
+      default: false
+    }
+
   },
   data () {
     return {
-      data: {},
+      data: {}
 
     }
   },
   mounted () {
-    
+
   }
 }
 </script>

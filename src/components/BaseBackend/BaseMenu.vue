@@ -42,21 +42,21 @@
 
 <script>
 export default {
-  name: "basemenu",
+  name: 'basemenu',
   components: {},
   props: {
     data: {
       type: Array,
       required: false,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {},
-  mounted() {},
-};
+  mounted () {}
+}
 </script>
 
 <style lang="less" scoped>
@@ -66,7 +66,7 @@ export default {
   margin: 4px 0 0 0;
   background-color: var(--color-nav-menu-background);
   border-radius: 2px;
- 
+
 }
 /deep/.el-submenu .el-menu-item {
   .h();

@@ -80,7 +80,7 @@
           </li>
         </ul>
     </template>
-    
+
     <div v-else-if="getTextModel" class="px24 ml22"> -- </div>
     </section>
     <!-- 图片预览 -->
@@ -94,7 +94,6 @@
 <script>
 import FormMixin from './mixin'
 import moment from 'moment'
- 
 
 const fileFields = [
   {
@@ -184,16 +183,16 @@ export default {
       },
 
       fileListInit: [],
-      downloadAction: (fileName)=>( {
-              apiPromise: this.item.downloadApi,
-              actionType:'downloadAction',
-              label: fileName,
-              component:'div',
-              componentProperties:{
-                class:'text-blue cursor-point'
-              }
-            })
-         
+      downloadAction: (fileName) => ({
+        apiPromise: this.item.downloadApi,
+        actionType: 'downloadAction',
+        label: fileName,
+        component: 'div',
+        componentProperties: {
+          class: 'text-blue cursor-point'
+        }
+      })
+
     }
   },
   computed: {
@@ -243,7 +242,6 @@ export default {
       set (v) {
         this.$emit('input', v)
 
-        this._valueLink(v)
         this.statusChangeFn.valueUpdateEvent({
           [this.item.key]: v
         })
@@ -268,23 +266,23 @@ export default {
         topToolBar: null,
         searchFields: null,
         listOption: {
-          
+
           hasCheckbox: false,
           properties: {
-            border: this.getTextModel?false:true
+            border: !this.getTextModel
           },
           lineActions: {
             update: null,
             detail: null,
-            download:  {
-              actionType:'downloadAction',
+            download: {
+              actionType: 'downloadAction',
               apiPromise: this.item.downloadApi,
               label: '下载'
             }
           }
         },
         pagination: null
-        
+
       }
     }
   },
@@ -312,10 +310,10 @@ export default {
     handleRemove (file, fileList) {
       debugger
       this.val = this.value.filter(
-        (unit) =>{
-            const id=unit.id||unit.fileId
-            return unit.uid != file.uid && id !== file.fileId
-          }
+        (unit) => {
+          const id = unit.id || unit.fileId
+          return unit.uid != file.uid && id !== file.fileId
+        }
       )
     },
     handlePictureCardPreview (file) {

@@ -1,5 +1,4 @@
-import { elementUploadFileApi } from "@/network/global"
-  
+import { elementUploadFileApi } from '@/network/global'
 
 const mainPlaintFields = [
   {
@@ -8,44 +7,44 @@ const mainPlaintFields = [
     label: '序号',
     tableOption: {
       width: 60
-    },
+    }
   },
   {
     type: 'FormHide',
     key: 'id',
-    formable:true
+    formable: true
   },
-//   {
-//     key: "treeId",
-//     type: "FormInput",
-//     label: "资产类型",
-    
-//     tableOption: {
-//       sort:2,
-//       template(row, key) {
-//         return row['treeId']?.[0]?.name
-//       },
-//       key:'treeName'
-//     },
-//     formOption: {
-// span:24,
-//       rules: [
-//         // 'required'
-//       ],
-//     },
-//   },
+  //   {
+  //     key: "treeId",
+  //     type: "FormInput",
+  //     label: "资产类型",
+
+  //     tableOption: {
+  //       sort:2,
+  //       template(row, key) {
+  //         return row['treeId']?.[0]?.name
+  //       },
+  //       key:'treeName'
+  //     },
+  //     formOption: {
+  // span:24,
+  //       rules: [
+  //         // 'required'
+  //       ],
+  //     },
+  //   },
   {
     key: 'treeStreetQuantity',
     type: 'FormIntNumber',
     label: '数量',
     tableOption: {
-      label:'不动产数量',
-      sort:3
+      label: '不动产数量',
+      sort: 3
     },
     formOption: {
-span:24,
+      span: 24,
       rules: ['required']
-    },
+    }
   },
 
   {
@@ -54,7 +53,7 @@ span:24,
     label: '单位',
     tableOption: {
       // template(row, key){
-      //   return 
+      //   return
       // }
     },
     options: [
@@ -65,11 +64,11 @@ span:24,
       {
         value: '2',
         label: '平方'
-      },
+      }
     ],
     formOption: {
-span:24,
-      rules: ['required'],
+      span: 24,
+      rules: ['required']
     }
   },
   {
@@ -78,28 +77,28 @@ span:24,
     label: '备注',
     tableable: true,
     formOption: {
-span:24,
+      span: 24,
       rules: ['required']
-    },
-  },
+    }
+  }
 
 ]
 export const mainPlaintOption = {
-  searchOption:null,
+  searchOption: null,
   topToolBar: {
     bulkdelete: null,
-    create:{
-      dialog:{
-        body:{
-          actions:{
-            save:{
-              callback:{
-                showTip:false
+    create: {
+      dialog: {
+        body: {
+          actions: {
+            save: {
+              callback: {
+                showTip: false
               }
             }
 
           }
-          
+
         }
       }
     }
@@ -108,66 +107,65 @@ export const mainPlaintOption = {
     hasCheckbox: false,
     lineActions: {
       detail: null,
-      delete:{
-        callback:{
-          showTip:false
+      delete: {
+        callback: {
+          showTip: false
         }
       },
-      update:{
-        dialog:{
-          body:{
-            actions:{
-              save:{
-                callback:{
-                  showTip:false
+      update: {
+        dialog: {
+          body: {
+            actions: {
+              save: {
+                callback: {
+                  showTip: false
                 }
               }
 
             }
-            
+
           }
         }
-        
+
       }
     }
   },
   treeOption: null
 }
 
-
 export default [
   { key: 'keyword', type: 'FormInput', label: '关键字', searchable: true },
   { key: 'id', type: 'FormHide', formable: true },
-  { key: "index", type: "index", label: "序号", tableOption:{width:60}},
+  { key: 'index', type: 'index', label: '序号', tableOption: { width: 60 } },
   {
     key: 'area',
     type: 'FormAdministrativeSelector',
     label: '行政区划',
     formSection: '基本信息',
     searchable: true,
- 
+
     tableOption: {
       width: 180,
       sortable: true,
       sort: 4,
-      key:'areaName'
+      key: 'areaName'
     },
     formOption: {
       rules: ['required'],
       isMultSelect: false,
-      dialogTitle: '选择行政区划',
+      dialogTitle: '选择行政区划'
     }
   },
-  
+
   {
     key: 'treeName',
     type: 'FormInput',
     label: '资产类型名',
-    searchable:true,
-    tableOption:{
-      sort:2,
-      template(rowData){
-        return   rowData['species']&&rowData['species'].map(item=>item.species).join(',')
+    searchable: true,
+    tableOption: {
+      sort: 2,
+      template (rowData) {
+        return rowData.species && rowData.species.map(item => item.species).join(',')
       }
     }
   },
@@ -184,7 +182,7 @@ export default [
     }
   },
   {
-    key:'num',
+    key: 'num',
     label: '不动产数量',
     tableOption: {
       sort: 3
@@ -212,7 +210,6 @@ export default [
     }
   },
 
-
   {
     key: 'plantedInGreen',
     label: '是否种在厂区内',
@@ -239,7 +236,7 @@ export default [
     formSection: '基本信息',
     type: 'FormTextarea',
     formOption: {
-span:24,
+      span: 24
     }
   },
 
@@ -249,15 +246,15 @@ span:24,
     type: 'FormUpload',
     formSection: '基本信息',
     formOption: {
-      span:24,
+      span: 24,
       properties: {
-      limit:5,
-      'list-type': 'picture-card',
+        limit: 5,
+        'list-type': 'picture-card'
       },
       extra: {
         btn_text: '上传',
         tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-        
+
         apiPromise: elementUploadFileApi
       }
     }
@@ -268,14 +265,14 @@ span:24,
     type: 'FormCurd',
     formSection: '主要配件',
     formOption: {
-      span:24,
+      span: 24,
       wraperProperties: {
-        'label-width':'0px'
+        'label-width': '0px'
       },
       extra: {
         fields: mainPlaintFields,
         options: mainPlaintOption,
-        entityLabel:'主要配件'
+        entityLabel: '主要配件'
       }
     }
   },
@@ -312,16 +309,12 @@ span:24,
       },
       // 验证规则单独存放
       rules: ['required'],
-      valueLink: {
-        '@*any*@': [
-          {
-            linkKey: 'administratorPhone',
-            linkValue: function (data) {
-              return data[0].phoneNum
-            }
-          }
-        ]
+      changeHandle (data, vm) {
+        vm.updateFormData({
+          administratorPhone: data[0].phoneNum
+        })
       }
+
     }
   },
   {
@@ -338,7 +331,6 @@ span:24,
     tableOption: {
       sort: 8
     }
-  },
-
+  }
 
 ]

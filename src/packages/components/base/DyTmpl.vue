@@ -3,39 +3,39 @@
    </div>
 </template>
 <script>
-import  {parseTemplate,superType} from "../../utils/tool"
+import { parseTemplate, superType } from '../../utils/tool'
 export default {
-  name: "DyTmpl",
+  name: 'DyTmpl',
   props: {
-    tmpl:String,
-    data:[String,Array,Object,Number,],
+    tmpl: String,
+    data: [String, Array, Object, Number]
 
   },
   data: function () {
     return {}
   },
-  computed: { 
-    content(){
-      const data =  superType(this.data)=='object'?this.data: {data:this.data}
-      const content =parseTemplate(this.tmpl,data)
+  computed: {
+    content () {
+      const data = superType(this.data) == 'object' ? this.data : { data: this.data }
+      const content = parseTemplate(this.tmpl, data)
       // return   content
 
-       return   content.replace(/<(script|img|video)/g,(...rest)=>{
-        return '&lt;'+rest[1]
+      return content.replace(/<(script|img|video)/g, (...rest) => {
+        return '&lt;' + rest[1]
       })
     }
   },
   watch: {
-    
+
   },
-  mounted() {
+  mounted () {
   },
   components: {},
   methods: {
-    
-  },
-};
+
+  }
+}
 </script>
 <style lang="less" scoped>
- 
+
 </style>

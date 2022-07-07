@@ -1,13 +1,12 @@
 
-
 <template>
     <components  :is="layoutComp.name"    v-bind="layoutComp.properties" >
       <template  v-for="section in bodyShow">
-          <component :key="section.key||(section.component+section.name)" :is="section.component"  :label="section.label"  
-          :data="section.name=='@object@'?data:data[section.name]"  
+          <component :key="section.key||(section.component+section.name)" :is="section.component"  :label="section.label"
+          :data="section.name=='@object@'?data:data[section.name]"
           v-bind="section.props"  :props="section.props">
               <slot></slot>
-          </component> 
+          </component>
       </template>
 
     </components>
@@ -15,47 +14,43 @@
 <script>
 
 export default {
-  name:'DynamicSection',
+  name: 'DynamicSection',
   props: {
-    data:{},
- 
- 
+    data: {},
+
     body: {
       type: Array,
       default: function () {
-        return [];
-      },
+        return []
+      }
     },
-    
-    layout:{
-      type:[String,Object],
-      default:'LayoutGrid'
-    },
- 
+
+    layout: {
+      type: [String, Object],
+      default: 'LayoutGrid'
+    }
+
   },
-  
+
   computed: {
-    layoutComp(){
-      if(typeof this.layout ==='string'){
-        return {name:this.layout,properties:{}}
+    layoutComp () {
+      if (typeof this.layout === 'string') {
+        return { name: this.layout, properties: {} }
       }
       return this.layout
     },
-    bodyShow(){
-      return this.body.filter(item=>!item.hidden)
+    bodyShow () {
+      return this.body.filter(item => !item.hidden)
     }
   },
-  mounted(){
+  mounted () {
   },
   components: { },
   methods: {
- 
-      
-  },
-};
+
+  }
+}
 </script>
 <style lang="css" scoped>
- 
+
 </style>
-
-

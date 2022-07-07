@@ -21,40 +21,38 @@
 
 <script>
 
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormMulSelect',
-        mixins: [ FormMixin ],
-        computed: {
-            textModelValue () {
-                if (this.item.options) {
-                    let val = '';
-                    this.item.options.forEach(item => {
-                        if (item.value === this.value) {
-                            val = item.label;
-                        }
-                    });
-                    return val;
-                } else {
-                    return '';
-                }
-            },
-            val: {
-                get () {
-                    return this.value||[];
-                },
-                set (v) {
-                    this.$emit('input', v);
-                    this._valueLink(v);
-                    this.statusChangeFn.valueUpdateEvent({
-                        [this.item.key]: v,
-                    });
-                
-                }
-            },
-        }
-    };
+export default {
+  name: 'FormMulSelect',
+  mixins: [FormMixin],
+  computed: {
+    textModelValue () {
+      if (this.item.options) {
+        let val = ''
+        this.item.options.forEach(item => {
+          if (item.value === this.value) {
+            val = item.label
+          }
+        })
+        return val
+      } else {
+        return ''
+      }
+    },
+    val: {
+      get () {
+        return this.value || []
+      },
+      set (v) {
+        this.$emit('input', v)
+        this.statusChangeFn.valueUpdateEvent({
+          [this.item.key]: v
+        })
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

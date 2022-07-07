@@ -9,7 +9,7 @@
                         @focus="e => onFocus(item, e)"
                          v-bind="item.groupProperties"
                         v-if="!getTextModel">
-            <component :is="bindOptions.button?'el-checkbox-button':'el-checkbox'" v-for="opt in item.options" :key="opt.value" 
+            <component :is="bindOptions.button?'el-checkbox-button':'el-checkbox'" v-for="opt in item.options" :key="opt.value"
             :label="opt.value"   v-bind="bindOptions">{{ opt.label }}</component>
         </el-checkbox-group>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
@@ -17,28 +17,28 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormCheckbox',
-        mixins: [ FormMixin ],
-        data () {
-            return {
-            };
-        },
-        computed: {
-          
-            textModelValue () {
-                const content = this.item.options && this.item.options.find((item) => {
-                    return item.value === this.val;
-                });
-                return content && content.label || '';
-            },
-        },
- 
-    };
+export default {
+  name: 'FormCheckbox',
+  mixins: [FormMixin],
+  data () {
+    return {
+    }
+  },
+  computed: {
+
+    textModelValue () {
+      const content = this.item.options && this.item.options.find((item) => {
+        return item.value === this.val
+      })
+      return content && content.label || ''
+    }
+  }
+
+}
 </script>
 
 <style scoped lang="less">
- 
+
 </style>

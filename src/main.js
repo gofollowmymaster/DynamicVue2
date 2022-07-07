@@ -7,14 +7,17 @@ import 'assets/css/element-variables.scss'
 import router from './router'
 
 import sysComponents from '@/components/index.js'
-Vue.use(sysComponents)
 
 import VueAMap from '@/common/mapClient/amap'
 import '@/common/vue-echarts'
 // 引入echarts
 import Echarts from 'vue-echarts'
 import '@/common/directive.js'
-
+// Vue.use(globalComponent)
+import dynamicPage from '@/packages/index.js'
+import '@/packages/css/index.less'
+import dyConfig from './config'
+Vue.use(sysComponents)
 
 Vue.config.productionTip = false
 Vue.component('VUeEcharts', Echarts)
@@ -41,11 +44,7 @@ VueAMap.initAMapApiLoader({
 })
 
 Vue.config.productionTip = false
-// Vue.use(globalComponent)
-import dynamicPage from '@/packages/index.js'
-import   '@/packages/css/index.less'
-import dyConfig from "./config"
-Vue.use(dynamicPage,dyConfig)
+Vue.use(dynamicPage, dyConfig)
 
 new Vue({
   router,

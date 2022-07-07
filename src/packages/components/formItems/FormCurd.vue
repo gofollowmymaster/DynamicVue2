@@ -16,207 +16,206 @@
 </template>
 
 <script>
-import { deepMerge } from "../../utils/tool";
-import FormMixin from "./mixin";
+import { deepMerge } from '../../utils/tool'
+import FormMixin from './mixin'
 const textModeCurdOptions = {
   searchOption: null,
   topToolBar: null,
   listOption: {
     properties: {
-      border: false,
+      border: false
     },
     lineActions: null,
-    hasCheckbox: false,
+    hasCheckbox: false
   },
   treeOption: null,
-  pagination: null,
-};
+  pagination: null
+}
 const defaultCurdOptions = {
   searchOption: null,
   topToolBar: {
     bulkdelete: null,
     create: {
       componentProperties: {
-        type: "plain",
+        type: 'plain'
       },
-      origin: "formCurd",
+      origin: 'formCurd',
       saveAction: {
         callback: {
-          showTip: false,
-        },
-      },
-    },
+          showTip: false
+        }
+      }
+    }
   },
   listOption: {
     hasCheckbox: false,
     properties: {
-      "header-cell-style": {
-        "background-color": "#F5F5F5",
-      },
+      'header-cell-style': {
+        'background-color': '#F5F5F5'
+      }
     },
 
     lineActions: {
       detail: null,
       delete: {
         componentProperties: {
-          type: "default",
-          size: "small",
+          type: 'default',
+          size: 'small'
         },
         callback: {
-          showTip: false,
-        },
+          showTip: false
+        }
       },
       update: {
         componentProperties: {
-          type: "default",
-          size: "small",
+          type: 'default',
+          size: 'small'
         },
-        origin: "formCurd",
+        origin: 'formCurd',
         saveAction: {
           callback: {
-            showTip: false,
-          },
-        },
-      },
-    },
+            showTip: false
+          }
+        }
+      }
+    }
   },
   pagination: null,
-  treeOption: null,
-};
+  treeOption: null
+}
 export default {
-  name: "FormCurd",
+  name: 'FormCurd',
   mixins: [FormMixin],
-  data() {
+  data () {
     return {
       apiPromises: {
         update: this.tableUpdateApi,
         create: this.tableSaveApi,
         // detail: this.tableDetailApi,
         delete: this.tableDeleteApi,
-        list: this.loadtableApi,
-      },
-    };
+        list: this.loadtableApi
+      }
+    }
   },
 
   watch: {
     value: {
-      handler(tableList) {
-        let tableMap = {};
+      handler (tableList) {
+        let tableMap = {}
         if (tableList?.length) {
           tableMap = tableList.reduce((prev, next) => {
-            prev[next.id] = next;
-            return prev;
-          }, {});
+            prev[next.id] = next
+            return prev
+          }, {})
         }
 
-        localStorage.setItem(this.localTableName, JSON.stringify(tableMap));
+        localStorage.setItem(this.localTableName, JSON.stringify(tableMap))
         this.$nextTick(() => {
-          this.$refs.dynamicCurd.refresh();
-        });
+          this.$refs.dynamicCurd.refresh()
+        })
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   computed: {
-    curdOptions() {
-      let defaultOptions = defaultCurdOptions;
+    curdOptions () {
+      let defaultOptions = defaultCurdOptions
 
       if (this.getTextModel) {
-        defaultOptions = textModeCurdOptions;
-        return deepMerge(this.item.options || {}, defaultOptions);
+        defaultOptions = textModeCurdOptions
+        return deepMerge(this.item.options || {}, defaultOptions)
       }
       // defaultOptions.
-      return deepMerge(defaultOptions, this.item.options);
+      return deepMerge(defaultOptions, this.item.options)
     },
     val: {
-      get() {
-        return this.value || [];
+      get () {
+        return this.value || []
       },
 
-      set(tableList) {
-        this.$emit("input", tableList);
-        this._valueLink(tableList);
+      set (tableList) {
+        this.$emit('input', tableList)
 
         this.statusChangeFn.valueUpdateEvent({
-          [this.item.key]: tableList,
-        });
-      },
-    },
-    localTableName() {
-      return "locaTable-" + this.item.key;
-    },
-  },
-  mounted() {},
-  methods: {
-    resetFields() {
-      localStorage.removeItem(this.localTableName);
-      this.$refs.dynamiCurd && this.$refs.dynamiCurd.refresh();
-    },
-    loadtableApi(params) {
-      const { pageNo, pageSize } = params;
-      let tableList = localStorage.getItem(this.localTableName);
-      if (!tableList) {
-        tableList = "{}";
+          [this.item.key]: tableList
+        })
       }
-      tableList = JSON.parse(tableList);
-      const start = (pageNo - 1) * pageSize;
-      const end = start + pageSize;
+    },
+    localTableName () {
+      return 'locaTable-' + this.item.key
+    }
+  },
+  mounted () {},
+  methods: {
+    resetFields () {
+      localStorage.removeItem(this.localTableName)
+      this.$refs.dynamiCurd && this.$refs.dynamiCurd.refresh()
+    },
+    loadtableApi (params) {
+      const { pageNo, pageSize } = params
+      let tableList = localStorage.getItem(this.localTableName)
+      if (!tableList) {
+        tableList = '{}'
+      }
+      tableList = JSON.parse(tableList)
+      const start = (pageNo - 1) * pageSize
+      const end = start + pageSize
       return Promise.resolve().then(() => {
         return {
           list: Object.values(tableList).slice(start, end),
-          totalCount: tableList.length,
-        };
-      });
+          totalCount: tableList.length
+        }
+      })
     },
 
-    tableUpdateApi(data) {
-      let tableList = localStorage.getItem(this.localTableName);
+    tableUpdateApi (data) {
+      let tableList = localStorage.getItem(this.localTableName)
       if (!tableList) {
-        tableList = "{}";
+        tableList = '{}'
       }
-      tableList = JSON.parse(tableList);
-      tableList[data.id] = { ...tableList[data.id], ...data };
-      this.val = Object.values(tableList);
+      tableList = JSON.parse(tableList)
+      tableList[data.id] = { ...tableList[data.id], ...data }
+      this.val = Object.values(tableList)
 
-      return Promise.resolve().then(() => ({}));
+      return Promise.resolve().then(() => ({}))
     },
-    tableSaveApi(data) {
-      debugger;
-      let tableList = localStorage.getItem(this.localTableName);
+    tableSaveApi (data) {
+      debugger
+      let tableList = localStorage.getItem(this.localTableName)
       if (!tableList) {
-        tableList = "{}";
+        tableList = '{}'
       }
-      tableList = JSON.parse(tableList);
-      const id = new Date().getTime();
-      data.id = id;
-      tableList[id] = data;
-      this.val = Object.values(tableList);
+      tableList = JSON.parse(tableList)
+      const id = new Date().getTime()
+      data.id = id
+      tableList[id] = data
+      this.val = Object.values(tableList)
 
-      return Promise.resolve().then(() => ({}));
+      return Promise.resolve().then(() => ({}))
     },
-    tableDetailApi(data) {
-      const id = data.id;
-      let tableList = localStorage.getItem(this.localTableName);
+    tableDetailApi (data) {
+      const id = data.id
+      let tableList = localStorage.getItem(this.localTableName)
       if (!tableList) {
-        tableList = "{}";
+        tableList = '{}'
       }
-      tableList = JSON.parse(tableList);
-      return Promise.resolve().then(() => tableList[id]);
+      tableList = JSON.parse(tableList)
+      return Promise.resolve().then(() => tableList[id])
     },
-    tableDeleteApi(data) {
-      const id = data.id;
-      let tableList = localStorage.getItem(this.localTableName);
+    tableDeleteApi (data) {
+      const id = data.id
+      let tableList = localStorage.getItem(this.localTableName)
       if (!tableList) {
-        tableList = "{}";
+        tableList = '{}'
       }
-      tableList = JSON.parse(tableList);
-      delete tableList[id];
-      this.val = Object.values(tableList);
+      tableList = JSON.parse(tableList)
+      delete tableList[id]
+      this.val = Object.values(tableList)
 
-      return Promise.resolve().then(() => ({}));
-    },
-  },
-};
+      return Promise.resolve().then(() => ({}))
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

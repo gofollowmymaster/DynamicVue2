@@ -6,7 +6,7 @@
 <script>
 
 export default {
-  name: "LayoutGrid",
+  name: 'LayoutGrid',
   props: {
 
   },
@@ -16,10 +16,10 @@ export default {
 
   components: {},
   methods: {
-    
-  },
-};
+
+  }
+}
 </script>
 <style lang="less" scoped>
- 
+
 </style>

@@ -5,84 +5,81 @@
 </template>
 <script>
 
-
-import {hasValue,JSONDeepCopy } from "../../utils/tool"
-import {baseLineChartOption} from "./chartConfig"
+import { hasValue, JSONDeepCopy } from '../../utils/tool'
+import { baseLineChartOption } from './chartConfig'
 export default {
-  name: 'dLineChart', 
+  name: 'dLineChart',
   components: {},
   props: {
-    hasAreaStyle:Boolean,
-    colorStyle:{
-      type:Array,
-      default(){
-        return  [['#6F89EC','#97FFD4','#FFFFFF'],['#0BC972','#B5CFFF','#FFFFFF']]
+    hasAreaStyle: Boolean,
+    colorStyle: {
+      type: Array,
+      default () {
+        return [['#6F89EC', '#97FFD4', '#FFFFFF'], ['#0BC972', '#B5CFFF', '#FFFFFF']]
       }
     },
-    title:String,
-    data:{
-      type:Object,
-      default(){
+    title: String,
+    data: {
+      type: Object,
+      default () {
         return {}
-      },
+      }
     }
 
   },
   data () {
     return {
-       lineChartOptionTemplate:JSONDeepCopy(baseLineChartOption)
+      lineChartOptionTemplate: JSONDeepCopy(baseLineChartOption)
     }
   },
-  computed:{
-    lineChartOption(){
+  computed: {
+    lineChartOption () {
       debugger
-      const max = Math.max(...Object.values(this.data).flat(2).map(item=>item.value).map(parseFloat), 20)
-      
+      const max = Math.max(...Object.values(this.data).flat(2).map(item => item.value).map(parseFloat), 20)
+
       const xAxis = Object.values(this.data)[0]?.map(item => {
-          return item.label
-        })
+        return item.label
+      })
       this.lineChartOptionTemplate.xAxis[0].data = xAxis
-      this.lineChartOptionTemplate.yAxis[0].max =  Math.ceil(max*1.2) 
-      this.lineChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5) 
-      let series=[]
-      let index=0
+      this.lineChartOptionTemplate.yAxis[0].max = Math.ceil(max * 1.2)
+      this.lineChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5)
+      const series = []
+      let index = 0
       debugger
-      for(let seriesName in this.data){
-        const seriesData={
-              name: seriesName,
-              type: 'line',
-              smooth: true,
-              lineStyle: {
-                color: this.colorStyle[index][0]
-              },
-              itemStyle:{
-                color: this.colorStyle[index][0]
-              },
-              data: this.data[seriesName],
+      for (const seriesName in this.data) {
+        const seriesData = {
+          name: seriesName,
+          type: 'line',
+          smooth: true,
+          lineStyle: {
+            color: this.colorStyle[index][0]
+          },
+          itemStyle: {
+            color: this.colorStyle[index][0]
+          },
+          data: this.data[seriesName]
+        }
+        if (this.hasAreaStyle) {
+          seriesData.areaStyle = {}
+          seriesData.areaStyle.color = new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            {
+              offset: 0,
+              color: this.colorStyle[index][1]
+            },
+            {
+              offset: 1,
+              color: this.colorStyle[index][2]
             }
-            if(this.hasAreaStyle){
-               
-              seriesData.areaStyle={}
-               seriesData.areaStyle.color= new this.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  {
-                    offset: 0,
-                    color: this.colorStyle[index][1]
-                  },
-                  {
-                    offset: 1,
-                    color:  this.colorStyle[index][2]
-                  }
-                ])
-            }
-          series.push(seriesData)
-          
-          index++
+          ])
+        }
+        series.push(seriesData)
+
+        index++
       }
 
-       this.lineChartOptionTemplate.series=series
-      
+      this.lineChartOptionTemplate.series = series
 
-      return  this.lineChartOptionTemplate
+      return this.lineChartOptionTemplate
     }
   },
 
@@ -97,7 +94,6 @@ export default {
 .statistic-container {
 background: #FFFFFF;
 width: 100%;
-} 
-   
-             
+}
+
 </style>

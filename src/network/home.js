@@ -16,7 +16,6 @@ export function defaultAxios (axios = {}) {
   })
 }
 
- 
 // treeSelect搜索查询列表数据
 export function GlobalLoadTreeSelectSearchData (axios = {}) {
   return request({
@@ -30,11 +29,9 @@ export function GlobalAsyncLoadTreeSelectTreeData (axios = {}) {
   })
 }
 
- 
 /*
  ********** 全局公用-结束 **********
  */
- 
 
 // 分页查询用户信息
 export function SysUserPageUserInfo (axios = {}) {
@@ -43,7 +40,6 @@ export function SysUserPageUserInfo (axios = {}) {
     ...axios
   })
 }
- 
 
 // 列表查询行政区划树结构详细信息
 export function SysAdmListAdmTreeInfo (axios = {}) {
@@ -62,7 +58,6 @@ export function SysAdmPageAdmInfo (axios = {}) {
     ...axios
   })
 }
- 
 
 // 查询内部组织详细信息
 export function SysDeptGetDeptInfo (axios = {}) {
@@ -72,8 +67,6 @@ export function SysDeptGetDeptInfo (axios = {}) {
   })
 }
 
- 
-
 // 分页查询内部组织详细信息
 export function SysDeptPageDeptInfo (axios = {}) {
   return request({
@@ -81,7 +74,7 @@ export function SysDeptPageDeptInfo (axios = {}) {
     ...axios
   })
 }
- 
+
 // 查询外部组织详细信息
 export function SysOutsideGetDeptOutsideInfo (axios = {}) {
   return request({
@@ -89,14 +82,14 @@ export function SysOutsideGetDeptOutsideInfo (axios = {}) {
     ...axios
   })
 }
- 
+
 // 分页查询外部组织详细信息
 export function SysOutsidePageDeptOutsideInfo (axios = {}) {
   return request({
     url: '/sys/outside/pageDeptOutsideInfo',
     ...axios
   })
-} 
+}
 // 查询字典类型详细信息
 export function SysDictTypeGetDictTypeInfo (axios = {}) {
   return request({
@@ -110,21 +103,21 @@ export function SysDictTypePageDictTypeInfo (axios = {}) {
     url: '/sys/dict/type/pageDictTypeInfo',
     ...axios
   })
-} 
+}
 // 查询字典数据详细信息
 export function SysDictDataGetDictDataInfo (axios = {}) {
   return request({
     url: '/sys/dict/data/getDictDataInfo',
     ...axios
   })
-} 
+}
 // 根据字典类型查询字典数据
 export function SysDictDataSelectDictDataInfo (axios = {}) {
   return request({
     url: '/sys/dict/data/selectDictDataInfo',
     ...axios
   })
-} 
+}
 // 列表查询岗位树结构详细信息
 export function SysPostListPostTreeInfo (axios = {}) {
   return request({
@@ -138,7 +131,7 @@ export function SysPostPagePostInfo (axios = {}) {
     url: '/sys/post/pagePostInfo',
     ...axios
   })
-} 
+}
 // 分页查询角色详细信息
 export function SysRolePagePostInfo (axios = {}) {
   return request({
@@ -146,4 +139,3 @@ export function SysRolePagePostInfo (axios = {}) {
     ...axios
   })
 }
-

@@ -5,7 +5,7 @@
       class="tree-container scroll p10 border-main border-r4 grid-col-4 grid-col-xs-12 grid-col-pp-24" v-if="!isEmpty(options.treeOption)">
       <el-tree v-bind="options.treeOption" @node-click="treeClick"> </el-tree>
     </div>
-    <!-- <section class=" full-width  flex1   flex flex-direction   "  
+    <!-- <section class=" full-width  flex1   flex flex-direction   "
       :class="[  options.treeOption? ' pl1 grid-col-20  grid-col-xs-12 grid-col-pp-24 with-tree': ' grid-col-24']"> -->
         <DynamicSearchForm
         v-if="
@@ -19,7 +19,7 @@
         :data="data"
         :key="searchParams.refreshKey"
         @search="onSearch"
-      ></DynamicSearchForm>     
+      ></DynamicSearchForm>
       <!-- <div class="table-gap"></div> -->
       <section class="table-section"     slot="bottom">
 
@@ -67,13 +67,13 @@ import {
   isEmpty
 } from '../utils/tool'
 import { generateDefaultValue } from '../utils/actionTools'
-import {
- 
+import presetConfig, {
+
   pagination,
-  tableOption,
- 
+  tableOption
+
 } from '../presetConfig'
-import presetConfig from '../presetConfig'
+
 import actionPresetMixin from './actionPresetMixin'
 
 export default {
@@ -94,8 +94,8 @@ export default {
       type: Object,
       require: true
     },
- 
-    mode: { type: String,  },
+
+    mode: { type: String },
     apiPromises: {
       type: Object,
       default () {
@@ -110,9 +110,9 @@ export default {
     },
     entityLabel: String,
     randomId: String,
-    scene:{
-      type:String,
-      default:'component'
+    scene: {
+      type: String,
+      default: 'component'
     }
   },
   data: function () {
@@ -130,7 +130,7 @@ export default {
 
   computed: {
     options () {
-      const mode=this.mode||presetConfig.defaultDialogMode||'dialog'
+      const mode = this.mode || presetConfig.defaultDialogMode || 'dialog'
       const {
         createOptions,
         bulkdeleteOptions,
@@ -143,9 +143,9 @@ export default {
 
       const optionsOrigin = deepMerge(
         {
-          searchOption:presetConfig.getConfig('searchOption'),
+          searchOption: presetConfig.getConfig('searchOption'),
           // treeOption,
-          pagination:presetConfig.getConfig('pagination'),
+          pagination: presetConfig.getConfig('pagination'),
           topToolBar: {
             create: createOptions,
             bulkdelete: bulkdeleteOptions
@@ -165,7 +165,7 @@ export default {
         this.optionsProps,
         true
       )
-      
+
       return optionsOrigin
     },
     queryParams () {
@@ -258,7 +258,7 @@ export default {
       height: 320px;
 
     }
- 
+
   .scroll {
     overflow: auto;
     ::-webkit-scrollbar {
@@ -281,6 +281,5 @@ export default {
     }
   }
 }
-
 
 </style>

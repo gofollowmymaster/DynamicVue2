@@ -13,19 +13,19 @@
 <script>
 
 export default {
-  name: "DyPage",
+  name: 'DyPage',
   props: {
     visible: {
-      type:Boolean,
-      required:true,
+      type: Boolean,
+      required: true
     },
     title: {
       type: String,
       default: ''
     },
-    navType:{
-      type:String,
-      default:'dialog'
+    navType: {
+      type: String,
+      default: 'dialog'
     }
 
   },
@@ -33,34 +33,32 @@ export default {
     return {}
   },
   computed: {
-     
+
   },
   watch: {
-    
+
   },
-  mounted() {
-    
+  mounted () {
+
   },
   components: {},
   methods: {
-    goBack(){
-      if(this.navType=='router'){
-      this.$router.go(-1)
+    goBack () {
+      if (this.navType == 'router') {
+        this.$router.go(-1)
       }
       this.closeModal()
+    },
+    closeModal () {
+      this.$emit('update:visible', false)
+      this.$nextTick(() => {
+        debugger
+        this.$emit('closed')
+      })
+    }
 
-    },
-     closeModal(){
-            this.$emit('update:visible',false)
-        this.$nextTick(()=>{
-            debugger
-            this.$emit('closed')
-        })
-        return 
-    },
-    
-  },
-};
+  }
+}
 </script>
 <style lang="less" scoped>
 .bg-white{

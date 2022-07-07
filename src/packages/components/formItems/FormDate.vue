@@ -21,36 +21,35 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormDate',
-        mixins: [ FormMixin ],
-        methods: {
-            handlerDate (item) {
-                const {before, after, maxOffset, minOffset} = item;
-                return {
-                    disabledDate: (time) => {
-                        if (before) { // 限制当前时间之前
-                            return time.getTime() < (Date.now() - 1000 * 60 * 60 * 24);
-                        } else if (after) { // 限制当前时间之后的时间
-                            return time.getTime() > Date.now();
-                        } else if (maxOffset && !minOffset) {
-                            return time.getTime() < maxOffset;
-                        } else if (minOffset && !maxOffset) {
-                            return time.getTime() > minOffset - 1000 * 60 * 60 * 24;
-                        } else if (maxOffset && minOffset) {
-                            return time.getTime() > minOffset - 1000 * 60 * 60 * 24 || time.getTime() < maxOffset;
-                        }
-                    }
-                };
-            }
+export default {
+  name: 'FormDate',
+  mixins: [FormMixin],
+  methods: {
+    handlerDate (item) {
+      const { before, after, maxOffset, minOffset } = item
+      return {
+        disabledDate: (time) => {
+          if (before) { // 限制当前时间之前
+            return time.getTime() < (Date.now() - 1000 * 60 * 60 * 24)
+          } else if (after) { // 限制当前时间之后的时间
+            return time.getTime() > Date.now()
+          } else if (maxOffset && !minOffset) {
+            return time.getTime() < maxOffset
+          } else if (minOffset && !maxOffset) {
+            return time.getTime() > minOffset - 1000 * 60 * 60 * 24
+          } else if (maxOffset && minOffset) {
+            return time.getTime() > minOffset - 1000 * 60 * 60 * 24 || time.getTime() < maxOffset
+          }
         }
-    };
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">
-
 
     .form-item-box /deep/ .el-input {
          display: block;

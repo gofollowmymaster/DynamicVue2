@@ -48,71 +48,70 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    // 这个是已经耦合的，非通用组件
-    export default {
-        name: 'FormAreaSelect',
-        mixins: [ FormMixin ],
-        data () {
-            return {
-                prependMsg: '',
-                appendMsg: ''
-            };
-        },
-        computed: {
-            cityList () {
-                const secondParentKey = this.item.secondParentKey || '10021';
-                if (this.val[0]) {
-                    return this.dynamicDict[secondParentKey].filter(item => item.bparentCode === this.val[0]);
-                }
+// 这个是已经耦合的，非通用组件
+export default {
+  name: 'FormAreaSelect',
+  mixins: [FormMixin],
+  data () {
+    return {
+      prependMsg: '',
+      appendMsg: ''
+    }
+  },
+  computed: {
+    cityList () {
+      const secondParentKey = this.item.secondParentKey || '10021'
+      if (this.val[0]) {
+        return this.dynamicDict[secondParentKey].filter(item => item.bparentCode === this.val[0])
+      }
 
-                return [];
-            },
-            areaList () {
-                const thirdParentKey = this.item.thirdParentKey || '10022';
-                if (this.val[1]) {
-                    return this.dynamicDict[thirdParentKey].filter(item => item.bparentCode === this.val[1]);
-                }
+      return []
+    },
+    areaList () {
+      const thirdParentKey = this.item.thirdParentKey || '10022'
+      if (this.val[1]) {
+        return this.dynamicDict[thirdParentKey].filter(item => item.bparentCode === this.val[1])
+      }
 
-                return [];
-            },
-            areaText () {
-                const firstParentKey = this.item.firstParentKey || '10020';
-                const secondParentKey = this.item.secondParentKey || '10021';
-                const thirdParentKey = this.item.thirdParentKey || '10022';
+      return []
+    },
+    areaText () {
+      const firstParentKey = this.item.firstParentKey || '10020'
+      const secondParentKey = this.item.secondParentKey || '10021'
+      const thirdParentKey = this.item.thirdParentKey || '10022'
 
-                return `${this.getText(firstParentKey, this.val[0])}${this.getText(secondParentKey, this.val[1])}${this.getText(thirdParentKey, this.val[2])}`;
-            }
-        },
-        methods: {
-            onChange (v, index) {
-                if (index === '0') {
-                    this.val[1] = '';
-                    this.val[2] = '';
-                }
-                if (index === '1') {
-                    this.val[2] = '';
-                }
-            },
-            getText (pCode, val) {
-                if (this.val[0]) {
-                    const t = this.dynamicDict[pCode].filter(item => item[this.dynamicSelectOption.value] === val);
-                    if (t.length === 0) {
-                        return '';
-                    } else {
-                        return t[0][this.dynamicSelectOption.label];
-                    }
-                } else {
-                    return '';
-                }
-            },
+      return `${this.getText(firstParentKey, this.val[0])}${this.getText(secondParentKey, this.val[1])}${this.getText(thirdParentKey, this.val[2])}`
+    }
+  },
+  methods: {
+    onChange (v, index) {
+      if (index === '0') {
+        this.val[1] = ''
+        this.val[2] = ''
+      }
+      if (index === '1') {
+        this.val[2] = ''
+      }
+    },
+    getText (pCode, val) {
+      if (this.val[0]) {
+        const t = this.dynamicDict[pCode].filter(item => item[this.dynamicSelectOption.value] === val)
+        if (t.length === 0) {
+          return ''
+        } else {
+          return t[0][this.dynamicSelectOption.label]
         }
-    };
+      } else {
+        return ''
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">
-
 
     .form-input-text {
         position: relative;

@@ -12,22 +12,22 @@ export default {
   name: 'componentWithTitle',
   components: {},
   props: {
-    title:String,
-    bodyComponent:{
-      type:String,
-      default:''
-    },
+    title: String,
+    bodyComponent: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {}
   },
-  computed:{
-    bindOptions(){
-      const obj={...this.$attrs}
+  computed: {
+    bindOptions () {
+      const obj = { ...this.$attrs }
       delete obj.title
       delete obj.bodyComponent
 
-      return  obj
+      return obj
     }
   },
 

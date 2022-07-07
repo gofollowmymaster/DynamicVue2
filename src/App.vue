@@ -12,13 +12,13 @@ export default {
   created () {
     this.initApp()
   },
-  data(){
+  data () {
     return {
-      key:''
+      key: ''
     }
   },
-  watch:{
- 
+  watch: {
+
   },
   methods: {
     initApp () {
@@ -41,7 +41,7 @@ export default {
   }
   .routerContaner >div >.container{
       overflow: initial;
-  } 
+  }
 </style>
 <style lang="scss">
   @import 'assets/css/element-variables.scss';

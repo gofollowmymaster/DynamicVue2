@@ -10,8 +10,6 @@ files.keys().forEach((url) => {
   components[urlKey] = fileDefault
 })
 
- 
-
 export default {
   install (Vue) {
     if (this.install.installed) return
@@ -20,6 +18,5 @@ export default {
     for (const name in components) {
       Vue.component(name, components[name])
     }
- 
   }
 }

@@ -17,7 +17,7 @@ export const warningFields = [
     type: 'FormInput',
     formOption: {
     },
-    tableOption:{
+    tableOption: {
       sort: 4
     }
   },
@@ -26,7 +26,7 @@ export const warningFields = [
     formSection: '基本信息',
     key: 'equipmentName',
     tableOption: { sort: 5 },
-    formable:true,
+    formable: true
   },
 
   {
@@ -62,11 +62,11 @@ export const warningFields = [
   {
     label: '行政区划',
     formSection: '基本信息',
-    type:'FormAdministrativeSelector',
+    type: 'FormAdministrativeSelector',
     key: 'districtName',
     tableOption: { sort: 3 },
-    formOption:{},
-    searchable:true
+    formOption: {},
+    searchable: true
   },
   {
     label: '固定资产编号',
@@ -96,7 +96,7 @@ export const warningFields = [
     formSection: '基本信息',
     type: 'FormTextarea',
     formOption: {
-       
+
     }
   },
   {
@@ -106,7 +106,7 @@ export const warningFields = [
     formSection: '基本信息',
 
     formOption: {
-       
+
     }
   },
   {
@@ -115,17 +115,17 @@ export const warningFields = [
     type: 'FormUpload',
     formSection: '基本信息',
     formOption: {
-       
+
       properties: {
         // disabled: true,
         'list-type': 'picture-card',
         accept: 'img',
-        limit:5,
+        limit: 5
       },
       extra: {
         btn_text: '上传',
         // tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi,
+        apiPromise: elementUploadFileApi
       }
     }
   },
@@ -136,22 +136,21 @@ export const warningFields = [
     type: 'FormUpload',
     formSection: '基本信息',
     formOption: {
-       
+
       properties: {
         'list-type': 'picture-card',
-        accept: 'video',
+        accept: 'video'
       },
       extra: {
         btn_text: '上传',
         // tip: '单个附件大小限制20Mb，最多上传200个附件',
         apiPromise: elementUploadFileApi,
-        limitSize:5
+        limitSize: 5
       }
     }
-  },
-  
-]
+  }
 
+]
 
 export const warningProcessedFields = [
   {
@@ -164,7 +163,7 @@ export const warningProcessedFields = [
     label: '告警时间',
     key: 'warningTimeRange',
     type: 'FormDateRange',
-    searchOption:{
+    searchOption: {
       sort: 11
     }
   },
@@ -172,7 +171,7 @@ export const warningProcessedFields = [
     label: '处理时间',
     key: 'handleTimeRange',
     type: 'FormDateRange',
-    searchOption:{
+    searchOption: {
       sort: 12
     }
   },
@@ -184,7 +183,7 @@ export const warningProcessedFields = [
     type: 'FormInput',
     formOption: {
     },
-    tableOption:{
+    tableOption: {
       sort: 4
     }
   },
@@ -201,8 +200,8 @@ export const warningProcessedFields = [
     formSection: '基本信息',
     formOption: {
     },
-    tableOption:{
-      sort:5
+    tableOption: {
+      sort: 5
     }
 
   },
@@ -222,26 +221,26 @@ export const warningProcessedFields = [
     tableOption: { sort: 6 },
     formOption: {
     },
-    searchable:true,
+    searchable: true
   },
   {
     label: '位置',
     key: 'position',
     formSection: '基本信息',
     formOption: {},
-    tableOption:{
-      sort:7,
-      label:'设备位置'
+    tableOption: {
+      sort: 7,
+      label: '设备位置'
     }
   },
   {
     label: '行政区划',
     formSection: '基本信息',
-    type:'FormAdministrativeSelector',
+    type: 'FormAdministrativeSelector',
     key: 'districtName',
     tableOption: { sort: 8 },
-    formable:true,
-    searchable:true,
+    formable: true,
+    searchable: true
   },
   {
     label: '固定资产编号',
@@ -272,8 +271,8 @@ export const warningProcessedFields = [
     type: 'FormTextarea',
     formOption: {
     },
-    tableOption:{
-      sort:9
+    tableOption: {
+      sort: 9
     }
   },
   {
@@ -283,7 +282,7 @@ export const warningProcessedFields = [
     formSection: '基本信息',
 
     formOption: {
- 
+
     }
   },
   {
@@ -292,7 +291,7 @@ export const warningProcessedFields = [
     type: 'FormUpload',
     formSection: '基本信息',
     formOption: {
- 
+
       properties: {
         // disabled: true,
         'list-type': 'picture-card',
@@ -312,7 +311,7 @@ export const warningProcessedFields = [
     type: 'FormUpload',
     formSection: '基本信息',
     formOption: {
- 
+
       properties: {
         // disabled: true,
         'list-type': 'picture-card',
@@ -330,8 +329,8 @@ export const warningProcessedFields = [
     key: 'treatmentMethod',
     type: 'FormRadio',
     formSection: '处理信息',
-    searchOption:{
-      type: 'FormSelect',
+    searchOption: {
+      type: 'FormSelect'
     },
     options: [
       {
@@ -349,8 +348,8 @@ export const warningProcessedFields = [
     ],
     formOption: {
     },
-    tableOption:{
-      sort:10
+    tableOption: {
+      sort: 10
     }
   },
   {
@@ -359,8 +358,8 @@ export const warningProcessedFields = [
     type: 'FormTextarea',
     formSection: '处理信息',
     formOption: {
- 
-        hidden: '#{treatmentMethod}!=3'
+
+      hidden: '#{treatmentMethod}!=3'
     }
   },
   {
@@ -370,10 +369,10 @@ export const warningProcessedFields = [
     formSection: '处理信息',
 
     formOption: {
-        hidden: '#{treatmentMethod}!=3'
+      hidden: '#{treatmentMethod}!=3'
     },
-    tableOption:{
-      sort:11
+    tableOption: {
+      sort: 11
     }
   },
 
@@ -383,10 +382,10 @@ export const warningProcessedFields = [
     type: 'FormTextarea',
     formSection: '处理信息',
     formOption: {
-        hidden: '#{treatmentMethod}!=2'
+      hidden: '#{treatmentMethod}!=2'
     },
-    tableOption:{
-      sort:13
+    tableOption: {
+      sort: 13
     }
   },
   {
@@ -395,8 +394,8 @@ export const warningProcessedFields = [
     type: 'FormTextarea',
     formSection: '处理信息',
     formOption: {
- 
-        hidden: '#{treatmentMethod}!=2'
+
+      hidden: '#{treatmentMethod}!=2'
     }
   },
   {
@@ -406,8 +405,8 @@ export const warningProcessedFields = [
     key: 'videos',
     type: 'FormTextarea',
     formOption: {
- 
-        hidden: '#{treatmentMethod}!=2'
+
+      hidden: '#{treatmentMethod}!=2'
     }
   },
 
@@ -417,10 +416,10 @@ export const warningProcessedFields = [
     key: 'handleTime',
     type: 'FormDateTime',
     formOption: {
-        hidden: '#{treatmentMethod}==1'
+      hidden: '#{treatmentMethod}==1'
     },
-    tableOption:{
-      sort:12
+    tableOption: {
+      sort: 12
     }
   },
   {
@@ -430,11 +429,10 @@ export const warningProcessedFields = [
     key: 'eventNumber',
     type: 'FormInput',
     formOption: {
-        hidden: '#{treatmentMethod}!=1'
+      hidden: '#{treatmentMethod}!=1'
     }
   }
 ]
-
 
 export const eventFields = [
   { key: 'id', type: 'FormHide', label: 'ID', formable: true },
@@ -450,7 +448,7 @@ export const eventFields = [
   {
     label: '行政区划',
     formSection: '基本信息',
-    type:'FormAdministrativeSelector',
+    type: 'FormAdministrativeSelector',
     key: 'equipmentName',
     formOption: {
       rules: ['required']
@@ -462,7 +460,7 @@ export const eventFields = [
     key: 'equipmentName',
     type: 'FormTextarea',
     formOption: {
- 
+
       rules: ['required']
     }
   },
@@ -472,7 +470,7 @@ export const eventFields = [
     key: 'equipmentName1',
     type: 'FormTextarea',
     formOption: {
- 
+
     }
   },
   {
@@ -589,7 +587,7 @@ export const eventFields = [
     type: 'FormUpload',
     formSection: '附件信息',
     formOption: {
- 
+
       properties: {
         // disabled: true,
         'list-type': 'picture-card',
@@ -605,23 +603,23 @@ export const eventFields = [
 ]
 
 export const handleFields = [
-  { key: 'treeGiveAnAlarmId', type: 'FormHide',  formable: true },
-  { key: 'treatmentMethod', type: 'FormHide',  formable: true },
+  { key: 'treeGiveAnAlarmId', type: 'FormHide', formable: true },
+  { key: 'treatmentMethod', type: 'FormHide', formable: true },
   {
     label: '处理结果',
     key: 'message',
     type: 'FormInput',
     formOption: {
- 
+
       rules: ['required']
-    },
+    }
   },
   {
     key: 'pic',
     label: '上传图片',
     type: 'FormUpload',
     formOption: {
- 
+
       properties: {
         // disabled: true,
         'list-type': 'picture-card',
@@ -639,7 +637,7 @@ export const handleFields = [
     label: '上传视频',
     type: 'FormUpload',
     formOption: {
-       
+
       properties: {
         // 'list-type': 'picture-card',
         accept: 'video'
@@ -650,33 +648,29 @@ export const handleFields = [
         apiPromise: elementUploadFileApi
       }
     }
-  }, 
+  },
   {
     label: '处理人',
     key: 'handleUserId',
     type: 'FormInnerOrgSelPersonSelector',
     formOption: {
-       
+
       rules: ['required'],
-      valueLink:{
-        '@*any*@': [
-          {
-            linkKey: 'handleUserIdPhone',
-            linkValue: function (data) {
-              return data[0].phoneNum
-            }
-          }
-        ]
+      changeHandle (data, vm) {
+        vm.updateFormData({
+          handleUserIdPhone: data[0].phoneNum
+        })
       }
+
     }
   },
   {
     label: '上报人联系方式',
     key: 'handleUserIdPhone',
     formOption: {
-       
-      properties:{
-        disabled:true,
+
+      properties: {
+        disabled: true
       },
       rules: ['required']
     }
@@ -684,21 +678,18 @@ export const handleFields = [
 
   {
     label: '处理时间',
-    type:"FormDateTime",
+    type: 'FormDateTime',
     key: 'handleTime',
     formOption: {
-       
-    }
-  },
 
-  
+    }
+  }
+
 ]
 
-
-
 export const unhandleFields = [
-  { key: 'treeGiveAnAlarmId', type: 'FormHide',  formable: true },
-  { key: 'treatmentMethod', type: 'FormHide',  formable: true },
+  { key: 'treeGiveAnAlarmId', type: 'FormHide', formable: true },
+  { key: 'treatmentMethod', type: 'FormHide', formable: true },
 
   {
     label: '原因',
@@ -706,36 +697,33 @@ export const unhandleFields = [
     type: 'FormInput',
     formOption: {
       rules: ['required'],
-      wraperProperties:{
+      wraperProperties: {
         // class:['grid-col-24']
-      },
+      }
     }
   },
-   
+
   {
     label: '处理人',
     key: 'handleUserId',
     type: 'FormInnerOrgSelPersonSelector',
     formOption: {
-      wraperProperties:{
+      wraperProperties: {
         // class:['grid-col-24']
       },
       rules: ['required']
     }
   },
 
-  
-
   {
     label: '处理时间',
-    type:"FormDateTime",
+    type: 'FormDateTime',
     key: 'handleTime',
     formOption: {
-      wraperProperties:{
+      wraperProperties: {
         // class:['grid-col-24']
-      },
+      }
     }
-  },
+  }
 
-  
 ]

@@ -105,7 +105,7 @@
       </BaseTable>
       <!-- <div v-if="type == 'checkbox'">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div> -->
     </div>
-    
+
     <footer slot="footer">
       <div>
         <el-button type="primary" @click="ok">确定</el-button>
@@ -119,7 +119,7 @@ import BaseTable from 'components/BaseBackend/BaseTable.vue'
 import AdmSelect from 'components/common/BaseInput/AdmSelect.vue'
 
 const initSearchData = (searchItems) => {
-  let searchData = {}
+  const searchData = {}
   searchItems.forEach(item => {
     if (item.type == 'admSelect') {
       searchData[item.key] = []

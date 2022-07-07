@@ -2,8 +2,8 @@ import { deepCopy, JSONDeepCopy, downFile } from '../../utils/tool'
 import { DY_DIALOG, DY_DRAWER, DY_PAGE_WRAPER } from '../../const'
 
 export default class dialogForm {
-  static handle (action,actionData,vm) {
-    this.vm=vm
+  static handle (action, actionData, vm) {
+    this.vm = vm
     const dialog = action.dialog
     if (dialog.container == DY_DRAWER) {
       dialog.properties = {
@@ -15,7 +15,7 @@ export default class dialogForm {
     this.dialogFormHandle(action, actionData)
   }
 
-  static  dialogFormHandle (action, actionData = null, extra = {}) {
+  static dialogFormHandle (action, actionData = null, extra = {}) {
     const dataAdapter =
       typeof action.dataAdapter === 'function'
         ? action.dataAdapter
@@ -43,7 +43,7 @@ export default class dialogForm {
     }
     currentDialogForm.body.data = data
 
-    if (typeof this.vm.setGlobalDialogForm === 'function' &&this.vm.isGlobalDialogFormActive&&!this.vm.isGlobalDialogFormActive()) {
+    if (typeof this.vm.setGlobalDialogForm === 'function' && this.vm.isGlobalDialogFormActive && !this.vm.isGlobalDialogFormActive()) {
       this.vm.setGlobalDialogForm(currentDialogForm)
       return
     }

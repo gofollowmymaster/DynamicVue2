@@ -1,10 +1,10 @@
-import {deepMergeByKey } from "../../utils/tool"
+import { deepMergeByKey } from '../../utils/tool'
 
 export const color = ['#6997FD', '#36C1BC', '#FF6366', '#5FC7F6', '#FFBE6A', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc']
 
-const baseOption={
+const baseOption = {
   color,
-  noDataLoadingOption: {  
+  noDataLoadingOption: {
     effect: 'bubble',
     text: '暂无数据',
     effectOption: {
@@ -37,12 +37,11 @@ const baseOption={
     show: false,
     top: '90%',
     left: 'center'
-  },
+  }
 }
- 
 
 export const basePieChartOption = {
- ...baseOption,
+  ...baseOption,
   // tooltip: {
   //   trigger: 'item'
   // },
@@ -55,15 +54,15 @@ export const basePieChartOption = {
       label: {
         show: false,
         position: 'center',
-        formatter:'{b}',
-        color:'',
+        formatter: '{b}',
+        color: ''
       },
       emphasis: {
         label: {
           show: false,
           fontSize: '12',
           fontWeight: 'bold'
-        },
+        }
       },
       labelLine: {
         show: true
@@ -72,12 +71,12 @@ export const basePieChartOption = {
     }
   ]
 }
-export const  commonPieChartOption=deepMergeByKey(basePieChartOption,{
+export const commonPieChartOption = deepMergeByKey(basePieChartOption, {
   tooltip: {
     trigger: 'item'
   },
   legend: {
-    show:true,
+    show: true,
     top: '90%',
     left: 'center'
   },
@@ -89,16 +88,15 @@ export const  commonPieChartOption=deepMergeByKey(basePieChartOption,{
       fontSize: '14',
       fontWeight: 'bold'
     }
-  },
+  }
 })
 
-
-export const  solidPieChartOption=deepMergeByKey(commonPieChartOption,{
+export const solidPieChartOption = deepMergeByKey(commonPieChartOption, {
   tooltip: {
     trigger: 'item'
   },
   legend: {
-    show:true,
+    show: true,
     top: '10%',
     left: '70%'
   },
@@ -119,32 +117,32 @@ export const  solidPieChartOption=deepMergeByKey(commonPieChartOption,{
       label: {
         show: false,
         position: 'center',
-        formatter:'{b}',
-        color:'',
+        formatter: '{b}',
+        color: ''
       },
       emphasis: {
         label: {
           show: false,
           fontSize: '12',
           fontWeight: 'bold'
-        },
+        }
       },
       labelLine: {
         show: false
       },
       data: [],
-      radius : [ '0%', '88%' ],//内外圆的大小
-      center : [ '36%', '50%' ],//距离左右，上下距离的百分比
+      radius: ['0%', '88%'], // 内外圆的大小
+      center: ['36%', '50%']// 距离左右，上下距离的百分比
     }
   ]
 })
 
-export const leftPieChartOption=deepMergeByKey(basePieChartOption,{
+export const leftPieChartOption = deepMergeByKey(basePieChartOption, {
   legend: {
-    show:true,
+    show: true,
     top: 'center',
     left: '56%',
-    orient:'vertical'
+    orient: 'vertical'
   },
   series: [
     {
@@ -154,28 +152,28 @@ export const leftPieChartOption=deepMergeByKey(basePieChartOption,{
       label: {
         show: false,
         position: 'left',
-        formatter:'{b}',
-        color:'',
+        formatter: '{b}',
+        color: ''
       },
       data: [],
-      radius : [ '65%', '90%' ],//内外圆的大小
-      center : [ '20%', '50%' ],//距离左右，上下距离的百分比
+      radius: ['65%', '90%'], // 内外圆的大小
+      center: ['20%', '50%']// 距离左右，上下距离的百分比
     }
   ]
 })
 
-export const baseLineChartOption={
-  
+export const baseLineChartOption = {
+
   ...baseOption,
   grid: {
-    top:"20%",
+    top: '20%',
     left: '3%',
     right: '4%',
     bottom: '1%',
     containLabel: true
 
   },
-  
+
   legend: {
     show: true,
     top: '4%',
@@ -203,16 +201,16 @@ export const baseLineChartOption={
       }
     }
   ],
- 
+
   series: [
-    
+
   ]
 }
 
-export const baseBarChartOption=deepMergeByKey(baseOption,{
-  
+export const baseBarChartOption = deepMergeByKey(baseOption, {
+
   grid: {
-    top:"20%",
+    top: '20%',
     left: '3%',
     right: '4%',
     bottom: '1%',
@@ -242,96 +240,82 @@ export const baseBarChartOption=deepMergeByKey(baseOption,{
 
   series: [
     {
-      colorBy:"series",
-    name: '',
-    type: 'bar',
+      colorBy: 'series',
+      name: '',
+      type: 'bar',
 
-    barMaxWidth: 40, // 固定柱子宽度
-    emphasis: {
-      focus: 'series'
-    },
-    data: []
-  },
+      barMaxWidth: 40, // 固定柱子宽度
+      emphasis: {
+        focus: 'series'
+      },
+      data: []
+    }
   ]
 
 })
 
+export const stackBarChartOption = deepMergeByKey(baseBarChartOption, {
 
-
-
-export const stackBarChartOption=deepMergeByKey(baseBarChartOption,{
- 
-  
   grid: {
-    top:"20%",
+    top: '20%',
     left: '3%',
     right: '4%',
     bottom: '3%',
     containLabel: true
   },
- 
+
   series: [
     {
-    name: '',
-    label: {
-      show: false
-    },
- 
-    stack: 'total'
-  },
+      name: '',
+      label: {
+        show: false
+      },
 
-  
-   
+      stack: 'total'
+    }
+
   ]
 
 })
 
+export const stackBarLineChartOption = deepMergeByKey(baseBarChartOption, {
 
-
-export const stackBarLineChartOption=deepMergeByKey(baseBarChartOption,{
- 
-  
   grid: {
-    top:"20%",
+    top: '20%',
     left: '3%',
     right: '4%',
     bottom: '3%',
     containLabel: true
   },
- 
+
   series: [
     {
-    name: '',
-    label: {
-      show: false
+      name: '',
+      label: {
+        show: false
+      },
+      type: 'bar',
+      stack: 'total'
     },
-    type:'bar',
-    stack: 'total'
-  },
-  {
-    name: '',
-    label: {
-      show: false
-    },
-    type:'line',
- 
-  },
+    {
+      name: '',
+      label: {
+        show: false
+      },
+      type: 'line'
 
-  
-   
+    }
+
   ]
 
 })
-
-
 
 export default {
-  basePieChart:basePieChartOption,
-  commonPieChart:commonPieChartOption,
-  baseLineChart:baseLineChartOption,
-  leftPieChart:leftPieChartOption,
-  baseBarChart:baseBarChartOption,
-  stackBarChart:stackBarChartOption,
-  solidPieChart:solidPieChartOption
+  basePieChart: basePieChartOption,
+  commonPieChart: commonPieChartOption,
+  baseLineChart: baseLineChartOption,
+  leftPieChart: leftPieChartOption,
+  baseBarChart: baseBarChartOption,
+  stackBarChart: stackBarChartOption,
+  solidPieChart: solidPieChartOption
 }
-

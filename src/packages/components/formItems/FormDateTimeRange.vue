@@ -18,48 +18,44 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormDateTimeRange',
-        props: {
-            value: {
-                type: [String,Array],
-                default: ''
-            },
-        },
-        mixins: [ FormMixin ],
-        computed: {
-            val: {
-                get () {
-                    if (this.value) {
-                        if(typeof this.value =='string') return JSON.parse(this.value)
-                        return this.value;
-                    } else {
-                        return [];
-                    }
-                },
-                set (v) {
-                    debugger
-                    this.$emit('input', v);
-                    this._valueLink(v);
-
-               
-                        this.statusChangeFn.valueUpdateEvent({
-                            [this.item.key]: v,
-                        });
-                   
-                }
-            },
-            textModelValue () {
-                return this.val && this.val.join('至');
-            }
+export default {
+  name: 'FormDateTimeRange',
+  props: {
+    value: {
+      type: [String, Array],
+      default: ''
+    }
+  },
+  mixins: [FormMixin],
+  computed: {
+    val: {
+      get () {
+        if (this.value) {
+          if (typeof this.value === 'string') return JSON.parse(this.value)
+          return this.value
+        } else {
+          return []
         }
-    };
+      },
+      set (v) {
+        debugger
+        this.$emit('input', v)
+
+        this.statusChangeFn.valueUpdateEvent({
+          [this.item.key]: v
+        })
+      }
+    },
+    textModelValue () {
+      return this.val && this.val.join('至')
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">
-
 
     .form-item-box /deep/ .el-date-editor--daterange {
          display: inline-flex;

@@ -4,8 +4,6 @@ Vue.use(VueRouter)
 
 // router-view页面
 
-
-
 const router = new VueRouter({
   routes: [
     {
@@ -13,15 +11,14 @@ const router = new VueRouter({
       name: ' ',
       redirect: '/tableList'
     },
-   
-     
+
     {
       path: '/tableList',
       name: '资产',
       component: () => import('@/views/index.vue'),
       redirect: '/tableList/overview',
       children: [
- 
+
         {
           path: 'overview',
           name: '固定资产概览',
@@ -32,13 +29,13 @@ const router = new VueRouter({
           name: '固定资产',
           component: () => import('@/views/tableList/index.vue')
         },
-       
+
         {
           path: 'streettree',
           name: '不动产',
           component: () => import('@/views/streetTree.vue')
         },
-         
+
         {
           path: 'statistic',
           name: '综合查询统计',
@@ -71,11 +68,9 @@ const router = new VueRouter({
           ]
         }
       ]
-    },
-     
+    }
+
   ]
 })
-
- 
 
 export default router

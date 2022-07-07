@@ -9,7 +9,7 @@
       :optionsProps="pendingPageOptions"
       :apiPromises="pendingApiPromises"
       scene="page"
-      label="待处理警告" 
+      label="待处理警告"
     ></DynamicCurd>
 
     <DynamicCurd
@@ -32,23 +32,23 @@ import {
   warningDetailApi,
   warningPendingListApi,
   warningProcessedListApi,
-  warningInfoDeleteApi,
-} from "@/network/assets.js";
+  warningInfoDeleteApi
+} from '@/network/assets.js'
 import {
   eventFields,
   warningFields,
   handleFields,
   unhandleFields,
-  warningProcessedFields,
-} from "./warningFields";
-import { appendToPreset, buildFormFields } from "@/packages/utils/tool";
+  warningProcessedFields
+} from './warningFields'
+import { appendToPreset, buildFormFields } from '@/packages/utils/tool'
 
-const entityLabel = "告警信息";
+const entityLabel = '告警信息'
 
 export default {
-  name: "warningManage",
+  name: 'warningManage',
   components: {},
-  data() {
+  data () {
     return {
       entityLabel,
       // form字段
@@ -58,12 +58,12 @@ export default {
       pendingApiPromises: {
         bulkdelete: warningInfoDeleteApi,
         list: warningPendingListApi,
-        detail: warningDetailApi,
+        detail: warningDetailApi
       },
       processedApiPromises: {
         list: warningProcessedListApi,
         detail: warningDetailApi,
-        bulkdelete: warningInfoDeleteApi,
+        bulkdelete: warningInfoDeleteApi
       },
 
       pendingPageOptions: {
@@ -72,85 +72,85 @@ export default {
           lineActions: {
             update: null,
             atransToEvent: {
-              actionType: "dialogFormAction",
-              label: "转事件",
+              actionType: 'dialogFormAction',
+              label: '转事件',
               sort: 0,
-              permission: "",
-              
-                containerProperties: {
-                  title: "转事件",
-                  width: "70%",
-                },
+              permission: '',
 
-                // props: formOption,
-                formItemList: buildFormFields(eventFields),
-                formDataUpdateHandle(formVm, param) {},
-                saveAction: {
-                  label: "转事件提交",
-                  apiPromise: () => Promise.resolve(),
-                },
-          
+              containerProperties: {
+                title: '转事件',
+                width: '70%'
+              },
+
+              // props: formOption,
+              formItemList: buildFormFields(eventFields),
+              formDataUpdateHandle (formVm, param) {},
+              saveAction: {
+                label: '转事件提交',
+                apiPromise: () => Promise.resolve()
+              }
+
             },
             handleForm: {
-              label: "处理",
-              actionType: "dialogFormAction",
+              label: '处理',
+              actionType: 'dialogFormAction',
               sort: 1,
-              permission: "",
+              permission: '',
               dataAdapter: (data) => {
-                return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 };
+                return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 }
               },
               containertProperties: {
-                title: "现场处理",
-                width: "36%",
+                title: '现场处理',
+                width: '36%'
               },
 
               formItemList: buildFormFields(handleFields),
 
               saveAction: {
-                label: "处理",
-                apiPromise: warningHandleApi,
-              },
+                label: '处理',
+                apiPromise: warningHandleApi
+              }
             },
             unhandleForm: {
-              label: "不予处理",
-              actionType: "dialogFormAction",
+              label: '不予处理',
+              actionType: 'dialogFormAction',
 
               sort: 1,
-              permission: "",
+              permission: '',
               dataAdapter: (data) => {
-                debugger;
-                return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 };
+                debugger
+                return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 }
               },
               containerProperties: {
-                title: "不予处理",
-                width: "36%",
+                title: '不予处理',
+                width: '36%'
               },
 
               singleCol: true,
 
               formItemList: buildFormFields(unhandleFields),
-              formDataUpdateHandle(formVm, param) {},
+              formDataUpdateHandle (formVm, param) {},
               saveAction: {
-                label: "不予处理",
-                apiPromise: warningUnhandleApi,
-              },
-            },
-          },
+                label: '不予处理',
+                apiPromise: warningUnhandleApi
+              }
+            }
+          }
         },
-        treeOption: null,
+        treeOption: null
       },
       processedPageOptions: {
         topToolBar: null,
         listOption: {
           lineActions: {
-            update: null,
-          },
-        },
+            update: null
+          }
+        }
 
-      },
-    };
-  },
-};
+      }
+    }
+  }
+}
 </script>
 <style lang="css" scoped>
 /deep/ .el-tabs__content{

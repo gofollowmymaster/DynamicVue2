@@ -5,65 +5,63 @@
 </template>
 <script>
 
-
-import {deepMergeByKey, hasValue,JSONDeepCopy } from "../../utils/tool"
-import  chartOptions from "./chartConfig"
+import { deepMergeByKey, hasValue, JSONDeepCopy } from '../../utils/tool'
+import chartOptions from './chartConfig'
 export default {
   name: 'dBarChart',
   components: {},
   props: {
-    title:String,
-    data:{
-      type:Object,
-      default(){
+    title: String,
+    data: {
+      type: Object,
+      default () {
         return {}
-      },
+      }
     },
-    
-    type:String,
-    extraOptions:{
-        type:Object,
-      default(){
-        return {'':[]}
-      },
+
+    type: String,
+    extraOptions: {
+      type: Object,
+      default () {
+        return { '': [] }
+      }
     }
   },
   data () {
-    const barChartOptionTemplate=chartOptions[this.type+'BarChart']?(chartOptions[this.type+'BarChart']):chartOptions['baseBarChart']
-    const self=this
+    const barChartOptionTemplate = chartOptions[this.type + 'BarChart'] ? (chartOptions[this.type + 'BarChart']) : chartOptions.baseBarChart
+    const self = this
     return {
-       barChartOptionTemplate:JSONDeepCopy(deepMergeByKey(barChartOptionTemplate,self.extraOptions))
+      barChartOptionTemplate: JSONDeepCopy(deepMergeByKey(barChartOptionTemplate, self.extraOptions))
     }
   },
-  computed:{
-    barChartOption(){
-       debugger
- 
-      let max = Math.max(...Object.values(this.data).flat(2).map(item=>item.value).map(parseFloat), 10)
-      max= Math.ceil(max*(this.type=='stack'?1.5:1.2))
+  computed: {
+    barChartOption () {
+      debugger
+
+      let max = Math.max(...Object.values(this.data).flat(2).map(item => item.value).map(parseFloat), 10)
+      max = Math.ceil(max * (this.type == 'stack' ? 1.5 : 1.2))
 
       const xAxis = Object.values(this.data)[0]?.map(item => {
-          return item.label
-        })
+        return item.label
+      })
       this.barChartOptionTemplate.xAxis.data = xAxis
-      this.barChartOptionTemplate.yAxis[0].max =  max
+      this.barChartOptionTemplate.yAxis[0].max = max
       this.barChartOptionTemplate.yAxis[0].interval = Math.floor(max / 5)
-      let series=[]
-      const seriesTemplate=this.barChartOptionTemplate.series[0]||{}
-      this.barChartOptionTemplate.series=[]
-      for(let seriesName in this.data){
-        const seriesData=deepMergeByKey(seriesTemplate,{
-              name: seriesName,
-              type: 'bar',
-              data: this.data[seriesName].map(item=>item.value),
-            })
-          series.push(seriesData)
+      const series = []
+      const seriesTemplate = this.barChartOptionTemplate.series[0] || {}
+      this.barChartOptionTemplate.series = []
+      for (const seriesName in this.data) {
+        const seriesData = deepMergeByKey(seriesTemplate, {
+          name: seriesName,
+          type: 'bar',
+          data: this.data[seriesName].map(item => item.value)
+        })
+        series.push(seriesData)
       }
 
-       this.barChartOptionTemplate.series=series
-      
+      this.barChartOptionTemplate.series = series
 
-      return  this.barChartOptionTemplate
+      return this.barChartOptionTemplate
     }
   },
 
@@ -78,7 +76,6 @@ export default {
 .statistic-container {
 background: #FFFFFF;
 width: 100%;
-} 
-   
-             
+}
+
 </style>

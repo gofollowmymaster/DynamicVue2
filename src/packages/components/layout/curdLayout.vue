@@ -1,6 +1,6 @@
 <template>
   <div class="layout-wrapper   " :class="[mode + '-curd',scene+'-curd']">
-    <aside class="left-section">  
+    <aside class="left-section">
       <slot name="left"></slot>
     </aside>
     <main class="main-section flex1  ">
@@ -16,19 +16,19 @@
 </template>
 <script>
 export default {
-  name: "curdLayout",
+  name: 'curdLayout',
   props: {
-    mode: { type: String, default: "tb" },
-    scene:{ type:String, default:'component'}
+    mode: { type: String, default: 'tb' },
+    scene: { type: String, default: 'component' }
   },
   computed: {},
   data: function () {
-    return {};
+    return {}
   },
-  created() {},
+  created () {},
 
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style lang="less" scoped>
@@ -78,7 +78,7 @@ export default {
 }
 
 .layout-wrapper.component-curd {
- 
+
     .top-section {
     padding: 0px ;
   }

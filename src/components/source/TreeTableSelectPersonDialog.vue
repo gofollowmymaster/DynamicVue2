@@ -207,7 +207,7 @@ export default {
         },
         {
           type: 'index',
-          title: '序号',
+          title: '序号'
         }
       ].concat(this.tableItems)
     }

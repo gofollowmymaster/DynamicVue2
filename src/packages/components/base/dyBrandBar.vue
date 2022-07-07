@@ -10,7 +10,7 @@
 </template>
 <script>
 export default {
-    name:'dyBrandBar'
+  name: 'dyBrandBar'
 }
 </script>
 <style lang="css" scoped>

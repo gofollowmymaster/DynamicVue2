@@ -1,5 +1,5 @@
 <template>
- 
+
     <component
       v-bind="properties"
       :is="container"
@@ -43,17 +43,17 @@ import actionMixin from '../actionMixin'
 
 export default {
   name: 'DynamicFormDialog',
-  mixins:[actionMixin],
+  mixins: [actionMixin],
   props: {
     visible: {
-      type:Object,
-      default(){
-        return {value:false}
+      type: Object,
+      default () {
+        return { value: false }
       }
     },
     container: {
-      type:String,
-      default:'el-dialog'
+      type: String,
+      default: 'el-dialog'
     },
     body: {
       type: Object,
@@ -67,27 +67,27 @@ export default {
         return {}
       }
     },
-    origin:String
+    origin: String
   },
- 
+
   computed: {
-        actionsOrdered(){
- 
+    actionsOrdered () {
       const actions = Object.entries(this.body.actions)
         .map(([key, value], index) => {
           return { ...value, actionKey: key }
-        }).filter(action=>{
-          return action?.actionType})
+        }).filter(action => {
+          return action?.actionType
+        })
         .map((action, index) => {
           debugger
-          return this.$generateActionOption(action.actionType,action)
+          return this.$generateActionOption(action.actionType, action)
         })
 
-      actions.sort((a,b)=>a.sort-b.sort)
-        return actions
+      actions.sort((a, b) => a.sort - b.sort)
+      return actions
     },
-    isPageForm(){
-      return ['DyPage','dy-page'].includes(this.container)
+    isPageForm () {
+      return ['DyPage', 'dy-page'].includes(this.container)
     }
   },
   mounted () {
@@ -95,36 +95,35 @@ export default {
   },
   components: {},
   methods: {
-    reset() {
-      this.$refs["DynamicFormContent"].resetFields();
+    reset () {
+      this.$refs.DynamicFormContent.resetFields()
     },
     actionHandle (action) {
-       this.actionHandles(action)
+      this.actionHandles(action)
     },
     formDataUpdateHandle (formVm, param) {
       if (this.body.formDataUpdateHandle) {
         this.body.formDataUpdateHandle(formVm, param)
       }
     },
-    closeModal(){
-      this.visible.value=false
-       if(this.$parent?.$options.name=='DynamicPageWrapper'&&['DyPage','dy-page'].includes(this.container)){
+    closeModal () {
+      this.visible.value = false
+      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     },
-    clearRouteQuery(){
-     const {id,action}= this.$route.query
-     if(id||action){
-       const query={...this.$route.query}
-       delete query.id
-       delete query.action
+    clearRouteQuery () {
+      const { id, action } = this.$route.query
+      if (id || action) {
+        const query = { ...this.$route.query }
+        delete query.id
+        delete query.action
 
-       this.$router.replace(this.$route.path,query)
-     }
-
+        this.$router.replace(this.$route.path, query)
+      }
     },
-    afterClose(){
-         if(this.$parent?.$options.name=='DynamicPageWrapper'&&['DyPage','dy-page'].includes(this.container)){
+    afterClose () {
+      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     }
@@ -138,6 +137,5 @@ export default {
   /deep/ .el-drawer__header{
   border-bottom: solid 1px var(--color-border-color);
  }
-
 
 </style>

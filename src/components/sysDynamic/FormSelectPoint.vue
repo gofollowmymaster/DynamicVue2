@@ -38,11 +38,13 @@
 
 <script>
 import FormMixin from '../../packages/components/formItems/mixin'
-import {gcj02ToWgs}  from  "../../packages/utils/mapUtils"
+import { gcj02ToWgs } from '../../packages/utils/mapUtils'
+import selectPointGis from '@/components/source/selectPointGis'
 
 export default {
   name: 'FormSelectPoint',
   mixins: [FormMixin],
+  components: { selectPointGis },
   props: {
     zoom: {
       type: Number,
@@ -66,16 +68,14 @@ export default {
         debugger
         this.$emit('input', lnglat.join(','))
 
-        this.statusChangeFn.valueUpdateEvent({
-          [this.item.key]: lnglat
-        })
-
         // if (!lnglat.length) return ;
-        lnglat=gcj02ToWgs(lnglat)
+        lnglat = gcj02ToWgs(lnglat)
 
         this.geocoder.getAddress(lnglat, (status, result) => {
           if (status === 'complete' && result.regeocode) {
-            this._valueLink(result.regeocode)
+            this.statusChangeFn.valueUpdateEvent({
+              [this.item.key]: result.regeocode
+            })
           } else {
             console.error('根据经纬度查询地址失败')
           }

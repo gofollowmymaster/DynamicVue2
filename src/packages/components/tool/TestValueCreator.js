@@ -1,5 +1,5 @@
 import { generatRandomNum } from '../../utils/tool'
-import moment  from  "moment"
+import moment from 'moment'
 /**
  * Created by 王冬 on 2021/9/18.
  * QQ: 20004604
@@ -76,7 +76,7 @@ class TestValueCreator {
         ) {
           obj[fieldItem.key] = this.makeSelectRadioValue(fieldItem)
         } else if (
-          ['FormIntNumber', 'FormDecimalNumber','FormRateInput'].includes(fieldItem.type)
+          ['FormIntNumber', 'FormDecimalNumber', 'FormRateInput'].includes(fieldItem.type)
         ) {
           obj[fieldItem.key] = this.makeNumberValue(fieldItem)
         } else if (['FormDynamicSelect'].includes(fieldItem.type)) {
@@ -90,7 +90,7 @@ class TestValueCreator {
           ].includes(fieldItem.type)
         ) {
           obj[fieldItem.key] = this.makeDateValue(fieldItem) || '1'
-        } 
+        }
       })
     })
     return obj
@@ -242,9 +242,9 @@ class TestValueCreator {
       case 'FormDateTime':
         return moment().format('YYYY-MM-DD hh:mm:ss')
       case 'FormDateRange':
-        return moment().format('YYYY-MM-DD')+'-'+moment().endOf('month').format('YYYY-MM-DD')
+        return moment().format('YYYY-MM-DD') + '-' + moment().endOf('month').format('YYYY-MM-DD')
       case 'FormDateTimeRange':
-        return moment().format('YYYY-MM-DD hh:mm:ss')+'-'+moment().endOf('month').format('YYYY-MM-DD hh:mm:ss')
+        return moment().format('YYYY-MM-DD hh:mm:ss') + '-' + moment().endOf('month').format('YYYY-MM-DD hh:mm:ss')
     }
   }
 
@@ -278,8 +278,8 @@ class TestValueCreator {
           `字段：${key}，描述：${label}，无法生成符合超限数据，请检查 fields 的配置。默认使用 label 作为数据`
         )
       }
-      if(formItem.type=='FormRateInput'){
-        s=s/100
+      if (formItem.type == 'FormRateInput') {
+        s = s / 100
       }
       return s
     } else if (this.DataType === DATAENUM.BorderData) {
@@ -298,8 +298,8 @@ class TestValueCreator {
         // 其他情况，设置该值为空（非必填，所以理论上可以设置为空，即空字符串为极限值）
         s = 1
       }
-      if(formItem.type=='FormRateInput'){
-        s=s/100
+      if (formItem.type == 'FormRateInput') {
+        s = s / 100
       }
       return s
     } else {
@@ -317,8 +317,8 @@ class TestValueCreator {
         s = Math.floor(100 * Math.random())
       }
 
-      if(formItem.type=='FormRateInput'){
-        s=s/100
+      if (formItem.type == 'FormRateInput') {
+        s = s / 100
       }
 
       return s

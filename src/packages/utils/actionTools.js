@@ -1,5 +1,4 @@
-import {appendToPreset, deepMerge } from  "./tool"
- 
+import presetConfig from '../presetConfig'
 
 export function generateDefaultValue (fields) {
   if (!Array.isArray(fields)) {
@@ -17,21 +16,20 @@ export function generateDefaultValue (fields) {
 }
 
 function setDialogPageAction (options) {
-
   const baseOption = setActionBaseOption(options)
   const actionOption = {
     ...baseOption,
     actionType: 'dialogPage',
     dialog: {
-      key:options.key,
-      origin:options.origin,
+      key: options.key,
+      origin: options.origin,
       properties: {
         title: options.title,
         ...(options.containerProperties || {})
       },
-      container: options.container||'dy-page',
+      container: options.container || 'dy-page',
       // layout: options.layout||'LayoutGrid',
-      // 
+      //
       layout: {
         name: options.layout || 'LayoutGrid',
         properties: {
@@ -46,16 +44,16 @@ function setDialogPageAction (options) {
 }
 
 function setSubmitAction (options) {
-  options=setDetaultOptions(options)
+  options = setDetaultOptions(options)
   const baseOption = setActionBaseOption(options)
-  
+
   const actionOption = {
     ...baseOption,
     label: options.label || '提交',
     component: options.component || 'el-button',
     properties: {
       type: 'primary',
-      size: 'small',
+      size: presetConfig.getConfig('btnSize'),
       key: '',
       ...options.componentProperties
     },
@@ -70,10 +68,10 @@ function setSubmitAction (options) {
       ...(options.callback || {})
     }
   }
-  return  actionOption
+  return actionOption
 }
 function setCloseAction (options) {
-  options=setDetaultOptions(options)
+  options = setDetaultOptions(options)
   const baseOption = setActionBaseOption(options)
   const actionOption = {
     ...baseOption,
@@ -84,31 +82,30 @@ function setCloseAction (options) {
   return actionOption
 }
 function setResetAction (options) {
-  options=setDetaultOptions(options)
+  options = setDetaultOptions(options)
   const baseOption = setActionBaseOption(options)
   const actionOption = {
     ...baseOption,
     actionType: 'reset',
-    label: options.label || '重置',
+    label: options.label || '重置'
   }
   return actionOption
 }
 
 function setActionBaseOption (options) {
-  
   return {
     component: options.component || 'el-button',
-    actionKey: options.actionKey||'undefined',
+    actionKey: options.actionKey || 'undefined',
     properties: {
       type: 'default',
-      size: 'small',
-      key: options.key||options.label||options.permission,
+      size: presetConfig.getConfig('btnSize'),
+      key: options.key || options.label || options.permission,
       ...options.componentProperties
     },
-    mainKey:options.mainKey||'id',
+    mainKey: options.mainKey || presetConfig.getConfig('mainKey'),
     label: options.label || '操作',
     sort: options.sort || 100,
-    permission: options.permission ||options.label,
+    permission: options.permission || options.label,
     isShow: options.isShow || (() => true),
     dataAdapter: options.dataAdapter || ((data) => data),
     isLoadData: options.isLoadData ?? true,
@@ -117,60 +114,50 @@ function setActionBaseOption (options) {
       ? {
         component: options.actionPopComponent || 'popConfirm',
         properties: {
-          'confirm-button-text': '好的',
-          'cancel-button-text': '不用了',
-          title: '确定执行该操作吗？',
-          icon: 'el-icon-warning',
+          ...presetConfig.getConfig('actionPopProperties'),
           ...(options.actionPopProperties || {})
         }
       }
       : null,
-    msgBox:options.msgBox?{
-      title: '提示',
-      message:'确定执行该操作吗？',
-      showCancelButton: true,
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type:'warning',
-      lockScroll:true,
+    msgBox: options.msgBox ? {
+      ...presetConfig.getConfig('msgBoxProperties'),
       ...options.msgBox
-    }:null,  
-    actionHook: options.actionHook||'',
-    isShow:options.isShow||'',
+    } : null,
+    actionHook: options.actionHook || '',
+    isShow: options.isShow || ''
   }
-  
-
 }
 function setDialogFormAction (options) {
-
   const baseOption = setActionBaseOption(options)
-  const labelWidth=['dy-page','DyPage'].includes(options.container)?'160px':'160px'
+  let { labelWidth, pageLabelWidth, labelPosition } = presetConfig.getConfig('formOption').formProperties
+  labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
   const actionOption = {
     ...baseOption,
     isLoadData: options.isLoadData ?? true,
     actionType: 'dialogForm',
     apiPromise: options.apiPromise || '',
-    
+
     dialog: {
-      origin:options.origin,
-      key:options.key,
+      origin: options.origin,
+      key: options.key,
       container: options.container || 'el-dialog',
       properties: {
         title: options.title || '',
-        width: options.width || '40%',
+        width: options.width || presetConfig.getConfig('dialogWidth'),
         ...(options.containerProperties || {})
       },
       body: {
         formOption: {
           formProperties: {
+            ...presetConfig.getConfig('formOption').formProperties,
+            ...(options.formProperties || {}),
             'label-width': options['label-width'] || labelWidth,
-            'label-position': options['label-position'] || 'right',
-            ...(options.formProperties || {})
+            'label-position': options['label-position'] || labelPosition
           },
-          showFoldBtn: options.showFoldBtn ?? true,
-          borderForm: options.borderForm ?? false,
+          showFoldBtn: options.showFoldBtn ?? presetConfig.getConfig('formOption').showFoldBtn,
+          borderForm: options.borderForm ?? presetConfig.getConfig('formOption').borderForm,
           textModel: options.textModel ?? false,
-          singleCol:options.singleCol ?? false,
+          singleCol: options.singleCol ?? false
         },
         formItemList: options.formItemList,
         data: options.data || {},
@@ -188,7 +175,7 @@ function setDialogFormAction (options) {
           cancel: [null].includes(options.cancelAction)
             ? null
             : setCloseAction(options.cancelAction),
-            reset: [null,undefined,''].includes(options.resetAction)
+          reset: [null, undefined, ''].includes(options.resetAction)
             ? null
             : setResetAction(options.resetAction),
           ...options.actions
@@ -196,7 +183,7 @@ function setDialogFormAction (options) {
       }
     }
   }
-   
+
   return actionOption
 }
 
@@ -231,19 +218,17 @@ function setDownloadAction (options) {
 }
 
 function setRouterAction (options) {
-  
   const baseOption = setActionBaseOption(options)
   const actionOption = {
     ...baseOption,
     actionType: 'router',
     label: options.label || '跳转',
     router: options.router || '',
-    routerAction: options.routerAction || 'push',
-    
+    routerAction: options.routerAction || 'push'
+
   }
   return actionOption
 }
- 
 
 function setRouterBackAction (options) {
   const baseOption = setActionBaseOption(options)
@@ -268,13 +253,13 @@ function setCustomAction (options) {
   }
   return actionOption
 }
-function setDetaultOptions(options){
-  if(!(options instanceof Object)) options = {}; 
-  options.key=options.key||Math.floor(Math.random()*10000)
+function setDetaultOptions (options) {
+  if (!(options instanceof Object)) options = {}
+  options.key = options.key || Math.floor(Math.random() * 10000)
   return options
 }
 export function generateActionOption (type, options = {}) {
-  options=setDetaultOptions(options)
+  options = setDetaultOptions(options)
   switch (type) {
     case 'submit':
     case 'submitAction':
@@ -323,37 +308,36 @@ export function generateActionOption (type, options = {}) {
     case 'backActionOption':
     case 'back':
     case 'backAction':
-      return setRouterBackAction(options);
-      case 'closeActionOption':
-      case 'closeAction':
-      case 'close':
- 
-          return setCloseAction(options)
+      return setRouterBackAction(options)
+    case 'closeActionOption':
+    case 'closeAction':
+    case 'close':
+
+      return setCloseAction(options)
     default:
       return setCustomAction(options)
   }
 }
 
-
-export function loadActionTipConfig(vm){
-  const actionTip=vm.$dynamicConfig.actionTip
-  return  actionTip=='pop'?{
+export function loadActionTipConfig (vm) {
+  const actionTip = vm.$dynamicConfig.actionTip
+  return actionTip == 'pop' ? {
     actionPopComponent: 'popConfirm',
-    actionPopProperties:{
+    actionPopProperties: {
       'confirm-button-text': '确定',
       'cancel-button-text': '取消',
       title: '确定执行该操作吗？',
       icon: 'el-icon-warning'
-    },
-  }:{
-    msgBox:{
+    }
+  } : {
+    msgBox: {
       title: '提示',
-      message:'确定执行该操作吗？',
+      message: '确定执行该操作吗？',
       showCancelButton: true,
       confirmButtonText: '确定',
       cancelButtonText: '取消',
-      type:'warning',
-      lockScroll:true
-    }, 
+      type: 'warning',
+      lockScroll: true
+    }
   }
 }

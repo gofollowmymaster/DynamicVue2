@@ -59,23 +59,21 @@ export default {
    */
   computed: {
     valueObj () {
-      
-        console.log('---this.value----',this.value)
+      console.log('---this.value----', this.value)
 
-      if (this.value instanceof Array) return this.value.filter(item=>item)
+      if (this.value instanceof Array) return this.value.filter(item => item)
       return []
     },
     val: {
       get () {
         //  let value = this.value||[]
-        console.log('---this.valueObj----',this.valueObj)
+        console.log('---this.valueObj----', this.valueObj)
         return this.valueObj
           .map((value) => value.admName || value.name)
           .join(',')
       },
       set (value) {
         this.$emit('input', value)
-        this._valueLink(value)
         // 更新数据
         this.statusChangeFn.valueUpdateEvent({
           [this.item.key]: value

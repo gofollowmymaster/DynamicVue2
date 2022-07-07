@@ -5,15 +5,14 @@ import {
   compose,
   deepMerge,
   deepCopy,
-  buildDetailFields,
+  buildDetailFields
 } from '../utils/tool'
 import actionMixin from './actionMixin'
-import actionPresetMixin from "./actionPresetMixin"
-
+import actionPresetMixin from './actionPresetMixin'
 
 export default {
   name: 'DynamicDetailPage',
-  mixins:[actionMixin,actionPresetMixin],
+  mixins: [actionMixin, actionPresetMixin],
   props: {
     fields: {
       type: Array,
@@ -32,61 +31,58 @@ export default {
         return {}
       }
     },
-    formSections:{
+    formSections: {
       type: Object,
       default () {
         return {}
       }
     },
-    detailId:[String,Number,Object],
-    actionKey:[String],
-    entityLabel: String,
+    detailId: [String, Number, Object],
+    actionKey: [String],
+    entityLabel: String
   },
   data: function () {
     return {
-      pageOpened:false
+      pageOpened: false
     }
   },
 
-
   computed: {
-    actionList () {  
-      const pageActions=this.generatePageActionOptions('router')
-      const lineActions = deepMerge( pageActions,
+    actionList () {
+      const pageActions = this.generatePageActionOptions('router')
+      const lineActions = deepMerge(pageActions,
         this.actions,
         true
       )
-      //过滤非弹窗事件
-      for(let key in lineActions){
-        const actionType=lineActions[key].actionType
-         if(!actionType||actionType.toLowerCase().indexOf('dialog')<0){
-           delete lineActions[key]
-         }
+      // 过滤非弹窗事件
+      for (const key in lineActions) {
+        const actionType = lineActions[key].actionType
+        if (!actionType || actionType.toLowerCase().indexOf('dialog') < 0) {
+          delete lineActions[key]
+        }
       }
       return lineActions
     },
-    actionAndDetailid(){
+    actionAndDetailid () {
       return {
-        detailId:this.detailId,
-        actionKey:this.actionKey,
+        detailId: this.detailId,
+        actionKey: this.actionKey
       }
     }
-   
-   
+
   },
-  watch:{
-    actionAndDetailid:{
-      handler({actionKey,detailId}){
+  watch: {
+    actionAndDetailid: {
+      handler ({ actionKey, detailId }) {
         debugger
-        if(detailId||actionKey){
-          this.openPage(detailId,actionKey)
-          return 
+        if (detailId || actionKey) {
+          this.openPage(detailId, actionKey)
+          return
         }
         this.closeDetail()
-
       },
-      immediate:true,
-      deep:true
+      immediate: true,
+      deep: true
     }
   },
   created () {
@@ -95,35 +91,34 @@ export default {
   },
 
   methods: {
-    openPage (detailId,actionKey) {
-      console.log('----this.actionList---',this.actionList)
-      if(!this.actionList[actionKey]){
-        actionKey= Object.keys(this.actionList).filter(action=>this.actionList[action]).filter(action=>action.startsWith('detail'))[0]
+    openPage (detailId, actionKey) {
+      console.log('----this.actionList---', this.actionList)
+      if (!this.actionList[actionKey]) {
+        actionKey = Object.keys(this.actionList).filter(action => this.actionList[action]).filter(action => action.startsWith('detail'))[0]
       }
       let action = deepCopy(this.actionList[actionKey])
-      action=this.$generateActionOption(action.actionType,action)
-      const actionData= (detailId instanceof Object)?detailId:{id:detailId||''}
+      action = this.$generateActionOption(action.actionType, action)
+      const actionData = (detailId instanceof Object) ? detailId : { id: detailId || '' }
 
-      if(action.actionType.startsWith('router')){
-        action.actionType=action.actionType.replace('router','').replace(/(^\w)/,function(start){
-          return  start.toLowerCase()
+      if (action.actionType.startsWith('router')) {
+        action.actionType = action.actionType.replace('router', '').replace(/(^\w)/, function (start) {
+          return start.toLowerCase()
         })
       }
 
-      if( action.dialog?.properties){
-        action.dialog.properties.navType='router'
+      if (action.dialog?.properties) {
+        action.dialog.properties.navType = 'router'
       }
-      action.dialog.container='DyPage'
+      action.dialog.container = 'DyPage'
       // if(action.dialog.body?.actions){
       //   action.dialog.body.actions={}
       // }
-      this.actionHandles(action,actionData)
-      this.pageOpened=true
+      this.actionHandles(action, actionData)
+      this.pageOpened = true
     },
-    closeDetail(){
-      this.pageOpened===true&&this.actionHandles({actionType:'close'})
+    closeDetail () {
+      this.pageOpened === true && this.actionHandles({ actionType: 'close' })
     }
   }
 }
 </script>
-

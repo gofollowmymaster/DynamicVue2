@@ -64,7 +64,7 @@
   </section>
 </template>
 <script>
-import {regionPath} from "@/network/amapData/region" 
+import { regionPath } from '@/network/amapData/region'
 
 export default {
   name: 'TreeSearchable',
@@ -141,12 +141,10 @@ export default {
       this.handleSearch()
     },
 
-
     lazyLoadTreeNode (node, resolve) {
       // 注意：异步加载时，需要先处理node.level===0的第一级数据，再去处理下级node.data的异步加载
-      if(node.level===0){
-      
-          resolve([{"id":"2115","admName":"渝中区","ancestorAdmName":"重庆市渝中区","admCode":"500103000000","parentAdmCode":"500000000000","haveChildNode":true,path:regionPath}])
+      if (node.level === 0) {
+        resolve([{ id: '2115', admName: '渝中区', ancestorAdmName: '重庆市渝中区', admCode: '500103000000', parentAdmCode: '500000000000', haveChildNode: true, path: regionPath }])
         return
       }
       this.lazyLoadTreeNodeApi({
@@ -157,7 +155,7 @@ export default {
           ...unit,
           leaf: !unit.haveChildNode
         }))
-  
+
         resolve(list)
       })
     },

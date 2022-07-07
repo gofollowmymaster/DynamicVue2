@@ -31,7 +31,7 @@
               :name="item.key"
               :index="scope.$index"
               :row="scope.row"
-              
+
               :column="scope.column"
               v-if="item.type == 'slot'"
             ></slot>
@@ -198,7 +198,7 @@ export default {
     handleSelectionChange (list) {
       debugger
       this.multipleSelection = list
-      this.$emit('selection-change',list)
+      this.$emit('selection-change', list)
     },
     handleSizeChange (pageSize) {
       this.baseTablePages.pageSize = pageSize

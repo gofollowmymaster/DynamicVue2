@@ -18,29 +18,30 @@ export const presetRules = {
         return
       }
       callback()
-    },message:'请[action]正确的[label]', trigger: ['blur', 'change']},
+    },
+    message: '请[action]正确的[label]',
+    trigger: ['blur', 'change']
+  }
 
 }
 
-
-export function getRule(rule, formItemType, label) {
-
-  if (typeof rule == 'string') {
+export function getRule (rule, formItemType, label) {
+  if (typeof rule === 'string') {
     const ruleObj = presetRules[rule]
     return { ...ruleObj, message: buildErrorMessage(ruleObj.message, formTypeActionMap[formItemType], label) }
   }
   if (rule instanceof RegExp) {
-    const ruleObj = presetRules['customRegexp']
-    return { ...ruleObj,regexp:rule, message: buildErrorMessage(ruleObj.message, formTypeActionMap[formItemType], label) }
+    const ruleObj = presetRules.customRegexp
+    return { ...ruleObj, regexp: rule, message: buildErrorMessage(ruleObj.message, formTypeActionMap[formItemType], label) }
   }
-  if (typeof rule == 'object') {
+  if (typeof rule === 'object') {
     return rule
   }
 
   return { validator: rule, trigger: 'blur', required: true }
 }
 
-function buildErrorMessage(template, action = '完善', label) {
+function buildErrorMessage (template, action = '完善', label) {
   template = template.replace(/\[label\]/, label)
   return template.replace(/\[action\]/, action)
 }
@@ -56,5 +57,5 @@ const formTypeActionMap = {
   FormNumberInput: '填写',
   FormNormalNumber: '填写',
   FormRateNumber: '填写',
-  FormTextareaNumber: '填写',
+  FormTextareaNumber: '填写'
 }

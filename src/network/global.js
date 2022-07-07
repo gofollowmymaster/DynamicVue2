@@ -4,21 +4,16 @@ import qs from 'qs'
 import { downFile } from '@/common/utils'
 import { SysAdmListAdmTreeInfo } from '@/network/home'
 
-
 /* **************************** 系统配置-相关 **************************** */
- 
 
 /* **************************** 文件下载-相关 **************************** */
 
- 
 export function globalFileGetFileList (idList) {
   return request({
     method: 'post',
     url: `/file/getFileList?${idList.map((unit) => `ids=${unit}`).join('&')}`
   })
 }
-
- 
 
 export function globalDownloadBaseFileId (fileId) {
   return request({
@@ -40,7 +35,7 @@ export function globalDownloadBaseFileId (fileId) {
 */
 export function globalDownloadFileById (params) {
   debugger
-  const fileId=params.fileId||params.id
+  const fileId = params.fileId || params.id
   return request({
     url: '/file/downloadFile',
     method: 'post',
@@ -101,13 +96,11 @@ export function buildDynamicSelectOption (dictType) {
   }
 }
 
-
-
 const treeRootCode = window._config.regionCode
 
 export function asyncAdministractiveTreeNode (node, resolve) {
-  if(node.level===0){
-    resolve([{"id":"2115","admName":"渝中区","ancestorAdmName":"重庆市渝中区","admCode":"500103000000","parentAdmCode":"500000000000","haveChildNode":true,}])
+  if (node.level === 0) {
+    resolve([{ id: '2115', admName: '渝中区', ancestorAdmName: '重庆市渝中区', admCode: '500103000000', parentAdmCode: '500000000000', haveChildNode: true }])
     return
   }
   SysAdmListAdmTreeInfo({
@@ -125,21 +118,17 @@ export function asyncAdministractiveTreeNode (node, resolve) {
   })
 }
 
-
-export function srcDownloadFileById(url,) {
-   
+export function srcDownloadFileById (url) {
   return request({
     url,
     method: 'get',
     responseType: 'blob',
-    responseOrigin: true,
-  }).then((response)=>{
-    const fileName = response.headers?.['content-disposition']?(response.headers['content-disposition'].replace(
+    responseOrigin: true
+  }).then((response) => {
+    const fileName = response.headers?.['content-disposition'] ? (response.headers['content-disposition'].replace(
       /.*=(.*\.\w+)/g,
       '$1'
-    )):'下载文件'
-    downFile(response.data, decodeURIComponent(fileName)) 
+    )) : '下载文件'
+    downFile(response.data, decodeURIComponent(fileName))
   })
 }
- 
- 

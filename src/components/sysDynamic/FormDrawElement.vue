@@ -23,80 +23,77 @@
     <DrawElementGis
       v-model="val"
       :visible="visible"
-      :zoom="zoom" 
+      :zoom="zoom"
       :title="title"
       :drawType="bindOptions.drawType"
-      :mode='getTextModel?"view":"select"'  
+      :mode='getTextModel?"view":"select"'
     ></DrawElementGis>
   </main>
 </template>
 
 <script>
-import FormMixin from "../../packages/components/formItems/mixin";
-import DrawElementGis from "../source/DrawElementGis.vue";
+import FormMixin from '../../packages/components/formItems/mixin'
+import DrawElementGis from '../source/DrawElementGis.vue'
 
 export default {
   components: { DrawElementGis },
-  name: "FormDrawElement",
+  name: 'FormDrawElement',
   mixins: [FormMixin],
   props: {
     zoom: {
       type: Number,
       default: function () {
-        return 11;
-      },
+        return 11
+      }
     },
     title: {
       type: String,
       default: function () {
-        return "选择位置";
-      },
-    },
- 
+        return '选择位置'
+      }
+    }
+
   },
-  computed:{
- 
+  computed: {
+
     val: {
-        get () {
-          let value
-          try{
-            value=JSON.parse(this.value)
-            
-          }catch(e){
-            value=[]
-          }
-          return value
-        },
-        set (lnglat) {
-          this.$emit('input', JSON.stringify(lnglat));
-          this._valueLink(lnglat);
-          
-          // 只有非子表单的情况下，才会冒泡上去数据变更
-          if (this.formItemType !== 'childForm') {
-              this.statusChangeFn.valueUpdateEvent({
-                  [this.item.key]: lnglat,
-              });
-          } else {
-              // 如果是子表单的话，执行内置的变更
-              this.childChangeData.valueUpdateEvent();
-          }
+      get () {
+        let value
+        try {
+          value = JSON.parse(this.value)
+        } catch (e) {
+          value = []
         }
-    },
+        return value
+      },
+      set (lnglat) {
+        this.$emit('input', JSON.stringify(lnglat))
+
+        // 只有非子表单的情况下，才会冒泡上去数据变更
+        if (this.formItemType !== 'childForm') {
+          this.statusChangeFn.valueUpdateEvent({
+            [this.item.key]: lnglat
+          })
+        } else {
+          // 如果是子表单的话，执行内置的变更
+          this.childChangeData.valueUpdateEvent()
+        }
+      }
+    }
   },
   data: function () {
     return {
-      visible: {value:false},
-    };
+      visible: { value: false }
+    }
   },
-  created(){
- 
+  created () {
+
   },
 
   methods: {
-    selectPoint() {    
-      this.visible.value = true;
-    },
-  },
-};
+    selectPoint () {
+      this.visible.value = true
+    }
+  }
+}
 </script>
-

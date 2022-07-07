@@ -28,7 +28,7 @@ export default {
     },
     apiPromise: {
       type: Promise,
-      default(){
+      default () {
         return Promise.resolve()
       }
     }
@@ -49,12 +49,12 @@ export default {
         })
       }
     },
-    data:{
-      handler(data){
+    data: {
+      handler (data) {
         this.cardList = JSONDeepCopy(data)
       },
-      immediate:true,
-      deep:true
+      immediate: true,
+      deep: true
     }
   },
   mounted () {
@@ -70,7 +70,7 @@ export default {
 .card-item {
   height: 160px;
   width: 310px;
-  
+
 }
 .border{
   border: solid 1px white;

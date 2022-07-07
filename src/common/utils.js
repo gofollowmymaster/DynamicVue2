@@ -1,6 +1,4 @@
 import moment from 'moment'
- 
- 
 
 export function arrayToObject (arr, key) {
   return arr.reduce((prev, next) => {
@@ -83,7 +81,6 @@ export function deepCopy (origin) {
   }
   return target
 }
- 
 
 export function isNullOrUndefined (variable) {
   return variable === null || variable === undefined
@@ -233,7 +230,6 @@ export function pureType (value) {
     return rest[1]
   })
 }
-  
 
 export function isEmpty (value, containEmptyString = false) {
   let emptyValues = ['', undefined, null]

@@ -1,8 +1,8 @@
 
 module.exports = {
   // devtool: 'source-map',
-  publicPath:'/dyvue2-admin/',
-  assetsDir:'./dyvue2-admin/',
+  publicPath: '/dyvue2-admin/',
+  assetsDir: './dyvue2-admin/',
   lintOnSave: true,
   configureWebpack: {
     resolve: {
@@ -17,8 +17,8 @@ module.exports = {
     devServer: {
       host: '0.0.0.0',
       port: 8081,
-      open: false,
-     
+      open: false
+
     }
   }
 }

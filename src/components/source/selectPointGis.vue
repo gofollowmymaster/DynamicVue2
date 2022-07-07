@@ -1,4 +1,3 @@
- 
 
 <template>
   <el-dialog
@@ -21,7 +20,7 @@
     <el-amap-info-window  v-if="position.length" :position="position" :offset="[0,-24]">
        <div class="info" style="position:inherit;margin-bottom:0;">
          {{text}}
-         </div> 
+         </div>
     </el-amap-info-window>
       <el-amap-marker v-if="position.length" :position="position"  ></el-amap-marker>
       <el-amap-polygon
@@ -47,12 +46,11 @@
 </template>
 
 <script>
-// import {regionPath}   from  "@/network/amapData/region.js"
+import { regionPath } from '@/network/amapData/region.js'
 // import {gcj02ToWgs}  from  "@/common/mapClient/amap/utils/mapUtils"
 const TK_KEY = 'af3a42f19a33f75acc37a6f5b7e81331'
 const vecLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=vec_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
 const cvaLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=cva_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
-
 
 export default {
   name: 'selectPointGis',
@@ -81,9 +79,9 @@ export default {
         return []
       }
     },
-    mode:{
-      type:String,
-      default:'select'
+    mode: {
+      type: String,
+      default: 'select'
     }
   },
   model: {
@@ -92,18 +90,18 @@ export default {
   },
   data () {
     return {
-      amapStyleConfig:this.$dynamicConfig.amapStyleConfig,
-      path: regionPath||[],
+      amapStyleConfig: this.$dynamicConfig.amapStyleConfig,
+      path: regionPath || [],
       center: [106.680603, 29.402348],
       text: '',
-      layers:[   { type: 'tile', url: cvaLayer },
-          { type: 'tile', url: vecLayer }],
+      layers: [{ type: 'tile', url: cvaLayer },
+        { type: 'tile', url: vecLayer }],
       events: {
         click: (selectedPoint) => {
           debugger
           const { lng, lat } = selectedPoint.lnglat
-          if(this.mode=='select'){
-              this.$emit('change', [lng, lat])
+          if (this.mode == 'select') {
+            this.$emit('change', [lng, lat])
           }
         }
       },
@@ -119,7 +117,6 @@ export default {
         this.geocoder.getAddress(position, (status, result) => {
           if (status === 'complete' && result.regeocode) {
             this.text = result.regeocode.formattedAddress
-           
           } else {
             console.error('根据经纬度查询地址失败')
           }
@@ -136,7 +133,7 @@ export default {
     })
   },
   mounted () {
-   
+
   },
   methods: {
     selectPointConfirm () {

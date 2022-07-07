@@ -38,7 +38,7 @@
         </section>
       </section>
       </main>
-      
+
     </curdLayout>
       </DynamicPageWrapper>
   </div>
@@ -46,9 +46,9 @@
 <script>
 import {
   buildFormFields,
-  buildSearchFields, 
+  buildSearchFields
 } from '@/packages/utils/tool'
-import {loadActionTipConfig} from "@/packages/utils/actionTools"
+import { loadActionTipConfig } from '@/packages/utils/actionTools'
 import {
   treeSpeciesUpdateApi,
   treeSpeciesSaveApi,
@@ -62,7 +62,6 @@ import fields from './treeSpecies'
 import BaseLazyTreeTable from '@/components/BaseBackend/BaseLazyTreeTable'
 import presetConfig from '@/packages/presetConfig'
 
-
 const formFields = buildFormFields(fields)
 const searchFields = buildSearchFields(fields)
 const searchFieldsEmptyValues = searchFields[0].children.reduce(
@@ -72,14 +71,14 @@ const searchFieldsEmptyValues = searchFields[0].children.reduce(
   },
   {}
 )
-const tableBtnType=presetConfig.getConfig('tableOption').actionBtnType
+const tableBtnType = presetConfig.getConfig('tableOption').actionBtnType
 export default {
   name: 'treeSpecies',
-  components: {   BaseLazyTreeTable },
+  components: { BaseLazyTreeTable },
   data: function () {
     return {
       searching: false,
- 
+
       lazyTreeTableItems: [
         {
           title: '序号',
@@ -144,87 +143,86 @@ export default {
         }
       },
       searchFields,
-      searchOption:presetConfig.getConfig('searchOption'),
+      searchOption: presetConfig.getConfig('searchOption'),
       topToolBar: {
         create: {
-          label:'新增',
-          actionType:'dialogFormAction',
+          label: '新增',
+          actionType: 'dialogFormAction',
           isLoadData: false,
-          componentProperties:{
-            type:'primary',
-            icon:'el-icon-plus'
+          componentProperties: {
+            type: 'primary',
+            icon: 'el-icon-plus'
           },
-           singleCol: true,
-           containerProperties:{
-              title: "新增资产类型",
-              width: "36%",
-            },
-              formItemList: formFields,
-              saveAction: {
-                  apiPromise: treeSpeciesSaveApi,
-                },
+          singleCol: true,
+          containerProperties: {
+            title: '新增资产类型',
+            width: '36%'
+          },
+          formItemList: formFields,
+          saveAction: {
+            apiPromise: treeSpeciesSaveApi
+          }
         },
 
-        bulkdelete:  {
-          label: "批量删除",
-          actionType:'requestApiAction',
+        bulkdelete: {
+          label: '批量删除',
+          actionType: 'requestApiAction',
           isLoadData: true,
-          actionDataKey:'selected',
+          actionDataKey: 'selected',
           apiPromise: treeSpeciesDeleteApi,
           ...loadActionTipConfig(this)
-        },
+        }
       },
 
       lineActions: {
-        update:  {
+        update: {
           label: '更新',
-          actionType:'dialogFormAction',
+          actionType: 'dialogFormAction',
           apiPromise: treeSpeciesDetailApi,
-          componentProperties:{
-             type:tableBtnType
+          componentProperties: {
+            type: tableBtnType
           },
-            containerProperties:{
-              title: "更新资产类型",
-              width: "36%",
-            },
-            singleCol: true,
-  
-              formItemList: formFields,
-                saveAction: {
-                  apiPromise: treeSpeciesUpdateApi,
-                },
-                
+          containerProperties: {
+            title: '更新资产类型',
+            width: '36%'
+          },
+          singleCol: true,
+
+          formItemList: formFields,
+          saveAction: {
+            apiPromise: treeSpeciesUpdateApi
+          }
+
         },
         detail: {
           label: '查看',
-          actionType:'dialogFormAction',
+          actionType: 'dialogFormAction',
           apiPromise: treeSpeciesDetailApi,
-          componentProperties:{
-             type:tableBtnType
+          componentProperties: {
+            type: tableBtnType
           },
-          containerProperties:{
-              title: "资产类型详情",
-              width: "36%",
-            },
-                textModel: true,
-                singleCol: true,
-                formProperties: {
-                  'label-width': '120px',
-                  'label-position': 'right'
-                },
-         
-              formItemList: formFields,
-              saveAction: null
-       
-       
+          containerProperties: {
+            title: '资产类型详情',
+            width: '36%'
+          },
+          textModel: true,
+          singleCol: true,
+          formProperties: {
+            'label-width': '120px',
+            'label-position': 'right'
+          },
+
+          formItemList: formFields,
+          saveAction: null
+
         },
-        delete:   {
+        delete: {
           label: '删除',
-          actionType:'requestApiAction',
+          actionType: 'requestApiAction',
           apiPromise: treeSpeciesDeleteApi,
-          componentProperties:{
-             class:['text-grey-dark2'],
-             type:'text'
+          componentProperties: {
+            class: ['text-grey-dark2'],
+            type: 'text'
           },
           ...loadActionTipConfig(this)
         }
@@ -236,13 +234,12 @@ export default {
   computed: {
     queryParams () {
       return { ...this.searchParams, ...this.pagination }
-    },
- 
+    }
+
   },
-  watch:{
-    queryParams(queryParams){
-         
-        this.searching=true
+  watch: {
+    queryParams (queryParams) {
+      this.searching = true
     }
   },
   created () {
@@ -254,19 +251,18 @@ export default {
   },
 
   methods: {
-    bulkDelete(){
-      
+    bulkDelete () {
+
     },
-   
+
     refresh () {
-       this.$refs.treeTable.forceFreshTreeTable()
+      this.$refs.treeTable.forceFreshTreeTable()
     },
-    
+
     onSearch (params) {
       this.searchParams = { ...this.searchParams, ...params }
     },
 
-     
     selecctChange (selected) {
       debugger
       this.selected = selected

@@ -36,7 +36,7 @@
               :actionBarWraper="$parent.$el"
               mode="table"
             ></DynamicActions>
-          
+
           </template>
         </el-table-column>
         <el-table-column
@@ -99,7 +99,7 @@ export default {
       }
     },
     selected: {
-      type: [ Object],
+      type: [Object],
       default () {
         return {}
       }
@@ -112,25 +112,25 @@ export default {
   },
   computed: {
     columnsComputed () {
-      const columns = this.columns.map((item,index) => {
-        if(item.type==='index'){
-           item.tableOption={
-              ...item.tableOption,
-              width: 56,
-              fixed: 'left'
-           }
-        }else if(index<2){
-            item.tableOption={
-              ...item.tableOption,
-              fixed: 'left'
-            }
+      const columns = this.columns.map((item, index) => {
+        if (item.type === 'index') {
+          item.tableOption = {
+            ...item.tableOption,
+            width: 56,
+            fixed: 'left'
+          }
+        } else if (index < 2) {
+          item.tableOption = {
+            ...item.tableOption,
+            fixed: 'left'
+          }
         }
         return {
           ...item,
           tableOption: {
             ...item.tableOption,
-            label: item.tableOption?.label || item.label,
-          
+            label: item.tableOption?.label || item.label
+
           }
         }
       })
@@ -146,23 +146,23 @@ export default {
         })
       }
       //
-      const lineActions= deepCopy(this.table.lineActions)
+      const lineActions = deepCopy(this.table.lineActions)
 
       if (lineActions) {
-        const actions = Object.values(lineActions).map(action=>{
-           debugger
-          action.componentProperties={...action.componentProperties,type:this.table.actionBtnType}
+        const actions = Object.values(lineActions).map(action => {
+          debugger
+          action.componentProperties = { ...action.componentProperties, type: this.table.actionBtnType }
           return action
         })
         columns.push({
           type: 'lineActions',
           key: 'lineActions',
           tableOption: {
-            'width': this.table.actionColWidth|| (actions.length * 60),
+            width: this.table.actionColWidth || (actions.length * 60),
             label: '操作',
             fixed: 'right'
           },
-          actions: lineActions    //引用在map中被修改
+          actions: lineActions // 引用在map中被修改
         })
       }
 
@@ -194,9 +194,8 @@ export default {
       deep: true,
       immediate: true
     },
-    selected : {
+    selected: {
       handler (selected) {
-
         this.selectRefresh(selected)
       },
       deep: true,
@@ -205,8 +204,8 @@ export default {
     },
     data: {
       handler (data) {
-        if(data){
-         this.tableData = data
+        if (data) {
+          this.tableData = data
         }
       },
       deep: true,
@@ -218,17 +217,15 @@ export default {
   methods: {
     selectRefresh () {
       this.$nextTick(() => {
-        const mainKey =this.table.properties['row-key']
-        if(!mainKey) return
-        this.tableData.forEach(row=>{
-            if(this.selected[row[mainKey]]){
-                 this.$refs.table.toggleRowSelection(row, true)
-                 return
-            }
-           this.$refs.table.toggleRowSelection(row, false)
+        const mainKey = this.table.properties['row-key']
+        if (!mainKey) return
+        this.tableData.forEach(row => {
+          if (this.selected[row[mainKey]]) {
+            this.$refs.table.toggleRowSelection(row, true)
+            return
+          }
+          this.$refs.table.toggleRowSelection(row, false)
         })
-
-       
       })
     },
     indexHandle (index) {
@@ -237,15 +234,11 @@ export default {
   }
 }
 </script>
- 
 
 <style lang="less"  >
 .dynamic-table-container  ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
- 
 
-
- 
 </style>

@@ -391,10 +391,10 @@ export default {
     const { origin } = this.fixRoutes(this.$router.options.routes)
     console.log('###############', this.$route, origin)
     const rootMenuPath = this.$route.matched[0].path
-     const focusTopMenu=origin.filter((unit) => unit.path === rootMenuPath)
-     if(focusTopMenu){
-     this.menuList =focusTopMenu[0].children||[]
-     }
+    const focusTopMenu = origin.filter((unit) => unit.path === rootMenuPath)
+    if (focusTopMenu) {
+      this.menuList = focusTopMenu[0].children || []
+    }
   }
 }
 </script>
@@ -531,7 +531,7 @@ export default {
 }
 .scroll::-webkit-scrollbar {
     width: 4px;
-    
+
 }
 .scroll::-webkit-scrollbar-track {
     background: #fff;

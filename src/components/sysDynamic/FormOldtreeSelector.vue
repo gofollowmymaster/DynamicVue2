@@ -24,7 +24,7 @@
         :disabled="getDisabled"
         >选择</el-button
       >
-    </div>  
+    </div>
 
     <tableSelector
       v-if="!getTextModel"
@@ -33,7 +33,7 @@
       :fields="fields"
       :optionsProps="pageOptions"
       width="50%"
-      :selected="valueObj"  
+      :selected="valueObj"
       @change="change"
     >
     </tableSelector>
@@ -50,9 +50,9 @@ const fields = [
     label: '关键字',
     searchOption: {
       wraperProperties: {
-        class: ['grid-col-8'],
-      },
- 
+        class: ['grid-col-8']
+      }
+
     }
   },
   {
@@ -104,9 +104,9 @@ const fields = [
     searchOption: {
       wraperProperties: {
         class: ['grid-col-8'],
-        'label-width': '90px',
+        'label-width': '90px'
       },
-        key:'district'
+      key: 'district'
 
     },
     tableOption: {
@@ -158,27 +158,27 @@ export default {
     }
   },
   computed: {
-    
+
     valueArr () {
-      if (this.value instanceof Array) return this.value.filter(item=>item)
+      if (this.value instanceof Array) return this.value.filter(item => item)
       return []
     },
-      valueObj () {
-      if (this.value instanceof Array) return this.value.reduce((prev,next)=>{
-        prev[next.id]=next
-        return prev
-      },{})
+    valueObj () {
+      if (this.value instanceof Array) {
+        return this.value.reduce((prev, next) => {
+          prev[next.id] = next
+          return prev
+        }, {})
+      }
       return {}
     },
     val: {
       get () {
         //  let value = this.value||[]
-        return this.valueArr.map((value) => value.treeName||value.name).join(',')
+        return this.valueArr.map((value) => value.treeName || value.name).join(',')
       },
       set (value) {
-        
         this.$emit('input', value)
-        this._valueLink(value)
         // 更新数据
         this.statusChangeFn.valueUpdateEvent({
           [this.item.key]: value
@@ -190,8 +190,8 @@ export default {
     selectHandleer () {
       this.visible.value = true
     },
-    change(list){
-      this.val=Object.values(list)
+    change (list) {
+      this.val = Object.values(list)
     }
     // saveAdministractive (list) {
     //   this.val = list
