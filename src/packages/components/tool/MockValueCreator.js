@@ -4,37 +4,37 @@ import moment from 'moment'
 
 import Mock from 'mockjs'
 
-const Random = Mock.Random
+// const Random = Mock.Random
 
-function mockDyFields (fields) {
-  const mockInfo = {}
-  fields.forEach((field) => {
-    switch (field.type) {
-      case 'FormDate':
-        mockInfo[field.key + '|1'] = '@date'
-        break
-      case 'FormDateTime':
-        mockInfo[field.key + '|1'] = '@datetime'
-        break
-      case 'FormRadio':
-      case 'FormSelect':
-        // mockInfo[field.key + "|1"] = field.options(
-        //   Random.integer(0, field.options.length - 1)
-        // );
-        mockInfo[field.key + '|1'] = Random.integer(0, 3)
-        break
-      case 'FormIntNumber':
-        mockInfo[field.key + '|1-100'] = 1
-        break
-      case 'FormDecimalNumber':
-        mockInfo[field.key + '|1-100.1-3'] = 1
-        break
-      default:
-        mockInfo[field.key + '|1'] = '@cword'
-    }
-  })
-  return mockInfo
-}
+// function mockDyFields (fields) {
+//   const mockInfo = {}
+//   fields.forEach((field) => {
+//     switch (field.type) {
+//       case 'FormDate':
+//         mockInfo[field.key + '|1'] = '@date'
+//         break
+//       case 'FormDateTime':
+//         mockInfo[field.key + '|1'] = '@datetime'
+//         break
+//       case 'FormRadio':
+//       case 'FormSelect':
+//         // mockInfo[field.key + "|1"] = field.options(
+//         //   Random.integer(0, field.options.length - 1)
+//         // );
+//         mockInfo[field.key + '|1'] = Random.integer(0, 3)
+//         break
+//       case 'FormIntNumber':
+//         mockInfo[field.key + '|1-100'] = 1
+//         break
+//       case 'FormDecimalNumber':
+//         mockInfo[field.key + '|1-100.1-3'] = 1
+//         break
+//       default:
+//         mockInfo[field.key + '|1'] = '@cword'
+//     }
+//   })
+//   return mockInfo
+// }
 
 const DATAENUM = {
   // 合法标准随机数据
@@ -78,7 +78,7 @@ class TestValueCreator {
       }
       blockFields.children.forEach(fieldItem => {
         // 根据字段生成
-        const { key } = fieldItem
+        const { key,label } = fieldItem
         if (this.customizeFn[key]) {
           if (typeof this.customizeFn[key] === 'function') {
             obj[key] = this.customizeFn[key](this.DataType)
@@ -155,9 +155,9 @@ class TestValueCreator {
   makeInputValue (formItem) {
     // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, rules } = formItem
+    const { key, label } = formItem
     let s
-    let { max, min, required, type } = this.loadRules(formItem)
+    let { max, min, required } = this.loadRules(formItem)
 
     // 限制条件明确了，现在开始根据 DataType 决定数据生成
     if (this.DataType === DATAENUM.OutLimitData && this.exceptOutLimitKeys.indexOf(key) === -1) {
@@ -198,7 +198,6 @@ class TestValueCreator {
       }
       return s
     } else {
-      let len
       min = min || 1
       max = max || 10
       s = Mock.mock(`@word(${min}, ${max})`)
@@ -211,7 +210,7 @@ class TestValueCreator {
   makeSelectRadioValue (formItem) {
     // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, options } = formItem
+    const { key, options } = formItem
     const { required } = this.loadRules(formItem)
     let s
 
@@ -249,7 +248,7 @@ class TestValueCreator {
   makeNumberValue (formItem) {
   // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, rules } = formItem
+    const { key, label } = formItem
     const { max, min, required } = this.loadRules(formItem)
     let s
 
@@ -302,7 +301,7 @@ class TestValueCreator {
         s = Math.floor((100 * Math.random()))
       }
     }
-    if (formItem.type == 'FormRateInput') {
+    if (formItem.type === 'FormRateInput') {
       s = s / 100
     }
     return s

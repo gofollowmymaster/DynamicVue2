@@ -47,7 +47,7 @@ export default {
       console.error('获取表单示例失败!表单测试数据填充器必须包裹在DynamicFormContent内')
     }
     // this.TestValueCreator = new TestValueCreator(this.$parent);
-    this.TestValueCreator = process.env.NODE_ENV == 'development' ? new MockValueCreator(this.$parent) : new TestValueCreator(this.$parent)
+    this.TestValueCreator = process.env.NODE_ENV === 'development' ? new MockValueCreator(this.$parent) : new TestValueCreator(this.$parent)
   },
   data () {
     return {

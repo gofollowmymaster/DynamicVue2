@@ -106,7 +106,7 @@ function setActionBaseOption (options) {
     label: options.label || '操作',
     sort: options.sort || 100,
     permission: options.permission || options.label,
-    isShow: options.isShow || (() => true),
+    isShow: options.isShow ||'',
     dataAdapter: options.dataAdapter || ((data) => data),
     isLoadData: options.isLoadData ?? true,
     actionDataKey: options.actionDataKey || undefined,
@@ -124,7 +124,6 @@ function setActionBaseOption (options) {
       ...options.msgBox
     } : null,
     actionHook: options.actionHook || '',
-    isShow: options.isShow || ''
   }
 }
 function setDialogFormAction (options) {
@@ -321,7 +320,7 @@ export function generateActionOption (type, options = {}) {
 
 export function loadActionTipConfig (vm) {
   const actionTip = vm.$dynamicConfig.actionTip
-  return actionTip == 'pop' ? {
+  return actionTip === 'pop' ? {
     actionPopComponent: 'popConfirm',
     actionPopProperties: {
       'confirm-button-text': '确定',

@@ -212,7 +212,7 @@ export default {
       obj = { ...obj, ...obj.properties }
       obj.name = obj.key
       obj['http-request'] = obj.apiPromise
-      obj.multiple = obj.limit != 1
+      obj.multiple = obj.limit !== 1
       obj.disabled = this.getTextModel ? true : obj.disabled
       obj.accept = getAccepts(this.accept)
 
@@ -312,7 +312,7 @@ export default {
       this.val = this.value.filter(
         (unit) => {
           const id = unit.id || unit.fileId
-          return unit.uid != file.uid && id !== file.fileId
+          return unit.uid !== file.uid && id !== file.fileId
         }
       )
     },
@@ -324,14 +324,12 @@ export default {
       if (!res) return // 有重复请求   OPTION?
       if (!file.response) return //
 
-      let fileId, fileUrl, fileName, fileSize, uploadTime, uid
-
-      fileId = file.response.fileId
-      fileUrl = file.response.fileUrl || file.url
-      fileName = file.raw.name
-      fileSize = file.raw.size
-      uploadTime = moment(new Date()).format('YYYY-MM-DD HH:mm:SS')
-      uid = file.uid
+     const fileId = file.response.fileId
+     const fileUrl = file.response.fileUrl || file.url
+     const fileName = file.raw.name
+     const fileSize = file.raw.size
+     const uploadTime = moment(new Date()).format('YYYY-MM-DD HH:mm:SS')
+     const uid = file.uid
       const current = this.value || []
       current.push({
         fileId,

@@ -33,7 +33,7 @@ export default {
       const content = this.item.options && this.item.options.find((item) => {
         return item.value === this.val
       })
-      return content && content.label || ''
+      return (content && content.label) || ''
     }
 
   }

@@ -7,7 +7,6 @@
 import { appendToPreset, buildSearchFields, deepCopy } from '@/packages/utils/tool'
 import { protectLevStatisticApi, growthSituationStatisticApi, treeAgeStatisticApi, treeSpeciesStatisticApi } from '@/network/assets.js'
 
-import { asyncAdministractiveTreeNode } from '@/network/global'
 
 const searchFieldsTmpl = [
   // {

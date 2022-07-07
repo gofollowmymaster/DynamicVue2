@@ -9,15 +9,11 @@
 <script>
 
 import {
-  maintainUpdateApi,
-  maintainSaveApi,
   protectDetailApi,
   protectListApi,
-  maintainDeleteApi
 } from '@/network/assetsMaintain.js'
 
 import { buildDynamicSelectOption } from '@/network/global'
-import { appendToPreset } from '@/packages/utils/tool'
 
 const entityLabel = '养护记录'
 

@@ -47,7 +47,7 @@ export default {
       return obj
     },
     textModelValue () {
-      return this.val == this.bindOptions['active-value'] ? this.bindOptions['active-text'] : this.bindOptions['inactive-text']
+      return this.val === this.bindOptions['active-value'] ? this.bindOptions['active-text'] : this.bindOptions['inactive-text']
     }
   }
 }

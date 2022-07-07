@@ -3,7 +3,7 @@ import presetConfig from '../presetConfig'
 
 export function parseExpression (tmpl, obj) {
   let expression = tmpl.replace(/#\{(.+?)\}/g, 'obj.$1')
-  if (expression.indexOf('return') == -1) {
+  if (expression.indexOf('return') === -1) {
     expression = `return ${expression}`
   }
   const func = new Function('obj', expression)
@@ -12,7 +12,7 @@ export function parseExpression (tmpl, obj) {
 }
 export function parseTemplate (tmpl, obj) {
   let template = '`' + tmpl.replace(/#\{(.+?)\}/g, '${obj.$1}') + '`'
-  if (template.indexOf('return') == -1) {
+  if (template.indexOf('return') === -1) {
     template = `return ${template}`
   }
   const func = new Function('obj', template)
@@ -108,10 +108,7 @@ export function deepCopy (origin) {
   const target = Array.isArray(origin) ? [] : {} // 判别是数组还是对象
   for (const k in origin) {
     // 循环拷贝
-    if (typeof origin.hasOwnProperty !== 'function') {
-      debugger
-      const objType2 = objType(origin)
-    }
+ 
     if (origin.hasOwnProperty(k)) {
       // 判断属性是否在对象自身上（非原型链上的父级属性）
       if (valueTypes.includes(superType(origin[k]))) {
@@ -177,7 +174,7 @@ export function deepMerge (obj1, obj2, isDeleteNull = false) {
     }
     // 都為對象
     if (obj1[key] && obj2[key] && ['object'].includes(superType(obj1[key]))) {
-      if (superType(obj1[key]) == superType(obj2[key])) {
+      if (superType(obj1[key]) === superType(obj2[key])) {
         obj1[key] = deepMerge(obj1[key], obj2[key], isDeleteNull)
         continue
       }
@@ -217,7 +214,7 @@ export function deepMergeByKey (obj1, obj2, clone = true) {
       obj2[key] &&
       ['object', 'array'].includes(superType(obj1[key]))
     ) {
-      if (superType(obj1[key]) == superType(obj2[key])) {
+      if (superType(obj1[key]) === superType(obj2[key])) {
         obj1[key] = deepMergeByKey(obj1[key], obj2[key], clone)
         continue
       }
@@ -243,7 +240,7 @@ export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
   if (!preset) {
     throw new Error('没有找到指定预设配置' + presetKey)
   }
-  if (superType(preset) != superType(obj)) {
+  if (superType(preset) !== superType(obj)) {
     throw new Error('自定义配置与预设配置类型不同' + presetKey + '自定义：' + JSON.stringify(obj))
   }
   if (['array', 'object'].includes(superType(preset))) {
@@ -323,7 +320,7 @@ export function buildFormFields (fields, formSections = {}) {
     return { label: key, children: value, ...sectionInfo }
   })
   // 只有一个section 不展示
-  if (fields.length == 1) {
+  if (fields.length === 1) {
     fields[0].label = undefined
   }
   return fields
@@ -400,7 +397,7 @@ export function buildDetailFields (fields, formSections = {}) {
     return { label: key, children: value, ...sectionInfo }
   })
   // 只有一个section 不展示
-  if (fields.length == 1) {
+  if (fields.length === 1) {
     fields[0].label = undefined
   }
   return fields

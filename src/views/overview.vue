@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-import { appendToPreset, buildSearchFields } from '@/packages/utils/tool'
 import MiddleStatistic from './components/MiddleStatistic.vue'
 import Vue from 'vue'
 

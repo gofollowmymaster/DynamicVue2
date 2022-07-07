@@ -1,5 +1,4 @@
 
-import { hasValue } from '../../utils/tool'
 export default {
   props: {
     rowData: {

@@ -58,7 +58,7 @@ class TestValueCreator {
       }
       blockFields.children.forEach((fieldItem) => {
         // 根据字段生成
-        const { key } = fieldItem
+        const { key ,label} = fieldItem
         if (this.customizeFn[key]) {
           if (typeof this.customizeFn[key] === 'function') {
             obj[key] = this.customizeFn[key](this.DataType)
@@ -126,8 +126,8 @@ class TestValueCreator {
   makeInputValue (formItem) {
     // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, rules } = formItem
-    const { max, min, required, type } = this.loadRules(formItem)
+    const { key, label } = formItem
+    const { max, min, required } = this.loadRules(formItem)
 
     // 限制条件明确了，现在开始根据 DataType 决定数据生成
     if (
@@ -195,7 +195,7 @@ class TestValueCreator {
   makeSelectRadioValue (formItem) {
     // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, options } = formItem
+    const { key, options } = formItem
     const { required } = this.loadRules(formItem)
     let s
 
@@ -251,7 +251,7 @@ class TestValueCreator {
   makeNumberValue (formItem) {
     // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
     // 需要获取的是 label，以及解析 rules 的规则
-    const { key, label, rules } = formItem
+    const { key, label } = formItem
     const { max, min, required } = this.loadRules(formItem)
 
     // 限制条件明确了，现在开始根据 DataType 决定数据生成
@@ -278,7 +278,7 @@ class TestValueCreator {
           `字段：${key}，描述：${label}，无法生成符合超限数据，请检查 fields 的配置。默认使用 label 作为数据`
         )
       }
-      if (formItem.type == 'FormRateInput') {
+      if (formItem.type === 'FormRateInput') {
         s = s / 100
       }
       return s
@@ -298,7 +298,7 @@ class TestValueCreator {
         // 其他情况，设置该值为空（非必填，所以理论上可以设置为空，即空字符串为极限值）
         s = 1
       }
-      if (formItem.type == 'FormRateInput') {
+      if (formItem.type === 'FormRateInput') {
         s = s / 100
       }
       return s
@@ -317,7 +317,7 @@ class TestValueCreator {
         s = Math.floor(100 * Math.random())
       }
 
-      if (formItem.type == 'FormRateInput') {
+      if (formItem.type === 'FormRateInput') {
         s = s / 100
       }
 

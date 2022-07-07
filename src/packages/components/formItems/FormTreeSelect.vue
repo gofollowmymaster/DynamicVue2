@@ -4,7 +4,7 @@
     :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
     class="form-item-box"
   >
-    <el-select ref="select"   placeholder="请选择"   @visible-change="visibleChange" clearable
+    <el-select ref="select"     @visible-change="visibleChange" clearable
      style="width: 100%;" @clear="clear"
       v-model="val"
       :disabled="getDisabled"

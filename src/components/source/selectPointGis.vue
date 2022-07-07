@@ -39,7 +39,7 @@
       </el-amap-polygon>
     </el-amap>
     <span slot="footer" class="dialog-footer">
-      <el-button v-if="mode=='select'" @click="clearPosition">清 除</el-button>
+      <el-button v-if="mode==='select'" @click="clearPosition">清 除</el-button>
       <el-button type="primary" @click="selectPointConfirm">确 定</el-button>
     </span>
   </el-dialog>
@@ -100,7 +100,7 @@ export default {
         click: (selectedPoint) => {
           debugger
           const { lng, lat } = selectedPoint.lnglat
-          if (this.mode == 'select') {
+          if (this.mode === 'select') {
             this.$emit('change', [lng, lat])
           }
         }

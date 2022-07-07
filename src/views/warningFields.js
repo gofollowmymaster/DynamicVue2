@@ -1,5 +1,4 @@
 import {
-  buildDynamicSelectOption,
   elementUploadFileApi
 } from '@/network/global'
 

@@ -9,7 +9,6 @@
 <script>
 import { transDetailApi, transListApi } from '@/network/assetsMaintain.js'
 
-import { appendToPreset } from '@/packages/utils/tool'
 
 const entityLabel = '移植记录'
 const fields = [

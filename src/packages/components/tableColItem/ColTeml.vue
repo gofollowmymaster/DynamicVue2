@@ -14,7 +14,6 @@ import TableColMixin from './mixin'
 export default {
   name: 'ColTeml',
   mixins: [TableColMixin],
-  computed: {},
   data () {
     return {
     }

@@ -3,7 +3,7 @@
   <section>
     <div><i v-if="!hideIcon" :class="`icon`" :style="{color:iconColor}"></i> {{title}}</div>
     <div style="text-align: right;" class="mt6">
-      <el-button :type="cancelButtonType" size="mini" type="text" @click="$emit('cancel',{})">{{cancelButtonText}}</el-button>
+      <el-button :type="cancelButtonType" size="mini"   @click="$emit('cancel',{})">{{cancelButtonText}}</el-button>
       <el-button :type="confirmButtonType" size="mini" @click="$emit('confirm',data)">{{confirmButtonText}}</el-button>
     </div>
   </section>
