@@ -2,10 +2,10 @@
   <main class="full-width row-center">
     <el-popover placement="top" width="auto" trigger="hover">
       <QrCodeImg
-        :style="item.style || {}"
+        :style="colOptions.style || {}"
         class="table-col-box"
         v-bind="bindOptions"
-        v-model="rowData[field]"
+        :value="rowData[colOptions.key]"
       >
       </QrCodeImg>
           <!-- <el-button slot="reference">hover 激活</el-button> -->

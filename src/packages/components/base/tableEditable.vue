@@ -1,116 +1,224 @@
 <template>
-<el-table
-          ref="multipleTable"
-          :data="allData"
-          tooltip-effect="dark"
-          style="width: 100%"
-          @select="currentChange"
-          :header-cell-class-name="cellClass"
-        >
-          <el-table-column type="selection" width="55"> </el-table-column>
-
-          <el-table-column
-            prop="fieldNameZh"
-            align="center"
-            label="字段名"
-            show-overflow-tooltip
-          >
-          </el-table-column>
-          <el-table-column
-            prop="dataTypeVoName"
-            align="center"
-            label="字段类型"
-            show-overflow-tooltip
-          >
-          </el-table-column>
-          <el-table-column prop="aliasName" align="center" label="别名">
-            <template slot-scope="scope">
-              <el-input
-                v-model="scope.row.aliasName"
-                @change="changeValue(2, scope.row.id)"
-                placeholder="请输入"
-              ></el-input>
-            </template>
-          </el-table-column>
-          <el-table-column
-            prop="centerFlag"
-            align="center"
-            label="是否居中"
-            show-overflow-tooltip
-          >
-            <template slot-scope="scope">
-              <el-switch
-                v-model="scope.row.centerFlag"
-                @change="changeSwitchValue(scope.row.centerFlag, scope.row.id)"
-                active-color="#129E9E"
-                inactive-color="#C5C5C5"
-              >
-              </el-switch>
-            </template>
-          </el-table-column>
-        </el-table>
-
+  <div >
+     <DynamicTable
+        class="table-wraper "
+        :data="tableData"
+        :table="tableOption"
+        :columns="editableColumns"
+        :apiPromise="loadListApiPromise"
+        :editable="editable"
+        @selection-change="selectChange"
+      ></DynamicTable>
+      <el-pagination
+        v-if="!isEmpty(pagination)"
+        class="mt16 text-right"
+        background
+        v-bind="pagination"
+        :total="total"
+        @size-change="handleSizeChange"
+        :pageSize.sync="pagination.pageSize"
+        @current-change="handleCurrentChange"
+      >
+      </el-pagination>
+  </div>
 </template>
-<script>
 
-export default {
-  name: 'tableEditable',
-  props: {
-    title: String,
-    visible: {
-      type: Object,
-      default () {
-        return { value: false }
-      }
+<script>
+     import {deepMerge, isEmpty} from '../../utils/tool'
+     import {tableOption,}  from "../../presetConfig"
+       
+const defaultTableOptions={
+  ...tableOption,
+  hasCheckbox: false,
+    properties: {
+      "header-cell-style": {
+        "background-color": "#F5F5F5",
+      },
     },
-    fields: {
+
+    lineActions: {}
+}
+export default {
+  name: "TableEditable",
+  props:{
+     data: {
+      type: [Array]
+    },
+    columns: {
       type: Array,
       required: false,
       default () {
         return []
       }
     },
-    optionsProps: {
+    table: {
       type: Object,
       require: true
     },
-    selected: {
-      type: Object,
-      default () {
+ 
+    apiPromise:{
+      type:Promise,
+    },
+    pagination:{
+      type:Object,
+      default(){
         return {}
       }
-    },
-    multiple: {
-      type: Boolean,
-      default: false
     }
-
+   
+    
   },
-
-  data: function () {
-    console.log('--optionsProps--', this.optionsProps)
-
+  data() {
     return {
-
-    }
+      isEmpty,
+      total:10,
+      editable:false,
+      tableData:[]
+    };
   },
+
   watch: {
-
+    data: {
+      handler(data) {
+          this.tableData=data
+      },
+      deep:true,
+      immediate: true,
+    },
   },
-
   computed: {
+ tableOption(){
+       let defaultOptions = defaultTableOptions;
 
-  },
-  created () {
-    this.pagination.pageSize =
-      this.options.pagination.pageSize || this.pagination.pageSize
-  },
+      if (this.getTextModel) {
+        defaultOptions.lineActions={}
+       
+        return deepMerge( defaultOptions,this.table || {});
+      }
 
+ 
+     defaultOptions.lineActions={ 
+      update: {
+        actionType:'customAction',
+        label:'编辑',
+        isShow(actionData){
+          debugger
+              return !actionData.editable
+        },
+        actionHandle:(actionData)=>{
+          debugger
+          this.$set(actionData,'editable',true)
+        },
+        
+      },
+      confirm: {
+        actionType:'customAction',
+        label:'确认',
+
+        isShow(actionData){
+          debugger
+              return !!actionData.editable
+        },
+        actionHandle:(actionData)=>{
+           debugger
+          this.$set(actionData,'editable',false)
+        },
+        
+      },
+      add: {
+        actionType:'customAction',
+        label:'添加',
+   
+        actionHandle:(actionData)=>{
+            const index=this.tableData.findIndex((item)=>{
+               return item===actionData
+            })
+         const initValue=   this.columns.reduce((prev,next)=>{
+            prev[next.key]=next.defaultValue||null
+            return prev
+          },{})
+          initValue.editable=true
+          this.tableData.splice(index+1,0,initValue)
+          // this.$set(this.tableData,index+1,initValue)
+        },
+        
+      },
+      delete: {
+        actionType:'customAction',
+        label:'删除',
+        actionHandle:(actionData)=>{
+          debugger
+          console.log('-tableData-',this.tableData)
+            const index=this.tableData.findIndex((item)=>{
+               return item===actionData
+            })
+            this.$delete(this.tableData,index)
+        },
+        componentProperties: {
+          type: "default",
+          size: "small",
+        },
+        callback: {
+          showTip: false,
+        },
+      },
+     }
+        // defaultOptions.
+      return deepMerge(defaultOptions, this.table);
+    },
+      editableColumns(){
+      return this.$buildEditTableFields(this.columns)
+    },
+    // tableFormFields(){
+    //   this.$buildTableFields(this.columns)
+    // },
+ queryParams () {
+      return { ...this.searchParams, ...this.pagination }
+    },
+    loadListApiPromise () {
+      if (typeof this.apiPromise === 'function') {
+        const queryParams = { ...this.queryParams }
+        delete queryParams.refreshKey
+        return this.apiPromise(queryParams)
+          .then((data = {}) => {
+            debugger
+            data = data.data || data
+            this.total = data.totalCount
+            return data.list
+          })
+      }
+      return null
+    },
+    
+ 
+  },
+  mounted() {},
   methods: {
-
-  }
-}
+    
+    selectChange (selected) {
+      this.selected = selected
+    },
+     handleSizeChange (pageSize) {
+      this.refresh()
+    },
+    handleCurrentChange (pageNo) {
+      this.pagination.pageNo = pageNo
+      this.onSearch({ pageNo })
+    },
+     onSearch (params) {
+      this.searchParams = { ...this.searchParams, ...params }
+    },
+    refresh () {
+      debugger
+      const refreshKey = this.searchParams.refreshKey++
+      this.onSearch({ refreshKey })
+    },
+  },
+};
 </script>
 
-<style lang="less" scoped>
+<style scoped lang="less"> 
+/deep/ .el-input__inner{
+  height: ;
+}
 </style>

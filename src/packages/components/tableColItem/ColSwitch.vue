@@ -1,27 +1,27 @@
 <template>
     <!-- switch -->
     <section>
-          <el-switch :style="item.style||{}"
+          <el-switch :style="colOptions.style||{}"
          class="table-col-box  "
          v-bind="bindOptions"
-         v-model="rowData[field]"
-         @change="item.events.change(rowData,$event)">
+         v-model="rowData[colOptions.key]"
+         @change="colOptions.events.change(rowData,$event)">
     </el-switch>
     </section>
 
 </template>
 
 <script>
-import TableColMixin from './mixin'
+    import TableColMixin from './mixin';
 
-export default {
-  name: 'ColSwitch',
-  mixins: [TableColMixin],
-  computed: {
-  }
-}
+    export default {
+        name: 'ColSwitch',
+        mixins: [ TableColMixin ],
+        computed: {
+        }
+    };
 </script>
 
 <style scoped lang="less">
-
+    
 </style>

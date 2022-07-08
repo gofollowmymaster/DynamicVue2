@@ -4,6 +4,7 @@
     :entityLabel="entityLabel"
     :fields="fields"
     :apiPromises="apiPromises"
+        :pageOptionsprops="pageOptions"
   ></DynamicCurdPage>
 </template>
 <script>
@@ -52,6 +53,9 @@ export default {
       },
       pageOptions: {
         topToolBar: {
+          create:{
+            container:'dy-page',
+          },
           export: {
             apiPromise: exportOldtreeApi,
             actionType: 'downloadAction',

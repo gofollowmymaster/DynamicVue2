@@ -15,6 +15,7 @@ export default {
   methods: {
 
     generateCreateOptions (mode = 'dialog') {
+      
       const actionType =
         mode == 'router'
           ? 'routerDialogFormActionOption'

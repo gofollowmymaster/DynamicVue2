@@ -7,12 +7,12 @@
     }`"
     class="form-input-box form-item-box"
   >
-    <el-color-picker
+    <el-color-picker 
       v-model="val"
       v-bind="bindOptions"
       :disabled="getTextModel?true:getDisabled"
     ></el-color-picker>
-
+ 
   </div>
 </template>
 
@@ -26,11 +26,17 @@ export default {
     return {}
   },
   computed: {
+    
 
   }
 }
 </script>
 
 <style scoped lang="less">
-
+.el-color-picker{
+  display: block;
+}
+/deep/ .el-color-picker__trigger{
+  width: 100%;
+}
 </style>

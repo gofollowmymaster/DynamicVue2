@@ -4,7 +4,7 @@
          :class="`form-unqiue-${item.key} `"
          class="form-input-box form-item-box">
         <div  v-if="!getTextModel" :style="item.textStyle||{}" >
-            <span class="text">{{ item.content || '-' }}</span>
+            <span class="text">{{ value||item.content || '-' }}</span>
         </div>
     </div>
 </template>

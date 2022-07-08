@@ -106,6 +106,8 @@ export default {
   isDebug,
   host,
   staticHost: 'http:' + host + '/file/static',
+  tinymceLanguageUrl:'/dyvue2-admin/static/tinymce/langs/zh_CN.js',
+  tinymceSkinUrl:'/dyvue2-admin/static/tinymce/skins/ui/oxide',
   amapWebKey,
   amapWebMapKey,
   tandiMapKey,

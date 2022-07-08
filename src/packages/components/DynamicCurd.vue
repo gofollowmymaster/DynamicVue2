@@ -130,6 +130,7 @@ export default {
 
   computed: {
     options () {
+      debugger
       const mode = this.mode || presetConfig.defaultDialogMode || 'dialog'
       const {
         createOptions,

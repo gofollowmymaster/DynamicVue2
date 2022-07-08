@@ -409,6 +409,34 @@ const tableOptionDefault = {
   }
 }
 
+export function buildEditTableFields(fields){
+  if (superType(fields) !== 'array') return []
+  let fieldsClone = deepCopy(fields)
+  fieldsClone = fieldsClone
+  .filter((item) => item.tableable || item.tableOption)
+  .map((item) => {
+    item.tableOption = deepMerge(tableOptionDefault, item.tableOption, true)
+    item.formOption = deepMerge(formOptionDefault, item.formOption, true)
+
+    return { ...item,   sort: 100  }
+  })
+  .sort((prev, next) => {
+    return prev.tableOption.sort - next.tableOption.sort
+  })
+  .map((item) => {
+    
+    delete item.searchable
+    delete item.searchOption
+
+    delete item.formable
+    delete item.tableable
+    // delete item.type
+    delete item.tableOption.sort
+    return item
+  })
+
+return fieldsClone
+}
 export function buildTableFields (fields) {
   if (superType(fields) !== 'array') return []
 

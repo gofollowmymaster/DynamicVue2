@@ -79,7 +79,6 @@ export default {
           return action?.actionType
         })
         .map((action, index) => {
-          debugger
           return this.$generateActionOption(action.actionType, action)
         })
 

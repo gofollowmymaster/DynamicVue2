@@ -133,6 +133,99 @@ export const mainPlaintOption = {
   treeOption: null
 }
 
+
+
+const mainPlaintTableFields=[
+  {
+    type: 'index',
+    key: 'index',
+    label: '序号',
+    tableOption: {
+      width: 60
+    },
+  },
+  {
+    type: 'FormText',
+    label:'id',
+    key: 'id',
+    tableOption:{}
+  },
+  {
+    key: "treeId",
+    type: "FormOldtreeSelector",
+    label: "树种",
+    
+    tableOption: {
+      sort:2,
+      template(row, key) {
+        return row['id']?.[0]?.name
+      },
+      key:'treeName'
+    },
+    formOption: {
+      rules: [
+        // 'required'
+      ],
+    },
+  },
+  {
+    key: 'treeStreetQuantity',
+    type: 'FormIntNumber',
+    label: '数量',
+    tableOption: {
+      label:'行道树数量',
+      sort:3
+    },
+    formOption: {
+      rules: ['required']
+    },
+  },
+
+  {
+    key: 'treeStreetType',
+    type: 'FormSelect',
+    label: '单位',
+    tableOption: {
+      // template(row, key){
+      //   return 
+      // }
+    },
+    options: [
+      {
+        value: '1',
+        label: '株'
+      },
+      {
+        value: '2',
+        label: '平方'
+      },
+    ],
+    formOption: {
+      rules: ['required'],
+    }
+  },
+  {
+    key: 'treeStreetContext',
+    type: 'FormInput',
+    label: '备注',
+    tableOption: {},
+    formOption: {
+      rules: ['required']
+    },
+  },
+
+]
+export const mainPlaintTableOption = {
+    
+  hasCheckbox: false,
+  lineActions: {
+    // detail: null,
+    // delete:null,
+    // update:null
+  }
+}
+
+
 export default [
   { key: 'keyword', type: 'FormInput', label: '关键字', searchable: true },
   { key: 'id', type: 'FormHide', formable: true },
@@ -259,21 +352,51 @@ export default [
       }
     }
   },
+  // {
+  //   key: 'mainPlant',
+  //   label: '',
+  //   type: 'FormCurd',
+  //   formSection: '主要配件',
+  //   formOption: {
+  //     span: 24,
+  //     wraperProperties: {
+  //       'label-width': '0px'
+  //     },
+  //     extra: {
+  //       fields: mainPlaintFields,
+  //       options: mainPlaintOption,
+  //       entityLabel: '主要配件'
+  //     }
+  //   }
+  // },
   {
     key: 'mainPlant',
     label: '',
-    type: 'FormCurd',
-    formSection: '主要配件',
+    type: 'FormTableEditable',
+    formSection: '主要植物',
     formOption: {
-      span: 24,
+      span:24,
       wraperProperties: {
-        'label-width': '0px'
+        'label-width':'0px'
       },
-      extra: {
-        fields: mainPlaintFields,
-        options: mainPlaintOption,
-        entityLabel: '主要配件'
-      }
+        fields: mainPlaintTableFields,
+        tableOption: mainPlaintTableOption,
+        defaultValue:[
+          {
+            id:1,
+            treeId:2014,
+            treeStreetQuantity:15,
+            treeStreetType:'1',
+            treeStreetContext:'实打实大所多撒'
+          },
+          {
+            id:1,
+            treeId:2014,
+            treeStreetQuantity:15,
+            treeStreetType:'1',
+            treeStreetContext:'实打实大所多撒'
+          },
+        ]
     }
   },
   {

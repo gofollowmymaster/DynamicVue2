@@ -46,21 +46,12 @@
           :key="col.key"
         >
           <template slot-scope="scope">
-            <component
-              v-if="
-                col.tableOption.template &&
-                col.tableOption.template(scope.row, col.key) &&
-                col.tableOption.template(scope.row, col.key).component
-              "
-              :is="col.tableOption.template(scope.row, col.key).component"
+             <ColFormItem v-if="scope.row.editable"  :rowData="scope.row"  :colOptions="col" ></ColFormItem>
+            <component v-else
+              :is="tableColComponent(col,scope.row)"
               :rowData="scope.row"
-              :field="col.key"
-              :key="scope.row[col.key]"
-              :item="col.tableOption.template(scope.row, col.key)"
               :colOptions="col"
             ></component>
-            <ColTeml v-else   :rowData="scope.row"  :field="col.key" :colOptions="col" >
-              </ColTeml>
           </template>
         </el-table-column>
       </template>
@@ -97,6 +88,10 @@ export default {
       default: function () {
         return null
       }
+    },
+      editable:{
+      type:Boolean,
+      default:false
     },
     selected: {
       type: [Object],
@@ -150,7 +145,7 @@ export default {
 
       if (lineActions) {
         const actions = Object.values(lineActions).map(action => {
-          debugger
+           
           action.componentProperties = { ...action.componentProperties, type: this.table.actionBtnType }
           return action
         })
@@ -215,6 +210,15 @@ export default {
   mounted () {},
   components: {},
   methods: {
+        tableColComponent(col,data){
+          if(  col.tableOption.component){
+                 return   col.tableOption.component
+                }else{
+                  return 'ColTeml'
+                }
+
+         
+    },
     selectRefresh () {
       this.$nextTick(() => {
         const mainKey = this.table.properties['row-key']
