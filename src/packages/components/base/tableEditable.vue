@@ -6,7 +6,6 @@
         :table="tableOption"
         :columns="editableColumns"
         :apiPromise="loadListApiPromise"
-        :editable="editable"
         @selection-change="selectChange"
       ></DynamicTable>
       <el-pagination

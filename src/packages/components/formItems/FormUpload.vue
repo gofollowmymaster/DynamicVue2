@@ -248,9 +248,8 @@ export default {
       }
     },
     fileList () {
-      return (
-        this.value
-          ?.filter((file) => file.fileId || file.id)
+      return Array.isArray(this.value)?
+        this.value.filter((file) => file.fileId || file.id)
           .map((file) => {
             file.fileUrl = this.imgPrevUrl + file.fileUrl
             file.uploadTime = file.createTime || file.upLoadTime
@@ -258,8 +257,8 @@ export default {
               file.fileName || file.sourceName || file.saveName || file.name
             file.fileId = file.fileId || file.id
             return file
-          }) || []
-      )
+          }) : []
+      
     },
     curdOptions () {
       return {
@@ -287,9 +286,8 @@ export default {
     }
   },
   mounted () {
-    this.fileListInit =
-      this.value
-        ?.filter((file) => file.fileId || file.id)
+    this.fileListInit = Array.isArray(this.value)?
+      this.value.filter((file) => file.fileId || file.id)
         .map((file) => {
           const fileUrl = this.imgPrevUrl + file.fileUrl.replace(/\\\\/g, '/')
           debugger
@@ -304,7 +302,7 @@ export default {
             fileType: file.fileType,
             uploadTime: file.createTime || file.upLoadTime
           }
-        }) || []
+        }) : []
   },
   methods: {
     handleRemove (file, fileList) {

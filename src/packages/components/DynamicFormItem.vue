@@ -1,18 +1,26 @@
 <template>
       <el-form-item
-                v-else-if="!formItem.hidden"
-                :key="formItem.key"
+                v-if="!formItem.hidden"
+                 :rules="!textModel ? formItem.rules : []"
                 v-bind="formItem.wraperProperties"
-                :rules="formItem.rules||[]"
-                label-width="0px"
+                  :label="label"
                 :prop="formItem.key">
                 <component
-                  v-model="value"
+                  v-model="val"
+                  ref="formitem"
                   :is="formItem.type || 'FormInput'"
                   v-bind:item="formItem"
                   :key="formItem.key"/>
+                   <div
+                  v-if="!textModel && formItem.formTip"
+                  class="text-size12 form-tip lh22"
+                >
+                   {{ formItem.formTip }}
+                </div>
                   
               </el-form-item>
+
+              
 </template>
 <script>
 
@@ -34,12 +42,24 @@ export default {
     value:{
       type:[Object,Array,String,Boolean,Number],
         default: function () {
-        return {};
+        return null;
       },
+    },
+    label:String,
+    textModel:{
+      type:Boolean,
+      default:false
     }
   },
   computed: {
- 
+    val:{
+      get(){
+        return this.value
+      },
+      set(v){
+        this.$emit('input',v)
+      }
+    }
   },
   watch:{
     
@@ -53,7 +73,9 @@ export default {
 
    },
   methods: {
-      
+    resetFields(){
+       this.$refs.formitem.resetFields()
+    }
   },
 };
 </script>

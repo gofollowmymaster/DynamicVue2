@@ -20,7 +20,6 @@ export default {
     'statusChangeFn',
     'formItemType',
     'childChangeData',
-    'transExpression',
     'formData'
   ],
   computed: {

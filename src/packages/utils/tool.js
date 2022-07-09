@@ -404,9 +404,9 @@ export function buildDetailFields (fields, formSections = {}) {
 }
 
 const tableOptionDefault = {
-  template (row, key) {
-    return row[key] ?? ''
-  }
+  // template (row, key) {
+  //   return row[key] ?? ''
+  // }
 }
 
 export function buildEditTableFields(fields){

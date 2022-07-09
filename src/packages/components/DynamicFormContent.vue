@@ -39,7 +39,7 @@
             :class="[singleCol ? 'single-wrap' : 'grid-wrap']"
           >
             <!-- <section class="grid-wrap "> -->
-            <template v-for="(formItem, index) in formSection.children">
+            <template v-for="(formItem) in formSection.children">
               <component
                 v-if="!formItem.hidden && formItem.type == 'slot'"
                 class="grid-item"
@@ -65,8 +65,15 @@
               >
               </FormText>
               </div> -->
-
-              <el-form-item
+              <DynamicFormItem  
+               v-else
+               class="grid-item"
+                v-model="data[formItem.key]"  
+               :key="formItem.key" :formItem="formItem"
+                :label="getFormItemLabel(formItem)"
+               :mode="textModel"></DynamicFormItem>
+              
+              <!-- <el-form-item
                 class="grid-item"
                 v-else-if="!formItem.hidden"
                 :key="formItem.key"
@@ -88,7 +95,7 @@
                 >
                   {{ formItem.formTip }}
                 </div>
-              </el-form-item>
+              </el-form-item> -->
             </template>
           </article>
         </main>
@@ -199,7 +206,6 @@ export default {
       formItemType: '',
       childChangeData: {},
 
-      transExpression: this.transExpression
     }
   },
   created () {

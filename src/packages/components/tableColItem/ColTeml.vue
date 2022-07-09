@@ -21,6 +21,7 @@ export default {
   },
   computed:{
     content(){
+      debugger
        const content = this.rowData[this.colOptions.key]
     if (typeof this.colOptions.tableOption?.template === 'function') {
        return  this.colOptions.tableOption?.template(
