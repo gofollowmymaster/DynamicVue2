@@ -11,6 +11,7 @@
         :columns="item.fields"
         :apiPromise="item.apiPromise"
         :pagination="item.pagination"
+        size="small"
       ></TableEditable>
       
   </div>

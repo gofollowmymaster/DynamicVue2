@@ -250,7 +250,7 @@ export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
 
 const formOptionDefault = {
   wraperProperties: {
-    class: presetConfig.getConfig('formWraperClass')
+    // class: presetConfig.getConfig('formWraperClass')
   },
   rules: [],
   properties: {
@@ -293,20 +293,13 @@ export function buildFormFields (fields, formSections = {}) {
           return getRule(rule, item.type, item.label)
         })
 
-      if (item.span) {
-        item.wraperProperties.class = item.wraperProperties.class
-          .filter((classList, index) => {
-            return index !== 0
-          //  return classList.startsWith('grid-col-')
-          })
-        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
-      }
+
       return item
     })
     .reduce((prev, next) => {
       // 按formSection分组
-      const formSection = next.formSection ? next.formSection : ''
-      next.formSection = undefined
+      const formSection = next.formSection ? next.formSection : presetConfig.getConfig('baseFormSectionName')
+      delete next.formSection 
       if (prev[formSection]) {
         prev[formSection] = prev[formSection].concat([{ ...next }])
       } else {
@@ -369,16 +362,6 @@ export function buildDetailFields (fields, formSections = {}) {
       item.type = item.type || 'FormInput'
 
       return { ...item, ...detailOption, ...extra }
-    }).map((item) => {
-      if (item.span) {
-        item.wraperProperties.class = item.wraperProperties.class
-          .filter((classList, index) => {
-            return index !== 0
-            //  return classList.startsWith('grid-col-')
-          })
-        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
-      }
-      return item
     })
     .reduce((prev, next) => {
       // 按formSection分组
@@ -494,17 +477,6 @@ export function buildSearchFields (fields) {
       const type = item.type
 
       return { ...item, type, sort: 10, ...searchOption }
-    })
-    .map((item) => {
-      if (item.span) {
-        item.wraperProperties.class = item.wraperProperties.class
-          .filter((classList, index) => {
-            return index !== 0
-            //  return classList.startsWith('grid-col-')
-          })
-        item.wraperProperties.class = item.wraperProperties.class.concat('grid-col-' + item.span)
-      }
-      return item
     })
     .sort((prev, next) => {
       return prev.sort - next.sort

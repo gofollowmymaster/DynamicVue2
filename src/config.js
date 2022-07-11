@@ -102,6 +102,7 @@ export const formOption = {
 }
 
 export default {
+  baseFormSectionName:'基本信息',
   actionTip: 'msg',
   isDebug,
   host,

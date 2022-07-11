@@ -122,6 +122,7 @@ export default {
             containerProperties: {
               title: '更新不动产'
             },
+            colNum:3,
             formItemList: formFields,
             saveAction: {
               apiPromise: treeStreetUpdateApi

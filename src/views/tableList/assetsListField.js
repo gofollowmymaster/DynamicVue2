@@ -21,7 +21,6 @@ export const assetsFields = [
       key: 'treeName'
     },
     formOption: {
-      span: 12,
       rules: [
         'required'
       ],

@@ -153,7 +153,7 @@ export default {
             type: 'primary',
             icon: 'el-icon-plus'
           },
-          singleCol: true,
+          colNum: 1,
           containerProperties: {
             title: '新增资产类型',
             width: '36%'
@@ -186,7 +186,7 @@ export default {
             title: '更新资产类型',
             width: '36%'
           },
-          singleCol: true,
+         colNum: 1,
 
           formItemList: formFields,
           saveAction: {
@@ -206,7 +206,7 @@ export default {
             width: '36%'
           },
           textModel: true,
-          singleCol: true,
+          colNum: 1,
           formProperties: {
             'label-width': '120px',
             'label-position': 'right'

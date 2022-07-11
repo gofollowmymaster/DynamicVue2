@@ -35,67 +35,25 @@
             </span>
           </header>
           <article
-            class="block-content relative"
-            :class="[singleCol ? 'single-wrap' : 'grid-wrap']"
+            class="block-content relative grid-wrap"
           >
             <!-- <section class="grid-wrap "> -->
             <template v-for="(formItem) in formSection.children">
-              <component
-                v-if="!formItem.hidden && formItem.type == 'slot'"
-                class="grid-item"
-                :is="formItem.wrapertype"
-                :key="formItem.key"
-                :label="getFormItemLabel(formItem)"
-                v-bind="formItem.wraperProperties"
-              >
-                <slot :name="formItem.key"></slot>
-              </component>
-              <FormHide
-                v-else-if="!formItem.hidden && formItem.type == 'FormHide'"
-                v-model="data[formItem.key]"
-                :key="formItem.key"
-              >
-              </FormHide>
-              <!-- <div  v-else-if="formItem.type=='FormText'"
-                  :key="formItem.key"
-                v-bind="formItem.wraperProperties">
-                 <FormText
-                 v-bind:item="formItem"
-                :key="formItem.key"
-              >
-              </FormText>
-              </div> -->
+
+            
               <DynamicFormItem  
-               v-else
+        
                class="grid-item"
                 v-model="data[formItem.key]"  
-               :key="formItem.key" :formItem="formItem"
-                :label="getFormItemLabel(formItem)"
-               :mode="textModel"></DynamicFormItem>
-              
-              <!-- <el-form-item
-                class="grid-item"
-                v-else-if="!formItem.hidden"
-                :key="formItem.key"
-                v-bind="formItem.wraperProperties"
-                :rules="!textModel ? formItem.rules : []"
-                :label="getFormItemLabel(formItem)"
-                :prop="formItem.key"
-              >
-                <component
-                  v-model="data[formItem.key]"
-                  :is="formItem.type || 'FormInput'"
-                  :ref="formItem.key"
-                  v-bind:item="formItem"
-                  :key="formItem.key"
-                />
-                <div
-                  v-if="!textModel && formItem.formTip"
-                  class="text-size12 form-tip lh22"
-                >
-                  {{ formItem.formTip }}
-                </div>
-              </el-form-item> -->
+               :key="formItem.key"
+                :formItem="formItem"
+               :label="getFormItemLabel(formItem)"
+               :mode="textModel">
+                 <template  v-slot:[formItem.key]>
+                  <slot :name="formItem.key" :value="data[formItem.key]"></slot>
+
+                 </template>
+               </DynamicFormItem>
             </template>
           </article>
         </main>
@@ -155,9 +113,9 @@ export default {
       default: false
     },
     // 布局模式。
-    singleCol: {
-      type: Boolean,
-      default: false
+    colNum: {
+      type: Number,
+      default: 2
     },
     mode: {
       type: String,
@@ -170,8 +128,7 @@ export default {
       changeData: {
         // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
         allDisabled: this.allDisabled,
-        textModel: this.textModel
-        // formData:this.data
+        textModel: this.textModel,
       },
       foldBlockList: [] // 收起的区块（放在这个里面，该区块就只显示区块标题，不显示内容）
     }
@@ -198,13 +155,16 @@ export default {
         setElementRequired: this.setElementRequired,
         // 更新其他数据
         updateFormData: this.updateFormData,
-        valueUpdateEvent: this.valueUpdateEvent
+        valueUpdateEvent: this.valueUpdateEvent,
       },
       // 会动态变化的数据（注意，来自 props【更上级组件】的数据，不能放这个里面，只能显式的通过 props 往下面传）
       changeData: this.changeData,
       formData: this.getData,
       formItemType: '',
       childChangeData: {},
+      formProperties:()=>this.formProperties,
+      colNum:this.colNum
+
 
     }
   },
@@ -213,6 +173,7 @@ export default {
     // 是否允许props 傳入formItemList  动态更新
     // this.formItemListInit=deepCopy(this.formItemList)
     // Object.freeze(this.formItemList)
+    
   },
   methods: {
     filterFormHide (items) {

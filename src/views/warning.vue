@@ -126,7 +126,7 @@ export default {
                 width: '36%'
               },
 
-              singleCol: true,
+              colNum:1,
 
               formItemList: buildFormFields(unhandleFields),
               formDataUpdateHandle (formVm, param) {},

@@ -84,7 +84,8 @@ export const formOption = {
   borderForm: false,
   showFoldBtn: true,
   'label-width': '160px',
-  'label-position': 'right'
+  'label-position': 'right',
+  colNum:2
 
 }
 export const actionPopProperties = {
@@ -144,6 +145,7 @@ export const dynamicFormOption = {
 
 export const presetConfig = {
   data: {
+    baseFormSectionName:'基础信息',
     dialogWidth: '50%',
     btnSize: 'small',
     actionTip: 'tip',

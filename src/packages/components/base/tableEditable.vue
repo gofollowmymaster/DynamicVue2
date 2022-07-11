@@ -63,6 +63,10 @@ export default {
       default(){
         return {}
       }
+    },
+    size:{
+      type:String,
+      default:'small'
     }
    
     

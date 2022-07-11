@@ -4,7 +4,11 @@
     :style="colOptions.style || {}"
     :class="`form-unqiue-${colOptions.key}`"
     class="table-col-box text-ellipsis" >
-    <DynamicFormItem v-model="rowData[formItem.key]" :formItem="formItem"></DynamicFormItem>
+     <component
+                  v-model="rowData[formItem.key]"
+                  :is="formItem.type || 'FormInput'"
+                  v-bind:item="formItem" />
+    <!-- <DynamicFormItem v-model="rowData[formItem.key]" :formItem="formItem"></DynamicFormItem> -->
   </div>
 </template>
 
