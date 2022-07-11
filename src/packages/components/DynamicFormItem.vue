@@ -5,6 +5,7 @@
                 :key="formItem.key"
                 :label="label"
                  v-bind="formItem.wraperProperties"
+                  :class="setFormItemClass(formItem.wraperProperties.class)"
               >
                 <slot :name="formItem.key"></slot>
               </component>

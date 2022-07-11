@@ -11,8 +11,6 @@ export const searchOption = {
   resetable: true,
   searchLabel: '搜索',
   searchClasses: [
-    'grid-col-6',
-    'grid-col-lg-4',
     'grid-col-sm-6',
     'grid-col-ss-8',
     'grid-col-xs-12'
@@ -159,11 +157,9 @@ export const presetConfig = {
     dynamicFormOption,
     actionPopProperties,
     msgBoxProperties,
-    formWraperClass: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24'],
-    detailWraperClass: ['grid-col-12', 'grid-col-xs-24', 'grid-col-pp-24'],
+    formWraperClass: [ 'grid-col-xs-24', 'grid-col-pp-24'],
+    detailWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
     searchFormWraperClass: [
-      'grid-col-8',
-      'grid-col-lg-6',
       'grid-col-sm-8',
       'grid-col-ss-8',
       'grid-col-xs-12',

@@ -28,8 +28,6 @@ export const searchOption = {
   resetable: true,
   searchLabel: '搜索1',
   searchClasses: [
-    'grid-col-6',
-    'grid-col-lg-4',
     'grid-col-sm-6',
     'grid-col-ss-8',
     'grid-col-xs-12'
