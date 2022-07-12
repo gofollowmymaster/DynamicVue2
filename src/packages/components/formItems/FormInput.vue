@@ -1,8 +1,6 @@
 <template>
     <!-- 普通输入框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-input-box form-item-box">
+    <section  >
         <el-input v-model.trim="val"
                  :disabled="getDisabled"
                   :placeholder="getPlaceholder(item)"
@@ -19,7 +17,7 @@
             <span class="text">{{ val || '-' }}</span>
             <span class="append-msg" v-if="append">{{ append }}</span>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -60,11 +58,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .form-input-box /deep/ .el-input {
-        position: relative;
-        width: 100%;
-
-    }
+ 
 
     .form-input-text {
         position: relative;

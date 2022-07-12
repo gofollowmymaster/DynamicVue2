@@ -111,7 +111,7 @@ export default {
         }
       },
       tableOption: this.$appendToPreset('tableOption', {
-        loadListApi: treeStreetListApi,
+        loadListApi:treeStreetListApi,
         'current-change': 'handleCurrentChange', // 事件 暂不支持
         lineActions: {
           update: {
@@ -130,7 +130,7 @@ export default {
           },
           detail: {
             label: '查看',
-            actinType: 'routerDialogFormAction',
+            actionType: 'routerDialogFormAction',
             container: 'dy-page',
             apiPromise: treeStreetDetailApi,
             containerProperties: {
@@ -145,7 +145,7 @@ export default {
           },
           delete: {
             label: '删除',
-            actinType: 'requestApiAction',
+            actionType: 'requestApiAction',
             componentProperties: {
               class: ['text-grey-dark2']
             },
@@ -155,7 +155,7 @@ export default {
         }
       }),
       tableFields,
-      pagination,
+      pagination:{...pagination,pageNo:1},
 
       searchParams: { refreshKey: '' },
       selected: [],
@@ -171,7 +171,7 @@ export default {
 
   computed: {
     queryParams () {
-      return { ...this.searchParams, ...this.pagination }
+      return { ...this.searchParams, pageNo:this.pagination.pageNo,pageSize:this.pagination.pageSize }
     },
     loadListApi () {
       return this.tableOption.loadListApi(this.queryParams).then((data) => {

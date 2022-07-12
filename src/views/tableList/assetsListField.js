@@ -325,39 +325,15 @@ export const assetsFields = [
   {
     key: 'famousWood',
     type: 'FormDynamicSelect',
-    label: '等级',
+    label: '保护类别',
     options: buildDynamicSelectOption('tree_manage_famous_wood'),
-
-    // options: [
-    //   {
-    //     value:1,
-    //     label:'等级'
-    //   },
-    //   {
-    //     value:2,
-    //     label:'古资产'
-    //   },
-    //   {
-    //     value:3,
-    //     label:'固定资产'
-    //   },
-    // key: 'id',
-    // value: 'dictValue',
-    // label: 'dictLabel',
-    // apiPromise: () => {
-    //   return selectDictDataInfoApi({
-    //     dictType: 'tree_manage_famous_wood'
-    //   }).then((res) => res.data || [])
-    // }
-    // ],
+ 
     tableOption: {
       sort: 6,
-      template (row) {
-        return {
+    
           component: 'ColDictTag',
           dictInfoKey: 'famousWoodDictData'
-        }
-      }
+     
     },
     formOption: {
       rules: ['required']
@@ -398,12 +374,10 @@ export const assetsFields = [
     },
     tableOption: {
       sort: 8,
-      template (row) {
-        return {
+ 
           component: 'ColDictTag',
           dictInfoKey: 'protectLevDictData'
-        }
-      }
+   
     }
   },
   {
@@ -578,12 +552,10 @@ export const assetsFields = [
     },
     tableOption: {
       sort: 7,
-      template (row) {
-        return {
+    
           component: 'ColDictTag',
           dictInfoKey: 'growthSituationDictData'
-        }
-      }
+    
     }
   },
 
@@ -708,9 +680,7 @@ export const assetsFields = [
     label: '二维码',
     type: 'QrCodeImg',
     tableOption: {
-      template () {
-        return { component: 'ColQrcode' }
-      }
+    component: 'ColQrcode'  
     },
     detailOption: {
       wraperProperties: {

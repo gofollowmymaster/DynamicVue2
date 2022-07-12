@@ -1,7 +1,5 @@
 <template>
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-item-box">
+    <section  >
         <el-select style="width:100%"
                    v-model="val"
                    multiple
@@ -16,7 +14,7 @@
                        :value="option.value"/>
         </el-select>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
-    </div>
+    </section>
 </template>
 
 <script>

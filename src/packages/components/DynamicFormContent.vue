@@ -219,13 +219,18 @@ export default {
               switch (key) {
                 case 'required':
                   this.setElementRequired(item.key, expressionValue)
+                  delete this.formItemList[index].children[innerIndex].properties[key]
+
                   break
                 case 'value':
                   expressionValue != this.data[item.key] &&
                     this.$set(this.data, item.key, expressionValue)
+                  delete this.formItemList[index].children[innerIndex].properties[key]
+
                   break
                 case 'hidden':
                   this.formItemList[index].children[innerIndex].hidden = expressionValue
+                  delete this.formItemList[index].children[innerIndex].properties[key]
                   break
                 default:
                   this.formItemList[index].children[innerIndex].properties[key] = expressionValue

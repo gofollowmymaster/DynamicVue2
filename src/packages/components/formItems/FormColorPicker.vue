@@ -1,19 +1,14 @@
 <template>
   <!-- 普通输入框 -->
-  <div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${
-      getTextModel ? 'hz-text-box' : 'hz-untext-box'
-    }`"
-    class="form-input-box form-item-box"
-  >
+  <section  >
     <el-color-picker 
+      class="block"
       v-model="val"
       v-bind="bindOptions"
       :disabled="getTextModel?true:getDisabled"
     ></el-color-picker>
  
-  </div>
+  </section>
 </template>
 
 <script>
@@ -33,9 +28,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.el-color-picker{
-  display: block;
-}
+ 
 /deep/ .el-color-picker__trigger{
   width: 100%;
 }

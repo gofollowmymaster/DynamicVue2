@@ -1,8 +1,6 @@
 <template>
     <!-- 日期选择框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-item-box">
+    <section  >
         <el-date-picker v-model="val"
                         class="form-date-item"
                         type="datetime"
@@ -18,7 +16,7 @@
                         v-bind="bindOptions"
                         v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ val || '-' }}</div>
-    </div>
+    </section>
 </template>
 
 <script>

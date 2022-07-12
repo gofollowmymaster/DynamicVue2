@@ -1,8 +1,6 @@
 <template>
-  <div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-img-box' : ''}`"
-    class="form-input-box form-item-box full-width"
+  <section 
+    class=" full-width"
   >
      <TableEditable
         class="table-wraper "
@@ -14,7 +12,7 @@
         size="small"
       ></TableEditable>
       
-  </div>
+  </section>
 </template>
 
 <script>
@@ -60,9 +58,6 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
-.form-input-box /deep/ .el-input {
-  position: relative;
-  width: 100%;
-}
+<style scoped lang="css">
+ 
 </style>

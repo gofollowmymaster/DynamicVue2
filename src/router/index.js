@@ -11,7 +11,26 @@ const router = new VueRouter({
       name: ' ',
       redirect: '/tableList'
     },
+    {
+      path: '/order',
+      name: '订单',
+      component: () => import('@/views/index.vue'),
+      redirect: '/order/list',
+      children: [
 
+        {
+          path: 'list',
+          name: '订单列表',
+          component: () => import('@/views/order/list.vue')
+        },
+        {
+          path: 'plist',
+          name: '订单列表',
+          component: () => import('@/views/order/planList.vue')
+        },
+        
+      ]
+    },
     {
       path: '/tableList',
       name: '资产',

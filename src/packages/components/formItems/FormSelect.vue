@@ -1,7 +1,5 @@
 <template>
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-item-box">
+    <section >
         <el-select style="width:100%"
                    v-model="val"
                    :disabled="getDisabled"
@@ -14,7 +12,7 @@
                        :value="option.value"/>
         </el-select>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}   </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -44,24 +42,5 @@ export default {
 
 <style scoped lang="less">
 
-    // .form-item-box {
-    //     /deep/ .el-input {
-
-    //         .el-input__inner {
-    //             position: absolute;
-    //             width: 100%;
-    //             padding-right: 10px;
-    //             padding-left: 12px;
-    //         }
-
-    //         .el-input__inner:focus {
-    //             border-color: #8D94A5;
-    //         }
-    //     }
-    // }
-
-    // .el-select-dropdown__item.selected {
-    //     color: #606266;
-    //     font-weight: normal;
-    // }
+  
 </style>

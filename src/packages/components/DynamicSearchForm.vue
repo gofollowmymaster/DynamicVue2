@@ -1,7 +1,7 @@
 <template>
   <main class="flex relative search-container">
     <DynamicFormContent :formItemList="formFields" ref="searchOption" @formDataUpdated="change"
-      v-bind="options"  :formProperties="options.properties"  :data="data" colNum="4" >
+      v-bind="options"  :formProperties="options.properties"  :data="data" :colNum="4" >
       <template  #actionBtnSlot>
         <section class="  "  >
           <el-button class="lh10" type="primary" size="small" @click="submit" v-if="options.trigger=='click'"   icon="el-icon-search">{{options.searchLabel||'搜索'}}</el-button>

@@ -1,8 +1,6 @@
 <template>
     <!-- 日期范围选择框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-item-box">
+    <section >
         <el-date-picker v-model="val"
                         type="daterange"
                         :disabled="getDisabled"
@@ -14,7 +12,7 @@
                         v-bind="bindOptions"
                         v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
-    </div>
+    </section>
 </template>
 
 <script>

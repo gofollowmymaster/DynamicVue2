@@ -1,7 +1,6 @@
 <template>
     <!-- 数字输入框 -->
-    <div :style="item.style||{}"
-         class="form-item-box">
+    <section >
         <section v-if="!getTextModel" class="flex justify-between">
             <el-input :value="val[0]"
                       :disabled="getDisabled"
@@ -28,7 +27,7 @@
             {{ textModelValue  }}
             {{ item.append }}
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,11 +1,9 @@
 <template>
     <!-- 普通输入框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-input-box form-item-box">
+    <section >
         <el-cascader v-if="!getTextModel" v-model.trim="val"   :disabled="getDisabled" :options="item.options" v-bind="bindOptions"></el-cascader>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
-    </div>
+    </section>
 </template>
 
 <script>

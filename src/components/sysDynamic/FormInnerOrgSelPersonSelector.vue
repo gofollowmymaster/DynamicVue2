@@ -1,9 +1,5 @@
 <template>
-  <main
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-    class="form-input-box form-item-box"
-  >
+  <main >
     <div class="flex">
       <el-input
         class="cursor-point"

@@ -33,7 +33,7 @@ export default {
 
 <style lang="less" scoped>
 .layout-wrapper {
-  padding: 0px 0px 12px 0px;
+  padding: 0px 0px 0px 0px;
   .left-section {
     display: none;
   }

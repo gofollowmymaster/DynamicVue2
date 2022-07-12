@@ -1,8 +1,6 @@
 <template>
 
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} `"
-         class="form-input-box form-item-box">
+    <div  >
         <div  v-if="!getTextModel" :style="item.textStyle||{}" >
             <span class="text">{{ value||item.content || '-' }}</span>
         </div>

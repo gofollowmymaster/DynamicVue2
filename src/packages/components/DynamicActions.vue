@@ -1,7 +1,7 @@
 <template>
   <main class="actions-wrap" :class="[mode+'-action']">
     <template v-for="(item, index) in actionsOrdered">
-      <span class="action-btn ">
+      <span class="action-btn " :key="item.key||item.label">
         <el-popover
           v-if="item.actionPop"
           width="auto"
@@ -80,7 +80,7 @@ export default {
   watch: {
     actionAndData: {
       handler ({ actions, actionData }) {
-        debugger
+         
         actions = Object.entries(actions)
           .map(([key, value], index) => {
             return { ...value, actionKey: key }

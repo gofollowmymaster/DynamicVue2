@@ -1,8 +1,7 @@
 <template>
     <!-- 普通输入框 -->
-    <div :style="item.style||{}" style="position:absolute;"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-input-box form-item-box absolute-vertical-center  ">
+    <section :style="item.style||{}" style="position:absolute;"
+         class="  absolute-vertical-center  ">
         <el-radio-group v-model.trim="val"
                         :disabled="getDisabled"
                         @blur="e => onBlur(item, e)"
@@ -13,7 +12,7 @@
             :label="opt.value"  v-bind="bindOptions">{{ opt.label }}</component>
         </el-radio-group>
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
-    </div>
+    </section>
 </template>
 
 <script>

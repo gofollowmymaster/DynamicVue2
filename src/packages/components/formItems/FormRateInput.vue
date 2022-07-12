@@ -1,7 +1,6 @@
 <template>
     <!-- 数字输入框 -->
-    <div :style="item.style||{}"
-         :class="getClass()"
+    <section   :class="getClass()"
          class="form-item-box">
         <template v-if="!getTextModel">
             <el-input v-model.trim="tempVal"
@@ -30,7 +29,7 @@
             {{ dealInputValue || '-' }}
             {{ append }}
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,9 +1,5 @@
 <template>
-<div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-    class="form-item-box"
-  >
+<section  >
     <el-select ref="select"     @visible-change="visibleChange" clearable
      style="width: 100%;" @clear="clear"
       v-model="val"
@@ -20,22 +16,13 @@
     <div v-else :style="item.textStyle || {}" class="form-input-text">
       {{ textModelValue || "-" }}
     </div>
-</div>
+</section>
 
 </template>
 
 <script>
 
-// {
-//           load: asyncAdministractiveTreeNode,
-//           'node-key': 'admCode',
-//           fieldName: 'admIds',
-//           props: {
-//             label: 'admName',
-//             children: 'children',
-//             isLeaf: 'leaf'
-//           }
-//         }
+ 
 import FormMixin from './mixin'
 
 export default {

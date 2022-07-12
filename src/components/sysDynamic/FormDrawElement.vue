@@ -1,10 +1,6 @@
 <template>
   <!-- 普通输入框 -->
-  <main
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-    class="form-input-box form-item-box"
-  >
+  <main >
   <div class='flex justify-between pr12'>
 <el-input
       :value="value"
@@ -23,8 +19,8 @@
     <DrawElementGis
       v-model="val"
       :visible="visible"
-      :zoom="zoom"
-      :title="title"
+      :zoom="item.zoom"
+      :title="item.title"
       :drawType="bindOptions.drawType"
       :mode='getTextModel?"view":"select"'
     ></DrawElementGis>
@@ -40,18 +36,8 @@ export default {
   name: 'FormDrawElement',
   mixins: [FormMixin],
   props: {
-    zoom: {
-      type: Number,
-      default: function () {
-        return 11
-      }
-    },
-    title: {
-      type: String,
-      default: function () {
-        return '选择位置'
-      }
-    }
+ 
+ 
 
   },
   computed: {

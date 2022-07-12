@@ -1,10 +1,6 @@
 <template>
   <!--  字典下拉框（指通过数据字典获取选项）  -->
-  <div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-    class="form-item-box"
-  >
+  <section >
     <el-select
       style="width: 100%"
       v-model="val"
@@ -21,7 +17,7 @@
     <div v-else :style="item.textStyle || {}" class="form-input-text">
       {{ textModelValue || "-" }}
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -81,6 +81,7 @@ export default {
                 title: '转事件',
                 width: '70%'
               },
+              colNum:2,
 
               // props: formOption,
               formItemList: buildFormFields(eventFields),
@@ -99,13 +100,13 @@ export default {
               dataAdapter: (data) => {
                 return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 }
               },
-              containertProperties: {
+              containerProperties: {
                 title: '现场处理',
                 width: '36%'
               },
 
               formItemList: buildFormFields(handleFields),
-
+              colNum:1,
               saveAction: {
                 label: '处理',
                 apiPromise: warningHandleApi

@@ -21,6 +21,7 @@ export default {
   computed: {
   },
   mounted () {
+    debugger
       this.content=this.rowData[this.colOptions.dictInfoKey]?.dictLabel
             this.style=this.rowData[this.colOptions.dictInfoKey]?.listClass
   }

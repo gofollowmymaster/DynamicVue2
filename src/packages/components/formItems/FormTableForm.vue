@@ -1,8 +1,6 @@
 <template>
-  <div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-img-box' : ''}`"
-    class="form-input-box form-item-box full-width"
+  <section
+    class="  full-width"
   >
    <div>
      <span class="px12 py6" @click="addForm">+</span>
@@ -15,7 +13,7 @@
       v-bind="bindOptions"
       :allDisabled="getTextModel?true:getDisabled"
     ></DynamicformContent>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -63,10 +61,6 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-.form-input-box /deep/ .el-input {
-  position: relative;
-  width: 100%;
-  // height: 36px;
-}
+<style scoped lang="css">
+ 
 </style>

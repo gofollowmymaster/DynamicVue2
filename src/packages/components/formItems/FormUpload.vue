@@ -1,11 +1,10 @@
 <template>
   <!-- 普通输入框 -->
-  <div
-    :style="item.style || {}"
-    :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'} ${
+  <section
+    :class="` ${
       bindOptions['list-type'] === 'table' && 'upload-table-list'
     }`"
-    class="form-input-box form-item-box full-width"
+    class=" full-width"
   >
     <el-upload
       v-if="!getTextModel"
@@ -26,7 +25,7 @@
       </div>
       <div v-else>
         <i
-          v-if="bindOptions['list-type'] == 'picture-card'"
+          v-if="bindOptions['list-type'] === 'picture-card'"
           class="el-icon-plus"
         ></i>
         <el-button v-else size="small" icon="el-icon-upload">{{
@@ -70,7 +69,7 @@
       entityLabel="附件"
     ></DynamicCurd>
     <template v-else-if="getTextModel&&fileList.length">
-        <ul v-for="file in fileList">
+        <ul v-for="file in fileList" :key="file.fileName">
           <li class="mr12"  >
             <dynamicActions
                 :actions="{download:downloadAction(file.fileName)}"
@@ -88,7 +87,7 @@
       <img width="100%" :src="dialogImageUrl" alt="" />
     </el-dialog>
 
-  </div>
+  </section>
 </template>
 
 <script>
@@ -199,11 +198,11 @@ export default {
     accept () {
       let accept = ''
       const listType =
-        this.item.properties?.['list-type'] || this.item['list-type']
+        this.item['list-type'] 
       if (['picture', 'picture-card'].includes(listType)) {
         accept = 'img'
       }
-      return accept || this.item.properties?.accept || this.item.accept
+      return accept || this.item.accept || this.item.accept
     },
     // 扩展属性，直接将属性配置，传到表单组件内部（即 Element UI 上）
     // 忽略属性【key、size】

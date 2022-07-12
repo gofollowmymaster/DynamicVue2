@@ -2077,6 +2077,29 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+.p0 {
+  padding: 0px;
+}
+.pt0 {
+  padding-top: 0px;
+}
+.pb0 {
+  padding-bottom: 0px;
+}
+.pl0 {
+  padding-left: 0px;
+}
+.pr0 {
+  padding-right: 0px;
+}
+.px0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.py0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 .p1 {
   padding: 1px;
 }

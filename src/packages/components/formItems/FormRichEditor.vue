@@ -1,8 +1,6 @@
 <template>
     <!-- 普通输入框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-input-box form-area-box">
+    <section    class=" form-area-box">
         <RightEditor v-model="val"
                   :placeholder="getPlaceholder(item)"
                   :disabled="getDisabled"
@@ -10,7 +8,7 @@
                   v-if="!getTextModel"/>
         <div v-else :style="item.textStyle || {}" class="form-input-text" v-html="val">
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -50,9 +48,7 @@
 </script>
 
 <style scoped lang="css">
-    /* .form-input-box /deep/ .el-input-group__prepend, .single-input .form-input-box /deep/ .el-input-group__append {
-        padding: 0 10px;
-    } */
+ 
 
     .form-area-box   /deep/ .el-form-item__content {
             height: auto;

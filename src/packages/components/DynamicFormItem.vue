@@ -26,12 +26,15 @@
                 <component
                   v-model="val"
                   ref="formitem"
+                  class="form-item-box"
+                  :style="formItem.style||{}"
+                  :class="`form-unqiue-${formItem.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
                   :is="formItem.type || 'FormInput'"
                   v-bind:item="formItem"
                   :key="formItem.key"/>
                    <div
                   v-if="!textModel && formItem.formTip"
-                  class="text-size12 form-tip lh22"
+                  class=" text-size12 form-tip lh22"
                 >
                    {{ formItem.formTip }}
                 </div>
@@ -83,6 +86,7 @@ export default {
  
   inject: [
     'colNum',
+    'changeData',
   ],
   watch:{
     
@@ -96,6 +100,13 @@ export default {
 
    },
   methods: {
+        // 是否采用文字模式
+    getTextModel () {
+      if (this.changeData.textModel) {
+        return true
+      }
+      return false
+    },
     resetFields(){
        this.$refs.formitem.resetFields()
     },

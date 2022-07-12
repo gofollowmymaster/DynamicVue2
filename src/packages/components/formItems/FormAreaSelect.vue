@@ -1,8 +1,5 @@
 <template>
-    <!-- 普通输入框 -->
-    <div :style="item.style||{}"
-         :class="`form-unqiue-${item.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
-         class="form-input-box form-item-box">
+     <section>
         <!-- 这是三级联动选择框 -->
         <el-row v-if="!getTextModel">
             <el-col :span="8">
@@ -44,7 +41,7 @@
         <div v-else :style="item.textStyle || {}" class="form-input-text">
             {{ areaText }}
         </div>
-    </div>
+ </section>
 </template>
 
 <script>
@@ -113,15 +110,7 @@ export default {
 
 <style scoped lang="less">
 
-    .form-input-text {
-        position: relative;
-        width: 100%;
-        // height: 36px;
-        // line-height: 36px;
-        // font-size: 14px;
-        // color: #12182A;
-    }
-
+ 
     .select {
         width: 100%;
     }

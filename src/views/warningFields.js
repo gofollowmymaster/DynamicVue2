@@ -459,7 +459,7 @@ export const eventFields = [
     key: 'equipmentName',
     type: 'FormTextarea',
     formOption: {
-
+      span:24,
       rules: ['required']
     }
   },
@@ -469,7 +469,7 @@ export const eventFields = [
     key: 'equipmentName1',
     type: 'FormTextarea',
     formOption: {
-
+      span:24,
     }
   },
   {

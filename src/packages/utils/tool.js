@@ -257,7 +257,7 @@ const formOptionDefault = {
     // size:'medium'
   },
   events: {},
-  valueLink: {}
+ 
 }
 
 export function buildFormFields (fields, formSections = {}) {
@@ -328,7 +328,7 @@ const detailOptionDefault = {
     // size:'medium'
   },
   events: {},
-  valueLink: {}
+ 
 }
 
 export function buildDetailFields (fields, formSections = {}) {
