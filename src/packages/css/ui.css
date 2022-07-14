@@ -15,6 +15,9 @@
 .dynamic-form.page-form .block-content {
   width: 83%;
 }
+.dynamic-form.column-form .block-content {
+  width: 100%;
+}
 .dynamic-form .el-form-item__label {
   height: auto;
   padding-bottom: 0;

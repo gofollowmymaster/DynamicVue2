@@ -37,7 +37,6 @@ export default {
   mixins: [FormMixin],
   props: {
  
- 
 
   },
   computed: {

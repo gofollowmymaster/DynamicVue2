@@ -55,7 +55,7 @@ export function hasValue (a) {
 }
 
 export function isObjEmpty (obj) {
-  if (['[]', '{}'].includes(JSON.stringify(obj))) {
+  if (['[]', '{}','""','null','undefined',undefined].includes(JSON.stringify(obj))) {
     return true
   }
   return false

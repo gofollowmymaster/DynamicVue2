@@ -41,7 +41,8 @@ import {
   unhandleFields,
   warningProcessedFields
 } from './warningFields'
-import {  buildFormFields } from '@/packages/utils/tool'
+import {  buildFormFields } from '@/packages/utils/fieldsConfigUtil'
+
 
 const entityLabel = '告警信息'
 

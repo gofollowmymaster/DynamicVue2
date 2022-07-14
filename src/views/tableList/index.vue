@@ -1,6 +1,5 @@
 <template>
   <DynamicCurdPage
-    v-if="pageOptions"
     :entityLabel="entityLabel"
     :fields="fields"
     :apiPromises="apiPromises"
@@ -19,8 +18,6 @@ import {
   exportOldtreeApi
 } from '@/network/assets.js'
 import {
-
-  buildDetailFields,
   appendToPreset
 } from '@/packages/utils/tool'
 import { assetsFields as fields } from './assetsListField.js'
@@ -38,7 +35,7 @@ const entityLabel = '固定资产'
 export default {
   name: 'assetsManage',
   data () {
-    debugger
+     
     return {
       entityLabel,
       // form字段
@@ -84,7 +81,7 @@ export default {
                   props: appendToPreset('dynamicFormOption',
                     {
                       apiPromise: assetsDetailApi,
-                      formItemList: buildDetailFields(fields),
+                      formItemList: this.$buildDetailFields(fields),
                       formOption: {
                         borderForm: false,
                         textModel: true,

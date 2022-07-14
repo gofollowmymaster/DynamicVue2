@@ -9,8 +9,8 @@
         @selection-change="selectChange"
       ></DynamicTable>
       <el-pagination
-        v-if="!isEmpty(pagination)"
-        class="mt16 text-right"
+        v-if="!isObjEmpty(pagination)"
+        class="mt16  text-right"
         background
         v-bind="pagination"
         :total="total"
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-     import {deepMerge, isEmpty} from '../../utils/tool'
-     import {tableOption,}  from "../../presetConfig"
+     import {deepMerge, isObjEmpty} from '../../utils/tool'
+     import presetConfig  from "../../presetConfig"
        
 const defaultTableOptions={
-  ...tableOption,
+  ...presetConfig.getConfig('tableOption'),
   hasCheckbox: false,
     properties: {
       "header-cell-style": {
@@ -67,13 +67,14 @@ export default {
     size:{
       type:String,
       default:'small'
-    }
+    },
+    isTextMode:Boolean
    
     
   },
   data() {
     return {
-      isEmpty,
+      isObjEmpty,
       total:10,
       editable:false,
       tableData:[]
@@ -93,7 +94,7 @@ export default {
  tableOption(){
        let defaultOptions = defaultTableOptions;
 
-      if (this.getTextModel) {
+      if (this.isTextMode) {
         defaultOptions.lineActions={}
        
         return deepMerge( defaultOptions,this.table || {});

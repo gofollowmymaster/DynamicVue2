@@ -14,7 +14,7 @@ const amapStyleConfig = {
   lockMapBound: 10000,
   regionPath: []
 }
-const isDebug = false
+const isDebug = true
 const host = dev
 
 export const searchOption = {

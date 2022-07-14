@@ -1,11 +1,9 @@
 import {
-  appendToPreset,
-  deepMerge,
   buildFormFields,
   buildDetailFields
-} from '../utils/tool'
+} from '../utils/fieldsConfigUtil'
 import {
-  generateActionOption, loadActionTipConfig
+   loadActionTipConfig
 } from '../utils/actionTools'
 import Vue from 'vue'
 

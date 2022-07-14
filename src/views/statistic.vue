@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { appendToPreset, buildSearchFields, deepCopy } from '@/packages/utils/tool'
+import { appendToPreset, deepCopy } from '@/packages/utils/tool'
 import { protectLevStatisticApi, growthSituationStatisticApi, treeAgeStatisticApi, treeSpeciesStatisticApi } from '@/network/assets.js'
 
 
@@ -119,7 +119,7 @@ export default {
                 trigger: 'change',
                 resetable: false
               },
-              fields: buildSearchFields(searchFields)
+              fields: this.$buildSearchFields(searchFields)
             })
         },
 

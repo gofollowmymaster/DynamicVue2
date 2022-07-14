@@ -2,10 +2,8 @@
 </template>
 <script>
 import {
-  compose,
   deepMerge,
   deepCopy,
-  buildDetailFields
 } from '../utils/tool'
 import actionMixin from './actionMixin'
 import actionPresetMixin from './actionPresetMixin'

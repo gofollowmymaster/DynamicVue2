@@ -205,6 +205,15 @@ const mainPlaintTableFields=[
     }
   },
   {
+    key: 'time',
+    type: 'FormDateTime',
+    label: '时间',
+    tableOption: {},
+    formOption: {
+      rules: ['required']
+    },
+  },
+  {
     key: 'treeStreetContext',
     type: 'FormInput',
     label: '备注',
@@ -216,13 +225,7 @@ const mainPlaintTableFields=[
 
 ]
 export const mainPlaintTableOption = {
-    
   hasCheckbox: false,
-  lineActions: {
-    // detail: null,
-    // delete:null,
-    // update:null
-  }
 }
 
 
@@ -369,10 +372,40 @@ export default [
   //     }
   //   }
   // },
+  // {
+  //   key: 'mainPlant',
+  //   label: '',
+  //   type: 'FormTableEditable',
+  //   formSection: '主要植物',
+  //   formOption: {
+  //     span:24,
+  //     wraperProperties: {
+  //       'label-width':'0px'
+  //     },
+  //       fields: mainPlaintTableFields,
+  //       tableOption: mainPlaintTableOption,
+  //       defaultValue:[
+  //         {
+  //           id:1,
+  //           treeId:2014,
+  //           treeStreetQuantity:15,
+  //           treeStreetType:'1',
+  //           treeStreetContext:'实打实大所多撒'
+  //         },
+  //         {
+  //           id:1,
+  //           treeId:2014,
+  //           treeStreetQuantity:15,
+  //           treeStreetType:'1',
+  //           treeStreetContext:'实打实大所多撒'
+  //         },
+  //       ]
+  //   }
+  // },
   {
     key: 'mainPlant',
     label: '',
-    type: 'FormTableEditable',
+    type: 'FormChildrenForm',
     formSection: '主要植物',
     formOption: {
       span:24,
@@ -380,7 +413,7 @@ export default [
         'label-width':'0px'
       },
         fields: mainPlaintTableFields,
-        tableOption: mainPlaintTableOption,
+        tableOption: {},
         defaultValue:[
           {
             id:1,
@@ -390,7 +423,7 @@ export default [
             treeStreetContext:'实打实大所多撒'
           },
           {
-            id:1,
+            id:2,
             treeId:2014,
             treeStreetQuantity:15,
             treeStreetType:'1',

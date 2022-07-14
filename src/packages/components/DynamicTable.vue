@@ -141,10 +141,11 @@ export default {
         })
       }
       //
-      const lineActions = deepCopy(this.table.lineActions)
+        const actionNum=Object.keys(this.table.lineActions).length
 
-      if (lineActions) {
- 
+      if (actionNum>0) {
+        const lineActions = deepCopy(this.table.lineActions)
+        
          for(let key in lineActions){
           const action=lineActions[key]
           action.componentProperties={...action.componentProperties,type:this.table.actionBtnType}
@@ -155,7 +156,7 @@ export default {
           type: 'lineActions',
           key: 'lineActions',
           tableOption: {
-            'width': this.table.actionColWidth|| (Object.keys(lineActions).length * 60),
+            'width': this.table.actionColWidth|| (actionNum * 60),
             label: '操作',
             fixed: 'right'
           },

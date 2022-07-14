@@ -42,7 +42,7 @@
 
             
               <DynamicFormItem  
-        
+               :ref="formItem.key"
                class="grid-item"
                 v-model="data[formItem.key]"  
                :key="formItem.key"
@@ -268,7 +268,8 @@ export default {
     validate (fn) {
       // 先校验父级表单的值
       this.$refs.form.validate((valid) => {
-        if (!valid) return
+        debugger
+        // if (!valid) return
         // 克隆一份数据
         const data = JSONDeepCopy(this.getData())
 
@@ -278,7 +279,7 @@ export default {
           if (filed.children && filed.children.length > 0) {
             filed.children.forEach((formItem) => {
               // 如果某一项是
-              if (formItem.type === 'child-form') {
+              if (formItem.type === 'FormChildrenForm') {
                 childFormKeyList.push(formItem.key)
               }
             })
@@ -293,21 +294,18 @@ export default {
           }
         } else {
           const validateList = childFormKeyList.map((key) => {
-            return this.$refs[key][0].validateForm()
+            console.log('---valid----',this.$refs)
+            return this.$refs[key][0].$refs.formitem.validateForm()
           })
-          Promise.all(validateList)
-            .then(() => {
+            if(validateList.every(item=>item)&&valid){
               // 父表单校验也通过了，才算都通过
-              if (valid) {
                 fn(true, data)
               } else {
                 // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
                 fn(false, data)
               }
-            })
-            .catch(() => {
-              fn(false, data)
-            })
+            
+ 
         }
       })
     },

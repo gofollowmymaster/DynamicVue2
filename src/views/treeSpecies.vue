@@ -47,7 +47,7 @@
 import {
   buildFormFields,
   buildSearchFields
-} from '@/packages/utils/tool'
+} from '@/packages/utils/fieldsConfigUtil'
 import { loadActionTipConfig } from '@/packages/utils/actionTools'
 import {
   treeSpeciesUpdateApi,

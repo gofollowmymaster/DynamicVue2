@@ -1,7 +1,5 @@
 <template>
-  <section 
-    class=" full-width"
-  >
+  <section    class=" full-width" >
      <TableEditable
         class="table-wraper "
         :data="val"
@@ -9,6 +7,7 @@
         :columns="item.fields"
         :apiPromise="item.apiPromise"
         :pagination="item.pagination"
+        :isTextMode="getTextModel"
         size="small"
       ></TableEditable>
       

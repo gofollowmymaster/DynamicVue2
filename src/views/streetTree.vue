@@ -155,7 +155,7 @@ export default {
         }
       }),
       tableFields,
-      pagination:{...pagination,pageNo:1},
+      pagination:{...pagination,pageNo:1,},
 
       searchParams: { refreshKey: '' },
       selected: [],
