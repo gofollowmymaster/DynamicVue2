@@ -213,7 +213,7 @@ export default {
     },
     refresh () {
       debugger
-      const refreshKey = this.searchParams.refreshKey++
+      const refreshKey = this.searchParams.refreshKey+1
       this.onSearch({ refreshKey })
     },
   },

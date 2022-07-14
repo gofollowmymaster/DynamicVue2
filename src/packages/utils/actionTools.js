@@ -94,6 +94,7 @@ function setResetAction (options) {
 
 function setActionBaseOption (options) {
   return {
+    hasBuild:true,
     component: options.component || 'el-button',
     actionKey: options.actionKey || 'undefined',
     properties: {
@@ -105,7 +106,7 @@ function setActionBaseOption (options) {
     mainKey: options.mainKey || presetConfig.getConfig('mainKey'),
     label: options.label || '操作',
     sort: options.sort || 100,
-    permission: options.permission || options.label,
+    permission: options.permission,
     isShow: options.isShow ||'',
     dataAdapter: options.dataAdapter || ((data) => data),
     isLoadData: options.isLoadData ?? true,

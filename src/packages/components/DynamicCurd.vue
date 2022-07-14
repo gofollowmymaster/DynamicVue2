@@ -17,7 +17,6 @@
         :fields="options.searchFields"
         :options="options.searchOption"
         :data="data"
-        :key="searchParams.refreshKey"
         @search="onSearch"
       ></DynamicSearchForm>
       <!-- <div class="table-gap"></div> -->
@@ -57,15 +56,16 @@
 </template>
 <script>
 import {
-  compose,
   deepMerge,
-  objectFilter,
-  buildFormFields,
-  buildSearchFields,
-  buildTableFields,
-  buildDetailFields,
   isEmpty
 } from '../utils/tool'
+import {
+  buildSearchFields,
+  buildTableFields,
+} from '../utils/fieldsConfigUtil'
+
+
+
 import { generateDefaultValue } from '../utils/actionTools'
 import presetConfig, {
 
@@ -237,7 +237,7 @@ export default {
     },
     refresh () {
       debugger
-      const refreshKey = this.searchParams.refreshKey++
+      const refreshKey = this.searchParams.refreshKey+1
       this.onSearch({ refreshKey })
     },
 

@@ -56,7 +56,7 @@ import {
   buildFormFields,
   buildTableFields,
   buildSearchFields,
-} from '@/packages/utils/tool'
+} from '@/packages/utils/fieldsConfigUtil'
 import {
   treeStreetUpdateApi,
   treeStreetSaveApi,
@@ -190,7 +190,7 @@ export default {
 
   methods: {
     refresh () {
-      const refreshKey = this.searchParams.refreshKey++
+      const refreshKey = this.searchParams.refreshKey+1
       this.onSearch({ refreshKey })
     },
     handleSizeChange (pageSize) {

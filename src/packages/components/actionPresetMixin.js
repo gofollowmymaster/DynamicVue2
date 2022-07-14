@@ -23,7 +23,7 @@ export default {
 
       return {
         label: '新增',
-        permission: '新增',
+        permission: this.scene!=='page'?'':'新增',
         actionType,
         sort: 50,
         isLoadData: false,
@@ -45,7 +45,7 @@ export default {
       const actionTipConfig = loadActionTipConfig(this)
       return {
         label: '批量删除',
-        permission: '批量删除',
+        permission: this.scene!=='page'?'':'批量删除',  
         actionType: 'requestApiAction',
         actionDataKey: 'selected',
         apiPromise: this.apiPromises.bulkdelete || this.apiPromises.delete,
@@ -58,7 +58,7 @@ export default {
         sort: 200,
         actionType: 'requestApiAction',
         label: '删除',
-        permission: '删除',
+        permission: this.scene!=='page'?'':'删除',  
         componentProperties: {
           class: ['text-grey-dark2']
         },
@@ -76,7 +76,7 @@ export default {
         label: '编辑',
         actionType,
         router: 'update',
-        permission: '编辑',
+        permission: this.scene!=='page'?'':'编辑',  
         apiPromise: this.apiPromises.detail,
         containerProperties: {
           title: '编辑' + this.entityLabel
@@ -98,7 +98,7 @@ export default {
       return {
         label: '详情',
         actionType,
-        permission: '详情',
+        permission:  this.scene!=='page'?'':'详情',  
         apiPromise: this.apiPromises.detail,
         componentProperties: {
           type: 'default'

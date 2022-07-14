@@ -15,6 +15,7 @@
       :on-remove="handleRemove"
       :on-success="handleSuccess"
       :on-error="handleError"
+      :on-change="handleChange"
       v-bind="bindOptions"
       :disabled="getDisabled"
     >
@@ -247,14 +248,14 @@ export default {
       }
     },
     fileList () {
-      return Array.isArray(this.value)?
-        this.value.filter((file) => file.fileId || file.id)
+        return   Array.isArray(this.value)?
+          this.value.filter((file) => file.fileId || file.id||file.uid)
           .map((file) => {
-            file.fileUrl = this.imgPrevUrl + file.fileUrl
+            file.fileUrl = file.fileUrl?this.imgPrevUrl + file.fileUrl:file.url
             file.uploadTime = file.createTime || file.upLoadTime
             file.fileName =
               file.fileName || file.sourceName || file.saveName || file.name
-            file.fileId = file.fileId || file.id
+            file.fileId = file.fileId || file.id||file.uid
             return file
           }) : []
       
@@ -341,7 +342,13 @@ export default {
     handleError (err) {
       console.error(err)
     },
-    handleBeforeUpload () {}
+    handleBeforeUpload () {},
+    handleChange( file, fileList){
+        if(!this.bindOptions['auto-upload']){
+            debugger
+            this.val=fileList
+        }
+    }
   }
 }
 </script>

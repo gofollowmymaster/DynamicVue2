@@ -144,16 +144,18 @@ export default {
       const lineActions = deepCopy(this.table.lineActions)
 
       if (lineActions) {
-        const actions = Object.values(lineActions).map(action => {
-           
-          action.componentProperties = { ...action.componentProperties, type: this.table.actionBtnType }
-          return action
-        })
+ 
+         for(let key in lineActions){
+          const action=lineActions[key]
+          action.componentProperties={...action.componentProperties,type:this.table.actionBtnType}
+          lineActions[key]= this.$generateActionOption(action.actionType,action)
+        }
+
         columns.push({
           type: 'lineActions',
           key: 'lineActions',
           tableOption: {
-            width: this.table.actionColWidth || (actions.length * 60),
+            'width': this.table.actionColWidth|| (Object.keys(lineActions).length * 60),
             label: '操作',
             fixed: 'right'
           },

@@ -7,7 +7,9 @@ import globalDialogPage from './utils/globalDialogPage'
 import { generateActionOption } from './utils/actionTools'
 
 import bus from './utils/bus'
-import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields,buildEditTableFields, appendToPreset } from './utils/tool'
+import {  appendToPreset } from './utils/tool'
+import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields,buildEditTableFields } from './utils/fieldsConfigUtil'
+
 import presetConfig from './presetConfig'
 
 const files = require.context('./components', true, /\.vue$/)

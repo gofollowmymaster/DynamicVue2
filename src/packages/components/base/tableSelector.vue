@@ -47,10 +47,13 @@
 </template>
 <script>
 import {
-  buildSearchFields,
-  buildTableFields,
   isEmpty, deepMerge
 } from '../../utils/tool'
+import {
+  buildSearchFields,
+  buildTableFields,
+} from '../../utils/fieldsConfigUtil'
+
 import {
   searchOption,
   pagination,
@@ -181,7 +184,7 @@ export default {
       this.searchParams = { ...this.searchParams, ...params }
     },
     refresh () {
-      const refreshKey = this.searchParams.refreshKey++
+      const refreshKey = this.searchParams.refreshKey+1
       this.onSearch({ refreshKey })
     },
 

@@ -19,10 +19,7 @@ import {
 } from '@/network/orderManage.js'
 import {
   buildFormFields,
-  buildSearchFields,
-  buildTableFields,
-  buildDetailFields,
-  appendToPreset
+
 } from '@/common/dynamicPage/utils/tool'
 import { fields, modifyFields } from './yearPlanFields.js'
  

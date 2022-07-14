@@ -2,11 +2,11 @@
   <main>
     <slot></slot>
     <!-- 弹窗表单 -->
-    <DynamicFormDialog v-bind="currentDialogForm"  > </DynamicFormDialog>
+    <DynamicFormDialog v-bind="currentDialogForm"  key="dialogForm" > </DynamicFormDialog>
     <!-- 頁面表单 -->
-    <DynamicFormDialog v-bind="currentPageForm"  > </DynamicFormDialog>
+    <DynamicFormDialog v-bind="currentPageForm"   key="pageForm"> </DynamicFormDialog>
     <!-- 页面内容 -->
-    <DynamicPageDialog v-bind="currentDialogPage"  > </DynamicPageDialog>
+    <DynamicPageDialog v-bind="currentDialogPage"   key="pageContent"> </DynamicPageDialog>
     <DynamicDetailPage   v-bind="$props"   :detailId='detailId'   :actionKey='actionKey'></DynamicDetailPage>
 
   </main>

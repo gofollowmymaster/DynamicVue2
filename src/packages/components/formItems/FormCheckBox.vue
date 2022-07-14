@@ -10,7 +10,7 @@
             <component :is="bindOptions.button?'el-checkbox-button':'el-checkbox'" v-for="opt in item.options" :key="opt.value"
             :label="opt.value"   v-bind="bindOptions">{{ opt.label }}</component>
         </el-checkbox-group>
-        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
+        <div   class="form-input-text">{{ textModelValue || '-' }}</div>
     </section>
 </template>
 
