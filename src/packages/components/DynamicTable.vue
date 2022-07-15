@@ -45,6 +45,9 @@
           v-bind="{ ...table.colOptions, ...col.tableOption }"
           :key="col.key"
         >
+          <template v-if="col.labelInfo" v-slot:header>
+            <LabelWithTip :label="col.label" :tip="col.labelInfo"></LabelWithTip>
+          </template>
           <template slot-scope="scope">
              <ColFormItem v-if="scope.row.editable"  :rowData="scope.row"  :colOptions="col" ></ColFormItem>
             <component v-else

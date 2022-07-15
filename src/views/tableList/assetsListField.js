@@ -291,9 +291,13 @@ export const assetsFields = [
   {
     key: 'originalTreeNumber',
     type: 'FormInput',
-    label: '原固定资产编号',
+    label: '原编号',
+    labelInfo:'原laide 固定资产编号',
     formOption: {
-    }
+      rules: ['required']
+    },
+    tableOption:{},
+    searchOption:{},
   },
   {
     key: 'distribution',
@@ -330,7 +334,6 @@ export const assetsFields = [
  
     tableOption: {
       sort: 6,
-    
           component: 'ColDictTag',
           dictInfoKey: 'famousWoodDictData'
      

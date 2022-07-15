@@ -1,6 +1,6 @@
 {
   "name": "dyvue2",
-  "version": "0.0.52",
+  "version": "0.0.53",
   "author": "hua zheng <1850796924@qq.com>",
   "description": "a vue component drived by json",
   "main": "lib/dyvue2.umd.js",

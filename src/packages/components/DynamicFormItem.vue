@@ -23,6 +23,9 @@
                   :label="label"
                    :key="formItem.key"
                 :prop="formItem.key">
+                <template v-if="formItem.labelInfo" v-slot:label>
+                   <LabelWithTip  :label="label" :tip="formItem.labelInfo" :icon="formItem.infoIcon"></LabelWithTip>
+                </template>
                 <component
                   v-model="val"
                   ref="formitem"
