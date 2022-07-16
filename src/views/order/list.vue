@@ -63,7 +63,7 @@ const formSections={
 const fields=[
  { key: "keyWord", type: "FormInput", label: "关键字", searchable: true },
   { key: "id", type: "FormHide", label: "", formOption:{}},
-  { key: "index", type: "index", label: "序号", tableOption:{width:60}},
+  { key: "index", type: "index", label: "序号", tableOption:{}},
 
     {
       "key": "admId",

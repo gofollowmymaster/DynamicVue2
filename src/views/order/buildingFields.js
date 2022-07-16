@@ -7,7 +7,7 @@ const subProjectFields = [
     key: 'index',
     label: '序号',
     tableOption: {
-      width: 60
+     
     },
   },
   {
@@ -203,12 +203,10 @@ export default  [
         accept:'*',
         
       },
-      extra: {
         btn_text: '上传',
         tip: '单个附件大小限制200Mb，最多上传20个附件',
         apiPromise: elementUploadFileApi,
         downloadApi:globalDownloadFileById,
-      }
     },
   },
   {
@@ -223,10 +221,10 @@ export default  [
         // 'label-width':'0px'
       },
 
-      extra:{
+      
         fields:subProjectFields,
         entityLabel:'主要植物'
-      }
+      
     },
   },
   {

@@ -1,5 +1,5 @@
 <template>
-  <div class="routerContaner" :class="{'amaprouterContaner':isAmap}" :style="{left:routerContainerLeft+'px'}">
+  <div class="routerContaner"   :style="{left:routerContainerLeft+'px'}">
     <slot></slot>
   </div>
 </template>
@@ -8,19 +8,13 @@ export default {
   data () {
     return {
       routerContainerLeft: 280,
-      isAmap: false
+ 
     }
   },
   watch: {
     $route: {
       handler () {
-        debugger
-        this.module = this.$route.fullPath.split('/').pop()
-        if (this.module == 'amap') {
-          this.isAmap = true
-          return
-        }
-        this.isAmap = false
+        
       },
       deep: true,
       immediate: true

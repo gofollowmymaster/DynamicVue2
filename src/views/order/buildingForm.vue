@@ -150,7 +150,7 @@ export default {
           componentProperties:{
             size:'medium'
           },
-          actionType:'',
+          actionType:'custom',
           isLoadData:false,
           actionHandle:(data)=>{
             this.active= 0

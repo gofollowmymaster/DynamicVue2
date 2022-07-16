@@ -129,7 +129,7 @@ function setActionBaseOption (options) {
 }
 function setDialogFormAction (options) {
   const baseOption = setActionBaseOption(options)
-  let { labelWidth, pageLabelWidth, labelPosition } = presetConfig.getConfig('formOption').formProperties
+  let { 'label-width':labelWidth, pageLabelWidth,'label-position': labelPosition } = presetConfig.getConfig('formOption')
   labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
   const actionOption = {
     ...baseOption,

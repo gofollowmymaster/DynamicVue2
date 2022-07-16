@@ -10,13 +10,13 @@
     >
       <section v-if="visible.value">
         <DynamicFormContent
-         class="over-scroll "
+         class=" "
           ref="DynamicFormContent"
           :data="body.data"
           :formItemList="body.formItemList"
           @formDataUpdated="formDataUpdateHandle"
           v-bind="body.formOption"
-          :mode="isPageForm?'page':'column'"
+          :mode="isPageForm?'page':'dialog'"
         >
         </DynamicFormContent>
         <section

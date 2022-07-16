@@ -28,6 +28,11 @@ const router = new VueRouter({
           name: '订单列表',
           component: () => import('@/views/order/planList.vue')
         },
+        {
+          path: 'blist',
+          name: '执行中订单列表',
+          component: () => import('@/views/order/buildingList.vue')
+        },
         
       ]
     },

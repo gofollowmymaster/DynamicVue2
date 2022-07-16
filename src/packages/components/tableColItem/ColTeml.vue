@@ -23,8 +23,8 @@ export default {
     content(){
        
        const content = this.rowData[this.colOptions.key]
-    if (typeof this.colOptions.tableOption?.template === 'function') {
-       return  this.colOptions.tableOption?.template(
+    if (typeof this.colOptions.template === 'function') {
+       return  this.colOptions.template(
         this.rowData,
         this.colOptions.key
       )

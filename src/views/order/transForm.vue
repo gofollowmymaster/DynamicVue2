@@ -193,7 +193,6 @@ export default {
           componentProperties:{
             size:'medium'
           },
-          actionType:'',
           isLoadData:false,
           actionHandle:(data)=>{
             this.active= 0
@@ -241,7 +240,6 @@ export default {
           properties:{
             size:'medium'
           },
-          actionType:'',
           isLoadData:false,
           actionHandle:(data)=>{
             this.active= 1

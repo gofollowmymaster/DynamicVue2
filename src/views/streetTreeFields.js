@@ -347,31 +347,27 @@ export default [
         limit: 5,
         'list-type': 'picture-card'
       },
-      extra: {
         btn_text: '上传',
         tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
 
         apiPromise: elementUploadFileApi
-      }
     }
   },
-  // {
-  //   key: 'mainPlant',
-  //   label: '',
-  //   type: 'FormCurd',
-  //   formSection: '主要配件',
-  //   formOption: {
-  //     span: 24,
-  //     wraperProperties: {
-  //       'label-width': '0px'
-  //     },
-  //     extra: {
-  //       fields: mainPlaintFields,
-  //       options: mainPlaintOption,
-  //       entityLabel: '主要配件'
-  //     }
-  //   }
-  // },
+  {
+    key: 'mainPlant',
+    label: '',
+    type: 'FormCurd',
+    formSection: '主要配件',
+    formOption: {
+      span: 24,
+      wraperProperties: {
+        'label-width': '0px'
+      },
+        fields: mainPlaintFields,
+        options: mainPlaintOption,
+        entityLabel: '主要配件'
+    }
+  },
   // {
   //   key: 'mainPlant',
   //   label: '',
@@ -402,36 +398,36 @@ export default [
   //       ]
   //   }
   // },
-  {
-    key: 'mainPlant',
-    label: '',
-    type: 'FormChildrenForm',
-    formSection: '主要植物',
-    formOption: {
-      span:24,
-      wraperProperties: {
-        'label-width':'0px'
-      },
-        fields: mainPlaintTableFields,
-        tableOption: {},
-        defaultValue:[
-          {
-            id:1,
-            treeId:2014,
-            treeStreetQuantity:15,
-            treeStreetType:'1',
-            treeStreetContext:'实打实大所多撒'
-          },
-          {
-            id:2,
-            treeId:2014,
-            treeStreetQuantity:15,
-            treeStreetType:'1',
-            treeStreetContext:'实打实大所多撒'
-          },
-        ]
-    }
-  },
+  // {
+  //   key: 'mainPlant',
+  //   label: '',
+  //   type: 'FormChildrenForm',
+  //   formSection: '主要植物',
+  //   formOption: {
+  //     span:24,
+  //     wraperProperties: {
+  //       'label-width':'0px'
+  //     },
+  //       fields: mainPlaintTableFields,
+  //       tableOption: {},
+  //       defaultValue:[
+  //         {
+  //           id:1,
+  //           treeId:2014,
+  //           treeStreetQuantity:15,
+  //           treeStreetType:'1',
+  //           treeStreetContext:'实打实大所多撒'
+  //         },
+  //         {
+  //           id:2,
+  //           treeId:2014,
+  //           treeStreetQuantity:15,
+  //           treeStreetType:'1',
+  //           treeStreetContext:'实打实大所多撒'
+  //         },
+  //       ]
+  //   }
+  // },
   {
     key: 'unit',
     type: 'FormInnerOrgSelector',

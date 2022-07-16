@@ -3,7 +3,7 @@
     :entityLabel="entityLabel"
     :fields="fields"
     :apiPromises="apiPromises"
-        :pageOptionsprops="pageOptions"
+    :pageOptionsprops="pageOptions"
   ></DynamicCurdPage>
 </template>
 <script>
@@ -83,7 +83,7 @@ export default {
                       apiPromise: assetsDetailApi,
                       formItemList: this.$buildDetailFields(fields),
                       formOption: {
-                        borderForm: false,
+                        borderForm: true,
                         textModel: true,
                         formProperties: {
                           'label-position': 'right'

@@ -11,14 +11,15 @@
         <el-table-column
           v-if="col.type == 'index'"
           :key="col.key"
-          v-bind="{ ...col.tableOption }"
+          v-bind="{ ...col.colProperties }"
+
           type="index"
           :index="indexHandle"
         >
         </el-table-column>
         <el-table-column
           v-else-if="col.type == 'selection'"
-          v-bind="{ ...col.tableOption }"
+          v-bind="{ ...col.colProperties }"
           :key="col.key"
           type="selection"
           :reserve-selection="table.properties['row-key']?true:false"
@@ -26,7 +27,7 @@
         </el-table-column>
         <el-table-column
           v-else-if="col.type == 'lineActions'"
-          v-bind="{ ...table.colOptions, ...col.tableOption }"
+          v-bind="{ ...table.colOptions, ...col.colProperties }"
           :key="col.key"
         >
           <template slot-scope="scope">
@@ -42,7 +43,7 @@
         <el-table-column
           v-else
           :prop="col.key"
-          v-bind="{ ...table.colOptions, ...col.tableOption }"
+          v-bind="{ ...table.colOptions, ...col.colProperties }"
           :key="col.key"
         >
           <template v-if="col.labelInfo" v-slot:header>
@@ -112,22 +113,23 @@ export default {
     columnsComputed () {
       const columns = this.columns.map((item, index) => {
         if (item.type === 'index') {
-          item.tableOption = {
-            ...item.tableOption,
-            width: 56,
+           
+          item.colProperties = {
+            width:this.table.indexColWidth,
+            ...item.colProperties,
             fixed: 'left'
           }
         } else if (index < 2) {
-          item.tableOption = {
-            ...item.tableOption,
+          item.colProperties = {
+            ...item.colProperties,
             fixed: 'left'
           }
         }
         return {
           ...item,
-          tableOption: {
-            ...item.tableOption,
-            label: item.tableOption?.label || item.label
+          colProperties: {
+            ...item.colProperties,
+            label:   item.label
 
           }
         }
@@ -137,14 +139,14 @@ export default {
         columns.unshift({
           key: 'selection',
           type: 'selection',
-          tableOption: {
+          colProperties: {
             width: 48,
             fixed: 'left'
           }
         })
       }
       //
-        const actionNum=Object.keys(this.table.lineActions).length
+        const actionNum=this.table.lineActions?Object.keys(this.table.lineActions).length:0
 
       if (actionNum>0) {
         const lineActions = deepCopy(this.table.lineActions)
@@ -158,7 +160,7 @@ export default {
         columns.push({
           type: 'lineActions',
           key: 'lineActions',
-          tableOption: {
+          colProperties: {
             'width': this.table.actionColWidth|| (actionNum * 60),
             label: '操作',
             fixed: 'right'
@@ -217,8 +219,8 @@ export default {
   components: {},
   methods: {
         tableColComponent(col,data){
-          if(  col.tableOption.component){
-                 return   col.tableOption.component
+          if(  col.component){
+                 return   col.component
                 }else{
                   return 'ColTeml'
                 }
@@ -239,6 +241,7 @@ export default {
       })
     },
     indexHandle (index) {
+      debugger
       return index + 1
     }
   }

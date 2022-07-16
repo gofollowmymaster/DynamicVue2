@@ -130,7 +130,6 @@
 
   .block-nav {
     position: relative;
-    margin-top: 10px;
     margin-bottom: 24px;
     font-size: 16px;
     background: #f8f9fb;
@@ -163,27 +162,24 @@
 
 
   // 带边框的表单组件
-  .border-form {
      
-    .block-item {
+    .block-border {
       border: 1px solid #dde0ea;
       border-radius: 8px;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       background: #fff;
 
       .block-nav {
-        line-height: 60px;
+        line-height: 40px;
         background: #f8f9fb;
-        padding: 20px 0 18px 24px;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        margin-bottom: 18px;
+        padding: 14px 0 14px 0px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         border-bottom: 1px solid #dde0ea;
       }
       .block-content {
-        margin:8px;
+        margin:24px 8px 0;
       }
-    }
   }
 
   .block-hide {
@@ -219,7 +215,7 @@
   }
 
    //详情模式下样式
-  >.form-text-mode {
+  .form-text-mode {
       --layout-row-gap:0px;
       --layout-gap:0px;
      .el-form-item__label{
@@ -308,13 +304,17 @@
   width:auto;
 }
  
+.el-table th.el-table__cell.index-col > .cell{
+  
+  text-align: center;
+ }
 .el-table th.el-table__cell > .cell{
- white-space: nowrap;
- padding-left:16px;
- padding-right:16px;
- text-overflow:initial;
-//  text-align: center;
-}
+  white-space: nowrap;
+  padding-left:16px;
+  padding-right:16px;
+  text-overflow:initial;
+ //  text-align: center;
+ }
 .el-table .cell{
   padding-left:16px;
   padding-right:16px;

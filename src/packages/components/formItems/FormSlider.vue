@@ -2,10 +2,12 @@
   <!-- 普通输入框 -->
   <section  >
     <el-slider
+      v-if="!getTextModel"
       v-model="val"
       v-bind="bindOptions"
-      :disabled="getTextModel?true:getDisabled"
+      :disabled="getDisabled"
     ></el-slider>
+    <div v-else>{{val||'--'}}</div>
 
   </section>
 </template>

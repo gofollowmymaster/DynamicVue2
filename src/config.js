@@ -26,7 +26,7 @@ export const searchOption = {
   borderForm: false,
   trigger: 'click',
   resetable: true,
-  searchLabel: '搜索1',
+  searchLabel: '搜索',
   searchClasses: [
     'grid-col-sm-6',
     'grid-col-ss-8',
@@ -44,7 +44,7 @@ export const tableOption = {
     selectable: true,
     expand: true,
     'show-header': true,
-    'empty-text': '暂无数据1',
+    'empty-text': '暂无数据',
     align: 'left',
     'row-key': 'id',
     'header-align': 'left',

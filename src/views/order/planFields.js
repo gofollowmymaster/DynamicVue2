@@ -3,7 +3,7 @@ import { buildDynamicSelectOption,elementUploadFileApi,globalDownloadFileById } 
 export default  [
   { key: "keyWord", type: "FormInput", label: "关键字", searchable: true },
   { key: "id", type: "FormHide", label: "", formOption:{}},
-  { key: "index", type: "index", label: "序号", tableOption:{width:60}},
+  { key: "index", type: "index", label: "序号", tableOption:{ }},
 
 
     {
@@ -214,12 +214,10 @@ export default  [
           'list-type': 'table',
           accept:'*',
         // },
-        extra: {
           btn_text: '上传',
           tip: '单个附件大小限制200Mb，最多上传20个附件',
           apiPromise: elementUploadFileApi,
           downloadApi:globalDownloadFileById,
-        }
       },
     },
     {
@@ -261,12 +259,10 @@ export default  [
           'list-type': 'table',
           accept:'*',
         // },
-        extra: {
           btn_text: '上传',
           tip: '单个附件大小限制200Mb，最多上传20个附件',
           apiPromise: elementUploadFileApi,
           downloadApi:globalDownloadFileById,
-        }
       },
     },
     {
@@ -379,12 +375,10 @@ export default  [
           'list-type': 'table',
           accept:'*',
       
-        extra: {
           btn_text: '上传',
           tip: '单个附件大小限制200Mb，最多上传20个附件',
           apiPromise: elementUploadFileApi,
           downloadApi:globalDownloadFileById,
-        }
       },
     },
     {
@@ -472,12 +466,10 @@ export default  [
          
           hidden:'#{bidStatus}!=1',
         },
-        extra: {
           btn_text: '上传',
           tip: '单个附件大小限制200Mb，最多上传20个附件',
           apiPromise: elementUploadFileApi,
           downloadApi:globalDownloadFileById,
-        }
       },
     },
   

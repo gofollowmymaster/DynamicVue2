@@ -17,7 +17,7 @@ import {
 } from '@/network/orderManage.js'
 import {
   appendToPreset
-} from '@/common/dynamicPage/utils/tool'
+} from '@/packages/utils/tool'
 import fields from './buildingFields.js'
 import transFields from './transFields.js'
 
@@ -123,7 +123,7 @@ export default {
                
               formItemList: this.$buildFormFields(transFields),
           
-              saveAction: appendToPreset('submitActionOption', {
+              saveAction: this.$generateActionOption('submitActionOption', {
                 apiPromise: transProjectSaveApi,
                 callback:{
                   

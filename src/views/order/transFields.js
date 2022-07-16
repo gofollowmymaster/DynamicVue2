@@ -357,12 +357,10 @@ export default  [
           accept:'*',
           
         },
-        extra: {
           btn_text: '上传',
           tip: '程图纸建议打包上传，单个附件大小限制200 Mb，最多上传20个附件',
           apiPromise: elementUploadFileApi,
           downloadApi:globalDownloadFileById,
-        }
       },
     },
     
@@ -425,10 +423,8 @@ export default  [
         "formOption": {
           span: 24,
  
-          extra:{
             fields:mainPlantFields,
             entityLabel:'主要植物'
-          }
         },
       },
       {
@@ -438,10 +434,8 @@ export default  [
         formSection:'移交信息',
         formOption:{
           span: 24,
-          extra:{
             fields:equipmentFields,
             entityLabel:'附属设施'
-          }
  
         }
       }

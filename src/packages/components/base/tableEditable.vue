@@ -171,7 +171,7 @@ export default {
       return deepMerge(defaultOptions, this.table);
     },
       editableColumns(){
-      return this.$buildEditTableFields(this.columns)
+      return this.$buildTableFields(this.columns,true)
     },
     // tableFormFields(){
     //   this.$buildTableFields(this.columns)

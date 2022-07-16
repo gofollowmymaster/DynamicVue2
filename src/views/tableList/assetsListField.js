@@ -239,6 +239,7 @@ export const assetsFields = [
   },
   {
     label:'等级',
+    key:'level',
     type:'FormSlider',
     formOption:{
 
@@ -442,15 +443,16 @@ export const assetsFields = [
       wraperProperties: {
         class: ['grid-col-24']
       },
+      'list-type': 'picture-card',
+      accept: 'img',
       properties: {
-        'list-type': 'picture-card',
-        accept: 'img'
+      
       },
-      extra: {
+
+      
         btn_text: '上传',
         tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
         apiPromise: elementUploadFileApi
-      }
     }
   },
 
@@ -669,13 +671,11 @@ export const assetsFields = [
         accept: '*',
         limit: 200
       },
-      extra: {
         btn_text: '上传',
         tip: '单个附件大小限制20Mb，最多上传200个附件',
         apiPromise: elementUploadFileApi,
         downloadApi: globalDownloadFileById,
         limitSize: 5
-      }
     }
   },
   {

@@ -17,9 +17,15 @@ export default {
         // 忽略属性【key、size】
         bindOptions() {
             let obj = Object.assign({}, this.item);
-            obj={...obj,...obj.properties}
+            
             delete obj.events;
-            delete obj.properties;
+            delete obj.colProperties;
+            delete obj.key;
+            delete obj.type;
+            
+
+
+
             return obj;
         },
         bindEvent(){

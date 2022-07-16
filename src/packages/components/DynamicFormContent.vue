@@ -1,25 +1,25 @@
 <template>
-  <main class="dynamic-form" :class="[mode + '-form']">
-    <el-form
+  <main class="dynamic-form   " :class="[mode + '-form']">
+    <formLayout  @scroll="scrollTo" :formItemList="formItemList">
+
+    <el-form slot="main"  
       v-bind="formProperties"
-      :class="{ 'border-form': borderForm, 'form-text-mode': textModel }"
+      :class="{'form-text-mode': textModel }"
       :model="data"
       :validate-on-rule-change="true"
       ref="form"
     >
       <template v-for="formSection of formItemList">
         <main
-          v-if="
-            !formSection.hidden && filterFormHide(formSection.children).length
-          "
+          v-if="   !formSection.hidden && filterFormHide(formSection.children).length  "
+          :ref="'form-section'+formSection.label"
           :key="formSection.label"
           :class="getBlockClass(formSection)"
-          class="pb12 form-section"
+          class="pb12 form-section  "
         >
           <header
             v-if="formSection.label"
-            class="block-nav flex justify-between"
-          >
+            class="block-nav flex justify-between"  >
             <span class="block-text">{{ formSection.label }}</span>
             <span
               class="block-fold-btn"
@@ -27,20 +27,13 @@
               @click="foldBlock(formSection)"
             >
               {{ isBlocked(formSection) ? "展开" : "收起" }}
-              <i
-                :class="[
-                  'el-icon-arrow-' + (isBlocked(formSection) ? 'down' : 'up'),
-                ]"
-              ></i>
+              <i  :class="[  'el-icon-arrow-' + (isBlocked(formSection) ? 'down' : 'up'),  ]" ></i>
             </span>
           </header>
           <article
             class="block-content relative grid-wrap"
           >
-            <!-- <section class="grid-wrap "> -->
             <template v-for="(formItem) in formSection.children">
-
-            
               <DynamicFormItem  
                :ref="formItem.key"
                class="grid-item"
@@ -59,6 +52,7 @@
         </main>
       </template>
     </el-form>
+    </formLayout>
     <testTool
       v-if="showTestTool && !textModel && $dynamicConfig.isDebug"
       :fields="formItemList"
@@ -119,12 +113,12 @@ export default {
     },
     mode: {
       type: String,
-      default: 'column'
-    }
+      default: 'dialog'
+    },
+    testTool:Boolean
   },
   data () {
     return {
-      showTestTool: process.env.NODE_ENV == 'development',
       changeData: {
         // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
         allDisabled: this.allDisabled,
@@ -132,6 +126,12 @@ export default {
       },
       foldBlockList: [] // 收起的区块（放在这个里面，该区块就只显示区块标题，不显示内容）
     }
+  },
+  computed:{
+      showTestTool(){
+        return  process.env.NODE_ENV == 'development'?this.testTool:false
+      }
+
   },
   watch: {
     data: {
@@ -433,9 +433,11 @@ export default {
     },
     // 获取区块的样式
     getBlockClass (blockItem) {
+
+      //  'border-form': borderForm, 
       const c = blockItem.class
       return Object.assign({}, c, {
-        'block-item': this.borderForm,
+        'block-border': this.borderForm&&blockItem.label,
         'block-hide': this.foldBlockList.indexOf(blockItem.label) > -1
       })
     },
@@ -449,6 +451,11 @@ export default {
         return formItem.label + ':'
       }
       return formItem.label
+    },
+    scrollTo(section){
+      this.$refs['form-section'+section.label][0].scrollIntoView({
+        behavior:'smooth'
+      })
     }
   }
 }

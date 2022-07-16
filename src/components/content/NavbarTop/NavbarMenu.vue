@@ -52,40 +52,7 @@
       </el-submenu>
 
     </el-menu>
-    <!-- <el-menu
-      :default-active="getCurrentRoute"
-      class="el-menu-demo"
-      mode="horizontal"
-      :router="true"
-    >
-      <el-menu-item index="/workSpace">工作台</el-menu-item>
-      <el-menu-item index="1">GIS全景</el-menu-item>
-      <el-menu-item index="/AuthoritySystemManagementBackStage"
-        >园林管护</el-menu-item
-      >
-      <el-menu-item index="1">园林事件</el-menu-item>
-      <el-menu-item index="1">工程项目</el-menu-item>
-      <el-menu-item index="1">固定资产</el-menu-item>
-      <el-menu-item index="/IntelligentMaintenanceBackstage"
-        >智能养护</el-menu-item
-      >
-      <el-menu-item index="/GreeningMonitoringBackstage">绿化监控</el-menu-item>
-      <el-menu-item index="/parkManagement">公园管理</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">更多</template>
-        <el-menu-item index="2-1">规划管理</el-menu-item>
-        <el-menu-item index="2-1">园林审批</el-menu-item>
-        <el-menu-item index="2-2">考勤管理</el-menu-item>
-        <el-menu-item index="2-3">绩效考核</el-menu-item>
-        <el-menu-item index="2-3">综合评价</el-menu-item>
-        <el-menu-item index="2-3">辅助决策</el-menu-item>
-        <el-menu-item index="2-3">智能设备</el-menu-item>
-        <el-menu-item index="2-3">视频设备</el-menu-item>
-        <el-menu-item index="2-3">专家知识库</el-menu-item>
-        <el-menu-item index="/AuthoritySystemManagementBackStage"
-          >平台综合管理</el-menu-item
-        >
-      </el-submenu>
+   
     </el-menu> -->
   </div>
 </template>
@@ -170,12 +137,12 @@ export default {
       }
     },
     openPage (link, event) {
-      debugger
+       
       window.open(link, '_blank')
     }
   },
   mounted () {
-    debugger
+     
     this.$nextTick(() => {
       const { origin, linear } = this.fixRoutes(this.$router.options.routes)
       this.menuList = origin.filter((unit) => unit.isMenu !== false)

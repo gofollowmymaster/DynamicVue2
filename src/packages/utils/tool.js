@@ -163,7 +163,7 @@ export function objectFilter (obj, func, filterEmptyValue = true) {
 }
 
 export function deepMerge (obj1, obj2, isDeleteNull = false) {
-  obj1 = deepCopy(obj1)
+  obj1 = deepCopy(obj1)||{}
 
   let key
   for (key in obj2) {
@@ -231,7 +231,7 @@ export function deepMergeByKey (obj1, obj2, clone = true) {
 }
 
 export function loadPresetConfig (presetKey) {
-  return presetConfig.getConfig[presetKey]
+  return presetConfig.getConfig(presetKey)
 }
 export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
   const preset = presetConfig.getConfig(presetKey)

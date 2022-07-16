@@ -380,6 +380,15 @@ export default {
         linearList.push(item)
       }
       return { origin: originList, linear: linearList }
+    },
+     loadLeftMenu(){
+         const { origin } = this.fixRoutes(this.$router.options.routes)
+    console.log('###############', this.$route, origin)
+    const rootMenuPath = this.$route.matched[0].path
+    const focusTopMenu = origin.filter((unit) => unit.path === rootMenuPath)
+    if (focusTopMenu) {
+      this.menuList = focusTopMenu[0].children || []
+    }
     }
   },
   computed: {
@@ -387,15 +396,15 @@ export default {
       return this.$route.path
     }
   },
-  mounted () {
-    const { origin } = this.fixRoutes(this.$router.options.routes)
-    console.log('###############', this.$route, origin)
-    const rootMenuPath = this.$route.matched[0].path
-    const focusTopMenu = origin.filter((unit) => unit.path === rootMenuPath)
-    if (focusTopMenu) {
-      this.menuList = focusTopMenu[0].children || []
+  watch:{
+    currentPath(){
+        this.loadLeftMenu()
     }
-  }
+  },
+  mounted () {
+    this.loadLeftMenu()
+  },
+ 
 }
 </script>
 <style lang="less" scoped>

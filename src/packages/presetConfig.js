@@ -41,10 +41,11 @@ export const tableOption = {
     minWidth: 90,
     'show-overflow-tooltip': true,
     align: 'left',
-    'header-align': 'left'
+    'header-align': 'left',
   },
   actionColWidth: 0, // 操作栏宽度
-  actionBtnType: 'text' // 操作按钮类型
+  actionBtnType: 'text', // 操作按钮类型
+  indexColWidth:48
 }
 
 export const pagination = {
@@ -73,17 +74,19 @@ export const treeOption = {
 export const formOption = {
   formProperties: {
     'hide-required-asterisk': false,
-    pageLabelWidth: '160px',
-    labelWidth: '130px',
-    labelPosition: 'right'
+    'label-position': 'right',
+    'label-width': '160px',
+
     // "inline-message":true,
     // size:'medium'
   },
-  borderForm: false,
+  borderForm: true,
   showFoldBtn: true,
   'label-width': '160px',
   'label-position': 'right',
-  colNum:2
+  pageLabelWidth: '160px',
+  colNum:2,
+
 
 }
 export const actionPopProperties = {
