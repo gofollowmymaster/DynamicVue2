@@ -5,7 +5,7 @@
 </template>
 <script>
 
-import { deepMergeByKey, hasValue, JSONDeepCopy } from '../../utils/tool'
+import { deepMergeByKey, JSONDeepCopy } from '../../utils/tool'
 import chartOptions from './chartConfig'
 export default {
   name: 'dBarLineChart',
@@ -35,20 +35,21 @@ export default {
   },
   computed: {
     barChartOption () {
+      const barChartOptionTemplate = this.barChartOptionTemplate
       const max = Math.max(...Object.values(this.data).flat(2).map(item => item.value).map(parseFloat), 20)
 
       const xAxis = Object.values(this.data)[0]?.map(item => {
         return item.label
       })
       debugger
-      this.barChartOptionTemplate.xAxis.data = xAxis
-      this.barChartOptionTemplate.yAxis[0].max = Math.ceil(max * 1.5)
-      this.barChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5)
+      barChartOptionTemplate.xAxis.data = xAxis
+      barChartOptionTemplate.yAxis[0].max = Math.ceil(max * 1.5)
+      barChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5)
       const series = []
 
-      const seriesBarTemplate = this.barChartOptionTemplate.series[0] || {}
-      const seriesLineTemplate = this.barChartOptionTemplate.series[1] || {}
-      this.barChartOptionTemplate.series = []
+      const seriesBarTemplate = barChartOptionTemplate.series[0] || {}
+      const seriesLineTemplate = barChartOptionTemplate.series[1] || {}
+      barChartOptionTemplate.series = []
       const lineData = {}
       for (const seriesName in this.data) {
         const seriesData = deepMergeByKey(seriesBarTemplate, {
@@ -73,9 +74,9 @@ export default {
         data: Object.values(lineData).map(item => item.value)
       }))
 
-      this.barChartOptionTemplate.series = series
+      barChartOptionTemplate.series = series
 
-      return this.barChartOptionTemplate
+      return barChartOptionTemplate
     }
   },
 

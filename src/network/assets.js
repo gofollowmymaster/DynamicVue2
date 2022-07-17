@@ -1,5 +1,4 @@
 import request from './request'
-import qs from 'qs'
 import { filterObjEmptyField } from '@/packages/utils/tool'
 const defaultConfig = {
   method: 'post',

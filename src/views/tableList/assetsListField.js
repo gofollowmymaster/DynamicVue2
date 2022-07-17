@@ -3,7 +3,6 @@ import { buildDynamicSelectOption, elementUploadFileApi, globalDownloadFileById 
 export const assetsFields = [
   { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
   { key: 'id', type: 'FormHide', label: '', formOption: {} },
-
   {
     key: 'treeNumber',
     label: '固定资产编号',
@@ -29,16 +28,16 @@ export const assetsFields = [
 
     }
   },
-  
+
   {
-    key: "addr",
-    type: "FormCascader",
-    label: "地区",
+    key: 'addr',
+    type: 'FormCascader',
+    label: '地区',
     formOption: {
-      properties:{
-         
+      properties: {
+
       },
-      defaultValue:["zujian", "form", "checkbox"],
+      defaultValue: ['zujian', 'form', 'checkbox'],
       options: [{
         value: 'zhinan',
         label: '指南',
@@ -234,31 +233,31 @@ export const assetsFields = [
           label: '组件交互文档'
         }]
       }]
-    },
+    }
   },
   {
-    label:'等级',
-    key:'level',
-    type:'FormSlider',
-    formOption:{
+    label: '等级',
+    key: 'level',
+    type: 'FormSlider',
+    formOption: {
 
     }
   },
   {
-    type:'FormColorPicker',
-    label:'颜色',
-    key:'color',
-    formOption:{
-      defaultValue:'#163f91'
+    type: 'FormColorPicker',
+    label: '颜色',
+    key: 'color',
+    formOption: {
+      defaultValue: '#163f91'
     }
   },
   {
-    type:'FormRichEditor',
-    label:'富文本',
-    key:'rich',
-    formOption:{
-      defaultValue:'#163f91',
-      span:24
+    type: 'FormRichEditor',
+    label: '富文本',
+    key: 'rich',
+    formOption: {
+      defaultValue: '#163f91',
+      span: 24
     }
   },
   {
@@ -292,12 +291,12 @@ export const assetsFields = [
     key: 'originalTreeNumber',
     type: 'FormInput',
     label: '原编号',
-    labelInfo:'原laide 固定资产编号',
+    labelInfo: '原laide 固定资产编号',
     formOption: {
       rules: ['required']
     },
-    tableOption:{},
-    searchOption:{},
+    tableOption: {},
+    searchOption: {}
   },
   {
     key: 'distribution',
@@ -331,12 +330,12 @@ export const assetsFields = [
     type: 'FormDynamicSelect',
     label: '保护类别',
     options: buildDynamicSelectOption('tree_manage_famous_wood'),
- 
+
     tableOption: {
       sort: 6,
-          component: 'ColDictTag',
-          dictInfoKey: 'famousWoodDictData'
-     
+      component: 'ColDictTag',
+      dictInfoKey: 'famousWoodDictData'
+
     },
     formOption: {
       rules: ['required']
@@ -377,10 +376,10 @@ export const assetsFields = [
     },
     tableOption: {
       sort: 8,
- 
-          component: 'ColDictTag',
-          dictInfoKey: 'protectLevDictData'
-   
+
+      component: 'ColDictTag',
+      dictInfoKey: 'protectLevDictData'
+
     }
   },
   {
@@ -445,13 +444,12 @@ export const assetsFields = [
       'list-type': 'picture-card',
       accept: 'img',
       properties: {
-      
+
       },
 
-      
-        btn_text: '上传',
-        tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
+      apiPromise: elementUploadFileApi
     }
   },
 
@@ -556,10 +554,10 @@ export const assetsFields = [
     },
     tableOption: {
       sort: 7,
-    
-          component: 'ColDictTag',
-          dictInfoKey: 'growthSituationDictData'
-    
+
+      component: 'ColDictTag',
+      dictInfoKey: 'growthSituationDictData'
+
     }
   },
 
@@ -670,11 +668,11 @@ export const assetsFields = [
         accept: '*',
         limit: 200
       },
-        btn_text: '上传',
-        tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi,
-        downloadApi: globalDownloadFileById,
-        limitSize: 5
+      btn_text: '上传',
+      tip: '单个附件大小限制20Mb，最多上传200个附件',
+      apiPromise: elementUploadFileApi,
+      downloadApi: globalDownloadFileById,
+      limitSize: 5
     }
   },
   {
@@ -682,7 +680,7 @@ export const assetsFields = [
     label: '二维码',
     type: 'QrCodeImg',
     tableOption: {
-    component: 'ColQrcode'  
+      component: 'ColQrcode'
     },
     detailOption: {
       wraperProperties: {

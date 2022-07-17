@@ -185,7 +185,7 @@
   </div>
 </template>
 <script>
-import moment from 'moment'
+// import moment from 'moment'
 const dayOptions = []
 const monthOptions = []
 const dateOptions = []

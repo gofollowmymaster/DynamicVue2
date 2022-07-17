@@ -5,7 +5,7 @@
 </template>
 <script>
 
-import { hasValue, JSONDeepCopy, deepMergeByKey } from '../../utils/tool'
+import { JSONDeepCopy, deepMergeByKey } from '../../utils/tool'
 import chartOptions from './chartConfig'
 export default {
   name: 'dPieChart',
@@ -32,19 +32,19 @@ export default {
   },
   computed: {
     pieChartOption () {
-      if (this.data.length < 1) return this.pieChartOptionTemplate
+      const pieChartOptionTemplate = this.pieChartOptionTemplate
+      if (this.data.length < 1) return pieChartOptionTemplate
       debugger
-      this.pieChartOptionTemplate.color = [...this.data.reduce((prev, next) => {
+      pieChartOptionTemplate.color = [...this.data.reduce((prev, next) => {
         prev.push(next.color)
         return prev
-      }, []).filter(item => item), ...this.pieChartOptionTemplate.color]
-      this.pieChartOptionTemplate.series[0].data = this.data
+      }, []).filter(item => item), ...pieChartOptionTemplate.color]
+      pieChartOptionTemplate.series[0].data = this.data
 
-      //  if(this.pieChartOptionTemplate.legend){
-      //    this.pieChartOptionTemplate.legend={}
+      //  if(pieChartOptionTemplate.legend){
+      //    pieChartOptionTemplate.legend={}
       //  }
-      debugger
-      if (this.type == 'left') {
+      if (this.type === 'left') {
         let sum = this.data.reduce((prev, next) => {
           prev = prev + parseFloat(next.value)
           return prev
@@ -56,11 +56,11 @@ export default {
           return prev
         }, {})
 
-        this.pieChartOptionTemplate.legend.formatter = function (name) {
+        pieChartOptionTemplate.legend.formatter = function (name) {
           const item = dataMap[name]
           return name + `  ${item.percent.toFixed(1)}%`
         }
-        this.pieChartOptionTemplate.legend.textStyle = {
+        pieChartOptionTemplate.legend.textStyle = {
           rich: this.data.reduce((prev, next) => {
             prev[next.name] = {
               color: next.color
@@ -70,9 +70,7 @@ export default {
         }
       }
 
-      debugger
-
-      return this.pieChartOptionTemplate
+      return pieChartOptionTemplate
     }
   },
 

@@ -23,24 +23,24 @@
 </template>
 
 <script>
-     import {deepMerge, isObjEmpty} from '../../utils/tool'
-     import presetConfig  from "../../presetConfig"
-       
-const defaultTableOptions={
+import { deepMerge, isObjEmpty } from '../../utils/tool'
+import presetConfig from '../../presetConfig'
+
+const defaultTableOptions = {
   ...presetConfig.getConfig('tableOption'),
   hasCheckbox: false,
-    properties: {
-      "header-cell-style": {
-        "background-color": "#F5F5F5",
-      },
-    },
+  properties: {
+    'header-cell-style': {
+      'background-color': '#F5F5F5'
+    }
+  },
 
-    lineActions: {}
+  lineActions: {}
 }
 export default {
-  name: "TableEditable",
-  props:{
-     data: {
+  name: 'TableEditable',
+  props: {
+    data: {
       type: [Array]
     },
     columns: {
@@ -54,129 +54,127 @@ export default {
       type: Object,
       require: true
     },
- 
-    apiPromise:{
-      type:Promise,
+
+    apiPromise: {
+      type: Promise
     },
-    pagination:{
-      type:Object,
-      default(){
+    pagination: {
+      type: Object,
+      default () {
         return {}
       }
     },
-    size:{
-      type:String,
-      default:'small'
+    size: {
+      type: String,
+      default: 'small'
     },
-    isTextMode:Boolean
-   
-    
+    isTextMode: Boolean
+
   },
-  data() {
+  data () {
     return {
       isObjEmpty,
-      total:10,
-      editable:false,
-      tableData:[]
-    };
+      total: 10,
+      editable: false,
+      tableData: []
+    }
   },
 
   watch: {
     data: {
-      handler(data) {
-          this.tableData=data
+      handler (data) {
+        this.tableData = data
       },
-      deep:true,
-      immediate: true,
-    },
+      deep: true,
+      immediate: true
+    }
   },
   computed: {
- tableOption(){
-       let defaultOptions = defaultTableOptions;
+    tableOption () {
+      const defaultOptions = defaultTableOptions
 
       if (this.isTextMode) {
-        defaultOptions.lineActions={}
-       
-        return deepMerge( defaultOptions,this.table || {});
+        defaultOptions.lineActions = {}
+
+        return deepMerge(defaultOptions, this.table || {})
       }
 
- 
-     defaultOptions.lineActions={ 
-      update: {
-        actionType:'customAction',
-        label:'编辑',
-        isShow(actionData){
-          debugger
-              return !actionData.editable
-        },
-        actionHandle:(actionData)=>{
-          debugger
-          this.$set(actionData,'editable',true)
-        },
-        
-      },
-      confirm: {
-        actionType:'customAction',
-        label:'确认',
+      defaultOptions.lineActions = {
+        update: {
+          actionType: 'customAction',
+          label: '编辑',
+          isShow (actionData) {
+            debugger
+            return !actionData.editable
+          },
+          actionHandle: (actionData) => {
+            debugger
+            this.$set(actionData, 'editable', true)
+          }
 
-        isShow(actionData){
-          debugger
-              return !!actionData.editable
         },
-        actionHandle:(actionData)=>{
-           debugger
-          this.$set(actionData,'editable',false)
+        confirm: {
+          actionType: 'customAction',
+          label: '确认',
+
+          isShow (actionData) {
+            debugger
+            return !!actionData.editable
+          },
+          actionHandle: (actionData) => {
+            debugger
+            this.$set(actionData, 'editable', false)
+          }
+
         },
-        
-      },
-      add: {
-        actionType:'customAction',
-        label:'添加',
-   
-        actionHandle:(actionData)=>{
-            const index=this.tableData.findIndex((item)=>{
-               return item===actionData
+        add: {
+          actionType: 'customAction',
+          label: '添加',
+
+          actionHandle: (actionData) => {
+            const index = this.tableData.findIndex((item) => {
+              return item === actionData
             })
-         const initValue=   this.columns.reduce((prev,next)=>{
-            prev[next.key]=next.defaultValue||null
-            return prev
-          },{})
-          initValue.editable=true
-          this.tableData.splice(index+1,0,initValue)
+            const initValue = this.columns.reduce((prev, next) => {
+              prev[next.key] = next.defaultValue || null
+              return prev
+            }, {})
+            initValue.editable = true
+            this.tableData.splice(index + 1, 0, initValue)
           // this.$set(this.tableData,index+1,initValue)
+          }
+
         },
-        
-      },
-      delete: {
-        actionType:'customAction',
-        label:'删除',
-        actionHandle:(actionData)=>{
-          debugger
-          console.log('-tableData-',this.tableData)
-            const index=this.tableData.findIndex((item)=>{
-               return item===actionData
+        delete: {
+          actionType: 'customAction',
+          label: '删除',
+          actionHandle: (actionData) => {
+            debugger
+            console.log('-tableData-', this.tableData)
+            const index = this.tableData.findIndex((item) => {
+              return item === actionData
             })
-            this.$delete(this.tableData,index)
-        },
-        componentProperties: {
-          type: "default",
-          size: "small",
-        },
-        callback: {
-          showTip: false,
-        },
-      },
-     }
-        // defaultOptions.
-      return deepMerge(defaultOptions, this.table);
+            this.$delete(this.tableData, index)
+          },
+          componentProperties: {
+            type: 'default',
+            size: 'small'
+          },
+          callback: {
+            showTip: false
+          }
+        }
+      }
+      // defaultOptions.
+      return deepMerge(defaultOptions, this.table)
     },
-      editableColumns(){
-      return this.$buildTableFields(this.columns,true)
+    editableColumns () {
+      return this.$buildTableFields(this.columns, true)
     },
     // tableFormFields(){
     //   this.$buildTableFields(this.columns)
     // },
- queryParams () {
+    queryParams () {
       return { ...this.searchParams, ...this.pagination }
     },
     loadListApiPromise () {
@@ -192,36 +190,35 @@ export default {
           })
       }
       return null
-    },
-    
- 
+    }
+
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    
+
     selectChange (selected) {
       this.selected = selected
     },
-     handleSizeChange (pageSize) {
+    handleSizeChange (pageSize) {
       this.refresh()
     },
     handleCurrentChange (pageNo) {
       this.pagination.pageNo = pageNo
       this.onSearch({ pageNo })
     },
-     onSearch (params) {
+    onSearch (params) {
       this.searchParams = { ...this.searchParams, ...params }
     },
     refresh () {
       debugger
-      const refreshKey = this.searchParams.refreshKey+1
+      const refreshKey = this.searchParams.refreshKey + 1
       this.onSearch({ refreshKey })
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
-<style scoped lang="less"> 
+<style scoped lang="less">
 /deep/ .el-input__inner{
   height: ;
 }

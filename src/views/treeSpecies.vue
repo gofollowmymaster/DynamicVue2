@@ -186,7 +186,7 @@ export default {
             title: '更新资产类型',
             width: '36%'
           },
-         colNum: 1,
+          colNum: 1,
 
           formItemList: formFields,
           saveAction: {

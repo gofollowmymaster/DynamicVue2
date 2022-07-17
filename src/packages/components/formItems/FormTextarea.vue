@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style scoped lang="css">
- 
 
     .form-area-box   /deep/ .el-form-item__content {
             height: auto;

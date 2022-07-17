@@ -44,7 +44,7 @@ export default {
       delete obj.properties
       delete obj.options
       delete obj.groupProperties
- 
+
       delete obj.hidden
       delete obj.value
 
@@ -69,11 +69,10 @@ export default {
         // console.log(`|${v}|`);
         this.$emit('input', v)
         // 只有非子表单的情况下，才会冒泡上去数据变更
-       
-          this.statusChangeFn.valueUpdateEvent({
-            [this.item.key]: v
-          })
-      
+
+        this.statusChangeFn.valueUpdateEvent({
+          [this.item.key]: v
+        })
       }
     },
     // 是否采用文字模式

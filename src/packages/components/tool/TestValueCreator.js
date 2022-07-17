@@ -58,7 +58,7 @@ class TestValueCreator {
       }
       blockFields.children.forEach((fieldItem) => {
         // 根据字段生成
-        const { key ,label} = fieldItem
+        const { key, label } = fieldItem
         if (this.customizeFn[key]) {
           if (typeof this.customizeFn[key] === 'function') {
             obj[key] = this.customizeFn[key](this.DataType)

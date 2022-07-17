@@ -5,7 +5,7 @@ const globalDynamicPageDialogConstructor = Vue.extend(globalDynamicPageDialog)
 let instanceCached
 
 // 生成一个唯一的key
-const COMPONENT_CONTAINER_SYMBOL = Symbol('component_container')
+// const COMPONENT_CONTAINER_SYMBOL = Symbol('component_container')
 
 /**
  * 创建组件实例对象
@@ -42,7 +42,7 @@ const globalDynamicPageDialogFunc = function (options = {}, el = null) {
   const onclose = () => {
     debugger
     close && close.call()
-    if (el != document.body) {
+    if (el !== document.body) {
       unmountComponent(instanceCached)
       instanceCached = null
     }
@@ -50,7 +50,7 @@ const globalDynamicPageDialogFunc = function (options = {}, el = null) {
 
   if (!instanceCached) {
     instanceCached = createComponent(globalDynamicPageDialogConstructor, options, el)
-    el != document.body && (instanceCached.onclose = onclose)
+    el !== document.body && (instanceCached.onclose = onclose)
   } else {
     for (const prop in options) {
       instanceCached[prop] = options[prop]

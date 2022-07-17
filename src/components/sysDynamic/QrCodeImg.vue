@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import qrCode from 'qrcodejs2'
+import QrCode from 'qrcodejs2'
 export default {
   name: 'QrCodeImg',
   props: {
@@ -62,7 +62,7 @@ export default {
     initQrCode () {
       return this.$nextTick().then(() => {
         // 只能有一个实例
-        this.qrInstance || (this.qrInstance = new qrCode(this.instanceId, this.options))
+        this.qrInstance || (this.qrInstance = new QrCode(this.instanceId, this.options))
       })
     }
   }

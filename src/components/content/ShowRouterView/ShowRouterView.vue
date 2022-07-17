@@ -7,14 +7,14 @@
 export default {
   data () {
     return {
-      routerContainerLeft: 280,
- 
+      routerContainerLeft: 280
+
     }
   },
   watch: {
     $route: {
       handler () {
-        
+
       },
       deep: true,
       immediate: true

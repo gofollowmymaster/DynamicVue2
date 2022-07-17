@@ -35,7 +35,6 @@ const entityLabel = '固定资产'
 export default {
   name: 'assetsManage',
   data () {
-     
     return {
       entityLabel,
       // form字段
@@ -50,8 +49,8 @@ export default {
       },
       pageOptions: {
         topToolBar: {
-          create:{
-            container:'dy-page',
+          create: {
+            container: 'dy-page'
           },
           export: {
             apiPromise: exportOldtreeApi,

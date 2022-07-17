@@ -5,7 +5,7 @@
 </template>
 <script>
 
-import { hasValue, JSONDeepCopy } from '../../utils/tool'
+import { JSONDeepCopy } from '../../utils/tool'
 import { baseLineChartOption } from './chartConfig'
 export default {
   name: 'dLineChart',
@@ -34,15 +34,15 @@ export default {
   },
   computed: {
     lineChartOption () {
-      debugger
+      const lineChartOptionTemplate = this.lineChartOptionTemplate
       const max = Math.max(...Object.values(this.data).flat(2).map(item => item.value).map(parseFloat), 20)
 
       const xAxis = Object.values(this.data)[0]?.map(item => {
         return item.label
       })
-      this.lineChartOptionTemplate.xAxis[0].data = xAxis
-      this.lineChartOptionTemplate.yAxis[0].max = Math.ceil(max * 1.2)
-      this.lineChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5)
+      lineChartOptionTemplate.xAxis[0].data = xAxis
+      lineChartOptionTemplate.yAxis[0].max = Math.ceil(max * 1.2)
+      lineChartOptionTemplate.yAxis[0].interval = Math.ceil(max / 5)
       const series = []
       let index = 0
       debugger
@@ -77,9 +77,9 @@ export default {
         index++
       }
 
-      this.lineChartOptionTemplate.series = series
+      lineChartOptionTemplate.series = series
 
-      return this.lineChartOptionTemplate
+      return lineChartOptionTemplate
     }
   },
 

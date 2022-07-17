@@ -22,37 +22,35 @@
 </template>
 
 <script>
-    import FormMixin from '@/packages/components/formItems/mixin'
+import FormMixin from '@/packages/components/formItems/mixin'
 
-    export default {
-        name: 'FormProjectEvaluate',
-        mixins: [ FormMixin ],
-        computed: {
-             val: {
-            get() {
-                return this.value instanceof Object?this.value:{grade:0,evaluate:''};
-            },
-            set(v) {
-                debugger
-                this.$emit('input', v);
+export default {
+  name: 'FormProjectEvaluate',
+  mixins: [FormMixin],
+  computed: {
+    val: {
+      get () {
+        return this.value instanceof Object ? this.value : { grade: 0, evaluate: '' }
+      },
+      set (v) {
+        debugger
+        this.$emit('input', v)
 
-            
-                this.statusChangeFn.valueUpdateEvent({
-                    [this.item.key]: v,
-                });
-            }
-        },
-        },
-        methods:{
-            rateChange(grade){
-                this.val={grade,evaluate:this.val.evaluate}
-            },
-            evaluateChange(evaluate){
-                this.val={evaluate,grade:this.val.grade}
-
-            }
-        }
-    };
+        this.statusChangeFn.valueUpdateEvent({
+          [this.item.key]: v
+        })
+      }
+    }
+  },
+  methods: {
+    rateChange (grade) {
+      this.val = { grade, evaluate: this.val.evaluate }
+    },
+    evaluateChange (evaluate) {
+      this.val = { evaluate, grade: this.val.grade }
+    }
+  }
+}
 </script>
 
 <style scoped lang="less">

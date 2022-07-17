@@ -44,7 +44,7 @@ export default {
   components: {},
   methods: {
     goBack () {
-      if (this.navType == 'router') {
+      if (this.navType === 'router') {
         this.$router.go(-1)
       }
       this.closeModal()

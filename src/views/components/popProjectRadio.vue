@@ -10,7 +10,7 @@
 
   </el-radio-group>
     <div style="text-align: right;" class="mt18">
-      <el-button :type="cancelButtonType" size="mini" type="text" @click="$emit('cancel',{})">{{cancelButtonText}}</el-button>
+      <el-button :type="cancelButtonType" size="mini"   @click="$emit('cancel',{})">{{cancelButtonText}}</el-button>
       <el-button :type="confirmButtonType" size="mini"  @click="$emit('confirm',data)">{{confirmButtonText}}</el-button>
     </div>
   </section>
@@ -23,21 +23,19 @@ export default {
   name: 'popProjectRadio',
   mixins: [poplMixin],
   computed: {},
-  props:{
- 
+  props: {
 
-  
   },
   data () {
     return {
       data: {
-        projectStatus:1
-      },
+        projectStatus: 1
+      }
 
     }
   },
   mounted () {
-    
+
   }
 }
 </script>

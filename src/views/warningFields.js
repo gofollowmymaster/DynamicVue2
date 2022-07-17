@@ -121,9 +121,9 @@ export const warningFields = [
         accept: 'img',
         limit: 5
       },
-        btn_text: '上传',
-        // tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      // tip: '单个附件大小限制20Mb，最多上传200个附件',
+      apiPromise: elementUploadFileApi
     }
   },
 
@@ -138,10 +138,10 @@ export const warningFields = [
         'list-type': 'picture-card',
         accept: 'video'
       },
-        btn_text: '上传',
-        // tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi,
-        limitSize: 5
+      btn_text: '上传',
+      // tip: '单个附件大小限制20Mb，最多上传200个附件',
+      apiPromise: elementUploadFileApi,
+      limitSize: 5
     }
   }
 
@@ -292,9 +292,9 @@ export const warningProcessedFields = [
         'list-type': 'picture-card',
         accept: 'img'
       },
-        btn_text: '上传',
-        tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      tip: '单个附件大小限制20Mb，最多上传200个附件',
+      apiPromise: elementUploadFileApi
     }
   },
 
@@ -310,9 +310,9 @@ export const warningProcessedFields = [
         'list-type': 'picture-card',
         accept: 'video'
       },
-        btn_text: '上传',
-        tip: '单个附件大小限制20Mb，最多上传200个附件',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      tip: '单个附件大小限制20Mb，最多上传200个附件',
+      apiPromise: elementUploadFileApi
     }
   },
   {
@@ -451,7 +451,7 @@ export const eventFields = [
     key: 'equipmentName',
     type: 'FormTextarea',
     formOption: {
-      span:24,
+      span: 24,
       rules: ['required']
     }
   },
@@ -461,7 +461,7 @@ export const eventFields = [
     key: 'equipmentName1',
     type: 'FormTextarea',
     formOption: {
-      span:24,
+      span: 24
     }
   },
   {
@@ -584,9 +584,9 @@ export const eventFields = [
         'list-type': 'picture-card',
         accept: 'img'
       },
-        btn_text: '上传',
-        // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
+      apiPromise: elementUploadFileApi
     }
   }
 ]
@@ -614,9 +614,9 @@ export const handleFields = [
         'list-type': 'picture-card',
         accept: 'img'
       },
-        btn_text: '上传',
-        // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
+      apiPromise: elementUploadFileApi
     }
   },
   {
@@ -629,9 +629,9 @@ export const handleFields = [
         // 'list-type': 'picture-card',
         accept: 'video'
       },
-        btn_text: '上传',
-        // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-        apiPromise: elementUploadFileApi
+      btn_text: '上传',
+      // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
+      apiPromise: elementUploadFileApi
     }
   },
   {

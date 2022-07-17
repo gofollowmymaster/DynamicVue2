@@ -96,14 +96,7 @@ import FormMixin from './mixin'
 import moment from 'moment'
 
 const fileFields = [
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-      width: 60
-    }
-  },
+
   {
     key: 'fileName',
     label: '名称',
@@ -199,11 +192,11 @@ export default {
     accept () {
       debugger
       let accept = ''
-      const listType =  this.item['list-type'] 
+      const listType = this.item['list-type']
       if (['picture', 'picture-card'].includes(listType)) {
         accept = 'img'
       }
-      return accept || this.item.accept 
+      return accept || this.item.accept
     },
     // 扩展属性，直接将属性配置，传到表单组件内部（即 Element UI 上）
     // 忽略属性【key、size】
@@ -248,17 +241,16 @@ export default {
       }
     },
     fileList () {
-        return   Array.isArray(this.value)?
-          this.value.filter((file) => file.fileId || file.id||file.uid)
+      return Array.isArray(this.value)
+        ? this.value.filter((file) => file.fileId || file.id || file.uid)
           .map((file) => {
-            file.fileUrl = file.fileUrl?this.imgPrevUrl + file.fileUrl:file.url
+            file.fileUrl = file.fileUrl ? this.imgPrevUrl + file.fileUrl : file.url
             file.uploadTime = file.createTime || file.upLoadTime
             file.fileName =
               file.fileName || file.sourceName || file.saveName || file.name
-            file.fileId = file.fileId || file.id||file.uid
+            file.fileId = file.fileId || file.id || file.uid
             return file
           }) : []
-      
     },
     curdOptions () {
       return {
@@ -286,8 +278,8 @@ export default {
     }
   },
   mounted () {
-    this.fileListInit = Array.isArray(this.value)?
-      this.value.filter((file) => file.fileId || file.id)
+    this.fileListInit = Array.isArray(this.value)
+      ? this.value.filter((file) => file.fileId || file.id)
         .map((file) => {
           const fileUrl = this.imgPrevUrl + file.fileUrl.replace(/\\\\/g, '/')
 
@@ -320,12 +312,12 @@ export default {
       if (!res) return // 有重复请求   OPTION?
       if (!file.response) return //
 
-     const fileId = file.response.fileId
-     const fileUrl = file.response.fileUrl || file.url
-     const fileName = file.raw.name
-     const fileSize = file.raw.size
-     const uploadTime = moment(new Date()).format('YYYY-MM-DD HH:mm:SS')
-     const uid = file.uid
+      const fileId = file.response.fileId
+      const fileUrl = file.response.fileUrl || file.url
+      const fileName = file.raw.name
+      const fileSize = file.raw.size
+      const uploadTime = moment(new Date()).format('YYYY-MM-DD HH:mm:SS')
+      const uid = file.uid
       const current = this.value || []
       current.push({
         fileId,
@@ -341,11 +333,11 @@ export default {
       console.error(err)
     },
     handleBeforeUpload () {},
-    handleChange( file, fileList){
-        if(!this.bindOptions['auto-upload']){
-            debugger
-            this.val=fileList
-        }
+    handleChange (file, fileList) {
+      if (!this.bindOptions['auto-upload']) {
+        debugger
+        this.val = fileList
+      }
     }
   }
 }

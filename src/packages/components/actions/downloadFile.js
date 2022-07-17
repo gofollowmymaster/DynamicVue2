@@ -1,5 +1,5 @@
 
-import {  downFile } from '../../utils/tool'
+import { downFile } from '../../utils/tool'
 import callbackHandles from './callback'
 export default class downloadFile {
   static handle (action, actionData, vm) {

@@ -53,7 +53,7 @@
         >
           <span slot="checkRadio" slot-scope="scope" class="checkRadio">
             <el-checkbox
-              v-if="type == 'checkbox'"
+              v-if="type === 'checkbox'"
               :key="scope.row[tableNodeKey]"
               v-model="scope.row.$checked"
               @change="(boolean) => tableCheckboxChange(boolean, scope.row)"

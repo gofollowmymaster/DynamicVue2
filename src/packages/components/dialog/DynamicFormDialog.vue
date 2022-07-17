@@ -107,7 +107,7 @@ export default {
     },
     closeModal () {
       this.visible.value = false
-      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
+      if (this.$parent?.$options.name === 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     },
@@ -122,7 +122,7 @@ export default {
       }
     },
     afterClose () {
-      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
+      if (this.$parent?.$options.name === 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     }

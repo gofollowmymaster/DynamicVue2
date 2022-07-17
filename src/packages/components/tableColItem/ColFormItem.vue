@@ -18,22 +18,19 @@ import TableColMixin from './mixin'
 export default {
   name: 'ColFormItem',
   mixins: [TableColMixin],
-  computed: {},
   data () {
     return {
     }
   },
-  computed:{
-    formItem(){
-
+  computed: {
+    formItem () {
       return {
-         ...this.colOptions,...this.colOptions.formOption
+        ...this.colOptions, ...this.colOptions.formOption
       }
-      
     }
   },
   mounted () {
-    
+
   }
 }
 </script>

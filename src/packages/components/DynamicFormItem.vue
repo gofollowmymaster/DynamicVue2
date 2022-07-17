@@ -41,98 +41,92 @@
                 >
                    {{ formItem.formTip }}
                 </div>
-                  
+
               </el-form-item>
 
-              
 </template>
 <script>
 
 export default {
-  name:'DynamicFormItem',
-  data(){
+  name: 'DynamicFormItem',
+  data () {
     return {
-      
+
     }
   },
   props: {
-    formItem:{
+    formItem: {
       type: Object,
       default: function () {
-        return {};
-      },
+        return {}
+      }
     },
-   
-    value:{
-      type:[Object,Array,String,Boolean,Number],
-        default: function () {
-        return null;
-      },
+
+    value: {
+      type: [Object, Array, String, Boolean, Number],
+      default: function () {
+        return null
+      }
     },
-    label:String,
-    textModel:{
-      type:Boolean,
-      default:false
+    label: String,
+    textModel: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
-    val:{
-      get(){
+    val: {
+      get () {
         return this.value
       },
-      set(v){
-        this.$emit('input',v)
-        
+      set (v) {
+        this.$emit('input', v)
       }
-    },
-   
-  },
- 
-  inject: [
-    'colNum',
-    'changeData',
-  ],
-  watch:{
-    
-    
-    
+    }
 
   },
-  mounted(){
+
+  inject: [
+    'colNum',
+    'changeData'
+  ],
+  watch: {
+
+  },
+  mounted () {
   },
   components: {
 
-   },
+  },
   methods: {
-        // 是否采用文字模式
+    // 是否采用文字模式
     getTextModel () {
       if (this.changeData.textModel) {
         return true
       }
       return false
     },
-    resetFields(){
-       this.$refs.formitem.resetFields()
+    resetFields () {
+      this.$refs.formitem.resetFields()
     },
-     setFormItemClass(classList){  
-       
-        classList= Array.isArray(classList)? classList:[]
-         classList=classList.filter((item)=>{
-          return !/^grid\-col\-\d$/.test(item)
+    setFormItemClass (classList) {
+      classList = Array.isArray(classList) ? classList : []
+      classList = classList.filter((item) => {
+        return !/^grid\-col\-\d$/.test(item)
       })
-        const colNum=this.colNum>=1?this.colNum:1
-        let layoutClass= 'grid-col-' + Math.ceil(24/colNum)
-   
-        if (this.formItem.span) {
-         layoutClass ='grid-col-' + this.formItem.span
-      }
-     
-      classList.push(layoutClass )
+      const colNum = this.colNum >= 1 ? this.colNum : 1
+      let layoutClass = 'grid-col-' + Math.ceil(24 / colNum)
 
-      return  classList
+      if (this.formItem.span) {
+        layoutClass = 'grid-col-' + this.formItem.span
+      }
+
+      classList.push(layoutClass)
+
+      return classList
     }
-  },
-};
+  }
+}
 </script>
 <style lang="css" scoped>
 </style>

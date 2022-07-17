@@ -78,7 +78,7 @@ class TestValueCreator {
       }
       blockFields.children.forEach(fieldItem => {
         // 根据字段生成
-        const { key,label } = fieldItem
+        const { key, label } = fieldItem
         if (this.customizeFn[key]) {
           if (typeof this.customizeFn[key] === 'function') {
             obj[key] = this.customizeFn[key](this.DataType)
@@ -137,17 +137,18 @@ class TestValueCreator {
   }
 
   makeDateValue (formItem) {
+    let startDate
     switch (formItem.type) {
       case 'FormDate':
         return Mock.Random.date('yyyy-MM-dd')
       case 'FormDateTime':
         return Mock.Random.date('yyyy-MM-dd hh:mm:ss')
       case 'FormDateRange':
-        const startDate = Mock.Random.date('yyyy-MM-dd')
+        startDate = Mock.Random.date('yyyy-MM-dd')
         return startDate + '-' + moment(startDate).endOf('month').format('YYYY-MM-DD')
       case 'FormDateTimeRange':
-        const startDateTime = Mock.Random.date('yyyy-MM-dd hh:mm:ss')
-        return startDateTime + '-' + moment(startDateTime).endOf('month').format('YYYY-MM-DD hh:mm:ss')
+        startDate = Mock.Random.date('yyyy-MM-dd hh:mm:ss')
+        return startDate + '-' + moment(startDate).endOf('month').format('YYYY-MM-DD hh:mm:ss')
     }
   }
 

@@ -7,8 +7,8 @@ import globalDialogPage from './utils/globalDialogPage'
 import { generateActionOption } from './utils/actionTools'
 
 import bus from './utils/bus'
-import {  appendToPreset } from './utils/tool'
-import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields,buildEditTableFields } from './utils/fieldsConfigUtil'
+import { appendToPreset } from './utils/tool'
+import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields, buildEditTableFields } from './utils/fieldsConfigUtil'
 
 import presetConfig from './presetConfig'
 
@@ -37,7 +37,7 @@ export default {
     Vue.prototype.$buildSearchFields = buildSearchFields
     Vue.prototype.$buildTableFields = buildTableFields
     Vue.prototype.$buildDetailFields = buildDetailFields
-    Vue.prototype.$buildEditTableFields=buildEditTableFields
+    Vue.prototype.$buildEditTableFields = buildEditTableFields
     Vue.prototype.$buildFormFields = buildFormFields
     Vue.prototype.$generateActionOption = generateActionOption
 

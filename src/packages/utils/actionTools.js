@@ -94,7 +94,7 @@ function setResetAction (options) {
 
 function setActionBaseOption (options) {
   return {
-    hasBuild:true,
+    hasBuild: true,
     component: options.component || 'el-button',
     actionKey: options.actionKey || 'undefined',
     properties: {
@@ -107,7 +107,7 @@ function setActionBaseOption (options) {
     label: options.label || '操作',
     sort: options.sort || 100,
     permission: options.permission,
-    isShow: options.isShow ||'',
+    isShow: options.isShow || '',
     dataAdapter: options.dataAdapter || ((data) => data),
     isLoadData: options.isLoadData ?? true,
     actionDataKey: options.actionDataKey || undefined,
@@ -124,12 +124,12 @@ function setActionBaseOption (options) {
       ...presetConfig.getConfig('msgBoxProperties'),
       ...options.msgBox
     } : null,
-    actionHook: options.actionHook || '',
+    actionHook: options.actionHook || ''
   }
 }
 function setDialogFormAction (options) {
   const baseOption = setActionBaseOption(options)
-  let { 'label-width':labelWidth, pageLabelWidth,'label-position': labelPosition } = presetConfig.getConfig('formOption')
+  let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition } = presetConfig.getConfig('formOption')
   labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
   const actionOption = {
     ...baseOption,
@@ -157,7 +157,7 @@ function setDialogFormAction (options) {
           showFoldBtn: options.showFoldBtn ?? presetConfig.getConfig('formOption').showFoldBtn,
           borderForm: options.borderForm ?? presetConfig.getConfig('formOption').borderForm,
           textModel: options.textModel ?? false,
-          colNum:options.colNum??presetConfig.getConfig('formOption').colNum,
+          colNum: options.colNum ?? presetConfig.getConfig('formOption').colNum
         },
         formItemList: options.formItemList,
         data: options.data || {},
@@ -260,6 +260,7 @@ function setDetaultOptions (options) {
 }
 export function generateActionOption (type, options = {}) {
   options = setDetaultOptions(options)
+  let action
   switch (type) {
     case 'submit':
     case 'submitAction':
@@ -274,11 +275,11 @@ export function generateActionOption (type, options = {}) {
     case 'routerDialogPageAction':
 
       options.container = 'dy-page'
-      const routerDialogPageAction = setDialogPageAction(options)
-      routerDialogPageAction.actionType = 'routerDialogPage'
-      routerDialogPageAction.routerAction = options.routerAction || 'push'
-      // routerDialogPageAction.container ='dy-page'
-      return routerDialogPageAction
+      action = setDialogPageAction(options)
+      action.actionType = 'routerDialogPage'
+      action.routerAction = options.routerAction || 'push'
+      // action.container ='dy-page'
+      return action
     case 'dialogForm':
     case 'dialogFormAction':
     case 'dialogFormActionOption':
@@ -288,11 +289,11 @@ export function generateActionOption (type, options = {}) {
     case 'routerDialogFormAction':
 
       options.container = 'dy-page'
-      const routerDialogFormAction = setDialogFormAction(options)
-      routerDialogFormAction.actionType = 'routerDialogForm'
-      routerDialogFormAction.routerAction = options.routerAction || 'push'
-      // routerDialogFormAction.dialog.body.formOption.formProperties['label-width'] = '150px'
-      return routerDialogFormAction
+      action = setDialogFormAction(options)
+      action.actionType = 'routerDialogForm'
+      action.routerAction = options.routerAction || 'push'
+      // action.dialog.body.formOption.formProperties['label-width'] = '150px'
+      return action
     case 'requestApiActionOption':
     case 'requestApi':
     case 'requestApiAction':

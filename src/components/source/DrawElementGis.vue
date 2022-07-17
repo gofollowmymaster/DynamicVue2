@@ -120,7 +120,7 @@ export default {
   mounted () {},
   methods: {
     selectPointConfirm () {
-      if (this.elementdata.length < 1 && this.mode == 'select') {
+      if (this.elementdata.length < 1 && this.mode === 'select') {
         this.$alert('您还没有选择任何要素', '', {
           confirmButtonText: '确定',
           showCancelButton: true,
@@ -147,7 +147,7 @@ export default {
       // this.drawTypeClone=this.drawType
       // this.$forceUpdate()
       console.log('----mapCreated---')
-      if (this.mode == 'view') return
+      if (this.mode === 'view') return
       mapIns.plugin(['AMap.MouseTool'], () => {
         debugger
         this.mouseTool = new AMap.MouseTool(mapIns)
@@ -155,7 +155,7 @@ export default {
       })
     },
     initDrawTool () {
-      var drawObj = this.mouseTool[this.drawType]()
+      // var drawObj = this.mouseTool[this.drawType]()
       AMap.event.addListener(this.mouseTool, 'draw', (e) => {
         debugger
         let drawData

@@ -12,16 +12,16 @@
 </template>
 
 <script>
-    import TableColMixin from './mixin';
+import TableColMixin from './mixin'
 
-    export default {
-        name: 'ColSwitch',
-        mixins: [ TableColMixin ],
-        computed: {
-        }
-    };
+export default {
+  name: 'ColSwitch',
+  mixins: [TableColMixin],
+  computed: {
+  }
+}
 </script>
 
 <style scoped lang="less">
-    
+
 </style>

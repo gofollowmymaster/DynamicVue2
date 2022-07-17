@@ -67,13 +67,13 @@ export default {
       debugger
       this.onclose()
 
-      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
+      if (this.$parent?.$options.name === 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     },
     closeModal () {
       this.visible.value = false
-      if (this.$parent?.$options.name == 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
+      if (this.$parent?.$options.name === 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
         this.clearRouteQuery()
       }
     },

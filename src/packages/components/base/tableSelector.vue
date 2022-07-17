@@ -51,7 +51,7 @@ import {
 } from '../../utils/tool'
 import {
   buildSearchFields,
-  buildTableFields,
+  buildTableFields
 } from '../../utils/fieldsConfigUtil'
 
 import {
@@ -184,7 +184,7 @@ export default {
       this.searchParams = { ...this.searchParams, ...params }
     },
     refresh () {
-      const refreshKey = this.searchParams.refreshKey+1
+      const refreshKey = this.searchParams.refreshKey + 1
       this.onSearch({ refreshKey })
     },
 

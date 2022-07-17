@@ -18,12 +18,10 @@ import {
   exportYearPlanApi
 } from '@/network/orderManage.js'
 import {
-  buildFormFields,
+  buildFormFields
 
 } from '@/common/dynamicPage/utils/tool'
 import { fields, modifyFields } from './yearPlanFields.js'
- 
- 
 
 const entityLabel = '年度建设计划监管'
 
@@ -42,9 +40,9 @@ export default {
         topToolBar: {
           create: null,
           bulkdelete: null,
-          export:   {
+          export: {
             apiPromise: exportYearPlanApi,
-            actionType:'downloadAction',
+            actionType: 'downloadAction',
             label: '导出',
             actionDataKey: 'queryParams'
           }
@@ -52,60 +50,59 @@ export default {
         listOption: {
           properties: {
             'show-summary': true,
-            'summary-method':function({ columns, data }){
-                 
-              const sums = [];
+            'summary-method': function ({ columns, data }) {
+              const sums = []
               columns.forEach((column, index) => {
                 if (index === 0) {
-                  sums[index] = '合计';
-                  return;
+                  sums[index] = '合计'
+                  return
                 }
-                const values = data.map(item => Number(item[column.property]));
-                if(['projectCode','projectName','projectAttributeDictLabel','projectTypeDictLabel'].includes(column.property)){
-                    return sums[index] = '/';
-                }else if (!values.every(value => isNaN(value))) {
+                const values = data.map(item => Number(item[column.property]))
+                if (['projectCode', 'projectName', 'projectAttributeDictLabel', 'projectTypeDictLabel'].includes(column.property)) {
+                  sums[index] = '/'
+                } else if (!values.every(value => isNaN(value))) {
                   sums[index] = values.reduce((prev, curr) => {
-                    const value = Number(curr);
+                    const value = Number(curr)
                     if (!isNaN(value)) {
-                      return prev + curr;
+                      return prev + curr
                     } else {
-                      return prev;
+                      return prev
                     }
-                  }, 0).toFixed(2);
+                  }, 0).toFixed(2)
                   // sums[index] += ' 元';
                 } else {
-                  sums[index] = '/';
+                  sums[index] = '/'
                 }
-              });
+              })
 
-              return sums;
+              return sums
             }
           },
-            actionColWidth: 120,
-          
+          actionColWidth: 120,
+
           lineActions: {
             detail: null,
             update: null,
             delete: null,
-            modify:  {
+            modify: {
               label: '调整年度计划',
-              actionType:'dialogFormAction',
+              actionType: 'dialogFormAction',
               permission: '调整年度计划',
               containerProperties: {
-                  title: '调整年度计划',
-                  width:'480px'
-                },
-              singleCol:true,       
+                title: '调整年度计划',
+                width: '480px'
+              },
+              singleCol: true,
               formItemList: buildFormFields(modifyFields),
-              'label-width':'140px',
-              saveAction:{
-                apiPromise:yearPlanUpdateApi
+              'label-width': '140px',
+              saveAction: {
+                apiPromise: yearPlanUpdateApi
               }
-          
+
             }
           }
-        },
-        
+        }
+
       }
     }
   }

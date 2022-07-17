@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     content () {
-      const data = superType(this.data) == 'object' ? this.data : { data: this.data }
+      const data = superType(this.data) === 'object' ? this.data : { data: this.data }
       const content = parseTemplate(this.tmpl, data)
       // return   content
 

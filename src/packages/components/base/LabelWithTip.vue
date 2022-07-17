@@ -4,39 +4,35 @@
        <i :class="icon||'el-icon-info'"></i>
       </el-tooltip>
       <span class="ml4">{{label}}</span>
-     
+
    </div>
 </template>
 <script>
 export default {
   name: 'LabelWithTip',
   props: {
-    
-    label:{
-      type:String,
-      require:true
+
+    label: {
+      type: String,
+      require: true
     },
-    tip:{
-      type:String,
-      require:true
+    tip: {
+      type: String,
+      require: true
     },
-    icon:{
-      type:String,
-      default:'el-icon-info'
+    icon: {
+      type: String,
+      default: 'el-icon-info'
     },
-    size:{
-      type:String,
-      default:'small'
+    size: {
+      type: String,
+      default: 'small'
     }
   },
   data: function () {
     return {}
   },
-  computed: {
-    content () {
-      
-    }
-  },
+
   watch: {
 
   },
@@ -53,9 +49,9 @@ export default {
 
   }
     .mini-tip{
-    
+
   }
     .normal-tip{
-    
+
   }
 </style>

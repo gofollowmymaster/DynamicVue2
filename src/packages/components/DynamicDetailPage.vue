@@ -3,7 +3,7 @@
 <script>
 import {
   deepMerge,
-  deepCopy,
+  deepCopy
 } from '../utils/tool'
 import actionMixin from './actionMixin'
 import actionPresetMixin from './actionPresetMixin'

@@ -77,7 +77,7 @@ export default {
       this.isExpand = !this.isExpand
     },
     change () {
-      if (this.options.trigger == 'change') {
+      if (this.options.trigger === 'change') {
         this.$nextTick(() => {
           this.submit()
         })

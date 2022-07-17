@@ -22,7 +22,6 @@
 
 <script>
 
- 
 import FormMixin from './mixin'
 
 export default {

@@ -43,7 +43,7 @@ import { env, STATICENV as fileEnv } from '@/network/request.js'
 import axios from 'axios'
 
 export default {
-  name:'RightEditor',
+  name: 'RightEditor',
   components: {
     Editor
   },
@@ -77,7 +77,7 @@ export default {
       init: {
         // menubar: true, // 菜单栏显隐
         language_url: this.$dynamicConfig.tinymceLanguageUrl,
-        // language_url: '../../static/tinymce/langs/zh_CN.js', // vue-cli2.x   
+        // language_url: '../../static/tinymce/langs/zh_CN.js', // vue-cli2.x
         language: 'zh_CN',
         skin_url: this.$dynamicConfig.tinymceSkinUrl,
         // skin_url: '../../static/tinymce/skins/ui/oxide', // vue-cli2.x   '/static/tinymce/skins/ui/oxide'

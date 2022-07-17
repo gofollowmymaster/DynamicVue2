@@ -1,4 +1,3 @@
-import moment from 'moment'
 
 export function arrayToObject (arr, key) {
   return arr.reduce((prev, next) => {

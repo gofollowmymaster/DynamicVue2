@@ -64,7 +64,7 @@ export default {
   computed: {
     formSlots () {
       return this.formItemFilter((item) => {
-        return item.type == 'slot'
+        return item.type === 'slot'
       }).reduce((prev, next) => {
         return prev.concat(next.children)
       }, [])

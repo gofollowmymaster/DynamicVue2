@@ -22,8 +22,8 @@ export default {
   },
   mounted () {
     debugger
-      this.content=this.rowData[this.colOptions.dictInfoKey]?.dictLabel
-            this.style=this.rowData[this.colOptions.dictInfoKey]?.listClass
+    this.content = this.rowData[this.colOptions.dictInfoKey]?.dictLabel
+    this.style = this.rowData[this.colOptions.dictInfoKey]?.listClass
   }
 }
 </script>

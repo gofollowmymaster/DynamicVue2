@@ -23,7 +23,7 @@ export default {
     data: {
       type: [Object, String, Number]
     },
-    mode:String
+    mode: String
   },
   data () {
     debugger
@@ -41,32 +41,33 @@ export default {
         }
       },
       pageOptions: {
-        searchOption:this.mode==='textMode'?null:{
-            trigger: 'change',
-            resetable: false,
+        searchOption: this.mode === 'textMode' ? null : {
+          trigger: 'change',
+          resetable: false
         },
         topToolBar: null,
         listOption: {
-          hasCheckbox:false,
-          properties:{
-            border:this.mode==='textMode'?false:true
+          hasCheckbox: false,
+          properties: {
+            border: this.mode !== 'textMode'
           },
-          lineActions: this.mode==='textMode'?null:{
+          lineActions: this.mode === 'textMode' ? null : {
             update: {
-               label: '填报',
-               isShow:(data)=>{
-                 return data.isShow
-               },
-                dialog: {
+              label: '填报',
+              isShow: (data) => {
+                return data.isShow
+              },
+              dialog: {
                 container: 'el-dialog',
                 properties: {
                   title: '填报项目进度',
                   width: '36%'
-                },}
+                }
+              }
             },
             detail: null,
-            delete: null,
-             
+            delete: null
+
           }
         },
         // pagination: null,

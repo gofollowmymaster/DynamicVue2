@@ -10,7 +10,7 @@
 
 import {
   protectDetailApi,
-  protectListApi,
+  protectListApi
 } from '@/network/assetsMaintain.js'
 
 import { buildDynamicSelectOption } from '@/network/global'
@@ -18,7 +18,6 @@ import { buildDynamicSelectOption } from '@/network/global'
 const entityLabel = '养护记录'
 
 const fields = [
-
 
   {
     label: '固定资产名称',

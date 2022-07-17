@@ -61,18 +61,11 @@ import {
 } from '../utils/tool'
 import {
   buildSearchFields,
-  buildTableFields,
+  buildTableFields
 } from '../utils/fieldsConfigUtil'
 
-
-
 import { generateDefaultValue } from '../utils/actionTools'
-import presetConfig, {
-
-  pagination,
-  tableOption
-
-} from '../presetConfig'
+import presetConfig from '../presetConfig'
 
 import actionPresetMixin from './actionPresetMixin'
 
@@ -237,7 +230,7 @@ export default {
     },
     refresh () {
       debugger
-      const refreshKey = this.searchParams.refreshKey+1
+      const refreshKey = this.searchParams.refreshKey + 1
       this.onSearch({ refreshKey })
     },
 

@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import globalDynamicFormDialog from '../components/dialog/DynamicFormDialog'
 
-const globalDynamicFormDialogConstructor = Vue.extend(globalDynamicFormDialog)
+const GlobalDynamicFormDialogConstructor = Vue.extend(globalDynamicFormDialog)
 
 const globalDynamicFormDialogFunc = function (options = {}, el = null) {
-  const instance = new globalDynamicFormDialogConstructor({
+  const instance = new GlobalDynamicFormDialogConstructor({
     propsData: {
       ...options
     }

@@ -25,7 +25,7 @@ Vue.use(ElementUI)
 
 Vue.use(VueAMap)
 VueAMap.initAMapApiLoader({
-  key: amapWebMapKey,
+  key: amapWebMapKey.amapWebMapKey,
   plugin: [
     'AMap.Autocomplete',
     'AMap.PlaceSearch',

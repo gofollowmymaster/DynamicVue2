@@ -36,7 +36,6 @@ export default {
   name: 'FormDrawElement',
   mixins: [FormMixin],
   props: {
- 
 
   },
   computed: {

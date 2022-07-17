@@ -15,7 +15,6 @@ import {
   planProjectListApi,
   projectDeleteApi,
   planProjectEditDetailApi,
-  exportOldtreeApi,
   buildingProjectSaveApi
 } from '@/network/orderManage.js'
 import fields from './planFields.js'
@@ -27,13 +26,11 @@ Vue.component('planForm', planForm)
 
 const entityLabel = '计划项目管理'
 
-
-const formSections={
-   "子项目信息":{
-    hidden:true,
-   },
+const formSections = {
+  子项目信息: {
+    hidden: true
+  }
 }
-
 
 export default {
   name: 'planList',
@@ -54,18 +51,18 @@ export default {
       pageOptions: {
         topToolBar: {
           create: null,
-          add:  {
+          add: {
             label: '新增',
-            actionType:'routerDialogPageAction',
+            actionType: 'routerDialogPageAction',
             sort: 1,
             isLoadData: false,
             componentProperties: {
               type: 'primary',
-              icon: 'el-icon-plus',
+              icon: 'el-icon-plus'
             },
             containerProperties: {
-                title: '新增计划项目'
-              },
+              title: '新增计划项目'
+            },
             body: [
               {
                 component: 'planForm',
@@ -75,38 +72,38 @@ export default {
                 }
               }
             ]
-            
+
           }
         },
         listOption: {
           lineActions: {
             update: null,
             detail: null,
-            trans:   {
+            trans: {
               label: '转在建',
               permission: '转在建',
-              actionType:'dialogFormAction',
-              singleCol:true,
+              actionType: 'dialogFormAction',
+              singleCol: true,
               dataAdapter: (data) => {
-                  data.projectLibraryId = data.id
-                  return data
+                data.projectLibraryId = data.id
+                return data
               },
               containerProperties: {
                 title: '转在建',
-                width:'40%'
+                width: '40%'
               },
-              formItemList: this.$buildFormFields(buildingFields,formSections),
-                saveAction:  {
-                  apiPromise: buildingProjectSaveApi,
-                },
+              formItemList: this.$buildFormFields(buildingFields, formSections),
+              saveAction: {
+                apiPromise: buildingProjectSaveApi
+              }
             },
-            modify:  {
+            modify: {
               label: '修改',
-              actionType:'routerDialogPageAction',
+              actionType: 'routerDialogPageAction',
               permission: '修改',
               containerProperties: {
-                  title: '修改项目信息'
-                },
+                title: '修改项目信息'
+              },
               body: [
                 {
                   component: 'planForm',
@@ -116,11 +113,11 @@ export default {
                   }
                 }
               ]
-             
+
             },
-            view:   {
+            view: {
               label: '详情',
-              actionType:'routerDialogPageAction',
+              actionType: 'routerDialogPageAction',
               containerProperties: {
                 title: '项目详情'
               },
@@ -134,7 +131,7 @@ export default {
                   }
                 }
               ]
-              
+
             }
           }
         },

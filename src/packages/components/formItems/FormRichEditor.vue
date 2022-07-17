@@ -12,22 +12,20 @@
 </template>
 
 <script>
-    import FormMixin from './mixin';
+import FormMixin from './mixin'
 
-    export default {
-        name: 'FormRichEditor',
-        mixins: [ FormMixin ],
-        data () {
-            return {};
-        },
-        computed: {
-           
-        }
-    };
+export default {
+  name: 'FormRichEditor',
+  mixins: [FormMixin],
+  data () {
+    return {}
+  },
+  computed: {
+
+  }
+}
 </script>
 
 <style scoped lang="css">
- 
-
 
 </style>

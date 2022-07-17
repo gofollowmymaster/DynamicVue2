@@ -1,11 +1,11 @@
-import { deepCopy, JSONDeepCopy, downFile } from '../../utils/tool'
-import { DY_DIALOG, DY_DRAWER, DY_PAGE_WRAPER } from '../../const'
+import { deepCopy } from '../../utils/tool'
+import { DY_DIALOG, DY_DRAWER } from '../../const'
 
 export default class dialogForm {
   static handle (action, actionData, vm) {
     this.vm = vm
     const dialog = action.dialog
-    if (dialog.container == DY_DRAWER) {
+    if (dialog.container === DY_DRAWER) {
       dialog.properties = {
         size: dialog.properties.width,
         direction: 'rtl',

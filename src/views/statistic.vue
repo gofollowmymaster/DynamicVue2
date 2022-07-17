@@ -7,7 +7,6 @@
 import { appendToPreset, deepCopy } from '@/packages/utils/tool'
 import { protectLevStatisticApi, growthSituationStatisticApi, treeAgeStatisticApi, treeSpeciesStatisticApi } from '@/network/assets.js'
 
-
 const searchFieldsTmpl = [
   // {
   //   key:'dict',
@@ -151,17 +150,17 @@ export default {
                 style: { height: '300px' },
                 title: '统计表',
                 table: appendToPreset('tableOption', {
-                  hasCheckbox: false,
+                  hasCheckbox: false
                 }),
-                columns: [ 
-                {
-                  key: 'label',
-                  label: '等级'
-                },
-                {
-                  key: 'value',
-                  label: '台资产'
-                }],
+                columns: [
+                  {
+                    key: 'label',
+                    label: '等级'
+                  },
+                  {
+                    key: 'value',
+                    label: '台资产'
+                  }],
 
                 extraOptions: {
                 }

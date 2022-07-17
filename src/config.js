@@ -62,7 +62,7 @@ export const tableOption = {
   },
   actionColWidth: 0, // 操作栏宽度
   actionBtnType: 'text', // 操作按钮类型
-  indexColWidth:48
+  indexColWidth: 48
 }
 
 export const pagination = {
@@ -101,14 +101,14 @@ export const formOption = {
 }
 
 export default {
-  
-  baseFormSectionName:'基本信息',
+
+  baseFormSectionName: '基本信息',
   actionTip: 'msg',
   isDebug,
   host,
   staticHost: 'http:' + host + '/file/static',
-  tinymceLanguageUrl:'/dyvue2-admin/static/tinymce/langs/zh_CN.js',
-  tinymceSkinUrl:'/dyvue2-admin/static/tinymce/skins/ui/oxide',
+  tinymceLanguageUrl: '/dyvue2-admin/static/tinymce/langs/zh_CN.js',
+  tinymceSkinUrl: '/dyvue2-admin/static/tinymce/skins/ui/oxide',
   amapWebKey,
   amapWebMapKey,
   tandiMapKey,

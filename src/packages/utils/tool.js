@@ -55,7 +55,7 @@ export function hasValue (a) {
 }
 
 export function isObjEmpty (obj) {
-  if (['[]', '{}','""','null','undefined',undefined].includes(JSON.stringify(obj))) {
+  if (['[]', '{}', '""', 'null', 'undefined', undefined].includes(JSON.stringify(obj))) {
     return true
   }
   return false
@@ -107,7 +107,7 @@ export function deepCopy (origin) {
   const target = Array.isArray(origin) ? [] : {} // 判别是数组还是对象
   for (const k in origin) {
     // 循环拷贝
- 
+
     if (origin.hasOwnProperty(k)) {
       // 判断属性是否在对象自身上（非原型链上的父级属性）
       if (valueTypes.includes(superType(origin[k]))) {
@@ -163,7 +163,7 @@ export function objectFilter (obj, func, filterEmptyValue = true) {
 }
 
 export function deepMerge (obj1, obj2, isDeleteNull = false) {
-  obj1 = deepCopy(obj1)||{}
+  obj1 = deepCopy(obj1) || {}
 
   let key
   for (key in obj2) {
@@ -246,9 +246,6 @@ export function appendToPreset (presetKey, obj = {}, isDeleteNull = false) {
     return deepMerge(preset, obj, isDeleteNull)
   }
 }
-
-
-
 
 export function generatRandomNum (max) {
   return Math.round(Math.random() * max)

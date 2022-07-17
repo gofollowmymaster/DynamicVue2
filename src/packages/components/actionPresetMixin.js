@@ -3,9 +3,8 @@ import {
   buildDetailFields
 } from '../utils/fieldsConfigUtil'
 import {
-   loadActionTipConfig
+  loadActionTipConfig
 } from '../utils/actionTools'
-import Vue from 'vue'
 
 export default {
   props: {},
@@ -13,15 +12,14 @@ export default {
   methods: {
 
     generateCreateOptions (mode = 'dialog') {
-      
       const actionType =
-        mode == 'router'
+        mode === 'router'
           ? 'routerDialogFormActionOption'
           : 'dialogFormActionOption'
 
       return {
         label: '新增',
-        permission: this.scene!=='page'?'':'新增',
+        permission: this.scene !== 'page' ? '' : '新增',
         actionType,
         sort: 50,
         isLoadData: false,
@@ -43,7 +41,7 @@ export default {
       const actionTipConfig = loadActionTipConfig(this)
       return {
         label: '批量删除',
-        permission: this.scene!=='page'?'':'批量删除',  
+        permission: this.scene !== 'page' ? '' : '批量删除',
         actionType: 'requestApiAction',
         actionDataKey: 'selected',
         apiPromise: this.apiPromises.bulkdelete || this.apiPromises.delete,
@@ -56,7 +54,7 @@ export default {
         sort: 200,
         actionType: 'requestApiAction',
         label: '删除',
-        permission: this.scene!=='page'?'':'删除',  
+        permission: this.scene !== 'page' ? '' : '删除',
         componentProperties: {
           class: ['text-grey-dark2']
         },
@@ -66,7 +64,7 @@ export default {
     },
     generateUpdateOptions (mode = 'dialog') {
       const actionType =
-        mode == 'router'
+        mode === 'router'
           ? 'routerDialogFormAction'
           : 'dialogFormAction'
 
@@ -74,7 +72,7 @@ export default {
         label: '编辑',
         actionType,
         router: 'update',
-        permission: this.scene!=='page'?'':'编辑',  
+        permission: this.scene !== 'page' ? '' : '编辑',
         apiPromise: this.apiPromises.detail,
         containerProperties: {
           title: '编辑' + this.entityLabel
@@ -89,14 +87,14 @@ export default {
     },
     generateDetailOptions (mode = 'dialog') {
       const actionType =
-        mode == 'router'
+        mode === 'router'
           ? 'routerDialogFormActionOption'
           : 'dialogFormActionOption'
 
       return {
         label: '详情',
         actionType,
-        permission:  this.scene!=='page'?'':'详情',  
+        permission: this.scene !== 'page' ? '' : '详情',
         apiPromise: this.apiPromises.detail,
         componentProperties: {
           type: 'default'

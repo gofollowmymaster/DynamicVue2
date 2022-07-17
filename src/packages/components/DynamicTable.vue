@@ -12,7 +12,6 @@
           v-if="col.type == 'index'"
           :key="col.key"
           v-bind="{ ...col.colProperties }"
-
           type="index"
           :index="indexHandle"
         >
@@ -93,9 +92,9 @@ export default {
         return null
       }
     },
-      editable:{
-      type:Boolean,
-      default:false
+    editable: {
+      type: Boolean,
+      default: false
     },
     selected: {
       type: [Object],
@@ -112,7 +111,7 @@ export default {
   computed: {
     columnsComputed () {
       const columns = this.columns.map((item, index) => {
-         if (index < 1) {
+        if (index < 1) {
           item.colProperties = {
             ...item.colProperties,
             fixed: 'left'
@@ -122,23 +121,23 @@ export default {
           ...item,
           colProperties: {
             ...item.colProperties,
-            label:   item.label
+            label: item.label
 
           }
         }
       })
-  if (this.table.indexColWidth) {
-       columns.unshift({
+      if (this.table.indexColWidth) {
+        columns.unshift({
           key: 'index',
           type: 'index',
           colProperties: {
             width: this.table.indexColWidth,
             fixed: 'left',
-            label:'序号',
+            label: '序号'
 
           }
         })
-  }
+      }
       if (this.table.hasCheckbox) {
         columns.unshift({
           key: 'selection',
@@ -150,22 +149,22 @@ export default {
         })
       }
       //
-        const actionNum=this.table.lineActions?Object.keys(this.table.lineActions).length:0
+      const actionNum = this.table.lineActions ? Object.keys(this.table.lineActions).length : 0
 
-      if (actionNum>0) {
+      if (actionNum > 0) {
         const lineActions = deepCopy(this.table.lineActions)
-        
-         for(let key in lineActions){
-          const action=lineActions[key]
-          action.componentProperties={...action.componentProperties,type:this.table.actionBtnType}
-          lineActions[key]= this.$generateActionOption(action.actionType,action)
+
+        for (const key in lineActions) {
+          const action = lineActions[key]
+          action.componentProperties = { ...action.componentProperties, type: this.table.actionBtnType }
+          lineActions[key] = this.$generateActionOption(action.actionType, action)
         }
 
         columns.push({
           type: 'lineActions',
           key: 'lineActions',
           colProperties: {
-            'width': this.table.actionColWidth|| (actionNum * 60),
+            width: this.table.actionColWidth || (actionNum * 60),
             label: '操作',
             fixed: 'right'
           },
@@ -222,14 +221,12 @@ export default {
   mounted () {},
   components: {},
   methods: {
-        tableColComponent(col,data){
-          if(  col.component){
-                 return   col.component
-                }else{
-                  return 'ColTeml'
-                }
-
-         
+    tableColComponent (col, data) {
+      if (col.component) {
+        return col.component
+      } else {
+        return 'ColTeml'
+      }
     },
     selectRefresh () {
       this.$nextTick(() => {

@@ -88,7 +88,7 @@ const fields = [
     },
     formOption: {
       properties: {
-        required: '[3,2].includes(${famousWood})'
+        required: '[3,2].includes(#{famousWood})'
       }
     }
   },

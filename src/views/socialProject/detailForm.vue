@@ -62,7 +62,7 @@ export default {
       formOption: this.$appendToPreset('formOption', {
         textModel: this.textModel,
         formProperties: {
-          'label-width': '150px',
+          'label-width': '150px'
           // 'label-position': this.textModel ? 'right' : 'top'
         }
       }),
@@ -73,36 +73,36 @@ export default {
 
       validDetail: {},
       baseActions: {
-        save:  {
-          label:'保存',
-          actionType:'submitAction',
+        save: {
+          label: '保存',
+          actionType: 'submitAction',
           apiPromise: socialProjectUpdateApi,
-          callback:{
-            closeModal:false,
+          callback: {
+            closeModal: false,
             refresh: false,
             reset: false,
-            next:()=>{
-              this.active=1
+            next: () => {
+              this.active = 1
             }
           }
-        },
+        }
       },
       actions: {
-        
-        save:  {
+
+        save: {
           apiPromise: socialProjecValidUpdatetApi,
-          actionType:'submitAction',
-          label:'保存'
+          actionType: 'submitAction',
+          label: '保存'
         },
-        prev:  {
-          isLoadData:false,
-          actionType:'customAction', 
-          label:'上一步',
-          actionHandle: ()=>{
-            this.active=0
+        prev: {
+          isLoadData: false,
+          actionType: 'customAction',
+          label: '上一步',
+          actionHandle: () => {
+            this.active = 0
           }
-        },
-      },
+        }
+      }
     }
   },
   watch: {
@@ -120,9 +120,9 @@ export default {
       debugger
       socialProjectDetailApi(data).then((data) => {
         this.baseDetail = data
-        if (data.projectStatusInt == 2) {
+        if (data.projectStatusInt === 2) {
           this.active = 1
-          this.baseActions.save.label="下一步"
+          this.baseActions.save.label = '下一步'
           getSocialProjectAirInfoApi(data.id).then((data) => {
             this.validDetail = data
           })
@@ -130,7 +130,7 @@ export default {
       })
     },
     switchStep (step) {
-      if (this.baseDetail.projectStatusInt == 1 && step == 2) return
+      if (this.baseDetail.projectStatusInt === 1 && step === 2) return
       this.active = step
     }
   }

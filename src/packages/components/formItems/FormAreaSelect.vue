@@ -110,7 +110,6 @@ export default {
 
 <style scoped lang="less">
 
- 
     .select {
         width: 100%;
     }

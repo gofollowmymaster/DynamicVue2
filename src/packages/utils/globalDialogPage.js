@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import globalDynamicPageDialog from '../components/dialog/DynamicPageDialog'
 
-const globalDynamicPageDialogConstructor = Vue.extend(globalDynamicPageDialog)
+const GlobalDynamicPageDialogConstructor = Vue.extend(globalDynamicPageDialog)
 
 const globalDynamicPageDialogFunc = function (options = {}, el = null) {
-  const instance = new globalDynamicPageDialogConstructor({
+  const instance = new GlobalDynamicPageDialogConstructor({
     propsData: {
       ...options
     }

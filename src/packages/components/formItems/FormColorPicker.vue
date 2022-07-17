@@ -1,7 +1,7 @@
 <template>
   <!-- 普通输入框 -->
   <section  >
-    <el-color-picker 
+    <el-color-picker
     v-if="!getTextModel"
       class="block"
       v-model="val"
@@ -9,7 +9,7 @@
       :disabled="getDisabled"
     ></el-color-picker>
     <div v-else class="full-width flex align-center">{{val}} <div class="inline-block ml12" :style="{backgroundColor:val,width:'18px',height:'18px'}" ></div></div>
- 
+
   </section>
 </template>
 
@@ -23,14 +23,13 @@ export default {
     return {}
   },
   computed: {
-    
 
   }
 }
 </script>
 
 <style scoped lang="less">
- 
+
 /deep/ .el-color-picker__trigger{
   width: 100%;
 }

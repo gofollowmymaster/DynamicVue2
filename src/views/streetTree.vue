@@ -55,7 +55,7 @@
 import {
   buildFormFields,
   buildTableFields,
-  buildSearchFields,
+  buildSearchFields
 } from '@/packages/utils/fieldsConfigUtil'
 import {
   treeStreetUpdateApi,
@@ -111,7 +111,7 @@ export default {
         }
       },
       tableOption: this.$appendToPreset('tableOption', {
-        loadListApi:treeStreetListApi,
+        loadListApi: treeStreetListApi,
         'current-change': 'handleCurrentChange', // 事件 暂不支持
         lineActions: {
           update: {
@@ -122,7 +122,7 @@ export default {
             containerProperties: {
               title: '更新不动产'
             },
-            colNum:3,
+            colNum: 3,
             formItemList: formFields,
             saveAction: {
               apiPromise: treeStreetUpdateApi
@@ -155,7 +155,7 @@ export default {
         }
       }),
       tableFields,
-      pagination:{...pagination,pageNo:1,},
+      pagination: { ...pagination, pageNo: 1 },
 
       searchParams: { refreshKey: '' },
       selected: [],
@@ -171,7 +171,7 @@ export default {
 
   computed: {
     queryParams () {
-      return { ...this.searchParams, pageNo:this.pagination.pageNo,pageSize:this.pagination.pageSize }
+      return { ...this.searchParams, pageNo: this.pagination.pageNo, pageSize: this.pagination.pageSize }
     },
     loadListApi () {
       return this.tableOption.loadListApi(this.queryParams).then((data) => {
@@ -190,7 +190,7 @@ export default {
 
   methods: {
     refresh () {
-      const refreshKey = this.searchParams.refreshKey+1
+      const refreshKey = this.searchParams.refreshKey + 1
       this.onSearch({ refreshKey })
     },
     handleSizeChange (pageSize) {

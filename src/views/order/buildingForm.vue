@@ -44,10 +44,10 @@
       <template  v-slot:progressTable>
          <buildingProgress v-if="projectLibraryId" class="full-width" :data="{id:projectLibraryId}" mode="textMode"></buildingProgress>
       </template>
-    
+
     </DynamicForm>
   </main>
-    
+
 </template>
 <script>
 import {
@@ -56,147 +56,143 @@ import {
   planProjectDetailApi,
   buildingProjectSaveApi,
   buildingProjectDetailApi,
-  buildingProjectUpdateApi,
+  buildingProjectUpdateApi
 } from '@/network/orderManage.js'
 import planFields from './planFields.js'
 import buildingFields from './buildingFields.js'
-import buildingProgress  from './buildingProgress'
-
+import buildingProgress from './buildingProgress'
 
 export default {
   name: 'buildingForm',
-  props:{
-    data:{
-      type:[Object,Number,String,Array]
+  props: {
+    data: {
+      type: [Object, Number, String, Array]
     },
-    textModel:[Boolean]
+    textModel: [Boolean]
   },
-  components:{buildingProgress},
+  components: { buildingProgress },
   data () {
     return {
       active: 0,
       // form字段
-      formOption: this.$appendToPreset('formOption', {textModel:this.textModel,
-          formProperties: {
-            'label-width':'150px',
-            // 'label-position': this.textModel?'right':'top'
-        },}),
+      formOption: this.$appendToPreset('formOption', {
+        textModel: this.textModel,
+        formProperties: {
+          'label-width': '150px'
+          // 'label-position': this.textModel?'right':'top'
+        }
+      }),
       planFormItemList: this.$buildFormFields(planFields),
       planActions: {
-        save:  {
-          actionType:'submitAction',
+        save: {
+          actionType: 'submitAction',
           apiPromise: planProjectSaveApi,
-          label:'下一步',
-           componentProperties:{
-            size:'medium'
+          label: '下一步',
+          componentProperties: {
+            size: 'medium'
           },
-          callback:{
-            next:(vm,res)=>{
+          callback: {
+            next: (vm, res) => {
               debugger
-              this.active= 1
-              if(!this.projectLibraryId){
-                  if(!res.data){
-                    console.error('接口没有返回projectLibraryId?查看network验证')
-                    return 
-                  }
-                  this.projectLibraryId=res.data
+              this.active = 1
+              if (!this.projectLibraryId) {
+                if (!res.data) {
+                  console.error('接口没有返回projectLibraryId?查看network验证')
+                  return
+                }
+                this.projectLibraryId = res.data
               }
-              
             },
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false
           }
         }
       },
-      planDetail:{},
-      buildingFormItemList: this.textModel?this.$buildDetailFields(buildingFields):this.$buildFormFields(buildingFields),
+      planDetail: {},
+      buildingFormItemList: this.textModel ? this.$buildDetailFields(buildingFields) : this.$buildFormFields(buildingFields),
 
       buildingActions: {
-        
+
         save: {
-          actionType:'submitAction',
-          isShow(data){
+          actionType: 'submitAction',
+          isShow (data) {
             return !data.id
           },
-            componentProperties:{
-            size:'medium'
+          componentProperties: {
+            size: 'medium'
           },
-          apiPromise: (data)=>{
+          apiPromise: (data) => {
             debugger
-            data.projectLibraryId=this.projectLibraryId
+            data.projectLibraryId = this.projectLibraryId
             return buildingProjectSaveApi(data)
-            }
+          }
         },
-        update:  {
-          actionType:'submitAction',
-          isShow(data){
+        update: {
+          actionType: 'submitAction',
+          isShow (data) {
             return !!data.id
           },
-            componentProperties:{
-            size:'medium'
+          componentProperties: {
+            size: 'medium'
           },
-          apiPromise: (data)=>{
+          apiPromise: (data) => {
             debugger
             // data.projectLibraryId=this.projectLibraryId
             return buildingProjectUpdateApi(data)
-            }
-        },
-        prev:{
-          actionType:'prev',
-          label:'上一步',
-          component:'el-button',
-          componentProperties:{
-            size:'medium'
-          },
-          actionType:'custom',
-          isLoadData:false,
-          actionHandle:(data)=>{
-            this.active= 0
-            this.planActions.save.apiPromise=(data)=>{
-
-                return planProjectUpdateApi(data)
-            }
           }
         },
+        prev: {
+          actionType: 'prev',
+          label: '上一步',
+          component: 'el-button',
+          componentProperties: {
+            size: 'medium'
+          },
+          isLoadData: false,
+          actionHandle: (data) => {
+            this.active = 0
+            this.planActions.save.apiPromise = (data) => {
+              return planProjectUpdateApi(data)
+            }
+          }
+        }
       },
-      buildingDetail:{},
-      projectLibraryId:''
+      buildingDetail: {},
+      projectLibraryId: ''
     }
   },
-  watch:{
-    data:{
-      handler(data){
+  watch: {
+    data: {
+      handler (data) {
         debugger
-         if(data.id){
-           this.loadDetail(data)
-
-         }
+        if (data.id) {
+          this.loadDetail(data)
+        }
       },
-      immediate:true,
+      immediate: true
     }
   },
-  methods:{
-      loadDetail(data){
-        this.active=1
-          this.buildingActions.save.apiPromise=buildingProjectUpdateApi 
-          this.planActions.save.apiPromise=planProjectUpdateApi
+  methods: {
+    loadDetail (data) {
+      this.active = 1
+      this.buildingActions.save.apiPromise = buildingProjectUpdateApi
+      this.planActions.save.apiPromise = planProjectUpdateApi
 
-        
-        buildingProjectDetailApi(data.id).then(data=>{
-          this.buildingDetail=data
-        }).then(()=>{
-          this.projectLibraryId=this.buildingDetail.projectLibraryId
-          planProjectDetailApi(this.projectLibraryId).then(data=>{
-            this.planDetail=data
-          })
+      buildingProjectDetailApi(data.id).then(data => {
+        this.buildingDetail = data
+      }).then(() => {
+        this.projectLibraryId = this.buildingDetail.projectLibraryId
+        planProjectDetailApi(this.projectLibraryId).then(data => {
+          this.planDetail = data
         })
-      },
-      switchStep(step){
-        if(!this.textModel)return 
-        this.active=step
-      }
+      })
+    },
+    switchStep (step) {
+      if (!this.textModel) return
+      this.active = step
+    }
   }
 }
 </script>

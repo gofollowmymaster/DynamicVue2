@@ -9,7 +9,7 @@
     <el-radio :label="3" class="mt12">完成</el-radio>
 
   </el-radio-group>
-     
+
   </section>
 </template>
 
@@ -20,36 +20,34 @@ export default {
   name: 'projectRadio',
   mixins: [poplMixin],
   computed: {},
-  props:{
-    data:{
-      type:Object,
-      default(){
+  props: {
+    data: {
+      type: Object,
+      default () {
         return {
-          value:0
+          value: 0
         }
       }
-    }  
+    }
 
-  
   },
   data () {
     return {
 
-
     }
   },
-  watch:{
-    data:{
-      handler(data){
+  watch: {
+    data: {
+      handler (data) {
         debugger
-        this.$emit('change',data.value)
-    },
-    deep:true,
-    immediate:true
+        this.$emit('change', data.value)
+      },
+      deep: true,
+      immediate: true
     }
   },
   mounted () {
-    
+
   }
 }
 </script>

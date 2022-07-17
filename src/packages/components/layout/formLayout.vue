@@ -7,7 +7,7 @@
            </li>
     </ul>
     <main class="main-section flex1  ">
-      
+
         <slot name="main"></slot>
     </main>
   </div>
@@ -18,9 +18,9 @@ export default {
   props: {
     // curSetion: { type: String, default: '' },
     scene: { type: String, default: 'component' },
-    formItemList:{
-      type:Array,
-      default:function(){
+    formItemList: {
+      type: Array,
+      default: function () {
         return []
       }
     }
@@ -28,23 +28,21 @@ export default {
   computed: {},
   data: function () {
     return {
-      curSetion:''
+      curSetion: ''
     }
   },
   created () {},
 
   methods: {
-    scrollTo(section){
-      this.$emit('scroll',section)
-      this.curSetion=section.label
-      
-        }
+    scrollTo (section) {
+      this.$emit('scroll', section)
+      this.curSetion = section.label
+    }
   }
 }
 </script>
 
-<style lang="less" scoped> 
- 
+<style lang="less" scoped>
 
 .layout-wrapper  {
   display: flex;
@@ -54,14 +52,14 @@ export default {
     max-height: calc(100vh - 120px);
     border-right:solid 1px var(--grey)
   }
-  
+
   .main-section {
-    
+
   }
   .active{
     color:var(--main-color);
     border-right:solid 2px var(--main-color);
   }
 }
- 
+
 </style>

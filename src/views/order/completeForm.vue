@@ -58,7 +58,7 @@
       <template  v-slot:progressTable>
          <buildingProgress v-if="projectLibraryId" :data="{id:projectLibraryId}"  mode="textMode"></buildingProgress>
       </template>
-    
+
     </DynamicForm>
        <DynamicForm
       v-show="active===2"
@@ -68,7 +68,7 @@
       :actions="transActions"
       :data="transDetail"
     ></DynamicForm>
-      </DynamicForm>
+
        <DynamicForm
       v-show="active===3"
       class="relative"
@@ -78,7 +78,7 @@
       :data="completeDetail"
     ></DynamicForm>
   </main>
-    
+
 </template>
 <script>
 import {
@@ -100,328 +100,300 @@ import buildingFields from './buildingFields.js'
 import transFields from './transFields.js'
 import completeFields from './completeFields.js'
 
-
-
-import buildingProgress  from './buildingProgress'
-
+import buildingProgress from './buildingProgress'
 
 export default {
   name: 'completeForm',
-  props:{
-    data:{
-      type:[Object,Number,String,Array]
+  props: {
+    data: {
+      type: [Object, Number, String, Array]
     },
-    textModel:[Boolean]
+    textModel: [Boolean]
   },
-  components:{buildingProgress},
+  components: { buildingProgress },
   data () {
     return {
       active: 0,
       // form字段
       formOption: this.$appendToPreset('formOption', {
-        textModel:this.textModel,
+        textModel: this.textModel,
         formProperties: {
-            'label-width':'150px',
+          'label-width': '150px'
           // 'label-position': this.textModel?'right':'top'
-        },
+        }
       }),
       planFormItemList: this.$buildFormFields(planFields),
       planActions: {
         save: {
-          actionType:'submitAction',
+          actionType: 'submitAction',
           apiPromise: planProjectSaveApi,
-          label:'下一步',
-           componentProperties:{
-            size:'medium'
+          label: '下一步',
+          componentProperties: {
+            size: 'medium'
           },
-          callback:{
-            next:(vm,res)=>{
+          callback: {
+            next: (vm, res) => {
               debugger
-              this.active= 1
-              if(!this.projectLibraryId){   
-                  if(!res.data){
-                    console.error('接口没有返回projectLibraryId?查看network验证')
-                    return 
-                  }
-                  this.projectLibraryId=res.data
+              this.active = 1
+              if (!this.projectLibraryId) {
+                if (!res.data) {
+                  console.error('接口没有返回projectLibraryId?查看network验证')
+                  return
+                }
+                this.projectLibraryId = res.data
               }
             },
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false
           }
         }
       },
-      planDetail:{},
-      buildingFormItemList: this.textModel?this.$buildDetailFields(buildingFields):this.$buildFormFields(buildingFields),
+      planDetail: {},
+      buildingFormItemList: this.textModel ? this.$buildDetailFields(buildingFields) : this.$buildFormFields(buildingFields),
 
       buildingActions: {
-        
-        save:  {
-          actionType:'submitActionOption',
-          label:'下一步',
-          isShow(data){
+
+        save: {
+          actionType: 'submitActionOption',
+          label: '下一步',
+          isShow (data) {
             debugger
             return !data.id
           },
-                   componentProperties:{
-            size:'medium'
+          componentProperties: {
+            size: 'medium'
           },
-          apiPromise: (data)=>{
+          apiPromise: (data) => {
             debugger
-            console.log('----this.projectLibraryId---',this.projectLibraryId)
-            if(!this.projectLibraryId){
-                  console.error('没有projectLibraryId ')
-                  return 
-                }
-                data.projectLibraryId=this.projectLibraryId   
+            console.log('----this.projectLibraryId---', this.projectLibraryId)
+            if (!this.projectLibraryId) {
+              console.error('没有projectLibraryId ')
+              return
+            }
+            data.projectLibraryId = this.projectLibraryId
             return buildingProjectSaveApi(data)
-            },
-          callback:{
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false,
-             next:(vm,res)=>{
-              
-              this.active= 2
-             }
-          }
-        },
-        update:{
-          actionType:'submitActionOption',
-          label:'下一步',
-          isShow(data){
-            debugger
-            return !!data.id
           },
-                   componentProperties:{
-            size:'medium'
-          },
-          apiPromise: (data)=>{
-            debugger
-             if(!this.projectLibraryId){
-                  console.error('没有projectLibraryId ')
-                  return 
-                }
-                // data.id=this.projectLibraryId
-            return buildingProjectUpdateApi(data)
-            },
-             callback:{
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false,
-             next:(vm,res)=>{
-              
-              this.active= 2
-             }
-          }
-        },
-        prev:{
-          actionType:'prev',
-          label:'上一步',
-          component:'el-button',
-          componentProperties:{
-            size:'medium'
-          },
-          isLoadData:false,
-          actionHandle:(data)=>{
-            this.active= 0
-            this.planActions.save.apiPromise=(data)=>{
-
-                return planProjectUpdateApi(data)
+          callback: {
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false,
+            next: (vm, res) => {
+              this.active = 2
             }
           }
         },
+        update: {
+          actionType: 'submitActionOption',
+          label: '下一步',
+          isShow (data) {
+            debugger
+            return !!data.id
+          },
+          componentProperties: {
+            size: 'medium'
+          },
+          apiPromise: (data) => {
+            debugger
+            if (!this.projectLibraryId) {
+              console.error('没有projectLibraryId ')
+              return
+            }
+            // data.id=this.projectLibraryId
+            return buildingProjectUpdateApi(data)
+          },
+          callback: {
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false,
+            next: (vm, res) => {
+              this.active = 2
+            }
+          }
+        },
+        prev: {
+          actionType: 'prev',
+          label: '上一步',
+          component: 'el-button',
+          componentProperties: {
+            size: 'medium'
+          },
+          isLoadData: false,
+          actionHandle: (data) => {
+            this.active = 0
+            this.planActions.save.apiPromise = (data) => {
+              return planProjectUpdateApi(data)
+            }
+          }
+        }
       },
-      buildingDetail:{},
-      projectLibraryId:'',
+      buildingDetail: {},
+      projectLibraryId: '',
       transFormItemList: this.$buildFormFields(transFields),
       transActions: {
-        
-        save:  {
-          actionType:'submitActionOption',
-            apiPromise:(data)=>{
-            console.log('----this.projectLibraryId---',this.projectLibraryId)
-            if(!this.projectLibraryId){
-                  console.error('没有projectLibraryId ')
-                  return 
-                }
+
+        save: {
+          actionType: 'submitActionOption',
+          apiPromise: (data) => {
+            console.log('----this.projectLibraryId---', this.projectLibraryId)
+            if (!this.projectLibraryId) {
+              console.error('没有projectLibraryId ')
+              return
+            }
             return transProjectSaveApi(data)
-            },
-          label:'下一步',
-          componentProperties:{
-            size:'medium'
           },
-           isShow(data){
+          label: '下一步',
+          componentProperties: {
+            size: 'medium'
+          },
+          isShow (data) {
             debugger
             return !data.id
           },
-          callback:{
-            next:(vm,res)=>{
-              debugger
-              if(!this.projectLibraryId){
-                  if(!res.data){
-                    console.error('接口没有返回projectLibraryId?查看network验证')
-                    return 
-                  }
-                  this.projectLibraryId=res.data
-              }
-              
-            },
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false,
-            next:(vm,res)=>{
-               this.projectLibraryId=res.data
-            this.active= 3
+          callback: {
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false,
+            next: (vm, res) => {
+              this.projectLibraryId = res.data
+              this.active = 3
             }
           }
         },
-        update:  {
-          actionType:'submitActionOption',
-          label:'下一步',
-           isShow(data){
+        update: {
+          actionType: 'submitActionOption',
+          label: '下一步',
+          isShow (data) {
             debugger
             return !!data.id
           },
-          componentProperties:{
-            size:'medium'
+          componentProperties: {
+            size: 'medium'
           },
-          apiPromise:(data)=>{
+          apiPromise: (data) => {
             debugger
-            console.log('----this.projectLibraryId---',this.projectLibraryId)
-            if(!this.projectLibraryId){
-                  console.error('没有projectLibraryId ')
-                  return 
-                }
+            console.log('----this.projectLibraryId---', this.projectLibraryId)
+            if (!this.projectLibraryId) {
+              console.error('没有projectLibraryId ')
+              return
+            }
             return transProjectSaveApi(data)
-            },
-          callback:{
-            next:(vm,res)=>{
-              debugger
-              if(!this.projectLibraryId){
-                  if(!res.data){
-                    console.error('接口没有返回projectLibraryId?查看network验证')
-                    return 
-                  }
-                  this.projectLibraryId=res.data
-              }
-              
-            },
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false,
-            next:(vm,res)=>{
-            this.active= 3
-            }
-          }
-        },
-        prev:{
-          actionType:'prev',
-          label:'上一步',
-          componentProperties:{
-            size:'medium'
           },
-          isLoadData:false,
-          actionHandle:(data)=>{
-            this.active= 1
-            this.buildingActions.save.apiPromise=(data)=>{
+          callback: {
 
-                return buildingProjectUpdateApi(data)
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false,
+            next: (vm, res) => {
+              this.active = 3
             }
           }
         },
+        prev: {
+          actionType: 'prev',
+          label: '上一步',
+          componentProperties: {
+            size: 'medium'
+          },
+          isLoadData: false,
+          actionHandle: (data) => {
+            this.active = 1
+            this.buildingActions.save.apiPromise = (data) => {
+              return buildingProjectUpdateApi(data)
+            }
+          }
+        }
       },
-      transDetail:{},
+      transDetail: {},
       completeFormItemList: this.$buildFormFields(completeFields),
       completeActions: {
-        
-        save:  {
-          actionType:'submitActionOption',
+
+        save: {
+          actionType: 'submitActionOption',
           apiPromise: completeProjectSaveApi,
-          label:'保存',
-          componentProperties:{
-            size:'medium'
+          label: '保存',
+          componentProperties: {
+            size: 'medium'
           },
-          callback:{
-            next:(vm,res)=>{
+          callback: {
+            next: (vm, res) => {
               debugger
-              if(!this.projectLibraryId){
-                  if(!res.data){
-                    console.error('接口没有返回projectLibraryId?查看network验证')
-                    return 
-                  }
-                  this.projectLibraryId=res.data
+              if (!this.projectLibraryId) {
+                if (!res.data) {
+                  console.error('接口没有返回projectLibraryId?查看network验证')
+                  return
+                }
+                this.projectLibraryId = res.data
               }
             },
-            closeModal:false,
-            refresh:false,
-            showTip:false,
-            reset:false
+            closeModal: false,
+            refresh: false,
+            showTip: false,
+            reset: false
           }
         },
-        prev:{
-          actionType:'prev',
-          label:'上一步',
-          componentProperties:{
-            size:'medium'
+        prev: {
+          actionType: 'prev',
+          label: '上一步',
+          componentProperties: {
+            size: 'medium'
           },
-          isLoadData:false,
-          actionHandle:(data)=>{
-            this.active= 2
-            this.transActions.save.apiPromise=(data)=>{
-                return transProjectUpdateApi(data)
+          isLoadData: false,
+          actionHandle: (data) => {
+            this.active = 2
+            this.transActions.save.apiPromise = (data) => {
+              return transProjectUpdateApi(data)
             }
           }
-        },
+        }
       },
-      completeDetail:{},
+      completeDetail: {}
     }
   },
-  watch:{
-    data:{
-      handler(data){
+  watch: {
+    data: {
+      handler (data) {
         debugger
-         if(data.id){
-           this.loadDetail(data)
-         }
+        if (data.id) {
+          this.loadDetail(data)
+        }
       },
-      immediate:true,
+      immediate: true
     }
   },
-  methods:{
-      loadDetail(info){
+  methods: {
+    loadDetail (info) {
+      debugger
+      this.active = 3
+      completeProjectDetailApi(info).then((data) => {
         debugger
-        this.active=3
-        completeProjectDetailApi(info).then((data)=>{
-          debugger
-          this.completeDetail=data
-          this.completeActions.save.apiPromise=completeProjectUpdateApi 
-          this.projectLibraryId=this.completeDetail.projectLibraryId||info.projectLibraryId
-          transProjectDetailApi(this.projectLibraryId).then(data=>{
-          this.transDetail=data
-          this.transActions.save.apiPromise=transProjectUpdateApi 
+        this.completeDetail = data
+        this.completeActions.save.apiPromise = completeProjectUpdateApi
+        this.projectLibraryId = this.completeDetail.projectLibraryId || info.projectLibraryId
+        transProjectDetailApi(this.projectLibraryId).then(data => {
+          this.transDetail = data
+          this.transActions.save.apiPromise = transProjectUpdateApi
         })
-          planProjectDetailApi(this.projectLibraryId).then(data=>{
-            this.planDetail=data
-            this.planActions.save.apiPromise=planProjectUpdateApi
-          })
-             buildingProjectDetailApi(this.projectLibraryId).then(data=>{
-            this.buildingDetail=data
-            this.buildingActions.save.apiPromise=buildingProjectUpdateApi
-          })
+        planProjectDetailApi(this.projectLibraryId).then(data => {
+          this.planDetail = data
+          this.planActions.save.apiPromise = planProjectUpdateApi
         })
-      },
-      switchStep(step){
-        debugger
-        if(!this.textModel)return 
-        this.active=step
-      }
+        buildingProjectDetailApi(this.projectLibraryId).then(data => {
+          this.buildingDetail = data
+          this.buildingActions.save.apiPromise = buildingProjectUpdateApi
+        })
+      })
+    },
+    switchStep (step) {
+      debugger
+      if (!this.textModel) return
+      this.active = step
+    }
   }
 }
 </script>

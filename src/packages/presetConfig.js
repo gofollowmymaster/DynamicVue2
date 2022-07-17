@@ -41,11 +41,11 @@ export const tableOption = {
     minWidth: 90,
     'show-overflow-tooltip': true,
     align: 'left',
-    'header-align': 'left',
+    'header-align': 'left'
   },
   actionColWidth: 0, // 操作栏宽度
   actionBtnType: 'text', // 操作按钮类型
-  indexColWidth:48,
+  indexColWidth: 48
 }
 
 export const pagination = {
@@ -75,7 +75,7 @@ export const formOption = {
   formProperties: {
     'hide-required-asterisk': false,
     'label-position': 'right',
-    'label-width': '160px',
+    'label-width': '160px'
 
     // "inline-message":true,
     // size:'medium'
@@ -85,8 +85,7 @@ export const formOption = {
   'label-width': '160px',
   'label-position': 'right',
   pageLabelWidth: '160px',
-  colNum:2,
-
+  colNum: 2
 
 }
 export const actionPopProperties = {
@@ -146,7 +145,7 @@ export const dynamicFormOption = {
 
 export const presetConfig = {
   data: {
-    baseFormSectionName:'基础信息',
+    baseFormSectionName: '基础信息',
     dialogWidth: '50%',
     btnSize: 'small',
     actionTip: 'tip',
@@ -160,7 +159,7 @@ export const presetConfig = {
     dynamicFormOption,
     actionPopProperties,
     msgBoxProperties,
-    formWraperClass: [ 'grid-col-xs-24', 'grid-col-pp-24'],
+    formWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
     detailWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
     searchFormWraperClass: [
       'grid-col-sm-8',

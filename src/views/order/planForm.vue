@@ -19,7 +19,7 @@
       :data="planDetail"
     ></DynamicForm>
   </main>
-    
+
 </template>
 <script>
 import {
@@ -31,11 +31,11 @@ import fields from './planFields.js'
 
 export default {
   name: 'planForm',
-  props:{
-    data:{
-      type:[Object,Number,String,Array]
+  props: {
+    data: {
+      type: [Object, Number, String, Array]
     },
-    textModel:[Boolean]
+    textModel: [Boolean]
   },
   data () {
     debugger
@@ -43,44 +43,43 @@ export default {
       active: 0,
       // form字段
       formOption: this.$appendToPreset('formOption', {
-        textModel:this.textModel,
+        textModel: this.textModel,
         formProperties: {
-          'label-width':'150px',
+          'label-width': '150px'
           // 'label-position': this.textModel?'right':'top'
-        },
+        }
       }),
       formItemList: this.$buildFormFields(fields),
       actions: {
-        save:  {
+        save: {
           apiPromise: planProjectSaveApi,
-          actionType:'submitAction',
-          componentProperties:{
-            size:'medium'
+          actionType: 'submitAction',
+          componentProperties: {
+            size: 'medium'
           },
-          label:'保存'
+          label: '保存'
         }
       },
-      planDetail:{}
+      planDetail: {}
     }
   },
-  watch:{
-    data:{
-      handler(data){
-         if(data.id){
-           this.loadDetail(data)
-         }
+  watch: {
+    data: {
+      handler (data) {
+        if (data.id) {
+          this.loadDetail(data)
+        }
       },
-      immediate:true,
+      immediate: true
     }
   },
-  methods:{
-      loadDetail(data){
-        planProjectDetailApi(data.id).then(data=>{
-           
-            this.planDetail=data
-            this.actions.save.apiPromise=planProjectUpdateApi
-        })
-      }
+  methods: {
+    loadDetail (data) {
+      planProjectDetailApi(data.id).then(data => {
+        this.planDetail = data
+        this.actions.save.apiPromise = planProjectUpdateApi
+      })
+    }
   }
 }
 </script>

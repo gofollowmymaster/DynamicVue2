@@ -16,10 +16,7 @@ import {
   socialProjectDeleteApi,
   socialProjecValidSavetApi
 } from '@/network/orderManage.js'
-import {
 
-  appendToPreset
-} from '@/common/dynamicPage/utils/tool'
 import { fields, airFields } from './socialProjectFields.js'
 
 import detailForm from './detailForm.vue'
@@ -62,67 +59,67 @@ export default {
         },
         listOption: {
           lineActions: {
-            detail:null,
-            valid:   {
-              sort:1,
+            detail: null,
+            valid: {
+              sort: 1,
               label: '竣工验收',
-              actionType:'dialogFormAction',
-              isShow:(data)=>{
-                return data.projectStatusInt==1
+              actionType: 'dialogFormAction',
+              isShow: (data) => {
+                return data.projectStatusInt === 1
               },
-              dataAdapter:(data)=>{
-                data.orderManageId=data.id
+              dataAdapter: (data) => {
+                data.orderManageId = data.id
                 return data
               },
-               singleCol:true,
+              singleCol: true,
               // apiPromise: getSocietyProjectAirInfoApi,
               containerProperties: {
-                  title: '社会项目竣工验收'
-                },
-                  formItemList: this.$buildFormFields(airFields),
-                    saveAction: {
-                      actionType:'submitActionOption',
-                      apiPromise: socialProjecValidSavetApi
-                    }
+                title: '社会项目竣工验收'
+              },
+              formItemList: this.$buildFormFields(airFields),
+              saveAction: {
+                actionType: 'submitActionOption',
+                apiPromise: socialProjecValidSavetApi
+              }
             },
-            update:null,
-            modify:  {
+            update: null,
+            modify: {
               label: '修改',
-              actionType:'routerDialogPageAction',
+              actionType: 'routerDialogPageAction',
 
-                containerProperties: {
-                  title:  '社会单位项目修改'
-                },
-                body: [
-                  {
-                    component: 'detailForm',
-                    name: '@object@',
-                    props: {
-                      class: ['grid-col-24'],
+              containerProperties: {
+                title: '社会单位项目修改'
+              },
+              body: [
+                {
+                  component: 'detailForm',
+                  name: '@object@',
+                  props: {
+                    class: ['grid-col-24']
                   }
-                  }
-                ]
+                }
+              ]
             },
-        view: {
+            view: {
               label: '详情',
-              actionType:'routerDialogPageAction',
+              actionType: 'routerDialogPageAction',
 
-                containerProperties: {
-                  title:  '社会项目详情'
-                },
-                body: [
-                  {
-                    component: 'detailForm',
-                    name: '@object@',
-                    props: {
-                      class: ['grid-col-24'],
-                      textModel:true,
+              containerProperties: {
+                title: '社会项目详情'
+              },
+              body: [
+                {
+                  component: 'detailForm',
+                  name: '@object@',
+                  props: {
+                    class: ['grid-col-24'],
+                    textModel: true
                   }
-                  }
-                ]
-            },
+                }
+              ]
+            }
           }
-        },
+        }
         // treeOption: null
       }
     }

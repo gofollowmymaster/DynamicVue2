@@ -52,8 +52,7 @@
       </el-submenu>
 
     </el-menu>
-   
-    </el-menu> -->
+
   </div>
 </template>
 <script>
@@ -137,12 +136,10 @@ export default {
       }
     },
     openPage (link, event) {
-       
       window.open(link, '_blank')
     }
   },
   mounted () {
-     
     this.$nextTick(() => {
       const { origin, linear } = this.fixRoutes(this.$router.options.routes)
       this.menuList = origin.filter((unit) => unit.isMenu !== false)

@@ -41,8 +41,7 @@ import {
   unhandleFields,
   warningProcessedFields
 } from './warningFields'
-import {  buildFormFields } from '@/packages/utils/fieldsConfigUtil'
-
+import { buildFormFields } from '@/packages/utils/fieldsConfigUtil'
 
 const entityLabel = '告警信息'
 
@@ -82,7 +81,7 @@ export default {
                 title: '转事件',
                 width: '70%'
               },
-              colNum:2,
+              colNum: 2,
 
               // props: formOption,
               formItemList: buildFormFields(eventFields),
@@ -107,7 +106,7 @@ export default {
               },
 
               formItemList: buildFormFields(handleFields),
-              colNum:1,
+              colNum: 1,
               saveAction: {
                 label: '处理',
                 apiPromise: warningHandleApi
@@ -128,7 +127,7 @@ export default {
                 width: '36%'
               },
 
-              colNum:1,
+              colNum: 1,
 
               formItemList: buildFormFields(unhandleFields),
               formDataUpdateHandle (formVm, param) {},

@@ -1,8 +1,8 @@
 <template>
 
-    <div  >
-        <div  v-if="!getTextModel" :style="item.textStyle||{}" >
-            <span class="text">{{ value||item.content || '-' }}</span>
+    <div  class="full-height">
+        <div class="full-height" v-if="!getTextModel" :style="item.textStyle||{}" >
+            {{ value||item.content || '-' }}
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
   <main class="dynamic-form   " :class="[mode + '-form']">
     <formLayout  @scroll="scrollTo" :formItemList="formItemList">
 
-    <el-form slot="main"  
+    <el-form slot="main"
       v-bind="formProperties"
       :class="{'form-text-mode': textModel }"
       :model="data"
@@ -34,10 +34,10 @@
             class="block-content relative grid-wrap"
           >
             <template v-for="(formItem) in formSection.children">
-              <DynamicFormItem  
+              <DynamicFormItem
                :ref="formItem.key"
                class="grid-item"
-                v-model="data[formItem.key]"  
+                v-model="data[formItem.key]"
                :key="formItem.key"
                 :formItem="formItem"
                :label="getFormItemLabel(formItem)"
@@ -115,22 +115,22 @@ export default {
       type: String,
       default: 'dialog'
     },
-    testTool:Boolean
+    testTool: Boolean
   },
   data () {
     return {
       changeData: {
         // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
         allDisabled: this.allDisabled,
-        textModel: this.textModel,
+        textModel: this.textModel
       },
       foldBlockList: [] // 收起的区块（放在这个里面，该区块就只显示区块标题，不显示内容）
     }
   },
-  computed:{
-      showTestTool(){
-        return  process.env.NODE_ENV == 'development'?this.testTool:false
-      }
+  computed: {
+    showTestTool () {
+      return process.env.NODE_ENV === 'development' ? this.testTool : false
+    }
 
   },
   watch: {
@@ -155,16 +155,15 @@ export default {
         setElementRequired: this.setElementRequired,
         // 更新其他数据
         updateFormData: this.updateFormData,
-        valueUpdateEvent: this.valueUpdateEvent,
+        valueUpdateEvent: this.valueUpdateEvent
       },
       // 会动态变化的数据（注意，来自 props【更上级组件】的数据，不能放这个里面，只能显式的通过 props 往下面传）
       changeData: this.changeData,
       formData: this.getData,
       formItemType: '',
       childChangeData: {},
-      formProperties:()=>this.formProperties,
-      colNum:this.colNum
-
+      formProperties: () => this.formProperties,
+      colNum: this.colNum
 
     }
   },
@@ -173,7 +172,7 @@ export default {
     // 是否允许props 傳入formItemList  动态更新
     // this.formItemListInit=deepCopy(this.formItemList)
     // Object.freeze(this.formItemList)
-    
+
   },
   methods: {
     filterFormHide (items) {
@@ -223,7 +222,7 @@ export default {
 
                   break
                 case 'value':
-                  expressionValue != this.data[item.key] &&
+                  expressionValue !== this.data[item.key] &&
                     this.$set(this.data, item.key, expressionValue)
                   delete this.formItemList[index].children[innerIndex].properties[key]
 
@@ -249,7 +248,7 @@ export default {
       this.$emit('formDataUpdated', this, params)
       const [key] = Object.keys(params)
       this.formItemForEach((formItem) => {
-        if (formItem.key == key && formItem.changeHandle) {
+        if (formItem.key === key && formItem.changeHandle) {
           formItem.changeHandle(params[key], this)
         }
       })
@@ -294,18 +293,16 @@ export default {
           }
         } else {
           const validateList = childFormKeyList.map((key) => {
-            console.log('---valid----',this.$refs)
+            console.log('---valid----', this.$refs)
             return this.$refs[key][0].$refs.formitem.validateForm()
           })
-            if(validateList.every(item=>item)&&valid){
-              // 父表单校验也通过了，才算都通过
-                fn(true, data)
-              } else {
-                // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
-                fn(false, data)
-              }
-            
- 
+          if (validateList.every(item => item) && valid) {
+            // 父表单校验也通过了，才算都通过
+            fn(true, data)
+          } else {
+            // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
+            fn(false, data)
+          }
         }
       })
     },
@@ -339,7 +336,7 @@ export default {
     // Required true，表示隐藏。而 false，表示取消隐藏
     setElementRequired (key, beRequired = true) {
       this.formItemForEach((formItem) => {
-        if (formItem.key == key) {
+        if (formItem.key === key) {
           let rules = formItem.rules
 
           if (rules.length) {
@@ -380,7 +377,7 @@ export default {
     // beDisable：必填，默认是 true，表示禁用。而 false，表示取消禁用
     setElementDisable (key, beDisable = true) {
       this.formItemForEach((formItem) => {
-        if (formItem.key == key) {
+        if (formItem.key === key) {
           if (formItem.properties instanceof Object) {
             this.$set(formItem.properties, 'disabled', beDisable)
           } else {
@@ -396,7 +393,7 @@ export default {
     // beHidden：必填，默认是 true，表示隐藏。而 false，表示取消隐藏
     setElementHidden (key, beHidden = true) {
       this.formItemForEach((formItem) => {
-        if (formItem.key == key) {
+        if (formItem.key === key) {
           this.$set(formItem, 'hidden', beHidden)
           return true
         }
@@ -433,11 +430,10 @@ export default {
     },
     // 获取区块的样式
     getBlockClass (blockItem) {
-
-      //  'border-form': borderForm, 
+      //  'border-form': borderForm,
       const c = blockItem.class
       return Object.assign({}, c, {
-        'block-border': this.borderForm&&blockItem.label,
+        'block-border': this.borderForm && blockItem.label,
         'block-hide': this.foldBlockList.indexOf(blockItem.label) > -1
       })
     },
@@ -452,9 +448,9 @@ export default {
       }
       return formItem.label
     },
-    scrollTo(section){
-      this.$refs['form-section'+section.label][0].scrollIntoView({
-        behavior:'smooth'
+    scrollTo (section) {
+      this.$refs['form-section' + section.label][0].scrollIntoView({
+        behavior: 'smooth'
       })
     }
   }

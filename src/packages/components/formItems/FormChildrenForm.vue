@@ -18,13 +18,13 @@
     ></DynamicFormContent>
       </li>
     </ul>
-   
+
   </section>
 </template>
 
 <script>
 import FormMixin from './mixin'
-     import presetConfig  from "../../presetConfig"
+import presetConfig from '../../presetConfig'
 export default {
   name: 'FormChildrenForm',
   mixins: [FormMixin],
@@ -38,10 +38,11 @@ export default {
 
   },
   computed: {
-    formOption(){
-      return {...presetConfig.getConfig('formOption'),formProperties:{'label-width':'80px'},borderForm:false, colNum:4,...this.item.formOption}
+    formOption () {
+      return { ...presetConfig.getConfig('formOption'), formProperties: { 'label-width': '80px' }, borderForm: false, colNum: 4, ...this.item.formOption }
     },
-    formItemList(){
+    formItemList () {
+      debugger
       return this.$buildFormFields(this.item.fields)
     },
     val: {
@@ -62,31 +63,26 @@ export default {
   mounted () {},
   methods: {
     resetFields () {
-        this.val.forEach((item,index)=>{
-          this.$refs['dynamicForm'+item.id][0].resetFields()
-
-        })
+      this.val.forEach((item, index) => {
+        this.$refs['dynamicForm' + item.id][0].resetFields()
+      })
     },
     addForm () {
       // this.formList.push({})
-       this.val.push({id:new Date().getTime()})
+      this.val.push({ id: new Date().getTime() })
     },
-    deleteItem(index){
-       this.val.splice(index,1)
-
+    deleteItem (index) {
+      this.val.splice(index, 1)
     },
-    validateForm(){
-        let formValid=true
-         
-          this.val.forEach((item,index)=>{
-            this.$refs['dynamicForm'+item.id][0].validate((valid)=>{
-                if(!valid)formValid=false
-            })
+    validateForm () {
+      let formValid = true
 
-          })
-          return  formValid
-        
-        
+      this.val.forEach((item, index) => {
+        this.$refs['dynamicForm' + item.id][0].validate((valid) => {
+          if (!valid)formValid = false
+        })
+      })
+      return formValid
     }
   }
 }
@@ -108,8 +104,10 @@ export default {
        border:solid 1px var(--main-color);
     padding:8px;
  }
- 
-/deep/ .chilren-form-wrapper .children-form-item .dynamic-form .block-content {
+
+</style>
+<style    lang="css">
+  .chilren-form-wrapper .children-form-item .dynamic-form .block-content {
     width: 100%;
 
 }

@@ -3,60 +3,60 @@
      <TableEditable
         class="table-wraper "
         :data="val"
-        :table="item.tableOption"
+        :table="item.options"
         :columns="item.fields"
         :apiPromise="item.apiPromise"
         :pagination="item.pagination"
         :isTextMode="getTextModel"
         size="small"
       ></TableEditable>
-      
+
   </section>
 </template>
 
 <script>
-import FormMixin from "./mixin";
- 
+import FormMixin from './mixin'
+
 export default {
-  name: "FormTableEditable",
+  name: 'FormTableEditable',
   mixins: [FormMixin],
-   
-  data() {
+
+  data () {
     return {
- 
-    };
+
+    }
   },
 
   watch: {
-    
+
   },
   computed: {
-  
+
     val: {
-      get() {
-        return this.value || [];
+      get () {
+        return this.value || []
       },
-      set(tableList) {
-        this.$emit("input", tableList);
+      set (tableList) {
+        this.$emit('input', tableList)
 
         this.statusChangeFn.valueUpdateEvent({
-          [this.item.key]: tableList,
-        });
-      },
-    },
- 
+          [this.item.key]: tableList
+        })
+      }
+    }
+
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    resetFields() {
-      localStorage.removeItem(this.localTableName);
-      this.$refs.dynamiCurd && this.$refs.dynamiCurd.refresh();
-    },
-    
-  },
-};
+    resetFields () {
+      localStorage.removeItem(this.localTableName)
+      this.$refs.dynamiCurd && this.$refs.dynamiCurd.refresh()
+    }
+
+  }
+}
 </script>
 
 <style scoped lang="css">
- 
+
 </style>

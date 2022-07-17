@@ -1,6 +1,6 @@
 <template>
   <main class="actions-wrap" :class="[mode+'-action']">
-    <template v-for="(item, index) in actionsOrdered">
+    <template v-for="(item) in actionsOrdered">
       <span class="action-btn " :key="item.key||item.label"   v-permission="item.permission">
         <el-popover
           v-if="item.actionPop"
@@ -19,7 +19,7 @@
             class="mx6 action-btn-inner"
             slot="reference"
             :is="item.component"
-            
+
             v-bind="item.properties"
             @click="openPop(item)"
 
@@ -29,7 +29,7 @@
           v-else
           :is="item.component"
           class="mx5 action-btn-inner"
-        
+
           v-bind="item.properties"
           @click="doAction(item)"
         >{{item.label}} </component>
@@ -79,15 +79,14 @@ export default {
   watch: {
     actionAndData: {
       handler ({ actions, actionData }) {
-         
         actions = Object.entries(actions)
-          .map(([key, value], index) => {
+          .map(([key, value]) => {
             return { ...value, actionKey: key }
           }).filter(action => {
             return action?.actionType
-          }).map((action)=>{
-          return action.hasBuild?action:this.$generateActionOption(action.actionType,action)
-        })
+          }).map((action) => {
+            return action.hasBuild ? action : this.$generateActionOption(action.actionType, action)
+          })
         actions = actions
           .sort((a, b) => a.sort - b.sort)
           .filter((action) => {

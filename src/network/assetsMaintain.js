@@ -1,6 +1,6 @@
 
 import request from './request'
-import qs from 'qs'
+// import qs from 'qs'
 const defaultConfig = {
   method: 'post',
   refuseToken: false,
