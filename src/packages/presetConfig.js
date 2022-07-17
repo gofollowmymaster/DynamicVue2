@@ -45,7 +45,7 @@ export const tableOption = {
   },
   actionColWidth: 0, // 操作栏宽度
   actionBtnType: 'text', // 操作按钮类型
-  indexColWidth:48
+  indexColWidth:48,
 }
 
 export const pagination = {

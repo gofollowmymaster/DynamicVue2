@@ -2,18 +2,11 @@ import { buildDynamicSelectOption,elementUploadFileApi,globalDownloadFileById } 
 
 
 const subProjectFields = [
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-     
-    },
-  },
+   
   {
     type: 'FormHide',
     key: 'id',
-    formable:true
+    formOption:true
   },
   {
     key: "projectChildName",
@@ -54,7 +47,7 @@ const subProjectFields = [
     key: 'remark',
     type: 'FormTextarea',
     label: '备注',
-    tableable: true,
+    tableOption: true,
     formOption: {
       span: 24,
       rules: ['required']
@@ -78,10 +71,9 @@ const subProjectFields = [
  
 
 export default  [
-  { key: "keyWord", type: "FormInput", label: "关键字", searchable: true },
+  { key: "keyWord", type: "FormInput", label: "关键字", searchOption: true },
   { key: "projectLibraryId", type: "FormHide", label: "",formSection:'项目建设信息', formOption:{}},
   { key: "id", type: "FormHide", label: "",formSection:'项目建设信息', formOption:{}},
-  { key: "index", type: "index", label: "序号", tableOption:{width:60}},
   {
     "key": "admId",
     "label": "行政区划",

@@ -73,12 +73,7 @@ export const fields=  [
 		type:'FormHide',
 		formOption:true
 	},
-	{
-		"key": "index",
-		"type": "index",
-		"label": "序号",
-		"tableable": true
-	},
+ 
 	{
 		"key": "projectCode",
 		"label": "项目编号",

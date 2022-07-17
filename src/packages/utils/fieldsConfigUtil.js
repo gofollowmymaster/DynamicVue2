@@ -67,13 +67,10 @@ export function buildFormFields (fields, formSections = {}) {
   fields = deepCopy(fields)
   // debugger
   fields=fields
-    .filter((item) => item.formable || item.formOption)
+    .filter((item) =>   item.formOption)
     .map((item) => {
       delete item.tableOption
-      delete item.searchable
-      delete item.formable
-      delete item.tableable
-      delete item.detailable
+      delete item.searchOption
       delete item.detailOption
 
       item.type = item.type || 'FormInput'
@@ -114,10 +111,8 @@ export function buildDetailFields (fields, formSections = {}) {
   fields = fields
     .filter(
       (item) =>
-        ((item.formable || item.formOption) &&
-          item.detailable !== false &&
+        (   item.formOption  &&
           item.detailOption !== false) ||
-        item.detailable === true ||
         item.detailOption
     )
     .map((item) => {
@@ -125,10 +120,6 @@ export function buildDetailFields (fields, formSections = {}) {
 
       delete item.tableOption
       delete item.formOption
-      delete item.searchable
-      delete item.formable
-      delete item.tableable
-      delete item.detailable
       delete item.detailOption
 
       item.type = item.type || 'FormInput'
@@ -149,13 +140,11 @@ export function buildTableFields (fields,isEditable=false) {
   let fieldsClone = deepCopy(fields)
 
   fieldsClone = fieldsClone
-    .filter((item) => item.tableable || item.tableOption)
+    .filter((item) =>  item.tableOption)
     .map((item) => {
       item.tableOption = deepMerge(tableOptionDefault, item.tableOption, true)
       isEditable&&(item.formOption = deepMerge(formOptionDefault, item.formOption, true))
-      if(item.type=='index'){
-        item.tableOption.sort=1
-      }
+ 
       return { ...item,...item.tableOption   }
     })
     .sort((prev, next) => {
@@ -164,13 +153,11 @@ export function buildTableFields (fields,isEditable=false) {
     .map((item) => {
       (!isEditable)&&delete item.formOption
       delete item.detailOption
-      delete item.searchable
-      delete item.formable
-      delete item.tableable
+      delete item.searchOption
       delete item.tableOption
       return item
     })
-
+    debugger
   return fieldsClone
 }
 
@@ -187,7 +174,7 @@ export function buildSearchFields (fields) {
 
   let fieldsClone = deepCopy(fields)
   fieldsClone = fieldsClone
-    .filter((item) => item.searchable || item.searchOption)
+    .filter((item) =>   item.searchOption)
     .map((item) => {
       const searchOption = deepMerge(
         searchOptionDefault,
@@ -199,7 +186,7 @@ export function buildSearchFields (fields) {
       delete item.searchOption
       delete item.detailOption
 
-      const type = item.type
+      const type = item.type||'FormInput'
 
       return { ...item, type, sort: 10, ...searchOption }
     })

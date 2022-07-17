@@ -61,7 +61,8 @@ export const tableOption = {
     'header-align': 'left'
   },
   actionColWidth: 0, // 操作栏宽度
-  actionBtnType: 'text' // 操作按钮类型
+  actionBtnType: 'text', // 操作按钮类型
+  indexColWidth:48
 }
 
 export const pagination = {

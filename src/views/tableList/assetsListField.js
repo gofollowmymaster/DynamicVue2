@@ -1,9 +1,8 @@
 import { buildDynamicSelectOption, elementUploadFileApi, globalDownloadFileById } from '@/network/global'
 
 export const assetsFields = [
-  { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },
+  { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
   { key: 'id', type: 'FormHide', label: '', formOption: {} },
-  { key: 'index', type: 'index', label: '序号', tableOption: { width: 60 } },
 
   {
     key: 'treeNumber',
@@ -361,7 +360,7 @@ export const assetsFields = [
     key: 'protectLev',
     type: 'FormDynamicSelect',
     label: '等级',
-    searchable: true,
+    searchOption: true,
     options: buildDynamicSelectOption('tree_manage_protect_lev'),
 
     formOption: {
@@ -461,7 +460,7 @@ export const assetsFields = [
     type: 'FormAdministrativeSelector',
     formSection: '地理位置',
     label: '行政区划',
-    searchable: true,
+    searchOption: true,
     tableOption: {
       key: 'districtName',
       sort: 8
@@ -550,7 +549,7 @@ export const assetsFields = [
     type: 'FormDynamicSelect',
     formSection: '使用信息',
     label: '使用状况',
-    searchable: true,
+    searchOption: true,
     options: buildDynamicSelectOption('tree_manage_growth_situation'),
     formOption: {
       rules: ['required']
@@ -694,9 +693,9 @@ export const assetsFields = [
 ]
 
 export const manageLogFields = [
-  { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },
-  { key: 'treeNumber', type: 'FormInput', label: '固定资产', searchable: false, tableOption: {} },
+  { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
+  { key: 'treeNumber', type: 'FormInput', label: '固定资产', searchOption: false, tableOption: {} },
 
-  { key: 'type', type: 'FormSelect', label: '类型', searchable: false, tableOption: {} }
+  { key: 'type', type: 'FormSelect', label: '类型', searchOption: false, tableOption: {} }
 
 ]

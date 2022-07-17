@@ -1,9 +1,8 @@
 import { buildDynamicSelectOption,elementUploadFileApi,globalDownloadFileById } from "@/network/global";
 
 export default  [
-  { key: "keyWord", type: "FormInput", label: "关键字", searchable: true },
+  { key: "keyWord", type: "FormInput", label: "关键字", searchOption: true },
   { key: "id", type: "FormHide", label: "", formOption:{}},
-  { key: "index", type: "index", label: "序号", tableOption:{ }},
 
 
     {

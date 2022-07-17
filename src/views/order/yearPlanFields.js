@@ -52,11 +52,7 @@ export const
 			}
 		},
 
-		{
-			type: 'index',
-			label: '序号',
-			tableOption: { width: 50 },
-		},
+ 
 		{
 			"key": "projectCode",
 			"label": "项目编号",

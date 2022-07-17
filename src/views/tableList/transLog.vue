@@ -12,7 +12,6 @@ import { transDetailApi, transListApi } from '@/network/assetsMaintain.js'
 
 const entityLabel = '移植记录'
 const fields = [
-  { key: 'index', type: 'index', label: '序号', tableOption: { width: 50 } },
   {
     label: '固定资产名称',
     key: 'treeManageId',
@@ -75,17 +74,17 @@ const fields = [
   {
     key: 'createUserName',
     label: '创建人',
-    detailable: true
+    detailOption: true
   },
   {
     key: 'createTime',
     label: '创建时间',
-    detailable: true
+    detailOption: true
   },
   {
     key: 'lastUpdateTime',
     label: '更新时间',
-    detailable: true
+    detailOption: true
   },
 
   {

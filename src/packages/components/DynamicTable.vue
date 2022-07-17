@@ -112,14 +112,7 @@ export default {
   computed: {
     columnsComputed () {
       const columns = this.columns.map((item, index) => {
-        if (item.type === 'index') {
-           
-          item.colProperties = {
-            width:this.table.indexColWidth,
-            ...item.colProperties,
-            fixed: 'left'
-          }
-        } else if (index < 2) {
+         if (index < 1) {
           item.colProperties = {
             ...item.colProperties,
             fixed: 'left'
@@ -134,7 +127,18 @@ export default {
           }
         }
       })
+  if (this.table.indexColWidth) {
+       columns.unshift({
+          key: 'index',
+          type: 'index',
+          colProperties: {
+            width: this.table.indexColWidth,
+            fixed: 'left',
+            label:'序号',
 
+          }
+        })
+  }
       if (this.table.hasCheckbox) {
         columns.unshift({
           key: 'selection',

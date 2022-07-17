@@ -1,18 +1,11 @@
 import { elementUploadFileApi } from '@/network/global'
 
 const mainPlaintFields = [
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-      width: 60
-    }
-  },
+ 
   {
     type: 'FormHide',
     key: 'id',
-    formable: true
+    formOption: true
   },
   //   {
   //     key: "treeId",
@@ -75,7 +68,7 @@ const mainPlaintFields = [
     key: 'treeStreetContext',
     type: 'FormTextarea',
     label: '备注',
-    tableable: true,
+    tableOption: true,
     formOption: {
       span: 24,
       rules: ['required']
@@ -136,14 +129,7 @@ export const mainPlaintOption = {
 
 
 const mainPlaintTableFields=[
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-      width: 60
-    },
-  },
+ 
   {
     type: 'FormText',
     label:'id',
@@ -230,15 +216,14 @@ export const mainPlaintTableOption = {
 
 
 export default [
-  { key: 'keyword', type: 'FormInput', label: '关键字', searchable: true },
-  { key: 'id', type: 'FormHide', formable: true },
-  { key: 'index', type: 'index', label: '序号', tableOption: { width: 60 } },
+  { key: 'keyword', type: 'FormInput', label: '关键字', searchOption: true },
+  { key: 'id', type: 'FormHide', formOption: true },
   {
     key: 'area',
     type: 'FormAdministrativeSelector',
     label: '行政区划',
     formSection: '基本信息',
-    searchable: true,
+    searchOption: true,
 
     tableOption: {
       width: 180,
@@ -257,7 +242,7 @@ export default [
     key: 'treeName',
     type: 'FormInput',
     label: '资产类型名',
-    searchable: true,
+    searchOption: true,
     tableOption: {
       sort: 2,
       template (rowData) {

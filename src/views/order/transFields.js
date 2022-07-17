@@ -1,18 +1,11 @@
 import { buildDynamicSelectOption,elementUploadFileApi,globalDownloadFileById } from "@/network/global";
 
 const equipmentFields=[
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-      width: 60
-    },
-  },
+ 
   {
     type: 'FormHide',
     key: 'id',
-    formable:true
+    formOption:true
   },
   {
     key: "typeParentDictLabel",
@@ -58,18 +51,11 @@ const equipmentFields=[
   
 ]
 const mainPlantFields = [
-  {
-    type: 'index',
-    key: 'index',
-    label: '序号',
-    tableOption: {
-      width: 60
-    },
-  },
+ 
   {
     type: 'FormHide',
     key: 'id',
-    formable:true,
+    formOption:true,
   },
   {
     key: "plantSpecies",
@@ -123,12 +109,11 @@ const mainPlantFields = [
  
 
 export default  [
-  { key: "keyWord", type: "FormInput", label: "关键字", searchable: true },
+  { key: "keyWord", type: "FormInput", label: "关键字", searchOption: true },
       
       { key: "projectLibraryId", type: "FormHide", label: "",formSection:'验收信息', formOption:{}},
   { key: "id", type: "FormHide", label: "",formSection:'验收信息', formOption:{}},
 
-  { key: "index", type: "index", label: "序号", tableOption:{width:60}},
   {
     "key": "admId",
     "label": "行政区划",

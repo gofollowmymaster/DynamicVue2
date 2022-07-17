@@ -118,7 +118,7 @@ const fileFields = [
     key: 'fileSize',
     type: 'FormInput',
     label: '大小',
-    // tableable:true,
+    // tableOption:true,
     formOption: {
       wraperProperties: {
         class: ['grid-col-24']
@@ -129,7 +129,7 @@ const fileFields = [
     key: 'uploadTime',
     type: 'FormInput',
     label: '上传时间',
-    tableable: true,
+    tableOption: true,
     formOption: {
       wraperProperties: {
         class: ['grid-col-24']
@@ -290,8 +290,6 @@ export default {
       this.value.filter((file) => file.fileId || file.id)
         .map((file) => {
           const fileUrl = this.imgPrevUrl + file.fileUrl.replace(/\\\\/g, '/')
-          debugger
-          console.log('----replace---', fileUrl)
 
           return {
             url: fileUrl,

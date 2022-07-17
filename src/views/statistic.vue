@@ -151,16 +151,9 @@ export default {
                 style: { height: '300px' },
                 title: '统计表',
                 table: appendToPreset('tableOption', {
-                  hasCheckbox: false
+                  hasCheckbox: false,
                 }),
-                columns: [{
-                  type: 'index',
-                  key: 'index',
-                  label: '序号',
-                  tableOption: {
-                    width: 90
-                  }
-                },
+                columns: [ 
                 {
                   key: 'label',
                   label: '等级'

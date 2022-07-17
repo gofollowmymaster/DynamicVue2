@@ -7,7 +7,7 @@ export const warningFields = [
     label: '关键字',
     key: 'keyWord',
     type: 'FormInput',
-    searchable: true
+    searchOption: true
   },
   {
     label: ' 设备ID',
@@ -25,7 +25,7 @@ export const warningFields = [
     formSection: '基本信息',
     key: 'equipmentName',
     tableOption: { sort: 5 },
-    formable: true
+    formOption: true
   },
 
   {
@@ -65,7 +65,7 @@ export const warningFields = [
     key: 'districtName',
     tableOption: { sort: 3 },
     formOption: {},
-    searchable: true
+    searchOption: true
   },
   {
     label: '固定资产编号',
@@ -152,7 +152,7 @@ export const warningProcessedFields = [
     label: '关键字',
     key: 'keyWord',
     type: 'FormInput',
-    searchable: true
+    searchOption: true
   },
   {
     label: '告警时间',
@@ -216,7 +216,7 @@ export const warningProcessedFields = [
     tableOption: { sort: 6 },
     formOption: {
     },
-    searchable: true
+    searchOption: true
   },
   {
     label: '位置',
@@ -234,8 +234,8 @@ export const warningProcessedFields = [
     type: 'FormAdministrativeSelector',
     key: 'districtName',
     tableOption: { sort: 8 },
-    formable: true,
-    searchable: true
+    formOption: true,
+    searchOption: true
   },
   {
     label: '固定资产编号',
@@ -426,7 +426,7 @@ export const warningProcessedFields = [
 ]
 
 export const eventFields = [
-  { key: 'id', type: 'FormHide', label: 'ID', formable: true },
+  { key: 'id', type: 'FormHide', label: 'ID', formOption: true },
   {
     label: '事件编号',
     key: 'equipmentId',
@@ -592,8 +592,8 @@ export const eventFields = [
 ]
 
 export const handleFields = [
-  { key: 'treeGiveAnAlarmId', type: 'FormHide', formable: true },
-  { key: 'treatmentMethod', type: 'FormHide', formable: true },
+  { key: 'treeGiveAnAlarmId', type: 'FormHide', formOption: true },
+  { key: 'treatmentMethod', type: 'FormHide', formOption: true },
   {
     label: '处理结果',
     key: 'message',
@@ -673,8 +673,8 @@ export const handleFields = [
 ]
 
 export const unhandleFields = [
-  { key: 'treeGiveAnAlarmId', type: 'FormHide', formable: true },
-  { key: 'treatmentMethod', type: 'FormHide', formable: true },
+  { key: 'treeGiveAnAlarmId', type: 'FormHide', formOption: true },
+  { key: 'treatmentMethod', type: 'FormHide', formOption: true },
 
   {
     label: '原因',
