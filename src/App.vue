@@ -28,12 +28,13 @@ export default {
 </script>
 
 <style lang="css">
-  @import 'assets/css/base.css';
-  @import 'assets/css/main.css';
+  /* @import 'assets/css/base.css'; */
+  /* @import 'assets/css/main.css'; */
 
   #app{
     min-height: 100vh;
     height: 100%;
+     --primary-color :#9a51ca;
   }
   ::-webkit-scrollbar {
       /*滚动条整体样式*/

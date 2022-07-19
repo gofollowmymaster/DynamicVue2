@@ -48,7 +48,7 @@ import {
   buildFormFields,
   buildSearchFields
 } from '@/packages/utils/fieldsConfigUtil'
-import { loadActionTipConfig } from '@/packages/utils/actionTools'
+ 
 import {
   treeSpeciesUpdateApi,
   treeSpeciesSaveApi,
@@ -71,11 +71,12 @@ const searchFieldsEmptyValues = searchFields[0].children.reduce(
   },
   {}
 )
-const tableBtnType = presetConfig.getConfig('tableOption').actionBtnType
+ 
 export default {
   name: 'treeSpecies',
   components: { BaseLazyTreeTable },
   data: function () {
+   const tableBtnType=this.$dynamicConfig['tableOption'].actionBtnType
     return {
       searching: false,
 
@@ -143,7 +144,7 @@ export default {
         }
       },
       searchFields,
-      searchOption: presetConfig.getConfig('searchOption'),
+      searchOption: presetConfig['searchOption'],
       topToolBar: {
         create: {
           label: '新增',
@@ -170,7 +171,7 @@ export default {
           isLoadData: true,
           actionDataKey: 'selected',
           apiPromise: treeSpeciesDeleteApi,
-          ...loadActionTipConfig(this)
+          ...this.$dynamicConfig['msgBoxOptions']
         }
       },
 
@@ -224,7 +225,7 @@ export default {
             class: ['text-grey-dark2'],
             type: 'text'
           },
-          ...loadActionTipConfig(this)
+          ...this.$dynamicConfig['msgBoxOptions']
         }
       },
       searchParams: searchFieldsEmptyValues,

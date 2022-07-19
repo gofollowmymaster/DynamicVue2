@@ -143,6 +143,26 @@ export const dynamicFormOption = {
   }
 }
 
+const popTipOptions={
+  actionPopComponent: 'popConfirm',
+  actionPopProperties: {
+    'confirm-button-text': '确定',
+    'cancel-button-text': '取消',
+    title: '确定执行该操作吗？',
+    icon: 'el-icon-warning'
+  }
+}
+const msgBoxTipOptions=  {
+ 
+    title: '提示',
+    message: '确定执行该操作吗？',
+    showCancelButton: true,
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+ 
+}
+
 export const presetConfig = {
   data: {
     baseFormSectionName: '基础信息',
@@ -159,6 +179,8 @@ export const presetConfig = {
     dynamicFormOption,
     actionPopProperties,
     msgBoxProperties,
+    popTipOptions,
+    msgBoxTipOptions,
     formWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
     detailWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
     searchFormWraperClass: [

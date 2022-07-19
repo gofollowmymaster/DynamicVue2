@@ -1,6 +1,11 @@
 <template>
   <main>
+     <transition name="slide-fade-left">
+    <div v-show="!actionKey" >
     <slot></slot>
+
+    </div>
+     </transition>
     <!-- 弹窗表单 -->
     <DynamicFormDialog v-bind="currentDialogForm"  key="dialogForm" > </DynamicFormDialog>
     <!-- 頁面表单 -->
@@ -126,4 +131,22 @@ export default {
   }
 }
 </script>
-<style lang="css" scoped></style>
+<style lang="css" scoped>
+ .slide-fade-left-enter-active {
+  transition: all 0.4s ease;
+}
+.slide-fade-left-leave-active {
+  transition: all 0.4s ease;
+}
+ .slide-fade-left-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(20px);
+  opacity: 0;
+}
+.slide-fade-left-enter
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+</style>

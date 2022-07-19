@@ -100,6 +100,27 @@ export const formOption = {
 
 }
 
+
+const popTipOptions={
+  actionPopComponent: 'popConfirm',
+  actionPopProperties: {
+    'confirm-button-text': '确定',
+    'cancel-button-text': '取消',
+    title: '确定执行该操作吗？',
+    icon: 'el-icon-warning'
+  }
+}
+const msgBoxTipOptions=  {
+ 
+    title: '提示',
+    message: '确定执行该操作吗？',
+    showCancelButton: true,
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+ 
+}
+
 export default {
 
   baseFormSectionName: '基本信息',
@@ -117,10 +138,12 @@ export default {
   tandiMapKey,
   amapStyleConfig,
   regionCode: '500103000000',
-  defaultDialogMode: 'dialog',
+  defaultDialogMode: 'router',
   searchOption,
   tableOption,
   pagination,
   treeOption,
-  formOption
+  formOption,
+  popTipOptions,
+  msgBoxTipOptions
 }

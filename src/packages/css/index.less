@@ -1,23 +1,20 @@
 
 .hz-root() {
     html {
-      font-size: calc(12 / 1260 * 100vw);
       --col-num: 24; //布局列数
       --layout-margin: 2.2rem; //页面边距
       --layout-gap: 18px; //列间距
       --layout-col-gap: 18px; //列默认间距
       --layout-row-gap: 18px; //行间距
-      --main-color:#9a51ca;
     }
   }
-  
   
   .hz-root();
 
   @colorArr:green-dark,green-light2,green-light3, main-color,white, light, grey, red,grey-dark,grey-dark1, grey-dark2, grey-light, grey-light2, grey-light3, yellow, yellow-light, green, dark, blue, blue-light, blue-light2, blue-bright;
 
   @colors: {
-      main-color :#9a51ca;
+      main-color : var(--primary-color);
       white     : #ffffff;
       light     : #f6f9fb;
       grey      : #b6b6b9;
@@ -28,7 +25,7 @@
       grey-light  : #F1F6F6;
       grey-light2 : #E9EBEA;
       grey-light3 : #F5F6F8;
-      green       : #9a51ca;
+      green       : #37d6a1;
       green-dark  : #2F5B65;
       green-light2  : #F8FDFF;
       green-light3  : #EFF7F9;
@@ -43,11 +40,6 @@
       red : #e93a3a;
   }
 
-
-
-
-
-  
  
   @media only screen and (max-width: 1266px)   {
     html {

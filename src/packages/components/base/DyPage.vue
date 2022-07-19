@@ -1,6 +1,6 @@
 <template>
   <transition name="slide-fade-left">
-  <main     v-if="visible" class="dy-page absolute top0   left0 right0  bg-white  z-index10 " >
+  <main     v-if="visible" class="dy-page   bg-white  z-index10 " >
     <header class="flex align-center vertical-center height50 border-b pl16">
        <el-page-header @back="goBack" :content="title"   ></el-page-header>
     </header>
@@ -66,19 +66,27 @@ export default {
 }
  .slide-fade-left-enter-active {
   transition: all 0.4s ease;
+    position: absolute;  top:0;
+     left:0;
+      right:0;
 }
 .slide-fade-left-leave-active {
   transition: all 0.4s ease;
+   position: absolute;  top:0;
+     left:0;
+      right:0;
 }
  .slide-fade-left-leave-to
 /* .slide-fade-leave-active for below version 2.1.8 */ {
-  transform: translateX(-20px);
+  transform: translateX(20px);
   opacity: 0;
+
 }
 .slide-fade-left-enter
 /* .slide-fade-leave-active for below version 2.1.8 */ {
-  transform: translateX(20px);
+  transform: translateX(-20px);
   opacity: 0;
+  
 }
 .border-b{
   border-bottom: solid 1px var(--color-border-color);

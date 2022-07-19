@@ -54,9 +54,8 @@ import {
   buildTableFields
 } from '../../utils/fieldsConfigUtil'
 
-import {
-  searchOption,
-  pagination,
+import presetConfig,{
+ 
   tableOption
 } from '../../presetConfig'
 export default {
@@ -122,13 +121,13 @@ export default {
     options () {
       const searchFields = buildSearchFields(this.fields)
       const tableFields = buildTableFields(this.fields)
-      tableOption.properties['row-key'] = 'id'
+      // tableOption.properties['row-key'] = 'id'
       return deepMerge({
-        searchOption: { ...searchOption },
-        pagination,
+        searchOption: { ...presetConfig.getConfig('searchOption') },
+        pagination:presetConfig.getConfig('pagination'),
         searchFields,
         tableFields,
-        tableOption
+        tableOption:presetConfig.getConfig('tableOption'),
       }, this.optionsProps, true)
     },
     queryParams () {

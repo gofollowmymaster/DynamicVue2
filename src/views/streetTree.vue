@@ -66,7 +66,7 @@ import {
 } from '@/network/assets.js'
 import { pagination } from '@/packages/presetConfig'
 import fields from './streetTreeFields'
-import { loadActionTipConfig } from '@/packages/utils/actionTools'
+ 
 
 const formFields = buildFormFields(fields)
 const searchFields = buildSearchFields(fields)
@@ -107,7 +107,7 @@ export default {
           label: '批量删除',
           actionType: 'requestApiAction',
           apiPromise: treeStreetDeleteApi,
-          ...loadActionTipConfig(this)
+          ...this.$dynamicConfig['msgBoxOptions']
         }
       },
       tableOption: this.$appendToPreset('tableOption', {
@@ -150,7 +150,7 @@ export default {
               class: ['text-grey-dark2']
             },
             apiPromise: treeStreetDeleteApi,
-            ...loadActionTipConfig(this)
+            ...this.$dynamicConfig['msgBoxOptions']
           }
         }
       }),

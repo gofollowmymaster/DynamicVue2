@@ -1,11 +1,11 @@
 <template>
   <div class=" hz-low-code flex flex-direction full-width"  >
-    <dyBrandBar >
-      <span slot="title" >{{ entityLabel }}</span>
-    </dyBrandBar>
+
     <DynamicPageWrapper class="flex1   "   :actions="actionList" :fields="fields"  :entityLabel="entityLabel"
        :apiPromises="apiPromises"  :formSections="formSections"  >
-
+          <dyBrandBar >
+      <span slot="title" >{{ entityLabel }}</span>
+    </dyBrandBar>
       <DynamicCurd   :optionsProps="pageOptionsprops" :fields="fields"  :entityLabel="entityLabel"
        :apiPromises="apiPromises" :mode="mode" :formSections="formSections" scene="page" ></DynamicCurd>
     </DynamicPageWrapper>

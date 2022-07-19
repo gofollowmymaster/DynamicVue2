@@ -12,6 +12,8 @@ import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields
 
 import presetConfig from './presetConfig'
 
+
+
 const files = require.context('./components', true, /\.vue$/)
 export const components = {}
 files.keys().forEach((url) => {

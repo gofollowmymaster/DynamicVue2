@@ -10,7 +10,10 @@ import FormMixin from './src/packages/components/formItems/mixin'
 import popMixin from './src/packages/components/popContents/mixin'
 import presetConfig from './src/packages/presetConfig'
 
-import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields, appendToPreset, deepMerge } from './src/packages/utils/tool'
+import {  appendToPreset, deepMerge } from './src/packages/utils/tool'
+import { buildSearchFields, buildTableFields, buildDetailFields, buildFormFields, } from './src/packages/utils/fieldsConfigUtil'
+
+
 import globalDialogForm from './src/packages/utils/globalDialogForm'
 import globalDialogPage from './src/packages/utils/globalDialogPage'
 import { generateActionOption } from './src/packages/utils/actionTools'
@@ -31,6 +34,7 @@ export {
 
   buildSearchFields, buildTableFields,
   buildDetailFields, buildFormFields,
+   
   appendToPreset, deepMerge,
   globalDialogForm,
   globalDialogPage,
