@@ -1,6 +1,6 @@
 {
   "name": "dyvue2",
-  "version": "0.0.53",
+  "version": "0.0.55",
   "author": "hua zheng <1850796924@qq.com>",
   "description": "a vue component drived by json",
   "main": "lib/dyvue2.umd.js",
@@ -13,7 +13,8 @@
   "keywords": [
     "vue",
     "json",
-    "dynamic"
+    "dynamic",
+    "lowcode"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",

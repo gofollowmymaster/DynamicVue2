@@ -109,6 +109,9 @@ export default {
   staticHost: 'http:' + host + '/file/static',
   tinymceLanguageUrl: '/dyvue2-admin/static/tinymce/langs/zh_CN.js',
   tinymceSkinUrl: '/dyvue2-admin/static/tinymce/skins/ui/oxide',
+  richUploadApi:()=>Promise.resolve(),
+  richFileInfoApi:()=>Promise.resolve(),
+
   amapWebKey,
   amapWebMapKey,
   tandiMapKey,

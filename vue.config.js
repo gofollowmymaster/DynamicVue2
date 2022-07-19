@@ -1,6 +1,7 @@
 
 module.exports = {
   // devtool: 'source-map',
+  productionSourceMap:false,
   publicPath: '/dyvue2-admin/',
   assetsDir: './dyvue2-admin/',
   lintOnSave: true,

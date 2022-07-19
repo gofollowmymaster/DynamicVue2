@@ -39,11 +39,10 @@ import 'tinymce/plugins/insertdatetime'
 import 'tinymce/plugins/autosave'
 import 'tinymce/plugins/autoresize'
 
-import { env, STATICENV as fileEnv } from '@/network/request.js'
-import axios from 'axios'
+
 
 export default {
-  name: 'RightEditor',
+  name: 'RicEditor',
   components: {
     Editor
   },
@@ -101,21 +100,13 @@ export default {
           const formData = new FormData()
           formData.append('files', blobInfo.blob())
           formData.append('type', 1)
-          axios({
-            url: env + '/file/uploadFile',
-            method: 'post',
-            data: formData
-          })
+          this.$dynamicConfig.richUploadApi(  formData )
             .then((res) => {
               const [fileId] = res.data.data
               const fileFormData = new FormData()
               fileFormData.append('id', fileId)
-              axios({
-                url: env + '/file/getInfo',
-                method: 'post',
-                data: fileFormData
-              }).then((res) => {
-                success(fileEnv + res.data.data.fileUrl)
+              this.$dynamicConfig.richFileInfoApi(  fileFormData ).then((res) => {
+                // success(fileEnv + res.data.data.fileUrl)
                 this.$message({
                   type: 'success',
                   message: '上传文件成功'

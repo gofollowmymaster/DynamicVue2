@@ -74,7 +74,6 @@
   position: relative;
   margin-bottom: 24px;
   font-size: 16px;
-  background: #f8f9fb;
   padding: 8px 0;
 }
 .dynamic-form .block-nav .block-text {
@@ -96,13 +95,12 @@
 }
 .dynamic-form .block-border {
   border: 1px solid #dde0ea;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 32px;
   background: #fff;
 }
 .dynamic-form .block-border .block-nav {
   line-height: 40px;
-  background: #f8f9fb;
   padding: 14px 0 14px 0px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -117,7 +115,7 @@
 .dynamic-form .block-hide .block-nav {
   border-bottom: 0;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-bottom: 0;
 }
 .dynamic-form .block-hide .block-content {
