@@ -15,7 +15,8 @@ export const searchOption = {
     'grid-col-ss-8',
     'grid-col-xs-12'
   ],
-  mainNum: 3
+  mainNum: 3,
+  testTool:false
 }
 export const tableOption = {
   hasCheckbox: true,

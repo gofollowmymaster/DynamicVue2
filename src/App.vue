@@ -28,8 +28,8 @@ export default {
 </script>
 
 <style lang="css">
-  /* @import 'assets/css/base.css'; */
-  /* @import 'assets/css/main.css'; */
+  @import 'assets/css/base.css'; 
+   @import 'assets/css/main.css';
 
   #app{
     min-height: 100vh;
@@ -45,5 +45,4 @@ export default {
   }
 </style>
 <style lang="scss">
-  @import 'assets/css/element-variables.scss';
 </style>

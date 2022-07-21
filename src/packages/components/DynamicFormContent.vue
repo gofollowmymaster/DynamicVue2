@@ -54,7 +54,7 @@
     </el-form>
     </formLayout>
     <testTool
-      v-if="showTestTool && !textModel && $dynamicConfig.isDebug"
+      v-if="showTestTool"
       :fields="formItemList"
       refFormName="form"
     ></testTool>
@@ -115,7 +115,10 @@ export default {
       type: String,
       default: 'dialog'
     },
-    testTool: Boolean
+    testTool: {
+      type:Boolean,
+      default:true
+    }
   },
   data () {
     return {
@@ -129,7 +132,7 @@ export default {
   },
   computed: {
     showTestTool () {
-      return process.env.NODE_ENV === 'development' ? this.testTool : false
+      return (process.env.NODE_ENV === 'development' ? this.testTool : false) && !this.textModel && this.$dynamicConfig.isDebug
     }
 
   },
