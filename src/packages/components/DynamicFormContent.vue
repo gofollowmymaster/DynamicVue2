@@ -132,7 +132,7 @@ export default {
   },
   computed: {
     showTestTool () {
-      return (process.env.NODE_ENV === 'development' ? this.testTool : false) && !this.textModel && this.$dynamicConfig.isDebug
+      return this.testTool && !this.textModel && this.$dynamicConfig.isDebug
     }
 
   },

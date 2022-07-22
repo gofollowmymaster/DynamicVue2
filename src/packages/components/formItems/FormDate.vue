@@ -63,7 +63,7 @@ export default {
             left: 12px;
 
             .el-input__icon {
-                line-height: 100%;
+                // line-height: 100%;
                 display: block;
                 width: 16px;
             }

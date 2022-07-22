@@ -8,7 +8,7 @@ import router from './router'
 
 import sysComponents from '@/components/index.js'
 
-import VueAMap from '@/common/mapClient/amap'
+
 import '@/common/vue-echarts'
 // 引入echarts
 import Echarts from 'vue-echarts'
@@ -23,6 +23,7 @@ Vue.config.productionTip = false
 Vue.component('VUeEcharts', Echarts)
 Vue.use(ElementUI)
 
+import VueAMap from '@/common/mapClient/amap'
 Vue.use(VueAMap)
 VueAMap.initAMapApiLoader({
   key: amapWebMapKey.amapWebMapKey,

@@ -41,7 +41,7 @@ export function objType (data) {
   }
   const type = data.constructor.toString().toLowerCase()
   if (type.startsWith('function')) {
-    return type.replace(/^function\s(\w+?)\s/, (...rest) => {
+    return type.replace(/^function\s(\w+?)/, (...rest) => {
       return rest[1]
     }).split('(')[0]
   }
@@ -93,9 +93,10 @@ export function JSONDeepCopy (data) {
   return JSON.parse(JSON.stringify(data))
 }
 
-export function deepCopy (origin) {
+ 
+export function deepCopy (origin,hashMap=new  WeakSet()  ) {
   const valueTypes = ['object', 'array'] // 后面可以支持下 map、set 等
-  const objTypes = ['vnode', 'htmlelement']
+  const objTypes = ['vnode', 'htmlelement','VNode']
   const objType1 = objType(origin)
   if (objTypes.includes(objType1)) {
     return origin // 若是特殊对象则结束
@@ -104,18 +105,23 @@ export function deepCopy (origin) {
     return origin // 若不是对象则结束
   }
 
+  if(hashMap.has(origin)) {
+     console.warning('deep copy circle obj！')
+    return  origin
+  }
+  hashMap.add(origin)
+  
+  
+
   const target = Array.isArray(origin) ? [] : {} // 判别是数组还是对象
   for (const k in origin) {
     // 循环拷贝
 
     if (origin.hasOwnProperty(k)) {
       // 判断属性是否在对象自身上（非原型链上的父级属性）
-      if (valueTypes.includes(superType(origin[k]))) {
-        // 复杂类型，递归
-        target[k] = deepCopy(origin[k])
-      } else {
-        target[k] = origin[k]
-      }
+ 
+      target[k]=deepCopy(origin[k],hashMap)
+   
     }
   }
   return target
