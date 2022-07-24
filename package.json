@@ -1,0 +1,87 @@
+{
+    "name": "dyvue2",
+    "version": "0.0.70",
+    "author": "hua zheng <1950796924@qq.com>",
+    "description": "a lowcode vue component drived by json",
+    "main": "lib/dyvue2.umd.js",
+    "files": [
+        "lib"
+    ],
+    "style": "lib/dyvue2.css",
+    "license": "MIT",
+    "private": false,
+    "keywords": [
+        "vue",
+        "json",
+        "dynamic",
+        "lowcode"
+    ],
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build:test": "vue-cli-service build --mode test --dest dist-test",
+        "build": "vue-cli-service build  --dest project",
+        "lib": "vue-cli-service build --target lib --name dyvue2  --dest lib ./index.js",
+        "lint": "vue-cli-service lint",
+        "stylelint": "vue-cli-service lint:style",
+        "svgo": "svgo -f src/assets/icons"
+    },
+    "peerDependencies": {
+        "@tinymce/tinymce-vue": "^3.0.1",
+        "echarts": "^5.3.1",
+        "element-ui": "^2.15.6",
+        "tinymce": "^5.1.0",
+        "uppercamelcase": "^3.0.0",
+        "vue": "^2.6.12",
+        "vue-echarts": "^6.0.2"
+    },
+    "devDependencies": {
+        "@tinymce/tinymce-vue": "^3.2.6",
+        "@vue/cli-plugin-babel": "~4.5.8",
+        "@vue/cli-plugin-eslint": "~4.5.8",
+        "@vue/cli-service": "~4.5.8",
+        "@vue/composition-api": "^1.4.4",
+        "axios": "^0.21.0",
+        "babel-eslint": "^10.1.0",
+        "babel-plugin-dynamic-import-node": "^2.3.3",
+        "compression-webpack-plugin": "^6.1.1",
+        "core-js": "^3.6.4",
+        "dayjs": "^1.9.4",
+        "echarts": "^5.3.1",
+        "element-ui": "^2.14.0",
+        "eslint": "^7.12.1",
+        "eslint-plugin-vue": "^7.1.0",
+        "hotkeys-js": "^3.8.1",
+        "html-webpack-plugin": "^4.5.0",
+        "less": "^4.1.2",
+        "less-loader": "^7.3.0",
+        "mockjs": "^1.1.0",
+        "node-sass": "^4.14.1",
+        "nprogress": "^0.2.0",
+        "path-to-regexp": "^6.2.0",
+        "sass-loader": "^7.3.1",
+        "sass-resources-loader": "^2.1.1",
+        "screenfull": "^5.0.2",
+        "svg-sprite-loader": "^6.0.6",
+        "svgo": "^2.3.0",
+        "tinymce": "^5.5.1",
+        "uppercamelcase": "^3.0.0",
+        "vue": "^2.6.12",
+        "vue-cookies": "^1.7.4",
+        "vue-echarts": "^6.0.2",
+        "vue-meta": "^2.4.0",
+        "vue-router": "^3.4.8",
+        "vue-template-compiler": "^2.6.11",
+        "vuex": "^3.5.1",
+        "webpack-spritesmith": "^1.1.0"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
+}

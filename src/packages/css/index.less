@@ -1,0 +1,88 @@
+
+.hz-root() {
+    html {
+      --col-num: 24; //布局列数
+      --layout-margin: 2.2rem; //页面边距
+      --layout-gap: 18px; //列间距
+      --layout-col-gap: 18px; //列默认间距
+      --layout-row-gap: 18px; //行间距
+    }
+  }
+  
+  .hz-root();
+
+  @colorArr:green-dark,green-light2,green-light3, main-color,white, light, grey, red,grey-dark,grey-dark1, grey-dark2, grey-light, grey-light2, grey-light3, yellow, yellow-light, green, dark, blue, blue-light, blue-light2, blue-bright;
+
+  @colors: {
+      main-color : var(--primary-color);
+      white     : #ffffff;
+      light     : #f6f9fb;
+      grey      : #b6b6b9;
+      grey-dark : #999999;
+      grey-dark2: #666666;
+      grey-dark1: rgba(0,0,0,0.36);
+      
+      grey-light  : #F1F6F6;
+      grey-light2 : #E9EBEA;
+      grey-light3 : #F5F6F8;
+      green       : #37d6a1;
+      green-dark  : #2F5B65;
+      green-light2  : #F8FDFF;
+      green-light3  : #EFF7F9;
+      dark        : #222222;
+      blue        : #4B76D1;
+      blue-dark   :#4B76D1;
+      blue-light  : #3a95f0;
+      blue-light2 : #F2F7FC;
+      blue-bright : #4984FF;
+      yellow      : #EB7E68;
+      yellow-light: #FFF4EC;
+      red : #e93a3a;
+  }
+
+ 
+  @media only screen and (max-width: 1266px)   {
+    html {
+      // font-size: calc(10 / 1680 * 100vw);
+      --layout-gap: 10px;
+      --layout-col-gap: 10px; //列默认间距
+      --layout-row-gap: 10px; //行间距
+
+    }
+  }
+  
+  /*phone竖屏*/
+  @media only screen and (max-width: 600px)   {
+    html {
+      // font-size: calc(10 / 1680 * 100vw);
+      --col-num: 24;
+      --layout-gap: 6px;
+      --layout-col-gap: 6px; //列默认间距
+      --layout-row-gap: 6px; //行间距
+
+    }
+  }
+
+  
+.hz-low-code{
+    // height: 100%;
+    each(@colors, {
+       --@{key}: @value;
+      }
+    );
+    each(@colorArr, {
+      .bg-@{value} {
+          @valueVar       : e("--@{value}");
+          background-color: var(@valueVar);
+      }
+      .text-@{value} {
+          @valueVar: e("--@{value}");
+          color    : var(@valueVar);
+          }
+      }
+    );
+    // position: relative;
+    @import './common.less';
+    @import './layout.less';
+    @import './ui.less';
+}

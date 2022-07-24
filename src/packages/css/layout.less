@@ -1,0 +1,204 @@
+
+//生成常规列类
+.generate-cols(@n, @i: 1) when (@i =< @n) {
+    .grid-col-@{i} {
+        grid-column-end: span (@i);
+    }
+    .generate-cols(@n, (@i + 1));
+}
+
+//生成自适应列类
+.generate-responsive-cols(@n, @size, @i: 1) when (@i =< @n) {
+    .grid-col-@{size}-@{i} {
+        grid-column-end: span (@i);
+    }
+    .generate-responsive-cols(@n, @size, (@i + 1));
+}
+
+//生成偏移  递归
+.generate-offset(@n, @i: 0) when (@i =< @n) {
+    .grid-offset-@{i} {
+        grid-column-start: (@i+1);
+    }
+    .generate-offset(@n, (@i + 1));
+}
+
+//生成自适应偏移
+.generate-responsive-offset(@n, @size, @i: 0) when (@i =< @n) {
+    .grid-offset-@{size}-@{i} {
+        grid-column-start: (@i+1);
+    }
+    .generate-responsive-offset(@n, @size, (@i + 1));
+}
+
+//响应式  mixins
+.grid-col-lg() {
+    .generate-responsive-cols(24, lg);
+    .generate-responsive-offset(11, lg);
+}
+
+.grid-col-sm() {
+    .generate-responsive-cols(24, sm);
+    .generate-responsive-offset(11, sm);
+}
+
+.grid-col-ss() {
+    .generate-responsive-cols(24, ss);
+    .generate-responsive-offset(11, ss);
+}
+.grid-col-xs() {
+    .generate-responsive-cols(24, xs);
+    .generate-responsive-offset(23, xs);
+}
+
+.grid-col-xsp() {
+    .generate-responsive-cols(24, xsp);
+    .generate-responsive-offset(23, xsp);
+}
+
+.grid-col-md() {
+    .generate-responsive-cols(24, md);
+    .generate-responsive-offset(23, md);
+}
+
+.grid-col-pp() {
+    .generate-responsive-cols(24, pp);
+    .generate-responsive-offset(23, pp);
+}
+
+//layout css
+.grid-wrap {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(var(--col-num), 1fr);
+    grid-gap: var(--layout-row-gap) var(--layout-gap);
+    .generate-offset(23);
+    .generate-cols(24);
+    @media (min-width: 1800px) {
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-lg-gap, var(--layout-col-gap));
+        }
+        .grid-col-lg();
+    }
+    @media (max-width: 1800px) and(min-width: 1560px) {
+        //响应式间隙
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-md-gap, var(--layout-col-gap));
+        }
+        //响应式偏移及列数
+        .grid-col-md();
+    }
+    @media (max-width: 1560px) and(min-width: 1266px) {
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-sm-gap, var(--layout-col-gap));
+        }
+        .grid-col-sm();
+    }
+    @media (max-width: 1266px) and(min-width: 901px) {
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-ss-gap, var(--layout-col-gap));
+        }
+        .grid-col-ss();
+    }
+    @media only screen and (max-width: 1194px) and (orientation: landscape) {}
+    @media only screen and (max-width: 1194px) and (orientation: portrait) {}
+    @media only screen and (max-width: 900px) {
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-xs-gap, var(--layout-col-gap));
+        }
+        .grid-col-xs();
+    }
+
+    // @media only screen and (max-width: 900px) and(min-width: 601px) and (orientation: portrait) {
+    //   &.grid-customer-gap {
+    //     --layout-gap: var(--layout-xsp-gap,var( --layout-col-gap));
+    //   }
+    //   .grid-col-xsp()
+    // }
+    @media only screen and (max-width: 600px) {
+        &.grid-customer-gap {
+            --layout-gap: var(--layout-pp-gap, var(--layout-col-gap));
+        }
+        .grid-col-pp();
+    }
+}
+.single-wrap {
+    grid-template-columns: auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-gap: var(--layout-row-gap) var(--layout-gap);
+}
+.grid-wrap.grid-justify-start {
+    [class*="grid-col-"] {
+        justify-self: start;
+    }
+}
+.grid-wrap.grid-justify-end {
+    [class*="grid-col-"] {
+        justify-self: end;
+    }
+}
+.grid-wrap.grid-justify-center {
+    [class*="grid-col-"] {
+        justify-self: center;
+    }
+}
+
+
+//flex
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+}
+.flex {
+    display: flex;
+}
+.flex-direction {
+    flex-direction: column;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.justify-center {
+    justify-content: center;
+}
+.justify-around {
+    justify-content: space-around;
+}
+.justify-between {
+    justify-content: space-between;
+}
+.justify-end {
+    justify-content: flex-end;
+}
+.align-right {
+    justify-content: flex-end;
+}
+.align-left {
+    justify-content: flex-start;
+}
+.align-center {
+    align-items: center;
+}
+.align-self-start {
+    align-self: flex-start;
+}
+.align-self-end {
+    align-self: flex-end;
+}
+.align-end {
+    align-items: flex-end;
+}
+
+.flexLoop(@index) when(@index<10) {
+    .flex@{index} {
+        flex: @index;
+    }
+    //递归调用 达到循环目的
+    .flexLoop(@index+1);
+}
+.flexLoop(1);

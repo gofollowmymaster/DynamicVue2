@@ -1,0 +1,304 @@
+li {
+    list-style: none;
+}
+ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+}
+//layout
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.row-vertical-center {
+    display: flex;
+    align-items: center;
+}
+.row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.absolute-vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.hide {
+    display: none;
+}
+.block {
+    display: block;
+}
+.inline-block {
+    display: inline-block;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.sticky {
+    position: sticky !important;
+    top: 0;
+}
+.fixed {
+    position: fixed;
+}
+
+.positionLoop(@index) when(@index<=50) {
+    .top@{index} {
+        top: @index * 1px;
+    }
+    .left@{index} {
+        left: @index * 1px;
+    }
+    .right@{index} {
+        right: @index * 1px;
+    }
+    .bottom@{index} {
+        bottom: @index * 1px;
+    }
+    //递归调用 达到循环目的
+    .positionLoop(@index+1);
+}
+.positionLoop(-20);
+
+.marginLoop(@index) when(@index<=50) {
+    .m@{index} {
+        margin: @index * 1px;
+    }
+    .mt@{index} {
+        margin-top: @index * 1px;
+    }
+    .mb@{index} {
+        margin-bottom: @index * 1px;
+    }
+    .ml@{index} {
+        margin-left: @index * 1px;
+    }
+    .mr@{index} {
+        margin-right: @index * 1px;
+    }
+    .mx@{index} {
+        margin-left: @index * 1px;
+        margin-right: @index * 1px;
+    }
+    .my@{index} {
+        margin-top: @index * 1px;
+        margin-bottom: @index * 1px;
+    }
+    //递归调用 达到循环目的
+    .marginLoop(@index+1);
+}
+.marginLoop(0);
+
+.paddingLoop(@index) when(@index<50) {
+    .p@{index} {
+        padding: @index * 1px;
+    }
+    .pt@{index} {
+        padding-top: @index * 1px;
+    }
+    .pb@{index} {
+        padding-bottom: @index * 1px;
+    }
+    .pl@{index} {
+        padding-left: @index * 1px;
+    }
+    .pr@{index} {
+        padding-right: @index * 1px;
+    }
+    .px@{index} {
+        padding-left: @index * 1px;
+        padding-right: @index * 1px;
+    }
+    .py@{index} {
+        padding-top: @index * 1px;
+        padding-bottom: @index * 1px;
+    }
+    //递归调用 达到循环目的
+    .paddingLoop(@index+1);
+}
+.paddingLoop(0);
+
+//边框
+.circle {
+    border-radius: 50%;
+}
+.borderRLoop(@index) when(@index<10) {
+    .border-r@{index} {
+        border-radius: @index * 1px;
+    }
+    //递归调用 达到循环目的
+    .borderRLoop(@index+1);
+}
+.borderRLoop(1);
+.border-none {
+    border: none;
+}
+.cursor-point {
+    cursor: pointer;
+}
+.border-box {
+    box-sizing: border-box;
+}
+.bg-none {
+    background-color: transparent;
+}
+
+.zindexLoop(@index) when(@index<=10) {
+    .z-index@{index} {
+        z-index: @index;
+    }
+    //递归调用 达到循环目的
+    .zindexLoop(@index+1);
+}
+.zindexLoop(-1);
+
+/**
+文字
+*/
+.textSizeLoop(@index) when(@index<48) {
+    .text-size@{index} {
+        font-size: @index * 1px;
+    }
+    .lh@{index} {
+        line-height: @index * 1px;
+    }
+    .textSizeLoop(@index + 1);
+}
+.textSizeLoop(8);
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-wrap-ellipsis {
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-weight-700 {
+    font-weight: 700;
+}
+.text-bold {
+    font-weight: 700;
+}
+.text-medium {
+    font-weight: 700;
+}
+
+/**
+高宽
+*/
+.full-width {
+    width: 100%;
+}
+.full-height {
+    height: 100%;
+}
+.full-screen-height {
+    height: 100vh;
+}
+.half {
+    width: 50%;
+    height: 100%;
+}
+
+.widthLoop(@index) when(@index<100) {
+    .width@{index} {
+        width: @index * 1%;
+    }
+    .widthLoop(@index + 1);
+}
+.widthLoop(1);
+
+.heightLoop(@index) when(@index<=100) {
+    .height@{index} {
+        height: @index * 1px;
+    }
+    .heightLoop(@index + 1);
+}
+.heightLoop(1);
+.over-hide {
+    overflow: hidden;
+}
+.over-scroll {
+    overflow: scroll;
+}
+
+// component
+::-webkit-scrollbar {
+    /* 滚动条整体样式 */
+    width: 2px;
+
+    /* 高宽分别对应横竖滚动条的尺寸 */
+    // height: 1px;
+}
+::-webkit-scrollbar-thumb {
+    /* 滚动条里面小方块 */
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px #d7d9dc;
+    background: #bebebe;
+}
+::-webkit-scrollbar-track {
+    /* 滚动条里面轨道 */
+    // box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    // border-radius: 10px;
+    // background: #ededed;
+    // opacity: 0.5;
+}
+.scrollbar {
+    scrollbar-color: transparent transparent;
+    // scrollbar-width: 2px ;
+    scrollbar-track-color: transparent;
+    -ms-scrollbar-track-color: transparent;
+    // -ms-scrollbar-track-width: 2px;
+}
+
+
+
+// 空列表显示提示信息
+.if-empty-tip:empty {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after {
+        content: '没有内容';
+        font-size: 36px;
+        display: block;
+        color: grey;
+    }
+}

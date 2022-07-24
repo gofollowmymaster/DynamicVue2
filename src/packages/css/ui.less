@@ -1,0 +1,346 @@
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+
+
+//表单样式
+.dynamic-form {
+    width: 100%;
+    .el-drawer__body {
+        padding: 0 20px;
+    }
+    &.page-form {
+        .block-content {
+            width: 83%;
+        }
+    }
+    &.line-form{
+
+    }
+    &.column-form {
+        .block-content {
+            width: 100%;
+        }
+    }
+
+    // 1、标题文字
+    .el-form-item__label {
+        // min-height: 36px;
+        // line-height: 36px;
+        height: auto;
+        padding-bottom: 0;
+    }
+    .el-form-item__content {
+        // line-height: 36px;
+        line-height: 24px;
+        //  display: flex;
+        //  height: 100%;
+        //  align-items: center;
+        .form-input-text {
+            // line-height: 36px;
+            //white-space: pre-wrap;
+            word-break: break-word;
+        }
+    }
+    .el-form-item {
+        margin-bottom: 0;
+        .el-form-item__label {
+            height: auto;
+        }
+        .form-item-box {
+            // height: auto;
+            position: relative;
+            width: 100%;
+        }
+        .form-input-text {
+            // min-height: 36px;
+            height: auto;
+            // line-height: 36px;
+        }
+    }
+    .form-item-box {
+        // min-height: 36px;
+        // line-height: 36px;
+        .el-input {
+            // position: relative;
+            // display: block;
+            width: 100%;
+            // height: 36px;
+        }
+        .el-select {
+            display: block;
+        }
+        .el-radio.is-bordered {
+            text-align: center;
+            &.is-checked {
+                background-color: var(--main-color);
+                .el-radio__label {
+                    color: white;
+                }
+            }
+            .el-radio__input {
+                display: none;
+            }
+        }
+    }
+    .el-input__inner {
+        vertical-align: top;
+        // height: 36px !important;
+        // line-height: 36px !important;
+        // border: 1px solid #e2e3e6 !important;
+        padding-left: 12px;
+    }
+    .el-textarea__inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .el-form-item {
+        margin-bottom: 0;
+    }
+
+    // .el-input.is-active .el-input__inner,
+    // .el-input__inner:focus,
+    // .el-select .el-input.is-focus .el-input__inner,
+    // .el-textarea__inner:focus {
+    //   border-color: #129E9E !important;
+    // }
+    .block-nav {
+        position: relative;
+        margin-bottom: 24px;
+        font-size: 16px;
+        // background: #f8f9fb;
+        padding: 8px 0;
+        .block-text {
+            // border-left: solid 4px var(--main-color, blue);
+            padding-left: 16px;
+            // float: left;
+            // height: 32px;
+            font-size: 16px;
+            color: var(--adrk);
+            font-weight: 600 !important;
+            vertical-align: top;
+            line-height: 16px;
+        }
+        .block-fold-btn {
+            float: right;
+            margin-right: 30px;
+            height: 16px;
+            line-height: 16px;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+
+    // 带边框的表单组件
+    .block-border {
+        border: 1px solid #dde0ea;
+        border-radius: 4px;
+        margin-bottom: 32px;
+        background: #fff;
+        .block-nav {
+            line-height: 40px;
+            // background: #f8f9fb;
+            padding: 14px 0 14px 0;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            border-bottom: 1px solid #dde0ea;
+        }
+        .block-content {
+            margin: 24px 8px 0;
+        }
+    }
+    .block-hide {
+        padding-bottom: 0;
+        .block-nav {
+            border-bottom: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 0;
+        }
+        .block-content {
+            display: none;
+        }
+    }
+    .el-divider {
+        background-color: #f4f5f8;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    input[type="number"] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    //详情模式下样式
+    .form-text-mode {
+        --layout-row-gap: 0;
+        --layout-gap: 0;
+        .el-form-item__label {
+            border-bottom: 1px solid #ebeef5;
+            border-right: 1px solid #ebeef5;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            background-color: #f9f9f9;
+            color: #888;
+            height: 100%;
+        }
+        .el-form-item__content {
+            position: relative;
+            border-bottom: 1px solid #ebeef5;
+            border-right: 1px solid #ebeef5;
+            // padding-left:22px;
+            height: 100%;
+            vertical-align: middle;
+            // display: flex;
+            // align-items: center;
+            .form-item-box{
+                position: absolute;
+                top: 50%;
+                transform:  translateY(-50%);
+            }
+            .hz-text-box {
+                padding-left: 22px;
+                .form-input-text{
+                  
+                }
+            }
+        }
+        >.form-section {
+            >.block-content {
+                border-top: 1px solid #ebeef5;
+                border-left: 1px solid #ebeef5;
+                // padding: 1px;
+            }
+        }
+        >.form-section:last-child {
+            padding-bottom: 0;
+        }
+        .grid-wrap {
+            .grid-col-24 {
+                // border-top: solid 1px #EBEEF5;
+                // border-bottom: 1px solid #EBEEF5;
+                // border-right: 1px solid #EBEEF5;
+                outline: 1px solid #ebeef5;
+                >.el-form-item__content {
+                    border-bottom: none;
+                    border-right: none;
+                }
+                >.el-form-item__label {
+                    border-bottom: none;
+                }
+            }
+            .grid-item:last-child:first-child {
+                grid-column-end: span 24;
+            }
+        }
+        .single-wrap {
+            .grid-item {
+                outline: none;
+            }
+        }
+    }
+    .form-tip {
+        color: #606266;
+    }
+}
+.el-drawer__body {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.el-drawer__header {
+    font-size: 18px;
+}
+.el-dialog {
+    min-width: 360px;
+}
+.el-dialog__body {
+    padding-top: 12px;
+    padding-bottom: 16px;
+}
+.el-date-editor--datetimerange.el-input,
+.el-date-editor--datetimerange.el-input__inner {
+    width: auto;
+}
+.el-table .el-table__cell.index-col > .cell {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.el-table th.el-table__cell > .cell {
+    white-space: nowrap;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-overflow: initial;
+    //  text-align: center;
+}
+.el-table .cell {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.el-table th.el-table__cell.el-table-column--selection:first-child > .cell {
+    // padding-left: 14px;
+    // padding-right: 14px;
+    text-align: center;
+}
+.el-table--border .el-table__cell.el-table-column--selection:first-child .cell {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+.el-table .el-table__fixed-right,
+.el-table .el-table__fixed-left {
+    height: 100% !important;
+}
+.el-table__fixed::before,
+.el-table__fixed-right::before {
+    display: none;
+}
+.table-center {
+    .cell {
+        text-align: center;
+    }
+}
+.el-table--scrollable-x .el-table__fixed-right {
+    right: 0 !important;
+}
+.el-table__footer-wrapper .cell {
+    text-align: center;
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+}
+
+
+/* mode */
+.table-action .action-btn {
+    border-right: solid 1px var(--grey);
+}
+.table-action .action-btn-inner {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-action .action-btn-inner.el-button--primary {
+    width: 240px;
+}
+.action-btns.big-main-btn .el-button--primary {
+    width: 240px;
+    order: 0;
+    margin-left: 0;
+}
+.action-btns .el-button--primary {
+    order: 10;
+    margin-left: 12px;
+}

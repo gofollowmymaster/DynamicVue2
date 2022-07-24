@@ -1,0 +1,270 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.dynamic-form {
+  width: 100%;
+}
+.dynamic-form .el-drawer__body {
+  padding: 0 20px;
+}
+.dynamic-form.page-form .block-content {
+  width: 83%;
+}
+.dynamic-form.column-form .block-content {
+  width: 100%;
+}
+.dynamic-form .el-form-item__label {
+  height: auto;
+  padding-bottom: 0;
+}
+.dynamic-form .el-form-item__content {
+  line-height: 24px;
+}
+.dynamic-form .el-form-item__content .form-input-text {
+  word-break: break-word;
+}
+.dynamic-form .el-form-item {
+  margin-bottom: 0;
+}
+.dynamic-form .el-form-item .el-form-item__label {
+  height: auto;
+}
+.dynamic-form .el-form-item .form-item-box {
+  position: relative;
+  width: 100%;
+}
+.dynamic-form .el-form-item .form-input-text {
+  height: auto;
+}
+.dynamic-form .form-item-box .el-input {
+  width: 100%;
+}
+.dynamic-form .form-item-box .el-select {
+  display: block;
+}
+.dynamic-form .form-item-box .el-radio.is-bordered {
+  text-align: center;
+}
+.dynamic-form .form-item-box .el-radio.is-bordered.is-checked {
+  background-color: var(--main-color);
+}
+.dynamic-form .form-item-box .el-radio.is-bordered.is-checked .el-radio__label {
+  color: white;
+}
+.dynamic-form .form-item-box .el-radio.is-bordered .el-radio__input {
+  display: none;
+}
+.dynamic-form .el-input__inner {
+  vertical-align: top;
+  padding-left: 12px;
+}
+.dynamic-form .el-textarea__inner {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.dynamic-form .el-form-item {
+  margin-bottom: 0;
+}
+.dynamic-form .block-nav {
+  position: relative;
+  margin-bottom: 24px;
+  font-size: 16px;
+  padding: 8px 0;
+}
+.dynamic-form .block-nav .block-text {
+  padding-left: 16px;
+  font-size: 16px;
+  color: var(--adrk);
+  font-weight: 600 !important;
+  vertical-align: top;
+  line-height: 16px;
+}
+.dynamic-form .block-nav .block-fold-btn {
+  float: right;
+  margin-right: 30px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.dynamic-form .block-border {
+  border: 1px solid #dde0ea;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  background: #fff;
+}
+.dynamic-form .block-border .block-nav {
+  line-height: 40px;
+  padding: 14px 0 14px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #dde0ea;
+}
+.dynamic-form .block-border .block-content {
+  margin: 24px 8px 0;
+}
+.dynamic-form .block-hide {
+  padding-bottom: 0;
+}
+.dynamic-form .block-hide .block-nav {
+  border-bottom: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 0;
+}
+.dynamic-form .block-hide .block-content {
+  display: none;
+}
+.dynamic-form .el-divider {
+  background-color: #f4f5f8;
+}
+.dynamic-form input::-webkit-outer-spin-button,
+.dynamic-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.dynamic-form input[type="number"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.dynamic-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+.dynamic-form .form-text-mode {
+  --layout-row-gap: 0;
+  --layout-gap: 0;
+}
+.dynamic-form .form-text-mode .el-form-item__label {
+  border-bottom: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: #f9f9f9;
+  color: #888;
+  height: 100%;
+}
+.dynamic-form .form-text-mode .el-form-item__content {
+  position: relative;
+  border-bottom: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+  height: 100%;
+  vertical-align: middle;
+}
+.dynamic-form .form-text-mode .el-form-item__content .form-item-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.dynamic-form .form-text-mode .el-form-item__content .hz-text-box {
+  padding-left: 22px;
+}
+.dynamic-form .form-text-mode > .form-section > .block-content {
+  border-top: 1px solid #ebeef5;
+  border-left: 1px solid #ebeef5;
+}
+.dynamic-form .form-text-mode > .form-section:last-child {
+  padding-bottom: 0;
+}
+.dynamic-form .form-text-mode .grid-wrap .grid-col-24 {
+  outline: 1px solid #ebeef5;
+}
+.dynamic-form .form-text-mode .grid-wrap .grid-col-24 > .el-form-item__content {
+  border-bottom: none;
+  border-right: none;
+}
+.dynamic-form .form-text-mode .grid-wrap .grid-col-24 > .el-form-item__label {
+  border-bottom: none;
+}
+.dynamic-form .form-text-mode .grid-wrap .grid-item:last-child:first-child {
+  grid-column-end: span 24;
+}
+.dynamic-form .form-text-mode .single-wrap .grid-item {
+  outline: none;
+}
+.dynamic-form .form-tip {
+  color: #606266;
+}
+.el-drawer__body {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.el-drawer__header {
+  font-size: 18px;
+}
+.el-dialog {
+  min-width: 360px;
+}
+.el-dialog__body {
+  padding-top: 12px;
+  padding-bottom: 16px;
+}
+.el-date-editor--datetimerange.el-input,
+.el-date-editor--datetimerange.el-input__inner {
+  width: auto;
+}
+.el-table .el-table__cell.index-col > .cell {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.el-table th.el-table__cell > .cell {
+  white-space: nowrap;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-overflow: initial;
+}
+.el-table .cell {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.el-table th.el-table__cell.el-table-column--selection:first-child > .cell {
+  text-align: center;
+}
+.el-table--border .el-table__cell.el-table-column--selection:first-child .cell {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+.el-table .el-table__fixed-right,
+.el-table .el-table__fixed-left {
+  height: 100% !important;
+}
+.el-table__fixed::before,
+.el-table__fixed-right::before {
+  display: none;
+}
+.table-center .cell {
+  text-align: center;
+}
+.el-table--scrollable-x .el-table__fixed-right {
+  right: 0 !important;
+}
+.el-table__footer-wrapper .cell {
+  text-align: center;
+  text-overflow: ellipsis;
+}
+/* mode */
+.table-action .action-btn {
+  border-right: solid 1px var(--grey);
+}
+.table-action .action-btn-inner {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.form-action .action-btn-inner.el-button--primary {
+  width: 240px;
+}
+.action-btns.big-main-btn .el-button--primary {
+  width: 240px;
+  order: 0;
+  margin-left: 0;
+}
+.action-btns .el-button--primary {
+  order: 10;
+  margin-left: 12px;
+}
