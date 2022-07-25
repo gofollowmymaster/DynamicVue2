@@ -1,6 +1,6 @@
 <template>
     <!-- 普通输入框 -->
-    <section :style="item.style||{}" style="position: absolute;"
+    <section  style="position: absolute;"
              class="  absolute-vertical-center  "
     >
         <el-radio-group v-if="!getTextModel"

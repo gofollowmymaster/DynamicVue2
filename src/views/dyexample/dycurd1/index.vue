@@ -31,7 +31,7 @@ Vue.component('MaitainLog', maitainLog)
 Vue.component('ProtectLog', protectLog)
 Vue.component('TransLog', transLog)
 
-const entityLabel = '古树名木'
+const entityLabel = '资产'
   
 export default {
     name: 'AssetsManage',

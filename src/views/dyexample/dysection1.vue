@@ -88,20 +88,21 @@ export default {
                 {
                     component: 'DynamicSearchForm',
                     name: 'statisticType',
-                    props: this.$appendToPreset('searchOption',
+                    props:
                         {
                             class: ['grid-col-24'],
-                            options: {
+                            options:  this.$appendToPreset('searchOption',{
                                 properties: {
-                                    'label-width': '80px',
+                                    'label-width': '100px',
                                     'label-position': 'right'
                                 },
                                 borderForm: false,
-                                trigger: 'change',
-                                resetable: false
-                            },
+                                trigger: 'click',
+                                resetable: false,
+                                testTool:false,
+                            }),
                             fields: this.$buildSearchFields(searchFields)
-                        })
+                        }
                 },
 
                 {

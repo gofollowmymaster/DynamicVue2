@@ -239,7 +239,6 @@ export default {
             })
         },
         indexHandle(index) {
-            debugger
             return index + 1
         }
     }

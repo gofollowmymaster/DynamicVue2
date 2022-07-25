@@ -4,7 +4,7 @@ export const assetsFields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
 
-    {key: 'treeNumber', label: '古树名木编号', tableOption: {
+    {key: 'treeNumber', label: '资产编号', tableOption: {
         width: 120, sort: 1
     }},
     {
@@ -50,7 +50,7 @@ export const assetsFields = [
     {
         key: 'originalTreeNumber',
         type: 'FormInput',
-        label: '原古树名木编号',   
+        label: '原资产编号',   
         formOption: {
         }
     },
@@ -180,7 +180,7 @@ export const assetsFields = [
 
     {
         key: 'pics',
-        label: '古树名木照片',
+        label: '资产照片',
         type: 'FormUpload',
         formOption: {
             span: 24,
@@ -366,7 +366,7 @@ export const assetsFields = [
 
 export const manageLogFields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },   
-    { key: 'treeNumber', type: 'FormInput', label: '古树名木', searchable: false, tableOption: {} },   
+    { key: 'treeNumber', type: 'FormInput', label: '资产', searchable: false, tableOption: {} },   
 
     { key: 'type', type: 'FormSelect', label: '类型', searchable: false, tableOption: {} }   
 
@@ -375,7 +375,7 @@ export const manageLogFields = [
 export const maintainFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
-        label: '古树名木名称',
+        label: '资产名称',
         key: 'treeManageId',
         type: 'FormassetsSelector',
         formOption: {
@@ -383,7 +383,7 @@ export const maintainFields = [
     },
  
     {
-        label: '古树名木编号',
+        label: '资产编号',
         key: 'treeNumber',
         type: 'FormInput',
         formOption: {
@@ -542,7 +542,7 @@ export const maintainFields = [
 export const   protectFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
-        label: '古树名木名称',
+        label: '资产名称',
         key: 'treeManageId',
         type: 'FormassetsSelector',
         formOption: {
@@ -551,7 +551,7 @@ export const   protectFields = [
     },
  
     {
-        label: '古树名木编号',
+        label: '资产编号',
         key: 'treeNumber',
         type: 'FormInput',
  
@@ -723,14 +723,14 @@ export const   protectFields = [
 export const transFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
-        label: '古树名木名称',
+        label: '资产名称',
         key: 'treeManageId',
         type: 'FormassetsSelector',
         formOption: {}
     },
 
     {
-        label: '古树名木编号',
+        label: '资产编号',
         key: 'treeNumber',
         type: 'FormInput',
 
