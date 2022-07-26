@@ -37,6 +37,9 @@ export default {
             delete obj.extra
             delete obj.properties
             delete obj.options
+            delete obj.expressProp
+            delete obj.hidden
+
             //   obj['active-text']=obj['active-text']||
             return obj
         },

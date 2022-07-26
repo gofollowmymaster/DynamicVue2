@@ -88,6 +88,7 @@ export const mainPlaintOption = {
     }
 }
 
+//没有联动
 const mainPlaintTableFields = [
 
     {
@@ -98,20 +99,14 @@ const mainPlaintTableFields = [
     },
     {
         key: 'treeId',
-        type: 'FormassetsSelector',
+        type: 'FormInput',
         label: '树种',
 
         tableOption: {
             sort: 2,
-            template(row, key) {
-                return row.id?.[0]?.name
-            },
             key: 'treeName'
         },
         formOption: {
-            rules: [
-                // 'required'
-            ]
         }
     },
     {
@@ -123,7 +118,6 @@ const mainPlaintTableFields = [
             sort: 3
         },
         formOption: {
-            rules: ['required']
         }
     },
 
@@ -147,7 +141,6 @@ const mainPlaintTableFields = [
             }
         ],
         formOption: {
-            rules: ['required']
         }
     },
     {
@@ -156,7 +149,6 @@ const mainPlaintTableFields = [
         label: '时间',
         tableOption: {},
         formOption: {
-            rules: ['required']
         }
     },
     {
@@ -165,7 +157,7 @@ const mainPlaintTableFields = [
         label: '备注',
         tableOption: {},
         formOption: {
-            rules: ['required']
+            disabled:true,
         }
     }
 
@@ -173,7 +165,11 @@ const mainPlaintTableFields = [
 export const mainPlaintTableOption = {
     hasCheckbox: false
 }
-
+export const formSections = {
+    '主要植物': {
+        hidden: "#{plantedInGreen}"
+    }
+}
 export default [
     { key: 'keyword', type: 'FormInput', label: '关键字', searchOption: true },
     { key: 'id', type: 'FormHide', formOption: true },
@@ -236,7 +232,6 @@ export default [
         formSection: '基本信息',
         formOption: {
             rules: ['required'],
-            properties: {}
         }
     },
 
@@ -246,13 +241,17 @@ export default [
         label: '平均资产高',
         formSection: '基本信息',
         formOption: {
-            rules: ['required']
+            rules: ['required'],
+            expressProp:{
+                value:"#{plantedInGreen}?1:100",
+                required:"#{plantedInGreen}==1",
+            }
         }
     },
 
     {
         key: 'plantedInGreen',
-        label: '是否种在厂区内',
+        label: '是否在厂区内',
         formSection: '基本信息',
         type: 'FormRadio',
         options: [
@@ -266,7 +265,16 @@ export default [
             }
         ],
         formOption: {
-            rules: ['required']
+            rules: ['required'],
+            defaultValue:true,
+            changeHandle(data,vm){
+                debugger
+                vm.updateFormData({
+                    remark: data===true?'是':'否'
+                })
+                vm.setElementDisable('remark', data===true)
+                vm.setElementHidden('pic',data)
+            }
         }
     },
 
@@ -276,7 +284,8 @@ export default [
         formSection: '基本信息',
         type: 'FormTextarea',
         formOption: {
-            span: 24
+            span: 24,
+            
         }
     },
 
@@ -406,7 +415,7 @@ export default [
             rules: ['required'],
             changeHandle(data, vm) {
                 vm.updateFormData({
-                    administratorPhone: data[0].phoneNum
+                    administratorPhone: data
                 })
             }
 
@@ -419,9 +428,7 @@ export default [
         formSection: '管理信息',
         formOption: {
             rules: ['required', /^[\d|-]{9,12}$/],
-            properties: {
-                disabled: true
-            }
+            disabled: true
         },
         tableOption: {
             sort: 8

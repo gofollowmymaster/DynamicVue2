@@ -14,7 +14,7 @@
                         :ref="'form-section'+formSection.label"
                         :key="formSection.label"
                         :class="getBlockClass(formSection)"
-                        class="pb12 form-section  "
+                        class="pb18 form-section  "
                     >
                         <header
                             v-if="formSection.label"
@@ -204,7 +204,7 @@ export default {
 
                 formSection.children.forEach((item, innerIndex) => {
                     for (const key in item.expressProp) {
-                        const propertyValue = item.properties[key]
+                        const propertyValue = item.expressProp[key]
                         let expressionValue; let isDynamicValue = false
 
                         if (typeof propertyValue === 'string' && reg.test(propertyValue)) {
@@ -220,21 +220,20 @@ export default {
                             switch (key) {
                                 case 'required':
                                     this.setElementRequired(item.key, expressionValue)
-                                    delete this.formItemList[index].children[innerIndex].properties[key]
-
+                                    delete this.formItemList[index].children[innerIndex].expressProp[key]
                                     break
                                 case 'value':
                                     expressionValue !== this.data[item.key] &&
                                         this.$set(this.data, item.key, expressionValue)
-                                    delete this.formItemList[index].children[innerIndex].properties[key]
+                                    delete this.formItemList[index].children[innerIndex].expressProp[key]
 
                                     break
                                 case 'hidden':
                                     this.formItemList[index].children[innerIndex].hidden = expressionValue
-                                    delete this.formItemList[index].children[innerIndex].properties[key]
+                                    delete this.formItemList[index].children[innerIndex].expressProp[key]
                                     break
                                 default:
-                                    this.formItemList[index].children[innerIndex].properties[key] = expressionValue
+                                    this.formItemList[index].children[innerIndex][key] = expressionValue
                             }
                         }
                     }
@@ -380,11 +379,7 @@ export default {
         setElementDisable(key, beDisable = true) {
             this.formItemForEach(formItem => {
                 if (formItem.key === key) {
-                    if (formItem.properties instanceof Object) {
-                        this.$set(formItem.properties, 'disabled', beDisable)
-                    } else {
-                        this.$set(formItem, 'properties', { disabled: beDisable })
-                    }
+                    this.$set(formItem, 'disabled',   beDisable )
                     return true
                 }
             })

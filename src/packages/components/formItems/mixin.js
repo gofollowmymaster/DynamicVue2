@@ -31,7 +31,7 @@ export default {
             obj = { ...obj, ...obj.properties }
             delete obj.wraperProperties
             delete obj.key
-            // delete obj.size
+            delete obj.expressProp
             delete obj.type
             delete obj.label
             delete obj.readonly
@@ -58,7 +58,7 @@ export default {
             if (this.allDisabled) {
                 return true
             }
-            return this.item.properties.disabled
+            return this.item.disabled
         },
         val: {
             get() {

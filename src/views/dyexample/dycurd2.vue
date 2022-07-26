@@ -64,8 +64,9 @@ import {
     treeStreetDeleteApi
 } from '@/api/assets.js'
 import fields from './fixedAssetsFields'
+import {formSections} from './fixedAssetsFields'
 
-const formFields = buildFormFields(fields)
+const formFields = buildFormFields(fields,formSections)
 const searchFields = buildSearchFields(fields)
 const tableFields = buildTableFields(fields)
 

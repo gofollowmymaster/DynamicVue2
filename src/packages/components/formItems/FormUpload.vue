@@ -211,6 +211,7 @@ export default {
                 obj['list-type'] = 'text'
             }
             delete obj.wraperProperties
+            delete obj.expressProp
             delete obj.key
             delete obj.size
             delete obj.type
@@ -223,6 +224,7 @@ export default {
             delete obj.defaultValue
             delete obj.apiPromise
             delete obj.downloadApi
+            delete obj.hidden
 
             return obj
         },
