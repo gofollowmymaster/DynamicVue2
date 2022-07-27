@@ -88,8 +88,10 @@ export const assetsFields = [
         options: buildDynamicSelectOption('tree_manage_famous_wood'), 
        
         tableOption: {
-            sort: 6
-            
+            colProperties:{
+                width:80
+            },
+            sort: 6,
         },
         formOption: {
             rules: ['required']

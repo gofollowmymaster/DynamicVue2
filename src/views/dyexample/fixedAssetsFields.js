@@ -126,9 +126,6 @@ const mainPlaintTableFields = [
         type: 'FormSelect',
         label: '单位',
         tableOption: {
-            // template(row, key){
-            //   return
-            // }
         },
         options: [
             {
