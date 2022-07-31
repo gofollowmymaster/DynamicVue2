@@ -1,5 +1,5 @@
 <template>
-    <!-- 普通输入框 -->
+ 
     <section>
         <el-slider
             v-if="!getTextModel"

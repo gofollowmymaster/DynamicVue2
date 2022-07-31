@@ -22,10 +22,10 @@ export function mockDyFields(fields) {
                 // );
                 mockInfo[field.key + '|0-3'] = 1
                 break
-            case 'FormIntNumber':
+            case 'FormNumber':
                 mockInfo[field.key + '|1-100'] = 1
                 break
-            case 'FormDecimalNumber':
+            case 'FormNumberPlus':
                 mockInfo[field.key + '|1-100.1-3'] = 1
                 break
             case 'FormHide':

@@ -32,7 +32,7 @@
             :key="formItem.key"
             v-model="val"
             class="form-item-box"
-            :style="formItem.style||{}"
+            :style="formItem.formItemStyle||{}"
             :class="`form-unqiue-${formItem.key} ${getTextModel ? 'hz-text-box' : 'hz-untext-box'}`"
             :item="formItem"
         />

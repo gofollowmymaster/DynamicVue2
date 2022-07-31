@@ -10,7 +10,7 @@ export const assetsFields = [
     {
         key: 'treeNameId',
         type: 'FormInput',
-        label: '树种名称',
+        label: '类别名称',
         tableOption: {
             sort: 2,
             key: 'treeName'
@@ -64,7 +64,7 @@ export const assetsFields = [
     },
     {
         key: 'investNumber',
-        type: 'FormIntNumber',
+        type: 'FormNumber',
         label: '调查顺序号',
         formOption: {
             changeHandle(value, data, items, vm) {
@@ -99,7 +99,7 @@ export const assetsFields = [
     },
     {
         key: 'age',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         label: '树龄（年）',
         tableOption: {
             sort: 5
@@ -133,7 +133,7 @@ export const assetsFields = [
     },
     {
         key: 'treeHigh',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         label: '树高（米）',
         formOption: {
             rules: ['required']
@@ -141,15 +141,15 @@ export const assetsFields = [
     },
     {
         key: 'crownWidth',
-        type: 'FormDecimalNumber',
-        label: '平均冠幅(米)',
+        type: 'FormNumberPlus',
+        label: '平均面积(米)',
         formOption: {
             rules: ['required']
         }
     },
     {
         key: 'bust',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         label: '胸（地）围(厘米)',
         formOption: {
             rules: ['required']
@@ -157,16 +157,16 @@ export const assetsFields = [
     },
     {
         key: 'crownWidthNorthSouth',
-        type: 'FormDecimalNumber',
-        label: '冠幅-南北向(米)',
+        type: 'FormNumberPlus',
+        label: '面积-南北向(米)',
         formOption: {
    
         }
     },
     {
         key: 'crownWidthEastWest',
-        type: 'FormDecimalNumber',
-        label: '冠幅- 东西向(米)',
+        type: 'FormNumberPlus',
+        label: '面积- 东西向(米)',
         formOption: {
    
         }
@@ -174,7 +174,7 @@ export const assetsFields = [
     {
         key: 'treeDesc',
         type: 'FormTextarea',
-        label: '树木奇特性状描述',
+        label: '设备性状描述',
         formOption: {
             span: 24
         }
@@ -222,7 +222,7 @@ export const assetsFields = [
         key: 'growingPlace',
         type: 'FormDynamicSelect',
         formSection: '地理位置',
-        label: '生长场所',
+        label: '使用场所',
         options: buildDynamicSelectOption('tree_manage_growing_place'),
         formOption: {
         }
@@ -230,7 +230,7 @@ export const assetsFields = [
     },
     {
         key: 'slope',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         formSection: '地理位置',
         label: '坡度(度)',
         formOption: {
@@ -239,7 +239,7 @@ export const assetsFields = [
     },
     {
         key: 'slopeDirection',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         formSection: '地理位置',
         label: '坡向',
         formOption: {
@@ -249,7 +249,7 @@ export const assetsFields = [
 
     {
         key: 'altitude',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         formSection: '地理位置',
         label: '海拔(米)',
         formOption: {
@@ -257,7 +257,7 @@ export const assetsFields = [
     },
     {
         key: 'slopePosition',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         formSection: '地理位置',
         label: '坡位',
         formOption: {
@@ -267,8 +267,8 @@ export const assetsFields = [
     {
         key: 'growthSituation',
         type: 'FormDynamicSelect',
-        formSection: '生长信息',
-        label: '生长态势',
+        formSection: '使用信息',
+        label: '使用态势',
         searchable: true,
         options: buildDynamicSelectOption('tree_manage_growth_situation'), 
         formOption: {
@@ -283,8 +283,8 @@ export const assetsFields = [
     {
         key: 'growthStatus',
         type: 'FormDynamicSelect',
-        formSection: '生长信息',
-        label: '生长现状',
+        formSection: '使用信息',
+        label: '使用现状',
         options: buildDynamicSelectOption('tree_manage_growth_status'), 
         formOption: {
         }
@@ -294,8 +294,8 @@ export const assetsFields = [
     {
         key: 'growthEnvironment',
         type: 'FormDynamicSelect',
-        formSection: '生长信息',
-        label: '生长环境',
+        formSection: '使用信息',
+        label: '使用环境',
         options: buildDynamicSelectOption('tree_manage_growth_environment'),
         formOption: {
             rules: ['required']
@@ -305,16 +305,16 @@ export const assetsFields = [
     {
         key: 'soilType',
         type: 'FormInput',
-        formSection: '生长信息',
-        label: '土壤类型',
+        formSection: '使用信息',
+        label: '场地类型',
         formOption: {
 
         }
     },
     {
         key: 'soilThickness',
-        type: 'FormDecimalNumber',
-        formSection: '生长信息',
+        type: 'FormNumberPlus',
+        formSection: '使用信息',
         label: '土层厚度（厘米）',
         formOption: {
         }
@@ -350,9 +350,6 @@ export const assetsFields = [
         formSection: '管理信息',
         formOption: {
             span: 24,
-            properties: {
-   
-            },
             'list-type': 'table',
             accept: '*',
             limit: 200,
@@ -803,7 +800,7 @@ export const transFields = [
         label: '行政区划',
         key: 'district',
         type: 'FormInput',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
         formOption: {
             key: 'district'
         }
@@ -811,7 +808,7 @@ export const transFields = [
     {
         label: '经纬度',
         key: 'lonLat',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
         type: 'FormSelectPoint',
 
         formOption: {}
@@ -819,10 +816,10 @@ export const transFields = [
     {
         label: '详细地址',
         key: 'address',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
         formOption: {},
         tableOption: {
-            label: '移植后地点',
+            label: '转移后地点',
             sort: 5
         }
     },
@@ -831,7 +828,7 @@ export const transFields = [
         label: '管理单位',
         key: 'unit',
         type: 'FormInput',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
 
         tableOption: { sort: 9 },
         formOption: {}
@@ -840,22 +837,22 @@ export const transFields = [
         label: '管理人',
         key: 'manageUser',
         type: 'FormInput',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
         formOption: {}
     },
 
     {
         label: '管理人员联系方式',
         key: 'manageUserPhone',
-        formSection: '移植后信息',
+        formSection: '转移后信息',
         formOption: {}
     },
 
     {
-        label: ' 移植单位',
+        label: ' 转移单位',
         key: 'removeUnit',
         type: 'FormInput',
-        formSection: '移植信息',
+        formSection: '转移信息',
 
         formOption: {},
         tableOption: {
@@ -863,10 +860,10 @@ export const transFields = [
         }
     },
     {
-        label: '移植人',
+        label: '转移人',
         key: 'removeManageUser',
         type: 'FormInput',
-        formSection: '移植信息',
+        formSection: '转移信息',
         formOption: {},
         tableOption: {
             sort: 7
@@ -874,18 +871,18 @@ export const transFields = [
     },
 
     {
-        label: '移植人电话',
+        label: '转移人电话',
         key: 'removeUserPhone',
-        formSection: '移植信息',
+        formSection: '转移信息',
         tableOption: {
             sort: 8
         },
         formOption: {}
     },
     {
-        label: '移植时间',
+        label: '转移时间',
         key: 'removeTime',
-        formSection: '移植信息',
+        formSection: '转移信息',
         type: 'FormDateTime',
         tableOption: {
             sort: 4
@@ -893,7 +890,7 @@ export const transFields = [
         formOption: {}
     },
     {
-        label: '移植时间',
+        label: '转移时间',
         key: 'handleTime',
         type: 'FormDateTimeRange',
         searchOption: {
@@ -911,13 +908,13 @@ export const transFields = [
     },
 
     {
-        label: '移植情况说明',
+        label: '转移情况说明',
         key: 'removeDesc',
-        formSection: '移植信息',
+        formSection: '转移信息',
         type: 'FormTextarea',
         tableOption: {
             sort: 3,
-            label: '移植情况'
+            label: '转移情况'
         },
         formOption: {
             wraperProperties: {
@@ -928,7 +925,7 @@ export const transFields = [
 
     {
         key: 'filesBefore',
-        label: '移植前照片',
+        label: '转移前照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {
@@ -949,7 +946,7 @@ export const transFields = [
 
     {
         key: 'filesAfter',
-        label: '移植后照片',
+        label: '转移后照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {

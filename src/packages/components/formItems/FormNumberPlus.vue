@@ -49,7 +49,7 @@ import FormMixin from './mixin'
 import { isEmpty } from '../../utils/tool'
 
 export default {
-    name: 'FormDecimalNumber',
+    name: 'FormNumberPlus',
     mixins: [FormMixin],
     data() {
         return {
@@ -109,15 +109,11 @@ export default {
             set(v) {
                 if (isEmpty(this.value, true)) {
                     this.$emit('input', v)
-                    // 只有非子表单的情况下，才会冒泡上去数据变更
-                    if (this.formItemType !== 'childForm') {
+                
                         this.statusChangeFn.valueUpdateEvent({
                             [this.item.key]: v
                         })
-                    } else {
-                        // 如果是子表单的话，执行内置的变更
-                        this.childChangeData.valueUpdateEvent()
-                    }
+                   
                     return
                 }
                 const newVal = v
@@ -151,15 +147,11 @@ export default {
                 }
                 this.$emit('input', n)
 
-                // 只有非子表单的情况下，才会冒泡上去数据变更
-                if (this.formItemType !== 'childForm') {
+                
                     this.statusChangeFn.valueUpdateEvent({
                         [this.item.key]: n
                     })
-                } else {
-                    // 如果是子表单的话，执行内置的变更
-                    this.childChangeData.valueUpdateEvent()
-                }
+                
             }
         }
     },

@@ -55,7 +55,7 @@ export default {
             }
         },
         actionBarWraper: {
-            type: [Object, HTMLElement ?? Array ]
+           
         },
         mode: {
             type: String,

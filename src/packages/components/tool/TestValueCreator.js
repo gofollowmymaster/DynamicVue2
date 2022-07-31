@@ -76,7 +76,7 @@ class TestValueCreator {
               ) {
                   obj[fieldItem.key] = this.makeSelectRadioValue(fieldItem)
               } else if (
-                  ['FormIntNumber', 'FormDecimalNumber', 'FormRateInput'].includes(fieldItem.type)
+                  ['FormNumber', 'FormNumberPlus', 'FormRateInput'].includes(fieldItem.type)
               ) {
                   obj[fieldItem.key] = this.makeNumberValue(fieldItem)
               } else if (['FormDynamicSelect'].includes(fieldItem.type)) {

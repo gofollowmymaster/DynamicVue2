@@ -10,7 +10,7 @@ const mainPlaintFields = [
 
     {
         key: 'treeStreetQuantity',
-        type: 'FormIntNumber',
+        type: 'FormNumber',
         label: '数量',
         tableOption: {
             label: '不动产数量',
@@ -57,7 +57,6 @@ const mainPlaintFields = [
 
 ]
 export const mainPlaintOption = {
-    searchOption: null,
     topToolBar: {
         bulkdelete: null,
         create: {
@@ -100,7 +99,7 @@ const mainPlaintTableFields = [
     {
         key: 'treeId',
         type: 'FormInput',
-        label: '树种',
+        label: '类别',
 
         tableOption: {
             sort: 2,
@@ -111,10 +110,10 @@ const mainPlaintTableFields = [
     },
     {
         key: 'treeStreetQuantity',
-        type: 'FormIntNumber',
+        type: 'FormNumber',
         label: '数量',
         tableOption: {
-            label: '行道树数量',
+            label: '设备数量',
             sort: 3
         },
         formOption: {
@@ -130,7 +129,7 @@ const mainPlaintTableFields = [
         options: [
             {
                 value: '1',
-                label: '株'
+                label: '台'
             },
             {
                 value: '2',
@@ -163,7 +162,7 @@ export const mainPlaintTableOption = {
     hasCheckbox: false
 }
 export const formSections = {
-    '主要植物': {
+    '主要配件': {
         hidden: "#{plantedInGreen}"
     }
 }
@@ -234,7 +233,7 @@ export default [
 
     {
         key: 'height',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         label: '平均资产高',
         formSection: '基本信息',
         formOption: {
@@ -293,13 +292,10 @@ export default [
         formSection: '基本信息',
         formOption: {
             span: 24,
-            properties: {
-                limit: 5,
-                'list-type': 'picture-card'
-            },
+            limit: 5,
+            'list-type': 'picture-card',
             btn_text: '上传',
             tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-
             apiPromise: elementUploadFileApi
         }
     },
@@ -322,7 +318,7 @@ export default [
       key: 'mainPlant',
       label: '',
       type: 'FormTableEditable',
-      formSection: '主要植物',
+      formSection: '主要配件',
       formOption: {
         span:24,
         wraperProperties: {
@@ -352,7 +348,7 @@ export default [
     //     key: 'mainPlant',
     //     label: '',
     //     type: 'FormChildrenForm',
-    //     formSection: '主要植物',
+    //     formSection: '主要配件',
     //     formOption: {
     //         span: 24,
     //         wraperProperties: {

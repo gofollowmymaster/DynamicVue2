@@ -101,9 +101,7 @@ const fileFields = [
         label: '名称',
         tableOption: {},
         formOption: {
-            wraperProperties: {
-                class: ['grid-col-24']
-            }
+            span:24
         }
     },
     {
@@ -112,9 +110,7 @@ const fileFields = [
         label: '大小',
         // tableOption:true,
         formOption: {
-            wraperProperties: {
-                class: ['grid-col-24']
-            }
+            span:24
         }
     },
     {
@@ -123,9 +119,7 @@ const fileFields = [
         label: '上传时间',
         tableOption: true,
         formOption: {
-            wraperProperties: {
-                class: ['grid-col-24']
-            }
+            span:24
         }
     }
 ]
@@ -142,7 +136,7 @@ function getAccepts(accept) {
             application/vnd.openxmlformats-officedocument.wordprocessingml.document,
             application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,`
         default:
-            return '*'
+            return accept
     }
 }
 export default {
@@ -314,7 +308,7 @@ export default {
             if (!res) return // 有重复请求   OPTION?
             if (!file.response) return //
 
-            const fileId = file.response.fileId
+            const fileId = file.response.fileId||file.response.id
             const fileUrl = file.response.fileUrl || file.url
             const fileName = file.raw.name
             const fileSize = file.raw.size

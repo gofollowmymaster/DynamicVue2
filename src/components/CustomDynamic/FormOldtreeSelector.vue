@@ -70,7 +70,7 @@ const fields = [
     },
     {
         key: 'age',
-        type: 'FormDecimalNumber',
+        type: 'FormNumberPlus',
         label: '使用年数（年）',
         tableOption: {
             sort: 5

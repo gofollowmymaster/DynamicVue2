@@ -592,11 +592,9 @@ export const eventFields = [
         formSection: '附件信息',
         formOption: {
 
-            properties: {
                 // disabled: true,
                 'list-type': 'picture-card',
-                accept: 'img'
-            },
+                accept: 'img',
             btn_text: '上传',
             // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
             apiPromise: elementUploadFileApi

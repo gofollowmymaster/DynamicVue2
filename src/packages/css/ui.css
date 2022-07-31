@@ -139,6 +139,22 @@
   --layout-row-gap: 0;
   --layout-gap: 0;
 }
+.dynamic-form .form-text-mode .block-border {
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  background: #fff;
+}
+.dynamic-form .form-text-mode .block-border .block-nav {
+  line-height: 40px;
+  padding: 14px 0 14px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #dde0ea;
+}
+.dynamic-form .form-text-mode .block-border .block-content {
+  margin: 0;
+}
 .dynamic-form .form-text-mode .el-form-item__label {
   border-bottom: 1px solid #ebeef5;
   border-right: 1px solid #ebeef5;

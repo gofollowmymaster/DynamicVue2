@@ -20,9 +20,6 @@
             width: 83%;
         }
     }
-    &.line-form{
-
-    }
     &.column-form {
         .block-content {
             width: 100%;
@@ -31,20 +28,12 @@
 
     // 1、标题文字
     .el-form-item__label {
-        // min-height: 36px;
-        // line-height: 36px;
         height: auto;
         padding-bottom: 0;
     }
     .el-form-item__content {
-        // line-height: 36px;
         line-height: 24px;
-        //  display: flex;
-        //  height: 100%;
-        //  align-items: center;
         .form-input-text {
-            // line-height: 36px;
-            //white-space: pre-wrap;
             word-break: break-word;
         }
     }
@@ -54,24 +43,16 @@
             height: auto;
         }
         .form-item-box {
-            // height: auto;
             position: relative;
             width: 100%;
         }
         .form-input-text {
-            // min-height: 36px;
             height: auto;
-            // line-height: 36px;
         }
     }
     .form-item-box {
-        // min-height: 36px;
-        // line-height: 36px;
         .el-input {
-            // position: relative;
-            // display: block;
             width: 100%;
-            // height: 36px;
         }
         .el-select {
             display: block;
@@ -91,9 +72,6 @@
     }
     .el-input__inner {
         vertical-align: top;
-        // height: 36px !important;
-        // line-height: 36px !important;
-        // border: 1px solid #e2e3e6 !important;
         padding-left: 12px;
     }
     .el-textarea__inner {
@@ -104,23 +82,13 @@
         margin-bottom: 0;
     }
 
-    // .el-input.is-active .el-input__inner,
-    // .el-input__inner:focus,
-    // .el-select .el-input.is-focus .el-input__inner,
-    // .el-textarea__inner:focus {
-    //   border-color: #129E9E !important;
-    // }
     .block-nav {
         position: relative;
         margin-bottom: 24px;
         font-size: 16px;
-        // background: #f8f9fb;
         padding: 8px 0;
         .block-text {
-            // border-left: solid 4px var(--main-color, blue);
             padding-left: 16px;
-            // float: left;
-            // height: 32px;
             font-size: 16px;
             color: var(--adrk);
             font-weight: 600 !important;
@@ -147,7 +115,6 @@
         background: #fff;
         .block-nav {
             line-height: 40px;
-            // background: #f8f9fb;
             padding: 14px 0 14px 0;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
@@ -188,6 +155,25 @@
     .form-text-mode {
         --layout-row-gap: 0;
         --layout-gap: 0;
+        // 带边框的表单组件
+        .block-border {
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            background: #fff;
+            .block-nav {
+                line-height: 40px;
+                padding: 14px 0 14px 0;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border-bottom: 1px solid #dde0ea;
+                
+            }
+            .block-content {
+                margin:  0;
+            }
+        }
+        
         .el-form-item__label {
             border-bottom: 1px solid #ebeef5;
             border-right: 1px solid #ebeef5;
@@ -201,11 +187,8 @@
             position: relative;
             border-bottom: 1px solid #ebeef5;
             border-right: 1px solid #ebeef5;
-            // padding-left:22px;
             height: 100%;
             vertical-align: middle;
-            // display: flex;
-            // align-items: center;
             .form-item-box{
                 position: absolute;
                 top: 50%;
@@ -213,16 +196,12 @@
             }
             .hz-text-box {
                 padding-left: 22px;
-                .form-input-text{
-                  
-                }
             }
         }
         >.form-section {
             >.block-content {
                 border-top: 1px solid #ebeef5;
                 border-left: 1px solid #ebeef5;
-                // padding: 1px;
             }
         }
         >.form-section:last-child {
@@ -230,9 +209,6 @@
         }
         .grid-wrap {
             .grid-col-24 {
-                // border-top: solid 1px #EBEEF5;
-                // border-bottom: 1px solid #EBEEF5;
-                // border-right: 1px solid #EBEEF5;
                 outline: 1px solid #ebeef5;
                 >.el-form-item__content {
                     border-bottom: none;
@@ -291,8 +267,6 @@
     padding-right: 16px;
 }
 .el-table th.el-table__cell.el-table-column--selection:first-child > .cell {
-    // padding-left: 14px;
-    // padding-right: 14px;
     text-align: center;
 }
 .el-table--border .el-table__cell.el-table-column--selection:first-child .cell {

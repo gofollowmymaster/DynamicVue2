@@ -2,18 +2,17 @@
     <!-- 日期选择框 -->
     <section>
         <el-date-picker v-if="!getTextModel"
-                        v-model="val"
-                        class="form-date-item"
-                        type="date"
-                        style="width: 100%;"
-                        :disabled="getDisabled"
-                        :placeholder="getPlaceholder(item)"
-                        :picker-options="item.pickerOptions ? handlerDate(item.pickerOptions) : () => false"
-                        value-format="yyyy-MM-dd"
-                        :clearable="true"
-                        v-bind="bindOptions"
-                        @blur="e => onBlur(item, e)"
-                        @focus="e => onFocus(item, e)"
+            v-model="val"
+            class="form-date-item"
+            type="date"
+            style="width: 100%;"
+            :disabled="getDisabled"
+            :placeholder="getPlaceholder(item)"
+            :picker-options="item.pickerOptions ? handlerDate(item.pickerOptions) : () => false"
+            value-format="yyyy-MM-dd"
+            v-bind="bindOptions"
+            @blur="e => onBlur(item, e)"
+            @focus="e => onFocus(item, e)"
         />
         <div v-else :style="item.textStyle||{}" class="form-input-text">{{ val || '-' }}</div>
     </section>

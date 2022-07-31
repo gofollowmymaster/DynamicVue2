@@ -18,39 +18,15 @@ export default {
     inject: [
         'changeData',
         'statusChangeFn',
-        'formItemType',
-        'childChangeData',
-        'formData'
+        'formData',
+        'form'
     ],
     computed: {
     // 扩展属性，直接将属性配置，传到表单组件内部（即 Element UI 上）
-    // 忽略属性【key、size】
+   
         bindOptions() {
-            let obj = Object.assign({}, this.item)
-
-            obj = { ...obj, ...obj.properties }
-            delete obj.wraperProperties
-            delete obj.key
-            delete obj.expressProp
-            delete obj.type
-            delete obj.label
-            delete obj.readonly
-            delete obj.rules
-            delete obj.placeholder
-            delete obj.prepend
-            delete obj.append
-            delete obj.defaultValue
-            delete obj.extra
-            delete obj.properties
-            delete obj.options
-            delete obj.groupProperties
-
-            delete obj.hidden
-            delete obj.value
-
-            obj.maxlength = obj.maxlength || 255
-
-            return obj
+            return this.getDefaultBindOptions(this.item)
+         
         },
         // 获取禁用状态
         getDisabled() {
@@ -89,6 +65,33 @@ export default {
         }
     },
     methods: {
+        getDefaultBindOptions(item){
+            let obj = Object.assign({}, item)
+
+            obj = { ...obj, ...obj.properties,...obj.extra }
+            delete obj.wraperProperties
+            delete obj.key
+            delete obj.expressProp
+            delete obj.type
+            delete obj.label
+            delete obj.readonly
+            delete obj.rules
+            delete obj.placeholder
+            delete obj.prepend
+            delete obj.append
+            delete obj.defaultValue
+            delete obj.extra
+            delete obj.properties
+            delete obj.options
+            delete obj.groupProperties
+
+            delete obj.hidden
+            delete obj.value
+
+            obj.maxlength = obj.maxlength || 255
+
+            return obj
+        },
     // 获取输入框的 placeholder
         getPlaceholder(formItem, prev = '请输入') {
             // todo 这里可能还要加一个全部 disable 的判断
@@ -125,7 +128,8 @@ export default {
                 this.item.events.onFocus({
                     event: e,
                     option: this.item,
-                    value: this.value
+                    value: this.value,
+                    formVm:this.form
                 })
             }
         },
@@ -137,7 +141,8 @@ export default {
                 this.item.events.onBlur({
                     event: e,
                     option: this.item,
-                    value: this.value
+                    value: this.value,
+                    formVm:this.form
                 })
             }
         },

@@ -27,7 +27,7 @@
 import FormMixin from './mixin'
 
 export default {
-    name: 'FormIntNumber',
+    name: 'FormNumber',
     mixins: [FormMixin],
     computed: {
         // 前置符号

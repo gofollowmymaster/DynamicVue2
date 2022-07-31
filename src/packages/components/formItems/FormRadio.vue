@@ -10,8 +10,8 @@
                         @blur="e => onBlur(item, e)"
                         @focus="e => onFocus(item, e)"
         >
-            <component :is="bindOptions.button&&!bindOptions.border?'el-radio-button':'el-radio'" v-for="opt in item.options" :key="opt.value"
-                       :label="opt.value" v-bind="bindOptions"
+            <component :is="bindOptions.button&&!bindOptions.itemProperties.border?'el-radio-button':'el-radio'" v-for="opt in item.options" :key="opt.value"
+                       :label="opt.value" v-bind="{...item.itemProperties,...opt}"
             >
                 {{ opt.label }}
             </component>
@@ -38,7 +38,13 @@ export default {
                 return item.value === this.val
             })
             return (content && content.label) || ''
-        }
+        },
+        bindOptions() {
+            const options= this.getDefaultBindOptions(this.item)
+            options.itemProperties=options.itemProperties?options.itemProperties:{}
+            return options
+         
+        },
 
     }
 

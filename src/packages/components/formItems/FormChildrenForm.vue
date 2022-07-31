@@ -112,5 +112,6 @@ export default {
 <style    lang="css">
 .chilren-form-wrapper .chilren-form-list .children-form-item .dynamic-form .block-content {
     width: 100%;
+     margin: 0;
 }
 </style>

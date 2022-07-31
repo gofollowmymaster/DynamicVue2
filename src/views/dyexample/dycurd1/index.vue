@@ -102,7 +102,7 @@ export default {
                                 },
                                 {
                                     component: 'transLog',
-                                    label: '移植记录',
+                                    label: '转移记录',
                                     name: '@object@'
                                 }
                             ]

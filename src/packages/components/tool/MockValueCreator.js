@@ -23,10 +23,10 @@ import Mock from 'mockjs'
 //         // );
 //         mockInfo[field.key + '|1'] = Random.integer(0, 3)
 //         break
-//       case 'FormIntNumber':
+//       case 'FormNumber':
 //         mockInfo[field.key + '|1-100'] = 1
 //         break
-//       case 'FormDecimalNumber':
+//       case 'FormNumberPlus':
 //         mockInfo[field.key + '|1-100.1-3'] = 1
 //         break
 //       default:
@@ -91,7 +91,7 @@ class TestValueCreator {
                   obj[fieldItem.key] = this.makeInputValue(fieldItem)
               } else if (['FormSelect', 'FormRadio', 'FormMulSelect'].includes(fieldItem.type)) {
                   obj[fieldItem.key] = this.makeSelectRadioValue(fieldItem)
-              } else if (['FormIntNumber', 'FormDecimalNumber', 'FormRateInput'].includes(fieldItem.type)) {
+              } else if (['FormNumber', 'FormNumberPlus', 'FormRateInput'].includes(fieldItem.type)) {
                   obj[fieldItem.key] = this.makeNumberValue(fieldItem)
               } else if (['FormDynamicSelect'].includes(fieldItem.type)) {
                   obj[fieldItem.key] = this.makeDynamicSelectValue(fieldItem) || '1'

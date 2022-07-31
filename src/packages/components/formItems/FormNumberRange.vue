@@ -21,7 +21,6 @@
                 <template v-if="item.prepend" slot="prepend">{{ item.prepend }}</template>
                 <template v-if="item.append" slot="append">{{ item.append }}</template>
             </el-input>
-            <!-- <span class="ml8 mr16">{{item.append}}</span> -->
         </section>
         <div v-else :style="item.textStyle||{}" class="form-input-text">
             {{ item.prepend }}
@@ -34,7 +33,6 @@
 <script>
 
 import FormMixin from './mixin'
-// import { isEmpty } from '../../utils/tool'
 
 export default {
     name: 'FormNumberRange',
@@ -61,15 +59,11 @@ export default {
             set(v) {
                 this.$emit('input', v)
 
-                // 只有非子表单的情况下，才会冒泡上去数据变更
-                if (this.formItemType !== 'childForm') {
+               
                     this.statusChangeFn.valueUpdateEvent({
                         [this.item.key]: v
                     })
-                } else {
-                    // 如果是子表单的话，执行内置的变更
-                    this.childChangeData.valueUpdateEvent()
-                }
+               
             }
         }
     },

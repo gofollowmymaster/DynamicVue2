@@ -83,10 +83,9 @@ export default {
             // 会动态变化的数据（注意，来自 props【更上级组件】的数据，不能放这个里面，只能显式的通过 props 往下面传）
             changeData: this.changeData,
             formData: this.getData,
-            formItemType: '',
-            childChangeData: {},
             formProperties: () => this.formProperties,
-            colNum: this.colNum
+            colNum: this.colNum,
+            form:this,
 
         }
     },

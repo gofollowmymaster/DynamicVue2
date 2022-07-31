@@ -9,7 +9,7 @@
 <script>
 import { transDetailApi, transListApi } from '@/api/assetsMaintain.js'
 
-const entityLabel = '移植记录'
+const entityLabel = '转移记录'
 import {transFields}  from './assetsListField'
 
 export default {

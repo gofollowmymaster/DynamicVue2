@@ -80,7 +80,7 @@ export function protectDetailApi(data) {
 
 }
 
-// -------移植记录--------------------
+// -------转移记录--------------------
 export function transListApi(params = {}) {
     debugger
     return apiListMock(transFields, params)

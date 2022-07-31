@@ -38,11 +38,14 @@ const searchFieldsTmpl = [
             groupProperties: {
                 size: 'small'
             },
-            properties: {
+            
                 button: true,
+            
+            itemProperties:{
+                style: { width: '120px' },
                 border: true,
-                style: { width: '120px' }
             }
+           
         }
     }
 ]
@@ -77,9 +80,7 @@ export default {
             searchFields.push({
                 key: 'tip',
                 type: 'FormText',
-                wraperProperties: {
-                    class: ['grid-col-8']
-                },
+                span:8,
                 searchOption: {
                     content: `该区域下固定资产总共${this.num}台`
                 }
@@ -97,7 +98,7 @@ export default {
                                     'label-position': 'right'
                                 },
                                 borderForm: false,
-                                trigger: 'click',
+                                trigger: 'change',
                                 resetable: false,
                                 testTool:false,
                             }),

@@ -84,7 +84,7 @@ const fields  =[
   }, 
   {
     key: "investNumber",
-    type: "FormIntNumber",
+    type: "FormNumber",
     label: "顺序号",
     tableOption:true,
     formOption:true
