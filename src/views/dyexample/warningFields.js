@@ -464,7 +464,7 @@ export const eventFields = [
         key: 'equipmentName',
         type: 'FormTextarea',
         formOption: {
-            span: 24,
+            col : 5,
             rules: ['required']
         }
     },
@@ -474,7 +474,7 @@ export const eventFields = [
         key: 'equipmentName1',
         type: 'FormTextarea',
         formOption: {
-            span: 24
+            col : 5
         }
     },
     {
@@ -693,9 +693,6 @@ export const unhandleFields = [
         type: 'FormInput',
         formOption: {
             rules: ['required'],
-            wraperProperties: {
-                // class:['grid-col-24']
-            }
         }
     },
 
@@ -704,9 +701,6 @@ export const unhandleFields = [
         key: 'handleUserId',
         type: 'FormInput',
         formOption: {
-            wraperProperties: {
-                // class:['grid-col-24']
-            },
             rules: ['required']
         }
     },
@@ -716,9 +710,6 @@ export const unhandleFields = [
         type: 'FormDateTime',
         key: 'handleTime',
         formOption: {
-            wraperProperties: {
-                // class:['grid-col-24']
-            }
         }
     }
 

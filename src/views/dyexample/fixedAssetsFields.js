@@ -17,7 +17,7 @@ const mainPlaintFields = [
             sort: 3
         },
         formOption: {
-            span: 24,
+            col : 5,
             rules: ['required']
         }
     },
@@ -40,7 +40,7 @@ const mainPlaintFields = [
             }
         ],
         formOption: {
-            span: 24,
+            col : 5,
             rules: ['required']
         }
     },
@@ -50,7 +50,7 @@ const mainPlaintFields = [
         label: '备注',
         tableOption: true,
         formOption: {
-            span: 24,
+            col : 5,
             rules: ['required']
         }
     }
@@ -280,7 +280,7 @@ export default [
         formSection: '基本信息',
         type: 'FormTextarea',
         formOption: {
-            span: 24,
+            col : 5,
             
         }
     },
@@ -291,7 +291,7 @@ export default [
         type: 'FormUpload',
         formSection: '基本信息',
         formOption: {
-            span: 24,
+            col : 5,
             limit: 5,
             'list-type': 'picture-card',
             btn_text: '上传',
@@ -305,7 +305,7 @@ export default [
     //   type: 'FormCurd',
     //   formSection: '主要配件',
     //   formOption: {
-    //     span: 24,
+    //     col : 5,
     //     wraperProperties: {
     //       'label-width': '0px'
     //     },
@@ -320,7 +320,7 @@ export default [
       type: 'FormTableEditable',
       formSection: '主要配件',
       formOption: {
-        span:24,
+        span:5,
         wraperProperties: {
           'label-width':'0px'
         },
@@ -350,7 +350,7 @@ export default [
     //     type: 'FormChildrenForm',
     //     formSection: '主要配件',
     //     formOption: {
-    //         span: 24,
+    //         col : 5,
     //         wraperProperties: {
     //             'label-width': '0px'
     //         },

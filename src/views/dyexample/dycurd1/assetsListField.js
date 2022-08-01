@@ -176,7 +176,7 @@ export const assetsFields = [
         type: 'FormTextarea',
         label: '设备性状描述',
         formOption: {
-            span: 24
+            col : 5
         }
     },
 
@@ -185,7 +185,7 @@ export const assetsFields = [
         label: '资产照片',
         type: 'FormUpload',
         formOption: {
-            span: 24,
+            col : 5,
             'list-type': 'picture-card',
             accept: 'img',
             btn_text: '上传',
@@ -340,7 +340,7 @@ export const assetsFields = [
         label: '管养方案',
         formSection: '管理信息',
         formOption: {
-            span: 24
+            col : 5
         }
     },
     {
@@ -349,7 +349,7 @@ export const assetsFields = [
         type: 'FormUpload',
         formSection: '管理信息',
         formOption: {
-            span: 24,
+            col : 5,
             'list-type': 'table',
             accept: '*',
             limit: 200,

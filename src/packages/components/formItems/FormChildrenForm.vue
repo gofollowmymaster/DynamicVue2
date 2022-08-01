@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style scoped  lang="css">
-  children-form-item {
+  .children-form-item {
       border: solid 1px var(--grey);
  }
    .action-icon {
@@ -114,4 +114,11 @@ export default {
     width: 100%;
      margin: 0;
 }
+.chilren-form-wrapper .chilren-form-list  .form-section{
+    padding-bottom: 0px;
+}
+.chilren-form-wrapper .chilren-form-list  .dynamic-form{
+    margin-bottom: 8px;
+}
+
 </style>

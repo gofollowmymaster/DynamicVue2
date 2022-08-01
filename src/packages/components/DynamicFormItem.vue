@@ -45,13 +45,10 @@
     </el-form-item>
 </template>
 <script>
-// import presetConfig from  "presetConfig"
 export default {
     name: 'DynamicFormItem',
     components: {
-
     },
-
     inject: [
         'colNum',
         'changeData'
@@ -63,7 +60,6 @@ export default {
                 return {}
             }
         },
-
         value: {
             type: [Object, Array, String, Boolean, Number],
             default: function() {
@@ -71,7 +67,6 @@ export default {
             }
         },
         label: String,
-        
     },
     data() {
         return {
@@ -114,9 +109,9 @@ export default {
             })
             const colNum = this.colNum >= 1 ? this.colNum : 1
             let layoutClass = 'grid-col-' + Math.ceil(24 / colNum)
-
-            if (this.formItem.span) {
-                layoutClass = 'grid-col-' + this.formItem.span
+            const col = this.formItem.col>=colNum?colNum:this.formItem.col
+            if (col) {
+                layoutClass = 'grid-col-' + 24*(col/colNum)
             }
 
             classList.push(layoutClass)
