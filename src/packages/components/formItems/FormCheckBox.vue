@@ -1,7 +1,7 @@
 <template>
     <!-- 普通输入框 -->
     <section>
-        <el-checkbox-group v-if="!getTextModel"
+        <el-checkbox-group v-if="!gettextMode"
                            v-model.trim="val"
                            :disabled="getDisabled"
                            v-bind="item.groupProperties"
@@ -14,7 +14,7 @@
                 {{ opt.label }}
             </component>
         </el-checkbox-group>
-        <div class="form-input-text">{{ textModelValue || '-' }}</div>
+        <div class="form-input-text">{{ textModeValue || '-' }}</div>
     </section>
 </template>
 
@@ -30,7 +30,7 @@ export default {
     },
     computed: {
 
-        textModelValue() {
+        textModeValue() {
             const content = this.item.options && this.item.options.find(item => {
                 return item.value === this.val
             })

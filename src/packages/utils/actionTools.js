@@ -156,7 +156,7 @@ function setDialogFormAction(options) {
                     },
                     showFoldBtn: options.showFoldBtn ?? presetConfig.getConfig('formOption').showFoldBtn,
                     borderForm: options.borderForm ?? presetConfig.getConfig('formOption').borderForm,
-                    textModel: options.textModel ?? false,
+                    textMode: options.textMode ?? false,
                     colNum: options.colNum ?? presetConfig.getConfig('formOption').colNum
                 },
                 formItemList: options.formItemList,

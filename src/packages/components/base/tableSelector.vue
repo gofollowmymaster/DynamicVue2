@@ -17,9 +17,7 @@
             :options="options.searchOption"
             @search="onSearch"
         />
-        <section
-            class="flex flex-direction "
-        >
+        <section  class="flex flex-direction " >
             <DynamicTable
                 class="table-wraper flex1"
                 :table="options.listOption"
@@ -55,10 +53,7 @@ import {
     buildTableFields
 } from '../../utils/fieldsConfigUtil'
 
-import presetConfig, {
- 
-    tableOption
-} from '../../presetConfig'
+import presetConfig from '../../presetConfig'
 export default {
     name: 'TableSelector',
     props: {

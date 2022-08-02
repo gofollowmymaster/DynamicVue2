@@ -3,7 +3,7 @@
     <main>
         <div class="flex justify-between pr12">
             <el-input
-                v-if="!getTextModel"
+                v-if="!gettextMode"
                 :value="value"
                 :placeholder="getPlaceholder(item)"
                 :disabled="getDisabled"
@@ -26,7 +26,7 @@
                 class="ml10"
                 @click="selectPoint"
             >
-                {{ !getTextModel ? '选择' : '查看' }}
+                {{ !gettextMode ? '选择' : '查看' }}
             </el-button>
         </div>
         <DrawElementGis
@@ -35,7 +35,7 @@
             :zoom="zoom"
             :title="title"
             :draw-type="bindOptions.drawType"
-            :mode="getTextModel ? 'view' : 'select'"
+            :mode="gettextMode ? 'view' : 'select'"
         />
     </main>
 </template>

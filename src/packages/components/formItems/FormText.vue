@@ -1,6 +1,6 @@
 <template>
     <div class="full-height">
-        <div v-if="!getTextModel" class="full-height" :style="item.textStyle||{}">
+        <div v-if="!gettextMode" class="full-height" :style="item.textStyle||{}">
             {{ value||item.content || '-' }}
         </div>
     </div>

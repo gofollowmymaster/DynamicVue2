@@ -82,7 +82,7 @@ export default {
                                                                     formItemList: this.$buildDetailFields(fields),
                                                                     formOption: {
                                                                         borderForm: false,
-                                                                        textModel: true,
+                                                                        textMode: true,
                                                                         formProperties: {
                                                                             'label-position': 'right'
                                                                         }

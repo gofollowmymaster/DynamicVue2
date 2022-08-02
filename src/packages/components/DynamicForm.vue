@@ -12,7 +12,7 @@
             </template>
         </DynamicFormContent>
         <DynamicActions
-            v-if="!formOption.textModel"
+            v-if="!formOption.textMode"
             class="mt32"
             :style="{'margin-left':formOption.formProperties['label-width']||'100px'}"
             :actions="actions"

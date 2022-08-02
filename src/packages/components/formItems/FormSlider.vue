@@ -2,7 +2,7 @@
  
     <section>
         <el-slider
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             v-model="val"
             v-bind="bindOptions"
             :disabled="getDisabled"

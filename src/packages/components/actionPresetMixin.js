@@ -102,7 +102,7 @@ export default {
                 containerProperties: {
                     title: this.entityLabel + '详情'
                 },
-                textModel: true,
+                textMode: true,
                 formItemList: buildDetailFields(this.fields, this.formSections),
                 saveAction: null
             }

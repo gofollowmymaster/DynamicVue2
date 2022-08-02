@@ -7,7 +7,7 @@
         class=" full-width"
     >
         <el-upload
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             action=""
             :file-list="fileListInit"
             :before-upload="handleBeforeUpload"
@@ -40,7 +40,7 @@
 
         <section>
             <!-- 图片详情展示 -->
-            <section v-if="getTextModel && fileList.length && accept == 'img'" class="flex ">
+            <section v-if="gettextMode && fileList.length && accept == 'img'" class="flex ">
                 <el-image
                     v-for="file in fileList"
                     :key="file.fileUrl"
@@ -52,7 +52,7 @@
             </section>
 
             <!-- 视屏详情展示 -->
-            <section v-else-if="getTextModel && fileList.length && accept == 'video'">
+            <section v-else-if="gettextMode && fileList.length && accept == 'video'">
                 <video
                     v-for="file in fileList"
                     :key="file.fileUrl"
@@ -63,14 +63,14 @@
             </section>
             <!-- 文件详情展示 -->
             <DynamicCurd
-                v-else-if="bindOptions['list-type'] == 'table' &&!getTextModel" class="mt8"
+                v-else-if="bindOptions['list-type'] == 'table' &&!gettextMode" class="mt8"
                 :style="{ padding: 0 }"
                 :fields="fileFields"
                 :api-promises="apiPromises"
                 :options-props="curdOptions"
                 entity-label="附件"
             />
-            <template v-else-if="getTextModel&&fileList.length">
+            <template v-else-if="gettextMode&&fileList.length">
                 <ul v-for="file in fileList" :key="file.fileName">
                     <li class="mr12">
                         <dynamicActions
@@ -82,7 +82,7 @@
                 </ul>
             </template>
 
-            <div v-else-if="getTextModel" class=""> -- </div>
+            <div v-else-if="gettextMode" class=""> -- </div>
         </section>
         <!-- 图片预览 -->
         <el-dialog :visible.sync="dialogVisible" :append-to-body="true">
@@ -198,7 +198,7 @@ export default {
             obj.name = obj.key
             obj['http-request'] = obj.apiPromise
             obj.multiple = obj.limit !== 1
-            obj.disabled = this.getTextModel ? true : obj.disabled
+            obj.disabled = this.gettextMode ? true : obj.disabled
             obj.accept = getAccepts(this.accept)
 
             if (obj.drag) {
@@ -255,7 +255,7 @@ export default {
 
                     hasCheckbox: false,
                     properties: {
-                        border: !this.getTextModel
+                        border: !this.gettextMode
                     },
                     lineActions: {
                         update: null,

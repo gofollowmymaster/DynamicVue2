@@ -3,7 +3,7 @@
     <section  style="position: absolute;"
              class="  absolute-vertical-center  "
     >
-        <el-radio-group v-if="!getTextModel"
+        <el-radio-group v-if="!gettextMode"
                         v-model.trim="val"
                         :disabled="getDisabled"
                         v-bind="item.groupProperties"
@@ -16,7 +16,7 @@
                 {{ opt.label }}
             </component>
         </el-radio-group>
-        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
+        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModeValue || '-' }}</div>
     </section>
 </template>
 
@@ -33,7 +33,7 @@ export default {
         }
     },
     computed: {
-        textModelValue() {
+        textModeValue() {
             const content = this.item.options && this.item.options.find(item => {
                 return item.value === this.val
             })

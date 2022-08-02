@@ -1,7 +1,7 @@
 <template>
     <!-- 日期范围选择框 -->
     <section>
-        <el-date-picker v-if="!getTextModel"
+        <el-date-picker v-if="!gettextMode"
                         v-model="val"
                         type="daterange"
                         :disabled="getDisabled"
@@ -12,7 +12,7 @@
                         @blur="e => onBlur(item, e)"
                         @focus="e => onFocus(item, e)"
         />
-        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
+        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModeValue || '-' }}</div>
     </section>
 </template>
 
@@ -46,7 +46,7 @@ export default {
                 })
             }
         },
-        textModelValue() {
+        textModeValue() {
             return this.val && this.val.join('至')
         }
     }

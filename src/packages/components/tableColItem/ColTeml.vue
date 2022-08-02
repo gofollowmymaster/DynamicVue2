@@ -1,9 +1,7 @@
 <template>
     <!-- 普通展示 -->
     <div
-        :style="colOptions.style || {}"
-        :class="`form-unqiue-${colOptions.key}`"
-        class="table-col-box text-ellipsis"
+        class="text-ellipsis"
     >
         {{ content }}
     </div>

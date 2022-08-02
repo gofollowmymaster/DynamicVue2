@@ -2,7 +2,7 @@
     <!-- 普通输入框 -->
     <section>
         <el-color-picker
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             v-model="val"
             class="block"
             v-bind="bindOptions"

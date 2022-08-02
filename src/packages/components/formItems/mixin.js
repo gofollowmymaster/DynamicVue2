@@ -52,8 +52,8 @@ export default {
             }
         },
         // 是否采用文字模式
-        getTextModel() {
-            if (this.changeData.textModel) {
+        gettextMode() {
+            if (this.changeData.textMode) {
                 return true
             }
             return false

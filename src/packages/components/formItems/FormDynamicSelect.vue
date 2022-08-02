@@ -2,7 +2,7 @@
     <!--  字典下拉框（指通过数据字典获取选项）  -->
     <section>
         <el-select
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             v-model="val"
             style="width: 100%;"
             :disabled="getDisabled"
@@ -17,7 +17,7 @@
             />
         </el-select>
         <div v-else :style="item.textStyle || {}" class="form-input-text">
-            {{ textModelValue || "-" }}
+            {{ textModeValue || "-" }}
         </div>
     </section>
 </template>
@@ -38,7 +38,7 @@ export default {
         }
     },
     computed: {
-        textModelValue() {
+        textModeValue() {
             const content = this.dynamicDict[this.val]
             return (content && content[this.dictLabel]) || this.val
         }

@@ -42,8 +42,8 @@
                     :key="col.key"
                     :prop="col.key"
                 >
-                    <template v-if="col.labelInfo" #header>
-                        <LabelWithTip :label="col.label" :tip="col.labelInfo" />
+                    <template v-if="col.labelTip" #header>
+                        <LabelWithTip :label="col.label" :tip="col.labelTip" />
                     </template>
                     <template slot-scope="scope">
                         <ColFormItem v-if="scope.row.editable" :row-data="scope.row" :col-options="col" />
@@ -51,6 +51,9 @@
                                    v-else
                                    :row-data="scope.row"
                                    :col-options="col"
+                                    :style="col.style || {}"
+                                    :class="`form-unqiue-${col.key}`"
+                                    class="table-col-box"
                         />
                     </template>
                 </el-table-column>
@@ -109,12 +112,7 @@ export default {
     computed: {
         columnsComputed() {
             const columns = this.columns.map((item, index) => {
-                if (index < 1) {
-                    item.colProperties = {
-                        ...item.colProperties,
-                        fixed: 'left'
-                    }
-                }
+           
                 return {
                     ...item,
                     colProperties: {
@@ -124,15 +122,13 @@ export default {
                     }
                 }
             })
-            if (this.table.indexColWidth) {
+            if (this.table.indexCol) {
                 columns.unshift({
                     key: 'index',
                     type: 'index',
                     colProperties: {
-                        width: this.table.indexColWidth,
-                        fixed: 'left',
-                        label: '序号',
-                        'class-name': 'index-col'
+                        'class-name': 'index-col',
+                        ...this.table.indexCol,
                     }
                 })
             }

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <el-select v-if="!getTextModel"
+        <el-select v-if="!gettextMode"
                    v-model="val"
                    style="width: 100%;"
                    multiple
@@ -15,7 +15,7 @@
                        :value="option.value"
             />
         </el-select>
-        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModelValue || '-' }}</div>
+        <div v-else :style="item.textStyle||{}" class="form-input-text">{{ textModeValue || '-' }}</div>
     </section>
 </template>
 
@@ -27,7 +27,7 @@ export default {
     name: 'FormMulSelect',
     mixins: [FormMixin],
     computed: {
-        textModelValue() {
+        textModeValue() {
             if (this.item.options) {
                 let val = ''
                 this.item.options.forEach(item => {

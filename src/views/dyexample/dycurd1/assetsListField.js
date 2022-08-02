@@ -26,7 +26,7 @@ export const assetsFields = [
         key: 'sciName',
         type: 'FormInput',
         label: '学名',
-        labelInfo: '请输入学术名称',
+        labelTip: '请输入学术名称',
         formOption: {
             properties: {
                

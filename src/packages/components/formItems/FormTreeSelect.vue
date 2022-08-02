@@ -1,6 +1,6 @@
 <template>
     <section>
-        <el-select v-if="!getTextModel" ref="select" v-model="val"
+        <el-select v-if="!gettextMode" ref="select" v-model="val"
                    clearable style="width: 100%;"
                    :disabled="getDisabled"
                    :placeholder="getPlaceholder(item,'请选择')"
@@ -16,7 +16,7 @@
             </el-option>
         </el-select>
         <div v-else :style="item.textStyle || {}" class="form-input-text">
-            {{ textModelValue || "-" }}
+            {{ textModeValue || "-" }}
         </div>
     </section>
 </template>

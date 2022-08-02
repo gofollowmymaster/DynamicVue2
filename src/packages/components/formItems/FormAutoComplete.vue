@@ -1,7 +1,7 @@
 <template>
     <!-- 输入搜索框 -->
     <section>
-        <el-autocomplete v-if="!getTextModel"
+        <el-autocomplete v-if="!gettextMode"
                          v-model.trim="val"
                          :placeholder="getPlaceholder(item)"
                          :disabled="getDisabled"

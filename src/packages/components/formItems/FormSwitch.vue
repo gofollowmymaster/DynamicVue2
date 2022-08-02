@@ -2,13 +2,13 @@
     <!-- 普通输入框 -->
     <section>
         <el-switch
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             v-model="val"
             v-bind="bindOptions"
             :disabled="getDisabled"
         />
         <div v-else :style="item.textStyle || {}" class="form-input-text">
-            {{ textModelValue || '-' }}
+            {{ textModeValue || '-' }}
         </div>
     </section>
 </template>
@@ -43,7 +43,7 @@ export default {
             //   obj['active-text']=obj['active-text']||
             return obj
         },
-        textModelValue() {
+        textModeValue() {
             return this.val === this.bindOptions['active-value'] ? this.bindOptions['active-text'] : this.bindOptions['inactive-text']
         }
     }

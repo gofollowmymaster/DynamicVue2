@@ -1,7 +1,7 @@
 <template>
     <section>
         <!-- 这是三级联动选择框 -->
-        <el-row v-if="!getTextModel">
+        <el-row v-if="!gettextMode">
             <el-col :span="8">
                 <el-select v-model="val[0]"
                            class="select"

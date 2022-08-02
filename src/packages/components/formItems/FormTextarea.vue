@@ -1,7 +1,7 @@
 <template>
     <!-- 普通输入框 -->
     <section>
-        <el-input v-if="!getTextModel"
+        <el-input v-if="!gettextMode"
                   v-model="val"
                   :placeholder="getPlaceholder(item)"
                   :disabled="getDisabled"

@@ -2,7 +2,7 @@
     <main>
         <div class="flex justify-between pr12">
             <el-input
-                v-if="!getTextModel"
+                v-if="!gettextMode"
                 :value="val.regeocode.formattedAddress"
                 :placeholder="getPlaceholder(item)"
                 :disabled="getDisabled"
@@ -12,7 +12,7 @@
                 @blur="(e) => onBlur(item, e)"
             />
             <div v-else class="form-input-text text-ellipsis">{{ value || '-' }}   </div>
-            <el-button size="small" type="text" :disabled="getDisabled" class="ml10" @click="selectPoint">{{ !getTextModel?"选择":"查看" }}</el-button>
+            <el-button size="small" type="text" :disabled="getDisabled" class="ml10" @click="selectPoint">{{ !gettextMode?"选择":"查看" }}</el-button>
         </div>
  
         <PointSelectDialog
@@ -21,7 +21,7 @@
             :visible="visible"
             :zoom="zoom"
             :title="title"
-            :mode="getTextModel?&quot;view&quot;:&quot;select&quot;"
+            :mode="gettextMode?&quot;view&quot;:&quot;select&quot;"
             @confirm="onSaveDialog"
         />
     </main>

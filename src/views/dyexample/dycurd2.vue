@@ -136,7 +136,7 @@ export default {
                             width: '60%'
                         },
                         borderForm: false,
-                        textModel: true,
+                        textMode: true,
                         'label-position': 'right',
                         // 'label-width': '140px'
                         formItemList: formFields

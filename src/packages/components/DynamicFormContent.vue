@@ -4,7 +4,7 @@
             <el-form slot="main"
                      v-bind="formProperties"
                      ref="form"
-                     :class="{'form-text-mode': textModel }"
+                     :class="{'form-text-mode': textMode }"
                      :model="data"
                      :validate-on-rule-change="true"
             >
@@ -125,7 +125,7 @@ export default {
         },
         // 文字模式。不显示表单组件，而是只显示纯文字内容
         // 同时，纯文本模式（即值为 true 的时候），会隐藏表单要素 label 左边的星号
-        textModel: {
+        textMode: {
             type: Boolean,
             default: false
         },
@@ -148,14 +148,14 @@ export default {
             changeData: {
                 // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
                 allDisabled: this.allDisabled,
-                textModel: this.textModel
+                textMode: this.textMode
             },
             foldBlockList: [] // 收起的区块（放在这个里面，该区块就只显示区块标题，不显示内容）
         }
     },
     computed: {
         showTestTool() {
-            return this.testTool && !this.textModel && this.$dynamicConfig.isDebug
+            return this.testTool && !this.textMode && this.$dynamicConfig.isDebug
         }
 
     },

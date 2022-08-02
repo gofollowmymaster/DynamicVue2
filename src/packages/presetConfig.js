@@ -46,7 +46,11 @@ export const tableOption = {
     },
     actionColWidth: 0, // 操作栏宽度
     actionBtnType: 'text', // 操作按钮类型
-    indexColWidth: 48
+    indexCol: {
+        width: 48,
+        fixed: 'left',
+        label: '序号',
+    }
 }
 
 export const pagination = {
@@ -115,7 +119,7 @@ export const dynamicFormOption = {
     formItemList: [],
     formOption: {
         ...formOption,
-        textModel: false
+        textMode: false
     },
     actions: {
         save: deepMerge(submitActionOption, {

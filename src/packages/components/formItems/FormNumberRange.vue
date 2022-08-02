@@ -1,7 +1,7 @@
 <template>
     <!-- 数字输入框 -->
     <section>
-        <section v-if="!getTextModel" class="flex justify-between">
+        <section v-if="!gettextMode" class="flex justify-between">
             <el-input :value="val[0]"
                       :disabled="getDisabled"
                       type="number"
@@ -24,7 +24,7 @@
         </section>
         <div v-else :style="item.textStyle||{}" class="form-input-text">
             {{ item.prepend }}
-            {{ textModelValue }}
+            {{ textModeValue }}
             {{ item.append }}
         </div>
     </section>
@@ -49,7 +49,7 @@ export default {
         valueObj() {
             return (Array.isArray(this.value) && this.value.length > 1) ? this.value : [null, null]
         },
-        textModelValue() {
+        textModeValue() {
             return this.valueObj.join(' - ')
         },
         val: {

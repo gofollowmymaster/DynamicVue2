@@ -2,7 +2,7 @@
     <main>
         <div class="flex">
             <el-input
-                v-if="!getTextModel"
+                v-if="!gettextMode"
                 :value="val"
                 :placeholder="getPlaceholder(item)"
                 :disabled="getDisabled"
@@ -13,7 +13,7 @@
                 {{ val || '-' }}
             </div>
             <el-button
-                v-if="!getTextModel"
+                v-if="!gettextMode"
                 size="small"
                 :disabled="getDisabled"
                 @click="selectHandleer"
@@ -23,7 +23,7 @@
         </div>
 
         <tableSelector
-            v-if="!getTextModel"
+            v-if="!gettextMode"
             title="选择固定资产"
             :visible="visible"
             :fields="fields"

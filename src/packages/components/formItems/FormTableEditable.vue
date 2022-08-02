@@ -7,7 +7,7 @@
             :columns="item.fields"
             :api-promise="item.apiPromise"
             :pagination="item.pagination"
-            :is-text-mode="getTextModel"
+            :is-text-mode="gettextMode"
             size="small"
         />
     </section>

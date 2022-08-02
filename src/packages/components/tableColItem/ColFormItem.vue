@@ -1,16 +1,10 @@
 <template>
-    <!-- 普通展示 -->
-    <div
-        :style="colOptions.style || {}"
-        :class="`form-unqiue-${colOptions.key}`"
-        class="table-col-box text-ellipsis"
-    >
+    <div >
         <component
             :is="formItem.type || 'FormInput'"
             v-model="rowData[formItem.key]"
             :item="formItem"
         />
-    <!-- <DynamicFormItem v-model="rowData[formItem.key]" :formItem="formItem"></DynamicFormItem> -->
     </div>
 </template>
 

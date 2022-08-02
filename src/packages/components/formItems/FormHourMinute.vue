@@ -1,7 +1,7 @@
 <template>
     <!-- 小时、分钟 输入框 -->
     <section>
-        <el-time-picker v-if="!getTextModel"
+        <el-time-picker v-if="!gettextMode"
                         v-model="val"
                         class="form-date-item"
                         type="date"

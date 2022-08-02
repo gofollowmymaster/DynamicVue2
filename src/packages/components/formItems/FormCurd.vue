@@ -98,7 +98,7 @@ export default {
         curdOptions() {
             let defaultOptions = defaultCurdOptions
 
-            if (this.getTextModel) {
+            if (this.gettextMode) {
                 defaultOptions = textModeCurdOptions
                 return deepMerge(this.item.options || {}, defaultOptions)
             }

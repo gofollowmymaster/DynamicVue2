@@ -1,7 +1,7 @@
 <template>
     <!-- 日期选择框 -->
     <section>
-        <el-date-picker v-if="!getTextModel"
+        <el-date-picker v-if="!gettextMode"
             v-model="val"
             class="form-date-item"
             type="date"

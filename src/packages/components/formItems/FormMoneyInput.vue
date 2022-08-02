@@ -1,7 +1,7 @@
 <template>
     <!-- 数字输入框 -->
     <section>
-        <template v-if="!getTextModel">
+        <template v-if="!gettextMode">
             <el-input v-model.trim="tempVal"
                       :placeholder="getPlaceholder(item)"
                       :disabled="getDisabled"
@@ -206,7 +206,7 @@ export default {
         },
 
         getClass() {
-            const c1 = `form-unqiue-${this.item.key} ${this.getTextModel ? '' : 'hz-untext-box'}`
+            const c1 = `form-unqiue-${this.item.key} ${this.gettextMode ? '' : 'hz-untext-box'}`
             const c2 = this.readonly ? 'is-readonly' : 'is-wr'
             return {
                 [c1]: true,

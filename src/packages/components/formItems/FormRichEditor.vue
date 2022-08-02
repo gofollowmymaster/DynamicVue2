@@ -1,7 +1,7 @@
 <template>
     <!-- 普通输入框 -->
     <section class="">
-        <RightEditor v-if="!getTextModel"
+        <RightEditor v-if="!gettextMode"
                      v-model="val"
                      :placeholder="getPlaceholder(item)"
                      :disabled="getDisabled"
