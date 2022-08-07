@@ -78,8 +78,14 @@ export function warningProcessedListApi(params = {}) {
 }
 
 export function warningInfoDeleteApi(list = []) {
+    return apiDeleteMock(warningProcessedFields, list)
+}
+
+export function warningPendingDeleteApi(list = []) {
     return apiDeleteMock(warningFields, list)
 }
+
+
 
 //
 

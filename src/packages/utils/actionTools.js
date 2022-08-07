@@ -161,8 +161,7 @@ function setDialogFormAction(options) {
                 },
                 formItemList: options.formItemList,
                 data: options.data || {},
-                formDataUpdateHandle:
-          options.formDataUpdateHandle || ((formVm, param) => null),
+                formDataUpdateHandle: options.formDataUpdateHandle || ((formVm, param) => null),
                 actions: {
                     save: [null].includes(options.saveAction)
                         ? null

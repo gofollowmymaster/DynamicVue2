@@ -12,7 +12,6 @@
                 <DynamicSearchForm
                     slot="top"
                     :fields="searchFields"
-                    :options="searchOption"
                     @search="onSearch"
                 />
                 <section slot="bottom">
@@ -44,10 +43,7 @@
                 </section>
             </curdLayout>
         </DynamicPageWrapper>
-
-    <!-- <DynamicFormDialog v-bind="currentDialogForm"> </DynamicFormDialog> -->
-    <!-- <DynamicFormDialog v-bind="currentDialogForm"> </DynamicFormDialog>
-      <DynamicPageDialog v-bind="currentDialogPage"> </DynamicPageDialog> -->
+ 
     </div>
 </template>
 <script>
@@ -79,7 +75,6 @@ export default {
                 save: treeStreetSaveApi
             },
             searchFields,
-            searchOption: this.$dynamicConfig['searchOption'],
             topToolBar: {
                 create: {
                     isLoadData: false,
@@ -108,7 +103,7 @@ export default {
                      msgBox:this.$dynamicConfig['msgBoxTipOptions']
                 }
             },
-            tableOption: this.$appendToPreset('tableOption', {
+            tableOption:  {
                 loadListApi: treeStreetListApi,
                 'current-change': 'handleCurrentChange', // 事件 暂不支持
                 lineActions: {
@@ -151,19 +146,14 @@ export default {
                         msgBox:this.$dynamicConfig['msgBoxTipOptions']
                     }
                 }
-            }),
+            },
             tableFields,
             pagination: { ...this.$dynamicConfig['pagination'], pageNo: 1 },
 
             searchParams: { refreshKey: '' },
             selected: [],
             total: 1,
-            currentDialogForm: {
-                visible: { value: false }
-            },
-            currentDialogPage: {
-                visible: { value: false }
-            }
+       
         }
     },
 

@@ -11,7 +11,7 @@
                     scene="page"
                     mode="dialog"
                     label="待处理警告"
-                    origin="pending"
+                    componentId="pending"
                 />
 
                 <DynamicCurd
@@ -23,7 +23,7 @@
                     :options-props="processedPageOptions"
                     :api-promises="processedApiPromises"
                     label="已处理警告"
-                    origin="processed"
+                    componentId="processed"
                 />
             </LayoutTabs>
         </DynamicPageWrapper>
@@ -36,7 +36,8 @@ import {
     warningDetailApi,
     warningPendingListApi,
     warningProcessedListApi,
-    warningInfoDeleteApi
+    warningInfoDeleteApi,
+    warningPendingDeleteApi
 } from '@/api/assets.js'
 import {
     eventFields,
@@ -59,7 +60,7 @@ export default {
             warningProcessedFields,
             // 页面配置
             pendingApiPromises: {
-                bulkdelete: warningInfoDeleteApi,
+                bulkdelete: warningPendingDeleteApi,
                 list: warningPendingListApi,
                 detail: warningDetailApi
             },
@@ -140,21 +141,15 @@ export default {
                                 apiPromise: warningUnhandleApi
                             }
                         },
-                        delete: {
-                            origin: 'pending'
-                        }
+                      
                     }
                 },
-                treeOption: null
             },
             processedPageOptions: {
                 topToolBar: null,
                 listOption: {
                     lineActions: {
                         update: null,
-                        delete: {
-                            origin: 'processed'
-                        }
                     }
                 }
 

@@ -1,16 +1,16 @@
 <template>
     <main class="flex relative search-container">
-        <DynamicFormContent ref="searchOption" :form-item-list="formFields" v-bind="options"
-                            :form-properties="options.properties" :data="data" :col-num="4" @formDataUpdated="change"
+        <DynamicFormContent ref="searchOption" :form-item-list="formFields" v-bind="searchFormOption"
+                            :form-properties="searchFormOption.properties" :data="data" :col-num="4" @formDataUpdated="change"
         >
             <template #actionBtnSlot>
                 <section class="  ">
-                    <el-button v-if="options.trigger=='click'" class="lh10" type="primary" size="small" icon="el-icon-search" @click="submit">{{ options.searchLabel||'搜索' }}</el-button>
-                    <el-button v-if="options.resetable" class="lh10" size="small" icon="el-icon-refresh" @click="reset">重置</el-button>
+                    <el-button v-if="searchFormOption.trigger=='click'" class="lh10" type="primary" size="small" icon="el-icon-search" @click="submit">{{ searchFormOption.searchLabel||'搜索' }}</el-button>
+                    <el-button v-if="searchFormOption.resetable" class="lh10" size="small" icon="el-icon-refresh" @click="reset">重置</el-button>
                 </section>
             </template>
         </DynamicFormContent>
-        <el-button v-if="options.mainNum<fields[0].children.length" class="ml12 align-self-start " type="text" size="small" @click="switchSearchBar">
+        <el-button v-if="searchFormOption.mainNum<fields[0].children.length" class="ml12 align-self-start " type="text" size="small" @click="switchSearchBar">
             高级筛选
             <i :class="[isExpand?'el-icon-arrow-up':'el-icon-arrow-down']" />
         </el-button>
@@ -38,7 +38,7 @@ export default {
         options: {
             type: Object,
             default: function() {
-                return loadPresetConfig('searchOption')
+                return {}
             }
         }
     },
@@ -48,10 +48,13 @@ export default {
         }
     },
     computed: {
+        searchFormOption(){
+            return  this.$appendToPreset('searchOption', this.options )
+        },
         formFields() {
             const fieldsClone = deepCopy(this.fields)
             if (!this.isExpand) {
-                const mainNum = this.options.mainNum || 5
+                const mainNum = this.searchFormOption.mainNum || 5
                 if (fieldsClone[0].children.length >= mainNum) {
                     fieldsClone[0].children.splice(mainNum)
                 }
@@ -62,8 +65,8 @@ export default {
                 key: 'actionBtnSlot',
                 label: '',
                 wraperProperties: {
-                    class: this.isExpand ? ['grid-col-24'] : this.options.searchClasses,
-                    style: { 'margin-left': this.isExpand ? (this.options.properties['label-width'] || '100px') : '12px' }
+                    class: this.isExpand ? ['grid-col-24'] : this.searchFormOption.searchClasses,
+                    style: { 'margin-left': this.isExpand ? (this.searchFormOption.properties['label-width'] || '100px') : '12px' }
                 }
             })
             return fieldsClone
@@ -79,7 +82,7 @@ export default {
             this.isExpand = !this.isExpand
         },
         change() {
-            if (this.options.trigger === 'change') {
+            if (this.searchFormOption.trigger === 'change') {
                 this.$nextTick(() => {
                     this.submit()
                 })

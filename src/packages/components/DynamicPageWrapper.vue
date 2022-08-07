@@ -23,7 +23,9 @@ export default {
         return {
             setGlobalDialogForm: this.setCurrentDialogForm,
             setGlobalDialogPage: this.setCurrentDialogPage,
-            isGlobalDialogFormActive: this.isGlobalDialogFormActive
+            isGlobalDialogFormActive: this.isGlobalDialogFormActive,
+            refreshComponentKey: '',
+       
         }
     },
     props: {

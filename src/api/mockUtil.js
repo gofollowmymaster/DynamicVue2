@@ -49,7 +49,7 @@ export function  apiListMock(fields, params) {
         })
         mockDb.set(fields, res)
     }
-    return  Promise.resolve({list: res.list.slice(params.pageSize * (params.pageNo - 1), params.pageSize * params.pageNo), totalCount: 100})
+    return  Promise.resolve({list: res.list.slice(params.pageSize * (params.pageNo - 1), params.pageSize * params.pageNo), totalCount: res.list.length})
 }
 
 export function  apiDetailMock(fields, data) {

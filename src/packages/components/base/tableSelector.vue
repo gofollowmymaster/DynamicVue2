@@ -114,7 +114,7 @@ export default {
                 pagination: presetConfig.getConfig('pagination'),
                 searchFields,
                 tableFields,
-                tableOption: presetConfig.getConfig('tableOption')
+                listOption: presetConfig.getConfig('tableOption')
             }, this.optionsProps, true)
         },
         queryParams() {

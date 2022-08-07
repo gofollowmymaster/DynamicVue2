@@ -92,7 +92,7 @@ export default {
                     props:
                         {
                             class: ['grid-col-24'],
-                            options:  this.$appendToPreset('searchOption',{
+                            options:  {
                                 properties: {
                                     'label-width': '100px',
                                     'label-position': 'right'
@@ -101,7 +101,7 @@ export default {
                                 trigger: 'change',
                                 resetable: false,
                                 testTool:false,
-                            }),
+                            },
                             fields: this.$buildSearchFields(searchFields)
                         }
                 },
@@ -133,9 +133,9 @@ export default {
                             class: ['grid-col-12'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table: this.$appendToPreset('tableOption', {
+                            table:  {
                                 hasCheckbox: false
-                            }),
+                            },
                             columns: [
                                 {
                                     key: 'label',
@@ -178,9 +178,9 @@ export default {
                             class: ['grid-col-12'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table: this.$appendToPreset('tableOption', {
+                            table: {
                                 hasCheckbox: false
-                            }),
+                            },
                             columns: [ 
                                 {
                                     key: 'label',
@@ -223,9 +223,9 @@ export default {
                             class: ['grid-col-12'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table: this.$appendToPreset('tableOption', {
+                            table:  {
                                 hasCheckbox: false
-                            }),
+                            },
                             columns: [ 
                                 {
                                     key: 'label',
@@ -266,9 +266,9 @@ export default {
                             class: ['grid-col-24'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table: this.$appendToPreset('tableOption', {
+                            table:{
                                 hasCheckbox: false
-                            }),
+                            },
                             columns: [ 
                                 {
                                     key: 'label',

@@ -26,7 +26,6 @@ import { deepMerge, isObjEmpty } from '../../utils/tool'
 import presetConfig from '../../presetConfig'
 
 const defaultTableOptions = {
-    ...presetConfig.getConfig('tableOption'),
     hasCheckbox: false,
     properties: {
         'header-cell-style': {

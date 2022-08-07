@@ -47,11 +47,8 @@ export default {
             type: Function,
             default: function() {}
         }
-    // origin: String
     },
-    //   inject: [
-    //   'dyRefreshId',
-    // ],
+ 
     computed: {
         layoutComp() {
             if (typeof this.layout === 'string') {
@@ -61,7 +58,6 @@ export default {
         }
     },
     mounted() {
-        console.log('----this.$attrs----', this.data)
     },
     methods: {
         afterClose() {

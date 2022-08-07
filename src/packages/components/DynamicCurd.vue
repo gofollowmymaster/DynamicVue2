@@ -1,13 +1,10 @@
 <template>
-    <!-- <main class="curd-container grid-wrap mt12   " :class="[scene+'-table']"> -->
     <curdLayout :mode="!isEmpty(options.treeOption)?'ltb':'tb'" class="relative" :scene="scene">
         <div v-if="!isEmpty(options.treeOption)"
              slot="left" class="tree-container scroll p10 border-main border-r4 grid-col-4 grid-col-xs-12 grid-col-pp-24"
         >
             <el-tree v-bind="options.treeOption" @node-click="treeClick" />
         </div>
-        <!-- <section class=" full-width  flex1   flex flex-direction   "
-      :class="[  options.treeOption? ' pl1 grid-col-20  grid-col-xs-12 grid-col-pp-24 with-tree': ' grid-col-24']"> -->
         <DynamicSearchForm
             v-if="
                 options.searchFields &&
@@ -17,10 +14,9 @@
             class="search-form "
             :fields="options.searchFields"
             :options="options.searchOption"
-            :data="data"
+
             @search="onSearch"
         />
-        <!-- <div class="table-gap"></div> -->
         <section slot="bottom" class="table-section">
             <DynamicActions
                 v-if="!isEmpty(options.topToolBar)" :class="scene=='page'?'mb24':'mb12'"
@@ -49,9 +45,7 @@
             />
         </section>
 
-    <!-- </section> -->
     </curdLayout>
-    <!-- </main> -->
 </template>
 <script>
 import {
@@ -72,9 +66,9 @@ export default {
     name: 'DynamicCurd',
     mixins: [actionPresetMixin],
     props: {
-        data: {
-            type: [Object]
-        },
+        // data: {
+        //     type: [Object]
+        // },
         fields: {
             type: Array,
             required: false,
@@ -101,10 +95,10 @@ export default {
             }
         },
         entityLabel: String,
-        randomId: String,
+        componentId: String,
         scene: {
             type: String,
-            default: 'component'
+            default: 'component'   
         }
     },
     data: function() {
@@ -119,7 +113,11 @@ export default {
             selected: []
         }
     },
-
+    provide() {
+        return {
+            refreshComponentKey: this.componentId,
+        }
+    },
     computed: {
         options() {
             debugger
@@ -146,7 +144,7 @@ export default {
                     searchFields,
                     tableFields,
                     listOption: {
-                        ...presetConfig.getConfig('tableOption'),
+                        // ...presetConfig.getConfig('tableOption'),
                         loadListApi: this.apiPromises.list,
                         lineActions: {
                             update: updateOptions,
@@ -173,7 +171,7 @@ export default {
                     .then((data = {}) => {
                         debugger
                         data = data.data || data
-                        this.total = data.totalCount
+                        this.total = data.total||data.totalCount
                         return data.list
                     })
             }
@@ -202,9 +200,9 @@ export default {
             this.$dynamicBus.$on('dynamicRefresh', () => {
                 this.refresh()
             })
-            if (this.randomId) {
-                this.$dynamicBus.$off('dynamicRefresh:' + this.randomId)
-                this.$dynamicBus.$on('dynamicRefresh:' + this.randomId, () => {
+            if (this.componentId) {
+                this.$dynamicBus.$off('dynamicRefresh:' + this.componentId)
+                this.$dynamicBus.$on('dynamicRefresh:' + this.componentId, () => {
                     this.refresh()
                 })
             }

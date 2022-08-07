@@ -1,10 +1,10 @@
 <template>
     <main class="dynamic-table-container">
         <el-table
-            v-bind="table.properties"
+            v-bind="tableOption.properties"
             ref="table"
             :data="tableData"
-            :class="{'table-center':table.properties['header-align']=='center'}"
+            :class="{'table-center':tableOption.properties['header-align']=='center'}"
             v-on="$listeners"
         >
             <template v-for="col in columnsComputed">
@@ -20,11 +20,11 @@
                     v-bind="{ ...col.colProperties }"
                     :key="col.key"
                     type="selection"
-                    :reserve-selection="table.properties['row-key']?true:false"
+                    :reserve-selection="tableOption.properties['row-key']?true:false"
                 />
                 <el-table-column
                     v-else-if="col.type == 'lineActions'"
-                    v-bind="{ ...table.colOptions, ...col.colProperties }"
+                    v-bind="{ ...tableOption.colOptions, ...col.colProperties }"
                     :key="col.key"
                 >
                     <template slot-scope="scope">
@@ -38,7 +38,7 @@
                 </el-table-column>
                 <el-table-column
                     v-else
-                    v-bind="{ ...table.colOptions, ...col.colProperties }"
+                    v-bind="{ ...tableOption.colOptions, ...col.colProperties }"
                     :key="col.key"
                     :prop="col.key"
                 >
@@ -110,29 +110,30 @@ export default {
         }
     },
     computed: {
+        tableOption(){
+            return this.$appendToPreset('tableOption', this.table )
+        },
         columnsComputed() {
             const columns = this.columns.map((item, index) => {
-           
                 return {
                     ...item,
                     colProperties: {
                         ...item.colProperties,
                         label: item.label
-
                     }
                 }
             })
-            if (this.table.indexCol) {
+            if (this.tableOption.indexCol) {
                 columns.unshift({
                     key: 'index',
                     type: 'index',
                     colProperties: {
                         'class-name': 'index-col',
-                        ...this.table.indexCol,
+                        ...this.tableOption.indexCol,
                     }
                 })
             }
-            if (this.table.hasCheckbox) {
+            if (this.tableOption.hasCheckbox) {
                 columns.unshift({
                     key: 'selection',
                     type: 'selection',
@@ -143,14 +144,14 @@ export default {
                 })
             }
             //
-            const actionNum = this.table.lineActions ? Object.keys(this.table.lineActions).length : 0
+            const actionNum = this.tableOption.lineActions ? Object.keys(this.tableOption.lineActions).length : 0
 
             if (actionNum > 0) {
-                const lineActions = deepCopy(this.table.lineActions)
+                const lineActions = deepCopy(this.tableOption.lineActions)
 
                 for (const key in lineActions) {
                     const action = lineActions[key]
-                    action.componentProperties = { ...action.componentProperties, type: this.table.actionBtnType }
+                    action.componentProperties = { ...action.componentProperties, type: this.tableOption.actionBtnType }
                     lineActions[key] = this.$generateActionOption(action.actionType, action)
                 }
 
@@ -158,7 +159,7 @@ export default {
                     type: 'lineActions',
                     key: 'lineActions',
                     colProperties: {
-                        width: this.table.actionColWidth || (actionNum * 60),
+                        width: this.tableOption.actionColWidth || (actionNum * 60),
                         label: '操作',
                         fixed: 'right'
                     },
@@ -223,7 +224,7 @@ export default {
         },
         selectRefresh() {
             this.$nextTick(() => {
-                const mainKey = this.table.properties['row-key']
+                const mainKey = this.tableOption.properties['row-key']
                 if (!mainKey) return
                 this.tableData.forEach(row => {
                     if (this.selected[row[mainKey]]) {

@@ -6,7 +6,7 @@
             :fields="item.fields"
             :api-promises="apiPromises"
             :entity-label="item.entityLabel"
-            :random-id="randomId || item.key"
+            :componentId="item.key"
         />
     </section>
 </template>
