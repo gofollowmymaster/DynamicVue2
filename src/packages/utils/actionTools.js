@@ -112,9 +112,9 @@ function setActionBaseOption(options) {
         actionDataKey: options.actionDataKey || undefined,
         actionPop: options.actionPopComponent
             ? {
-                component: options.actionPopComponent || 'popConfirm',
+                component: options.actionPopComponent || presetConfig.getConfig('popTipOptions').actionPopComponent,
                 properties: {
-                    ...presetConfig.getConfig('actionPopProperties'),
+                    ...presetConfig.getConfig('popTipOptions').actionPopProperties,
                     ...(options.actionPopProperties || {})
                 }
             }
@@ -128,10 +128,11 @@ function setActionBaseOption(options) {
         actionHook: options.actionHook || ''
     }
 }
+
 function setDialogFormAction(options) {
     const baseOption = setActionBaseOption(options)
-    let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition } = presetConfig.getConfig('formOption')
-    labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
+    // let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition } = presetConfig.getConfig('formOption')
+    // labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
     const actionOption = {
         ...baseOption,
         isLoadData: options.isLoadData ?? true,
@@ -147,20 +148,9 @@ function setDialogFormAction(options) {
                 ...(options.containerProperties || {})
             },
             body: {
-                formOption: {
-                    formProperties: {
-                        ...presetConfig.getConfig('formOption').formProperties,
-                        ...(options.formProperties || {}),
-                        'label-width': options['label-width'] || labelWidth,
-                        'label-position': options['label-position'] || labelPosition
-                    },
-                    showFoldBtn: options.showFoldBtn ?? presetConfig.getConfig('formOption').showFoldBtn,
-                    borderForm: options.borderForm ?? presetConfig.getConfig('formOption').borderForm,
-                    textMode: options.textMode ?? false,
-                    colNum: options.colNum ?? presetConfig.getConfig('formOption').colNum
-                },
+                formOption:  generateFormOptions(options) ,
                 formItemList: options.formItemList,
-                data: options.data || {},
+                // data: options.data || {},
                 formDataUpdateHandle: options.formDataUpdateHandle || ((formVm, param) => null),
                 actions: {
                     save: [null].includes(options.saveAction)
@@ -192,10 +182,9 @@ function setRequestApiAction(options) {
         ...baseOption,
 
         actionType: 'requestApi',
-        apiPromise: options.apiPromise || (() => Promise.resolve()),
+        apiPromise: typeof options.apiPromise=='function' || (() => Promise.resolve()),
         callback: {
             showTip: true,
-            refresh: true,
             ...(options.callback || {})
         }
     }
@@ -330,5 +319,22 @@ export function loadActionTipConfig() {
             }
         }
 }
+export function generateFormOptions(options){
+ 
+    let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition,formProperties,showFoldBtn,borderForm ,colNum} = presetConfig.getConfig('formOption')
+    labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
+    return  {
+            formProperties: {
+                ...formProperties,
+                'label-width': options['label-width'] || labelWidth,
+                'label-position': options['label-position'] || labelPosition,
+                ...(options.formProperties || {}),
 
+            },
+            showFoldBtn: options.showFoldBtn ?? showFoldBtn,
+            borderForm: options.borderForm ?? borderForm,
+            textMode: options.textMode ?? false,
+            colNum: options.colNum ??  colNum
+    }
+}
  

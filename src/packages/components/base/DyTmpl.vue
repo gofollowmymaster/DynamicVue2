@@ -18,8 +18,6 @@ export default {
         content() {
             const data = superType(this.data) === 'object' ? this.data : { data: this.data }
             const content = parseTemplate(this.tmpl, data)
-            // return   content
-
             return content.replace(/<(script|img|video)/g, (...rest) => {
                 return '&lt;' + rest[1]
             })

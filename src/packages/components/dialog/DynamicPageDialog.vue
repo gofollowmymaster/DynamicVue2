@@ -2,7 +2,7 @@
     <component v-bind="properties" :is="container" :visible.sync="visible.value" custom-class="hz-low-code" @closed="afterClose">
         <component :is="layoutComp.name" v-bind="layoutComp.properties">
             <component :is="section.component" v-for="section in body" :key="section.name" :label="section.label"
-                       :data="section.name=='@object@'?data :data[section.name]"
+                       :data="(section.name=='@object@'||!section.name)?data :data[section.name]"
                        v-bind="section.props" :props="section.props"
             >
                 <component :is="subSection.component" v-for="(subSection,index) in section.children" :key="index" v-bind="subSection.props" />

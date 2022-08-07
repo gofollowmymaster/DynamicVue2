@@ -4,7 +4,7 @@
             ref="DynamicFormContent"
             :data="formData"
             :form-item-list="formItemList"
-            v-bind="formOption"
+            v-bind="dynamicFormOption"
             @formDataUpdated="formDataUpdated"
         >
             <template v-for="slot in formSlots" #[slot.key]>
@@ -12,9 +12,9 @@
             </template>
         </DynamicFormContent>
         <DynamicActions
-            v-if="!formOption.textMode"
+            v-if="!dynamicFormOption.textMode"
             class="mt32"
-            :style="{'margin-left':formOption.formProperties['label-width']||'100px'}"
+            :style="{'margin-left':dynamicFormOption.formProperties['label-width']||'100px'}"
             :actions="actions"
             mode="form"
             :action-data="{}"
@@ -24,6 +24,7 @@
 <script>
 import actionMixin from './actionMixin'
 import { JSONDeepCopy } from '../utils/tool'
+import { generateFormOptions }  from "../utils/actionTools"
 export default {
     name: 'DynamicForm',
     components: {
@@ -66,6 +67,10 @@ export default {
         }
     },
     computed: {
+        dynamicFormOption(){
+            const options = this.formOption
+            return   generateFormOptions(options)
+        },
         formSlots() {
             return this.formItemFilter(item => {
                 return item.type === 'slot'

@@ -76,6 +76,7 @@ export default {
     watch: {
         actionAndData: {
             handler({ actions, actionData }) {
+                debugger
                 actions = Object.entries(actions)
                     .map(([key, value]) => {
                         return { ...value, actionKey: key }

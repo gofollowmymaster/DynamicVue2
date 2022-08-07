@@ -37,7 +37,7 @@ function refreshHandle({vm, callback: refresh}) {
 function emitEventHandle({vm, callback: eventName, data}) {
     typeof eventName === 'string' && vm.$emit(eventName, data) // formSubmited
 }
-function showTipHandle(vm, showTip, data) {
+function showTipHandle({vm, callback: showTip, data}) {
     showTip === true &&
       vm.$message &&
       vm.$message({

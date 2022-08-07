@@ -49,6 +49,7 @@ function buildErrorMessage(template, action = '完善', label) {
 const formTypeActionMap = {
     FormRadio: '选择',
     FormSelect: '选择',
+    FormCheckbox:'选择',
     FormInput: '填写',
     FormDate: '填写',
     FormDateRange: '填写',

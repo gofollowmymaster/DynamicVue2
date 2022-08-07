@@ -3,7 +3,7 @@
     <components :is="layoutComp.name" v-bind="layoutComp.properties">
         <template v-for="section in bodyShow">
             <component :is="section.component" :key="section.key||(section.component+section.name)" :label="section.label"
-                       :data="section.name=='@object@'?data:data[section.name]"
+                       :data="(section.name=='@object@'||!section.name)?data:data[section.name]"
                        v-bind="section.props" :props="section.props"
             >
                 <slot />

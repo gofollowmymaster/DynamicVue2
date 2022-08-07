@@ -183,8 +183,7 @@ export const presetConfig = {
         treeOption,
         formOption,
         dynamicFormOption,
-        // actionPopProperties,
-        // msgBoxProperties,
+ 
         popTipOptions,
         msgBoxTipOptions,
         formWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],
