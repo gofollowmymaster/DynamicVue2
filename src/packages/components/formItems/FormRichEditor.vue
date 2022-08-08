@@ -1,10 +1,10 @@
 <template>
     <!-- 普通输入框 -->
     <section class="">
-        <RightEditor v-if="!gettextMode"
+        <RightEditor v-if="!isTextMode"
                      v-model="val"
-                     :placeholder="getPlaceholder(item)"
-                     :disabled="getDisabled"
+                     :placeholder="placeholder"
+                     :disabled="isDisabled"
                      v-bind="bindOptions"
         />
         <div v-else :style="item.textStyle || {}" class="form-input-text" v-html="val" />

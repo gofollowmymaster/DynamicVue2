@@ -3,7 +3,6 @@
     <section>
         <el-switch v-model="rowData[field]"
                    :style="item.style||{}"
-                   class="table-col-box  "
                    v-bind="bindOptions"
                    @change="item.events.change(rowData,$event)"
         />

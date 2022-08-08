@@ -1,12 +1,12 @@
 <template>
     <section>
-        <el-select v-if="!gettextMode"
+        <el-select v-if="!isTextMode"
                    v-model="val"
                    style="width: 100%;"
                    multiple
                    collapse-tags
-                   :disabled="getDisabled"
-                   :placeholder="getSelectPlaceholder(item)"
+                   :disabled="isDisabled"
+                   :placeholder="placeholder"
                    v-bind="bindOptions"
         >
             <el-option v-for="option in item.options"

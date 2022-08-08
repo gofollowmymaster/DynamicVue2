@@ -1,13 +1,13 @@
 <template>
     <!-- 小时、分钟 输入框 -->
     <section>
-        <el-time-picker v-if="!gettextMode"
+        <el-time-picker v-if="!isTextMode"
                         v-model="val"
                         class="form-date-item"
                         type="date"
                         style="width: 100%;"
-                        :disabled="getDisabled"
-                        :placeholder="getPlaceholder(item)"
+                        :disabled="isDisabled"
+                        :placeholder="placeholder"
                         :format="item.format || 'HH:mm'"
                         :value-format="item['value-format'] || 'HH:mm:00'"
                         v-bind="bindOptions"

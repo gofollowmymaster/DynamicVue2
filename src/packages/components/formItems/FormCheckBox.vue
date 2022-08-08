@@ -1,9 +1,9 @@
 <template>
     <!-- 普通输入框 -->
     <section>
-        <el-checkbox-group v-if="!gettextMode"
+        <el-checkbox-group v-if="!isTextMode"
                            v-model.trim="val"
-                           :disabled="getDisabled"
+                           :disabled="isDisabled"
                            v-bind="item.groupProperties"
                            @blur="e => onBlur(item, e)"
                            @focus="e => onFocus(item, e)"

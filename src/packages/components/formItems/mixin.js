@@ -1,4 +1,6 @@
 import { hasValue } from '../../utils/tool'
+import formTypeActionMap from './formTypeActionMap'
+
 export default {
     props: {
         item: {
@@ -29,7 +31,7 @@ export default {
          
         },
         // 获取禁用状态
-        getDisabled() {
+        isDisabled() {
             // 如果全部都被禁用了
             if (this.allDisabled) {
                 return true
@@ -52,11 +54,20 @@ export default {
             }
         },
         // 是否采用文字模式
-        gettextMode() {
+        isTextMode() {
             if (this.changeData.textMode) {
                 return true
             }
             return false
+        },
+         // 获取输入框的 placeholder
+         placeholder() {
+            return  this.getPlaceholder(this.item)
+        },
+    },
+    data(){
+        return {
+            action:formTypeActionMap[this.$options.name]||'请选择'
         }
     },
     created() {
@@ -90,13 +101,17 @@ export default {
 
             obj.maxlength = obj.maxlength || 255
 
+
+      
+
+
             return obj
         },
     // 获取输入框的 placeholder
-        getPlaceholder(formItem, prev = '请输入') {
+        getPlaceholder(formItem) {
             // todo 这里可能还要加一个全部 disable 的判断
             // 如果已禁用，那么不显示 placeholder
-            if (formItem.disable) {
+            if (this.isDisabled) {
                 return ''
             }
             // 如果有 placeholder，则直接返回
@@ -104,22 +119,9 @@ export default {
                 return formItem.placeholder
             }
             // 否则返回默认的
-            return `${prev}${formItem.label}`
+            return `${this.action}${formItem.label}`
         },
 
-        // 获取下拉框 placeholder
-        getSelectPlaceholder(formItem) {
-            // 如果已禁用，那么不显示 placeholder
-            if (formItem.disable) {
-                return ''
-            }
-            // 如果有 placeholder，则直接返回
-            if (formItem.placeholder !== undefined && formItem.placeholder !== null) {
-                return formItem.placeholder
-            }
-            // 否则返回默认的
-            return `请选择${formItem.label}`
-        },
 
         // 当取消焦点
         onFocus(e) {

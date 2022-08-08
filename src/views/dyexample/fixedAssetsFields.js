@@ -320,7 +320,7 @@ export default [
       type: 'FormTableEditable',
       formSection: '主要配件',
       formOption: {
-        span:5,
+        col:3,
         wraperProperties: {
           'label-width':'0px'
         },

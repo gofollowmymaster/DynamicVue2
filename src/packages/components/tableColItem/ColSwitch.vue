@@ -3,9 +3,8 @@
     <section>
         <el-switch v-model="rowData[colOptions.key]"
                    :style="colOptions.style||{}"
-                   class="table-col-box  "
                    v-bind="bindOptions"
-                   @change="colOptions.events.change(rowData,$event)"
+                   v-on="bindEvents"
         />
     </section>
 </template>

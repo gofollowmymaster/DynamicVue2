@@ -27,7 +27,6 @@ function refreshHandle({vm, callback: refresh}) {
     if (typeof refresh === 'string') {
         vm.$dynamicBus.$emit('dynamicRefresh:' + refresh)
     } else if(vm.refreshComponentKey){
-    
         vm.$dynamicBus.$emit('dynamicRefresh:' + vm.refreshComponentKey)
     } else{
         vm.$dynamicBus.$emit('dynamicRefresh')

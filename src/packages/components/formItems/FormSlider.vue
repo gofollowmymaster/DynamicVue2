@@ -2,10 +2,10 @@
  
     <section>
         <el-slider
-            v-if="!gettextMode"
+            v-if="!isTextMode"
             v-model="val"
             v-bind="bindOptions"
-            :disabled="getDisabled"
+            :disabled="isDisabled"
         />
         <div v-else>{{ val||'--' }}</div>
     </section>

@@ -1,3 +1,4 @@
+import formTypeActionMap from '../components/formItems/formTypeActionMap'
 
 export const presetRules = {
     required: {
@@ -45,18 +46,4 @@ function buildErrorMessage(template, action = '完善', label) {
     template = template.replace(/\[label\]/, label)
     return template.replace(/\[action\]/, action)
 }
-
-const formTypeActionMap = {
-    FormRadio: '选择',
-    FormSelect: '选择',
-    FormCheckbox:'选择',
-    FormInput: '填写',
-    FormDate: '填写',
-    FormDateRange: '填写',
-    FormDateTime: '填写',
-    FormMoneyInput: '填写',
-    FormNumberInput: '填写',
-    FormNormalNumber: '填写',
-    FormRateNumber: '填写',
-    FormTextareaNumber: '填写'
-}
+ 

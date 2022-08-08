@@ -1,11 +1,11 @@
 <template>
     <!-- 日期范围选择框 -->
     <section>
-        <el-date-picker v-if="!gettextMode"
+        <el-date-picker v-if="!isTextMode"
                         v-model="val"
                         type="datetimerange"
-                        :disabled="getDisabled"
-                        :placeholder="getPlaceholder(item)"
+                        :disabled="isDisabled"
+                        :placeholder="placeholder"
                         value-format="yyyy-MM-dd hh:mm:ss"
                         :clearable="true"
                         v-bind="bindOptions"

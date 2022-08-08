@@ -110,8 +110,6 @@ export default {
                         }
                     }
                 },
-                // pagination: { 'hide-on-single-page': false },
-                treeOption: null
             }
         }
     }

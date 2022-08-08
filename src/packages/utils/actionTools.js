@@ -90,6 +90,18 @@ function setResetAction(options) {
     }
     return actionOption
 }
+function setLinkAction(options){
+    options = setDetaultOptions(options)
+    const baseOption = setActionBaseOption(options)
+    const actionOption = {
+        ...baseOption,
+        actionType: 'link',
+        label: options.label || '跳转',
+        link:options.link,
+        window:options.window||'_blank'
+    }
+    return actionOption
+}
 
 function setActionBaseOption(options) {
     return {
@@ -182,7 +194,7 @@ function setRequestApiAction(options) {
         ...baseOption,
 
         actionType: 'requestApi',
-        apiPromise: typeof options.apiPromise=='function' || (() => Promise.resolve()),
+        apiPromise: typeof options.apiPromise=='function' ?options.apiPromise: (() => Promise.resolve()),
         callback: {
             showTip: true,
             ...(options.callback || {})
@@ -197,7 +209,7 @@ function setDownloadAction(options) {
         ...baseOption,
         actionType: 'download',
         label: options.label || '下载',
-        apiPromise: options.apiPromise || (() => Promise.resolve()),
+        apiPromise: typeof options.apiPromise=='function' ?options.apiPromise: (() => Promise.resolve()),
         callback: {
             showTip: true,
             ...(options.callback || {})
@@ -302,8 +314,11 @@ export function generateActionOption(type, options = {}) {
         case 'closeActionOption':
         case 'closeAction':
         case 'close':
-
             return setCloseAction(options)
+        case 'link':
+        case 'linkActionOption':
+        case 'linkAction':
+            return setLinkAction(options)
         default:
             return setCustomAction(options)
     }

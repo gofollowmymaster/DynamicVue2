@@ -1,5 +1,6 @@
 import dynamicActions from './actions/index'
 import callbackActionHandles from './actions/callback.js'
+
 export default {
     props: {},
     computed: {},
@@ -49,14 +50,12 @@ export default {
                 )
             }
         },
-        linkHandle(action) {
-            window.open(action.link, action.window)
+        linkHandle(action,actionData) {
+            const link = typeof action.link=='function'?action.link(actionData):action.link
+            window.open(link, action.window)
         },
         routerHandle(action, actionData) {
-            const path =
-        typeof action.router === 'function'
-            ? action.router(actionData)
-            : action.router
+            const path = typeof action.router === 'function'? action.router(actionData): action.router
             this.$router[action.routerAction || 'push'](path)
         },
 

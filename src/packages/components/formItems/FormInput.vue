@@ -1,10 +1,10 @@
 <template>
     <!-- 普通输入框 -->
     <section>
-        <el-input v-if="!gettextMode"
+        <el-input v-if="!isTextMode"
                   v-model.trim="val"
-                  :disabled="getDisabled"
-                  :placeholder="getPlaceholder(item)"
+                  :disabled="isDisabled"
+                  :placeholder="placeholder"
                   type="text"
                   v-bind="bindOptions"
                   @blur="e => onBlur( e)"

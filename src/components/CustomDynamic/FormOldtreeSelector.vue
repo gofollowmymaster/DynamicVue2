@@ -2,10 +2,10 @@
     <main>
         <div class="flex">
             <el-input
-                v-if="!gettextMode"
+                v-if="!isTextMode"
                 :value="val"
-                :placeholder="getPlaceholder(item)"
-                :disabled="getDisabled"
+                :placeholder="placeholder"
+                :disabled="isDisabled"
                 type="text"
                 v-bind="bindOptions"
             />
@@ -13,9 +13,9 @@
                 {{ val || '-' }}
             </div>
             <el-button
-                v-if="!gettextMode"
+                v-if="!isTextMode"
                 size="small"
-                :disabled="getDisabled"
+                :disabled="isDisabled"
                 @click="selectHandleer"
             >
                 选择
@@ -23,7 +23,7 @@
         </div>
 
         <tableSelector
-            v-if="!gettextMode"
+            v-if="!isTextMode"
             title="选择固定资产"
             :visible="visible"
             :fields="fields"

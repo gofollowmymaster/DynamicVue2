@@ -7,7 +7,7 @@
         class=" full-width"
     >
         <el-upload
-            v-if="!gettextMode"
+            v-if="!isTextMode"
             action=""
             :file-list="fileListInit"
             :before-upload="handleBeforeUpload"
@@ -17,7 +17,7 @@
             :on-error="handleError"
             :on-change="handleChange"
             v-bind="bindOptions"
-            :disabled="getDisabled"
+            :disabled="isDisabled"
         >
             <div v-if="bindOptions.drag">
                 <i class="el-icon-upload" />
@@ -40,7 +40,7 @@
 
         <section>
             <!-- 图片详情展示 -->
-            <section v-if="gettextMode && fileList.length && accept == 'img'" class="flex ">
+            <section v-if="isTextMode && fileList.length && accept == 'img'" class="flex ">
                 <el-image
                     v-for="file in fileList"
                     :key="file.fileUrl"
@@ -52,7 +52,7 @@
             </section>
 
             <!-- 视屏详情展示 -->
-            <section v-else-if="gettextMode && fileList.length && accept == 'video'">
+            <section v-else-if="isTextMode && fileList.length && accept == 'video'">
                 <video
                     v-for="file in fileList"
                     :key="file.fileUrl"
@@ -63,14 +63,14 @@
             </section>
             <!-- 文件详情展示 -->
             <DynamicCurd
-                v-else-if="bindOptions['list-type'] == 'table' &&!gettextMode" class="mt8"
+                v-else-if="bindOptions['list-type'] == 'table' &&!isTextMode" class="mt8"
                 :style="{ padding: 0 }"
                 :fields="fileFields"
                 :api-promises="apiPromises"
                 :options-props="curdOptions"
                 entity-label="附件"
             />
-            <template v-else-if="gettextMode&&fileList.length">
+            <template v-else-if="isTextMode&&fileList.length">
                 <ul v-for="file in fileList" :key="file.fileName">
                     <li class="mr12">
                         <dynamicActions
@@ -82,7 +82,7 @@
                 </ul>
             </template>
 
-            <div v-else-if="gettextMode" class=""> -- </div>
+            <div v-else-if="isTextMode" class=""> -- </div>
         </section>
         <!-- 图片预览 -->
         <el-dialog :visible.sync="dialogVisible" :append-to-body="true">
@@ -198,7 +198,7 @@ export default {
             obj.name = obj.key
             obj['http-request'] = obj.apiPromise
             obj.multiple = obj.limit !== 1
-            obj.disabled = this.gettextMode ? true : obj.disabled
+            obj.disabled = this.isTextMode ? true : obj.disabled
             obj.accept = getAccepts(this.accept)
 
             if (obj.drag) {
@@ -255,7 +255,7 @@ export default {
 
                     hasCheckbox: false,
                     properties: {
-                        border: !this.gettextMode
+                        border: !this.isTextMode
                     },
                     lineActions: {
                         update: null,

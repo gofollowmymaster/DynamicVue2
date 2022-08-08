@@ -1,13 +1,13 @@
 <template>
     <!-- 日期选择框 -->
     <section>
-        <el-date-picker v-if="!gettextMode"
+        <el-date-picker v-if="!isTextMode"
             v-model="val"
             class="form-date-item"
             type="date"
             style="width: 100%;"
-            :disabled="getDisabled"
-            :placeholder="getPlaceholder(item)"
+            :disabled="isDisabled"
+            :placeholder="placeholder"
             :picker-options="item.pickerOptions ? handlerDate(item.pickerOptions) : () => false"
             value-format="yyyy-MM-dd"
             v-bind="bindOptions"

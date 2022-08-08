@@ -4,6 +4,7 @@
             :is="formItem.type || 'FormInput'"
             v-model="rowData[formItem.key]"
             :item="formItem"
+              v-on="bindEvents"
         />
     </div>
 </template>

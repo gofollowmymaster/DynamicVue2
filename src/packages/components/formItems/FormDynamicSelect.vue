@@ -2,11 +2,11 @@
     <!--  字典下拉框（指通过数据字典获取选项）  -->
     <section>
         <el-select
-            v-if="!gettextMode"
+            v-if="!isTextMode"
             v-model="val"
             style="width: 100%;"
-            :disabled="getDisabled"
-            :placeholder="getPlaceholder(item)"
+            :disabled="isDisabled"
+            :placeholder="placeholder"
             v-bind="bindOptions"
         >
             <el-option

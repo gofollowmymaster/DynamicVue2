@@ -16,7 +16,7 @@ export default {
     // 扩展属性，直接将属性配置，传到表单组件内部（即 Element UI 上）
     // 忽略属性【key、size】
         bindOptions() {
-            const obj = Object.assign({}, this.item)
+            const obj = Object.assign({}, this.colOptions)
 
             delete obj.events
             delete obj.colProperties
@@ -25,8 +25,8 @@ export default {
 
             return obj
         },
-        bindEvent() {
-            return this.item.events
+        bindEvents() {
+            return this.colOptions.events
         }
 
     },

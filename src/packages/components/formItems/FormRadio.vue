@@ -3,9 +3,9 @@
     <section  style="position: absolute;"
              class="  absolute-vertical-center  "
     >
-        <el-radio-group v-if="!gettextMode"
+        <el-radio-group v-if="!isTextMode"
                         v-model.trim="val"
-                        :disabled="getDisabled"
+                        :disabled="isDisabled"
                         v-bind="item.groupProperties"
                         @blur="e => onBlur(item, e)"
                         @focus="e => onFocus(item, e)"

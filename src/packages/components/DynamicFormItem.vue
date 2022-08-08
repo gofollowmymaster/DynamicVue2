@@ -18,7 +18,7 @@
         v-else-if="!formItem.hidden"
         v-bind="formItem.wraperProperties"
         :key="formItem.key"
-        :rules="!gettextMode ? formItem.rules : []"
+        :rules="!isTextMode ? formItem.rules : []"
         :class="setFormItemClass(formItem.wraperProperties.class)"
         :prop="formItem.key"
          :label="label"
@@ -33,11 +33,11 @@
             v-model="val"
             class="form-item-box"
             :style="formItem.formItemStyle||{}"
-            :class="`form-unqiue-${formItem.key} ${gettextMode ? 'hz-text-box' : 'hz-untext-box'}`"
+            :class="`form-unqiue-${formItem.key} ${isTextMode ? 'hz-text-box' : 'hz-untext-box'}`"
             :item="formItem"
         />
         <div
-            v-if="!gettextMode && formItem.formTip"
+            v-if="!isTextMode && formItem.formTip"
             class=" text-size12 form-tip lh22"
         >
             {{ formItem.formTip }}
@@ -83,7 +83,7 @@ export default {
             }
         },
                 // 是否采用文字模式
-        gettextMode() {
+        isTextMode() {
             if (this.changeData.textMode) {
                 return true
             }

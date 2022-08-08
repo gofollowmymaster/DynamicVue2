@@ -1,13 +1,13 @@
 <template>
     <!--  三级联动下拉框（通过数据字典获取选项）  -->
     <section>
-        <el-row v-if="!gettextMode">
+        <el-row v-if="!isTextMode">
             <!-- 默认 3 级联动 -->
             <el-col v-for="i in (item.linkLevel || 3)" :key="i" :span="24 / (item.linkLevel || 3)">
                 <el-select v-model="val[i-1]"
                            style="width: 100%;"
-                           :disabled="getDisabled"
-                           :placeholder="getSelectPlaceholder(item)"
+                           :disabled="isDisabled"
+                           :placeholder="placeholder"
                            @change="v => onChange(v, i)"
                 >
                     <el-option v-for="items in getOptions(i)"
@@ -72,7 +72,7 @@ export default {
         this.loadDict(this.item.firstParentKey)
     },
     methods: {
-        gettextModeValueList() {
+        isTextModeValueList() {
             // 1、这里的文本值，是 val每个元素 翻译为 label 后的组合
             // 2、因为是多级联动，且是文本模式，而我们只有其 value 值
             // 3、所以我们需要先拿到字典里该项，将 value 翻译为 label 才可以。
@@ -146,7 +146,7 @@ export default {
 
             // 去调接口加载数据字典
             if (needLoadDict && !this.hasLoaded) {
-                this.gettextModeValueList()
+                this.isTextModeValueList()
             }
             // 但是现在还是需要返回值的，所以返回文字内容
             return text.join('') || '-'

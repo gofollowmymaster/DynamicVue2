@@ -1,9 +1,9 @@
 <template>
     <section>
-        <el-select v-if="!gettextMode" ref="select" v-model="val"
+        <el-select v-if="!isTextMode" ref="select" v-model="val"
                    clearable style="width: 100%;"
-                   :disabled="getDisabled"
-                   :placeholder="getPlaceholder(item,'请选择')"
+                   :disabled="isDisabled"
+                   :placeholder="placeholder"
                    @visible-change="visibleChange"
                    @clear="clear"
         >

@@ -3,9 +3,9 @@
         <el-popover placement="top" width="auto" trigger="hover">
             <QrCodeImg
                 :style="colOptions.style || {}"
-                class="table-col-box"
                 v-bind="bindOptions"
                 :value="rowData[colOptions.key]"
+                  v-on="bindEvents"
             />
             <!-- <el-button slot="reference">hover 激活</el-button> -->
 

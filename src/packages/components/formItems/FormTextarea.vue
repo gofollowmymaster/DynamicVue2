@@ -1,10 +1,10 @@
 <template>
     <!-- 普通输入框 -->
     <section>
-        <el-input v-if="!gettextMode"
+        <el-input v-if="!isTextMode"
                   v-model="val"
-                  :placeholder="getPlaceholder(item)"
-                  :disabled="getDisabled"
+                  :placeholder="placeholder"
+                  :disabled="isDisabled"
                   type="textarea"
                   :autosize="item.autosize || false"
                   :rows="item.autosize ? '' : 4"

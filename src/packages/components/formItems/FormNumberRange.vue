@@ -1,9 +1,9 @@
 <template>
     <!-- 数字输入框 -->
     <section>
-        <section v-if="!gettextMode" class="flex justify-between">
+        <section v-if="!isTextMode" class="flex justify-between">
             <el-input :value="val[0]"
-                      :disabled="getDisabled"
+                      :disabled="isDisabled"
                       type="number"
                       v-bind="bindOptions"
                       @input="startChange"
@@ -13,7 +13,7 @@
             </el-input>
             <span class="mx12">-</span>
             <el-input :value="val[1]"
-                      :disabled="getDisabled"
+                      :disabled="isDisabled"
                       type="number"
                       v-bind="bindOptions"
                       @input="endChange"

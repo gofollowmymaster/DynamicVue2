@@ -76,6 +76,12 @@ export default {
             },
             searchFields,
             topToolBar: {
+                link :{
+                    isLoadData:false,
+                    actionType: 'link',
+                    link:'http://www.baidu.com',
+                    window:'_blank'
+                },
                 create: {
                     isLoadData: false,
                     label: '新增',
@@ -111,10 +117,10 @@ export default {
                         label: '编辑',
                         actionType: 'routerDialogFormAction',
                         apiPromise: treeStreetDetailApi,
-                        container: 'dy-page',
                         containerProperties: {
                             title: '更新不动产'
                         },
+                        borderForm:false,
                         colNum: 3,
                         formItemList: formFields,
                         saveAction: {

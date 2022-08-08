@@ -1,12 +1,12 @@
 <template>
     <section>
         <!-- 这是三级联动选择框 -->
-        <el-row v-if="!gettextMode">
+        <el-row v-if="!isTextMode">
             <el-col :span="8">
                 <el-select v-model="val[0]"
                            class="select"
                            placeholder="请选择"
-                           :disabled="getDisabled"
+                           :disabled="isDisabled"
                            @change="v => onChange(v, '0')"
                 >
                     <el-option v-for="items in dynamicDict[item.firstParentKey || '10020']"
@@ -20,7 +20,7 @@
                 <el-select v-model="val[1]"
                            class="select"
                            placeholder="请选择"
-                           :disabled="getDisabled"
+                           :disabled="isDisabled"
                            @change="v => onChange(v, '1')"
                 >
                     <el-option v-for="items in cityList"
@@ -34,7 +34,7 @@
                 <el-select v-model="val[2]"
                            class="select"
                            placeholder="请选择"
-                           :disabled="getDisabled"
+                           :disabled="isDisabled"
                 >
                     <el-option v-for="items in areaList"
                                :key="items[dynamicSelectOption.value]"

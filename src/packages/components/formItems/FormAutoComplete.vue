@@ -1,10 +1,10 @@
 <template>
     <!-- 输入搜索框 -->
     <section>
-        <el-autocomplete v-if="!gettextMode"
+        <el-autocomplete v-if="!isTextMode"
                          v-model.trim="val"
-                         :placeholder="getPlaceholder(item)"
-                         :disabled="getDisabled"
+                         :placeholder="placeholder"
+                         :disabled="isDisabled"
                          class="auto-complte-input"
                          :clearable="true"
                          value-key="value"

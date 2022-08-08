@@ -1,10 +1,10 @@
 <template>
     <!-- 数字输入框 -->
     <section :class="getClass()">
-        <template v-if="!gettextMode">
+        <template v-if="!isTextMode">
             <el-input v-model.trim="tempVal"
-                      :placeholder="getPlaceholder(item)"
-                      :disabled="getDisabled"
+                      :placeholder="placeholder"
+                      :disabled="isDisabled"
                       class="input-wr"
                       type="number"
                       v-bind="bindOptions"
@@ -17,8 +17,8 @@
                 <template v-if="append" slot="append">{{ append }}</template>
             </el-input>
             <el-input v-model.trim="dealInputValue"
-                      :placeholder="getPlaceholder(item)"
-                      :disabled="getDisabled"
+                      :placeholder="placeholder"
+                      :disabled="isDisabled"
                       class="input-readonly"
                       type="input"
                       v-bind="bindOptions"
@@ -172,7 +172,7 @@ export default {
             }
         },
         getClass() {
-            const c1 = `form-unqiue-${this.item.key} ${this.gettextMode ? 'hz-text-box' : 'hz-untext-box'}`
+            const c1 = `form-unqiue-${this.item.key} ${this.isTextMode ? 'hz-text-box' : 'hz-untext-box'}`
             const c2 = this.readonly ? 'is-readonly' : 'is-wr'
             return {
                 [c1]: true,
