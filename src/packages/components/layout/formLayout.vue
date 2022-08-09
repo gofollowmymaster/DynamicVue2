@@ -1,11 +1,13 @@
 <template>
     <div class="layout-wrapper relative ">
         <ul v-if="formItemList.length>3" class="left-section sticky top1 flex flex-direction justify-right mr12">
-            <li v-for="formSection of formItemList" :key="formSection.label" class="py6 pr12 text-right cursor-point"
+            <template  v-for="formSection of formItemList">
+            <li v-if="!formSection.hidden"  :key="formSection.label" class="py6 pr12 text-right cursor-point"
                 :class="[curSetion==formSection.label?'active':'']"
             >
                 <span @click="scrollTo(formSection)">{{ formSection.label }}</span>
             </li>
+            </template>
         </ul>
         <main class="main-section flex1  ">
             <slot name="main" />

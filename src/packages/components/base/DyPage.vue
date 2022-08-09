@@ -4,7 +4,7 @@
             <header class="flex align-center vertical-center height50 border-b pl16">
                 <el-page-header :content="title" @back="goBack" />
             </header>
-            <section class="p24  ">
+            <section class="px24 py12  ">
                 <slot />
             </section>
         </main>

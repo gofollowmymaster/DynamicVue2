@@ -11,7 +11,7 @@
         >
             <el-option
                 v-for="option in dynamicDict"
-                :key="option[dictKey]"
+                :key="option[dictValue]"
                 :label="option[dictLabel]"
                 :value="option[dictValue]"
             />
@@ -32,7 +32,7 @@ export default {
     data: function() {
         return {
             dynamicDict: {},
-            dictKey: 'id',
+           
             dictLabel: 'dictLabel',
             dictValue: 'dictValue'
         }
@@ -44,9 +44,7 @@ export default {
         }
     },
     mounted() {
-        if (this.item.options.key) {
-            this.dictKey = this.item.options.key
-        }
+   
         if (this.item.options.label) {
             this.dictLabel = this.item.options.label
         }
@@ -54,9 +52,9 @@ export default {
             this.dictValue = this.item.options.value
         }
 
-        this.item.options.apiPromise(this.formData()).then(res => {
+        this.item.options.apiPromise().then(res => {
             this.dynamicDict = res.reduce((prev, next) => {
-                prev[next[this.dictKey] + ''] = next
+                prev[next[this.dictValue] + ''] = next
                 return prev
             }, {})
         })
@@ -64,6 +62,4 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-
-</style>
+ 

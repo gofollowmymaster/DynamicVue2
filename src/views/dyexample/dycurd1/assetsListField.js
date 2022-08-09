@@ -199,7 +199,7 @@ export const assetsFields = [
         type: 'FormInput',
         formSection: '地理位置',
         label: '行政区划',
-        searchable: true,
+        searchOption: true,
         tableOption: {
             sort: 8
         },
@@ -269,7 +269,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用态势',
-        searchable: true,
+        searchOption: true,
         options: buildDynamicSelectOption('tree_manage_growth_situation'), 
         formOption: {
             rules: ['required']
@@ -326,9 +326,7 @@ export const assetsFields = [
         label: '管理人电话',
         formSection: '管理信息',
         formOption: {
-            // rules: ['required', /^[\d|-]{9,12}$/],
-            properties: {
-            },
+            rules: ['required', /^[\d|-]{9,12}$/],
             disabled: true,
             span:24
 
@@ -364,10 +362,10 @@ export const assetsFields = [
 ]
 
 export const manageLogFields = [
-    { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },   
-    { key: 'treeNumber', type: 'FormInput', label: '资产', searchable: false, tableOption: {} },   
+    { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },   
+    { key: 'treeNumber', type: 'FormInput', label: '资产', searchOption: false, tableOption: {} },   
 
-    { key: 'type', type: 'FormSelect', label: '类型', searchable: false, tableOption: {} }   
+    { key: 'type', type: 'FormSelect', label: '类型', searchOption: false, tableOption: {} }   
 
 ]
 
@@ -430,7 +428,7 @@ export const maintainFields = [
         key: 'cureType',
         type: 'FormDynamicSelect',
         options: buildDynamicSelectOption('tree_cure_type'), 
-        searchable: true,
+        searchOption: true,
         tableOption: {
             sort: 3
         },

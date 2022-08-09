@@ -4,37 +4,7 @@ import dayjs from 'dayjs'
 
 import Mock from 'mockjs'
 
-// const Random = Mock.Random
 
-// function mockDyFields (fields) {
-//   const mockInfo = {}
-//   fields.forEach((field) => {
-//     switch (field.type) {
-//       case 'FormDate':
-//         mockInfo[field.key + '|1'] = '@date'
-//         break
-//       case 'FormDateTime':
-//         mockInfo[field.key + '|1'] = '@datetime'
-//         break
-//       case 'FormRadio':
-//       case 'FormSelect':
-//         // mockInfo[field.key + "|1"] = field.options(
-//         //   Random.integer(0, field.options.length - 1)
-//         // );
-//         mockInfo[field.key + '|1'] = Random.integer(0, 3)
-//         break
-//       case 'FormNumber':
-//         mockInfo[field.key + '|1-100'] = 1
-//         break
-//       case 'FormNumberPlus':
-//         mockInfo[field.key + '|1-100.1-3'] = 1
-//         break
-//       default:
-//         mockInfo[field.key + '|1'] = '@cword'
-//     }
-//   })
-//   return mockInfo
-// }
 
 const DATAENUM = {
     // 合法标准随机数据
@@ -237,11 +207,15 @@ class TestValueCreator {
 
   makeDynamicSelectValue(formItem) {
       const formItemIns = this.formIns.$refs[formItem.key][0]
-      const length = Object.values(formItemIns.dynamicDict).length
+      if(!formItemIns.$refs.formitem) throw new Error('获取动态表单实力失败') 
+      const formitem=formItemIns.$refs.formitem
+      const dynamicDict=formitem.dynamicDict
+
+      const length = Object.values(dynamicDict).length
       const index = generatRandomNum(length - 1)
-      const randomItemKey = Object.values(formItemIns.dynamicDict)[index]?.[formItemIns.dictKey]
-      const optionItemDetail = formItemIns.dynamicDict[randomItemKey]
-      const dictValue = optionItemDetail?.[formItemIns.dictValue]
+      const randomItemKey = Object.values(dynamicDict)[index]?.[formitem.dictValue]
+      const optionItemDetail = dynamicDict[randomItemKey]
+      const dictValue = optionItemDetail?.[formitem.dictValue]
 
       return dictValue
   }

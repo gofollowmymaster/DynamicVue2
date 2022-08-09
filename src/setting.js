@@ -16,7 +16,7 @@ let globalSettings = {
     // 侧边栏是否收起
     sidebarCollapse: false,
     // 是否显示底部版权信息，同时在路由 meta 对象里可以单独设置某个路由是否显示底部版权信息
-    showCopyright: true,
+    showCopyright: false,
     // 版权信息配置，格式为：Copyright © [dates] <company>
     copyrightDates: '2021',
     copyrightCompany: 'DyVue2-admin',

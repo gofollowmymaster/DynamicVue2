@@ -84,14 +84,27 @@ export function selectDictDataInfoApi(params) {
     ])
 }
 
+
+const dictMap=new Map()
 export function buildDynamicSelectOption(dictType) {
+    debugger
+  
+        const apiPromise= ()=>{ 
+            let  data= dictMap.get('dict-map:'+dictType)
+            if(Array.isArray(data)){
+                return Promise.resolve(data)
+            }else{
+                return selectDictDataInfoApi({ dictType }).then((data)=>{
+                    dictMap.set('dict-map:'+dictType,data)
+                    return data
+                }) 
+            }
+        }
+ 
     return {
-        key: 'id',
         value: 'id',
         label: 'dictLabel',
-        apiPromise: () => {
-            return selectDictDataInfoApi({ dictType }) 
-        }
+        apiPromise 
     }
 }
 

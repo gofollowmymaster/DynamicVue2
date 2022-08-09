@@ -197,6 +197,7 @@ function setRequestApiAction(options) {
         apiPromise: typeof options.apiPromise=='function' ?options.apiPromise: (() => Promise.resolve()),
         callback: {
             showTip: true,
+            refresh: true,
             ...(options.callback || {})
         }
     }
