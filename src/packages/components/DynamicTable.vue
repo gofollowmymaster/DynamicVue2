@@ -186,14 +186,14 @@ export default {
             handler(tableData) {
                 this.$nextTick(() => {
                     debugger
-                    // this.$refs.table&&this.$refs.table.doLayout()
+                    this.$refs.table&&this.$refs.table.doLayout()
                     this.$forceUpdate()
 
                     this.selectRefresh()
                 })
             },
             deep: true,
-            immediate: true
+            // immediate: true
         },
         selected: {
             handler(selected) {

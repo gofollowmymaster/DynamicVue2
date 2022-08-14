@@ -89,18 +89,26 @@ export default {
             this.actionKey = this.$route.params?.action || this.$route.query.action
         },
         setCurrentDialogForm(currentDialogForm) {
+            debugger
             if (['dy-page', 'DyPage'].includes(currentDialogForm.container)) {
                 currentDialogForm.visible = { value: true }
                 this.currentPageForm = currentDialogForm
+                this.actionKey = this.actionKey? this.actionKey: currentDialogForm.actionKey
+
             } else {
                 currentDialogForm.visible = { value: true }
                 this.currentDialogForm = currentDialogForm
             }
+            //  this.actionKey = currentDialogForm.actionKey
         },
 
         setCurrentDialogPage(currentDialogPage) {
+            debugger
             currentDialogPage.visible = { value: true }
             this.currentDialogPage = currentDialogPage
+             if (['dy-page', 'DyPage'].includes(currentDialogPage.container)) {
+                this.actionKey = this.actionKey? this.actionKey: currentDialogPage.actionKey
+             }
         },
 
         // 关闭弹窗  兜底

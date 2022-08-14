@@ -3,7 +3,7 @@
         <aside class="left-section">
             <slot name="left" />
         </aside>
-        <main class="main-section flex1  ">
+        <main class="main-section    ">
             <section class="top-section">
                 <slot name="top" />
             </section>

@@ -76,7 +76,7 @@ export default {
     watch: {
         actionAndData: {
             handler({ actions, actionData }) {
-                debugger
+                // debugger
                 actions = Object.entries(actions)
                     .map(([key, value]) => {
                         return { ...value, actionKey: key }
@@ -154,6 +154,7 @@ export default {
             this.actionHandle(action, actionData)
         },
         actionHandle(action, actionData) {
+            
             if (typeof action.actionHook === 'function') {
                 action.actionHook(action, actionData)
             }

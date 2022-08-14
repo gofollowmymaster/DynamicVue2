@@ -1,7 +1,7 @@
 <template>
     <curdLayout :mode="!isEmpty(options.treeOption)?'ltb':'tb'" class="relative" :scene="scene">
         <div v-if="!isEmpty(options.treeOption)"
-             slot="left" class="tree-container scroll p10 border-main border-r4 grid-col-4 grid-col-xs-12 grid-col-pp-24"
+             slot="left" class="tree-container scroll "
         >
             <el-tree v-bind="options.treeOption" @node-click="treeClick" />
         </div>

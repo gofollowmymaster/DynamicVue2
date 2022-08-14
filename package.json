@@ -1,6 +1,6 @@
 {
     "name": "dyvue2",
-    "version": "0.0.76",
+    "version": "0.0.81",
     "author": "hua zheng <1950796924@qq.com>",
     "description": "a lowcode vue component drived by json",
     "main": "lib/dyvue2.umd.js",
@@ -26,16 +26,13 @@
         "svgo": "svgo -f src/assets/icons"
     },
     "peerDependencies": {
-        "@tinymce/tinymce-vue": "^3.0.1",
         "echarts": "^5.3.1",
-        "element-ui": "^2.15.6",
-        "tinymce": "^5.1.0",
+        "element-ui": "^2.14.0",
         "uppercamelcase": "^3.0.0",
         "vue": "^2.6.12",
         "vue-echarts": "^6.0.2"
     },
     "devDependencies": {
-        "@tinymce/tinymce-vue": "^3.2.6",
         "@vue/cli-plugin-babel": "~4.5.8",
         "@vue/cli-plugin-eslint": "~4.5.8",
         "@vue/cli-service": "~4.5.8",
@@ -58,19 +55,18 @@
         "node-sass": "^4.14.1",
         "nprogress": "^0.2.0",
         "path-to-regexp": "^6.2.0",
-        "sass-loader": "^7.3.1",
+        "sass-loader": "7.3.1",
         "sass-resources-loader": "^2.1.1",
         "screenfull": "^5.0.2",
         "svg-sprite-loader": "^6.0.6",
         "svgo": "^2.3.0",
-        "tinymce": "^5.5.1",
         "uppercamelcase": "^3.0.0",
         "vue": "^2.6.12",
         "vue-cookies": "^1.7.4",
         "vue-echarts": "^6.0.2",
         "vue-meta": "^2.4.0",
         "vue-router": "^3.4.8",
-        "vue-template-compiler": "^2.6.11",
+        "vue-template-compiler": "^2.6.12",
         "vuex": "^3.5.1",
         "webpack-spritesmith": "^1.1.0"
     },
@@ -84,4 +80,5 @@
         "last 2 versions",
         "not ie <= 8"
     ]
+ 
 }

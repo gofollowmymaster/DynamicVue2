@@ -216,8 +216,4 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-/deep/ .el-input__inner {
-    height: ;
-}
-</style>
+ 
