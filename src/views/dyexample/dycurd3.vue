@@ -80,7 +80,7 @@ export default {
                             label: '转事件',
                             sort: 0,
                             permission: '',
-
+                            container:'dy-page',
                             containerProperties: {
                                 title: '转事件',
                                 width: '70%'
@@ -104,8 +104,8 @@ export default {
                             dataAdapter: data => {
                                 return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 }
                             },
+                            title: '现场处理',
                             containerProperties: {
-                                title: '现场处理',
                                 width: '36%'
                             },
 
@@ -127,6 +127,7 @@ export default {
                                
                                 return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 }
                             },
+                            container:'el-dialog',
                             containerProperties: {
                                 title: '不予处理',
                                 width: '36%'

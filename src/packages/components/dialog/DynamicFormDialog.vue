@@ -4,7 +4,7 @@
         :is="container"
         :visible.sync="visible.value"
         custom-class="hz-low-code"
-        :append-to-body="true"
+
         @closed="afterClose"
     >
         <section v-if="visible.value">

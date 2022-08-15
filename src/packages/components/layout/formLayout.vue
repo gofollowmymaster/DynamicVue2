@@ -1,10 +1,9 @@
 <template>
     <div class="layout-wrapper relative ">
-        <ul v-if="formItemList.length>3" class="left-section sticky top1 flex flex-direction justify-right mr12">
+        <ul v-if="formItemList.length>3" class="left-section relative   flex flex-direction justify-right mr12"  :style="{top:scrollTop+'px'}">
             <template  v-for="formSection of formItemList">
             <li v-if="!formSection.hidden"  :key="formSection.label" class="py6 pr12 text-right cursor-point"
-                :class="[curSetion==formSection.label?'active':'']"
-            >
+                :class="[curSetion==formSection.label?'active':'']" >
                 <span @click="scrollTo(formSection)">{{ formSection.label }}</span>
             </li>
             </template>
@@ -29,16 +28,25 @@ export default {
     },
     data: function() {
         return {
-            curSetion: ''
+            curSetion: '',
+            scrollTop:0
         }
     },
     computed: {},
     created() {},
+    mounted(){
+        window.addEventListener('scroll',this.onScroll)
+    },
 
     methods: {
         scrollTo(section) {
             this.$emit('scroll', section)
             this.curSetion = section.label
+        },
+        onScroll(ev){
+            debugger
+          this.scrollTop= document.documentElement.scrollTop 
+          
         }
     }
 }

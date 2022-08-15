@@ -121,7 +121,7 @@ export default {
     computed: {
         options() {
             debugger
-            const mode = this.mode || presetConfig.getConfig('defaultDialogMode') || 'dialog'
+            const mode = this.mode || presetConfig.getConfig('defaultDialogActionMode') || 'dialog'
             const {
                 createOptions,
                 bulkdeleteOptions,

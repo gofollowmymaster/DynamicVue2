@@ -17,14 +17,28 @@ export function generateDefaultValue(fields) {
 
 function setDialogPageAction(options) {
     const baseOption = setActionBaseOption(options)
+
+    options.container=options.container || presetConfig.getConfig('defaultContainerType')||'el-dialog'
+    const containerType=options.container=='el-drawer'?'drawerProperties':(options.container=='el-dialog'?'dialogProperties':'pageProperties')
+    const containerProperties= presetConfig.getConfig(containerType)
+  
+    // action = setDialogPageAction(options)
+    let actionType ='dialogPage',routerAction='push'
+    if(['DyPage','dy-page'].includes(options.container)){
+        actionType='routerDialogPage'
+        routerAction= options.routerAction || 'push'
+    }
+  
     const actionOption = {
         ...baseOption,
-        actionType: 'dialogPage',
+        actionType,
+        routerAction,
         dialog: {
             key: options.key,
             properties: {
+                ...containerProperties,
                 title: options.title,
-                ...(options.containerProperties || {})
+                ...(options.containerProperties || {}),
             },
             container: options.container || 'dy-page',
             // layout: options.layout||'LayoutGrid',
@@ -143,21 +157,32 @@ function setActionBaseOption(options) {
 
 function setDialogFormAction(options) {
     const baseOption = setActionBaseOption(options)
-    // let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition } = presetConfig.getConfig('formOption')
-    // labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
+
+    options.container=options.container || presetConfig.getConfig('defaultContainerType')||'el-dialog'
+ 
+    const containerType=options.container=='el-drawer'?'drawerProperties':(options.container=='el-dialog'?'dialogProperties':'pageProperties')
+    const containerProperties= presetConfig.getConfig(containerType)
+
+    let actionType ='dialogForm',routerAction='push'
+    if(['DyPage','dy-page'].includes(options.container)){
+        actionType='routerDialogForm'
+        routerAction= options.routerAction || 'push'
+    }
+
     const actionOption = {
         ...baseOption,
         isLoadData: options.isLoadData ?? true,
-        actionType: 'dialogForm',
+        actionType,
+        routerAction,
         apiPromise: options.apiPromise || '',
 
         dialog: {
             key: options.key,
-            container: options.container || 'el-dialog',
+            container: options.container ,
             properties: {
+                ...containerProperties,
                 title: options.title || '',
-                width: options.width || presetConfig.getConfig('dialogWidth'),
-                ...(options.containerProperties || {})
+                ...(options.containerProperties || {}),
             },
             body: {
                 formOption:  generateFormOptions(options) ,
@@ -262,6 +287,7 @@ function setDetaultOptions(options) {
 }
 export function generateActionOption(type, options = {}) {
     options = setDetaultOptions(options)
+    
     let action
     switch (type) {
         case 'submit':

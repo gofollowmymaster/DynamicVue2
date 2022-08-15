@@ -136,7 +136,7 @@ export default {
 
                 localStorage.setItem(this.localTableName, JSON.stringify(tableMap))
                 this.$nextTick(() => {
-                    this.$refs.dynamicCurd.refresh()
+                     this.$refs.dynamicCurd&&this.$refs.dynamicCurd.refresh()
                 })
             },
             immediate: true

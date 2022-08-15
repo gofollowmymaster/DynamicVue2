@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .layout-wrapper {
     padding: 0 0 0 0;
     .left-section {

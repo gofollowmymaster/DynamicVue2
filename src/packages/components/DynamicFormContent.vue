@@ -173,7 +173,7 @@ export default {
     // 是否允许props 傳入formItemList  动态更新
     // this.formItemListInit=deepCopy(this.formItemList)
     // Object.freeze(this.formItemList)
-
+    
     },
     methods: {
         filterFormHide(items) {

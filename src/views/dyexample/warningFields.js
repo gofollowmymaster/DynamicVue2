@@ -453,7 +453,7 @@ export const eventFields = [
         label: '行政区划',
         formSection: '基本信息',
         type: 'FormInput',
-        key: 'equipmentName',
+        key: 'region',
         formOption: {
             rules: ['required']
         }
