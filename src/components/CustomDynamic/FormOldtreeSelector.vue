@@ -36,7 +36,6 @@
 </template>
 <script>
 import FormMixin from '@/packages/components/formItems/mixin'
-import { buildDynamicSelectOption } from '@/api/global'
 import { assetsListApi } from '@/api/assets.js'
 const fields = [
     {
@@ -61,7 +60,7 @@ const fields = [
         key: 'famousWood',
         type: 'FormSelect',
         label: '等级',
-        options: buildDynamicSelectOption('tree_manage_famous_wood'),
+        dictType:  ('tree_manage_famous_wood'),
 
         tableOption: {
             sort: 6

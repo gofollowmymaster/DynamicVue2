@@ -1,4 +1,4 @@
-import { buildDynamicSelectOption, elementUploadFileApi, globalDownloadFileById } from '@/api/global'
+import {  elementUploadFileApi, globalDownloadFileById } from '@/api/global'
 
 export const assetsFields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
@@ -58,7 +58,7 @@ export const assetsFields = [
         key: 'distribution',
         label: '分布特点',
         type: 'FormDynamicSelect',
-        options: buildDynamicSelectOption('tree_manage_distribution'), 
+        dictType:  ('tree_manage_distribution'), 
         formOption: {
         }
     },
@@ -77,7 +77,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         label: '权属',
  
-        options: buildDynamicSelectOption('tree_manage_ownership'), 
+       dictType:('tree_manage_ownership'), 
         formOption: {
         }
     },
@@ -85,7 +85,7 @@ export const assetsFields = [
         key: 'famousWood',
         type: 'FormDynamicSelect',
         label: '名木',
-        options: buildDynamicSelectOption('tree_manage_famous_wood'), 
+       dictType:('tree_manage_famous_wood'), 
        
         tableOption: {
             colProperties:{
@@ -116,7 +116,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         label: '保护等级',
         searchOption: true,
-        options: buildDynamicSelectOption('tree_manage_protect_lev'), 
+       dictType:('tree_manage_protect_lev'), 
    
         formOption: {
             rules: ['required'],
@@ -223,7 +223,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '地理位置',
         label: '使用场所',
-        options: buildDynamicSelectOption('tree_manage_growing_place'),
+       dictType:('tree_manage_growing_place'),
         formOption: {
         }
  
@@ -270,7 +270,7 @@ export const assetsFields = [
         formSection: '使用信息',
         label: '使用态势',
         searchOption: true,
-        options: buildDynamicSelectOption('tree_manage_growth_situation'), 
+       dictType:('tree_manage_growth_situation'), 
         formOption: {
             rules: ['required']
         },
@@ -285,7 +285,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用现状',
-        options: buildDynamicSelectOption('tree_manage_growth_status'), 
+       dictType:('tree_manage_growth_status'), 
         formOption: {
         }
  
@@ -296,7 +296,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用环境',
-        options: buildDynamicSelectOption('tree_manage_growth_environment'),
+       dictType:('tree_manage_growth_environment'),
         formOption: {
             rules: ['required']
         }
@@ -427,7 +427,7 @@ export const maintainFields = [
         label: '养护类型',
         key: 'cureType',
         type: 'FormDynamicSelect',
-        options: buildDynamicSelectOption('tree_cure_type'), 
+       dictType:('tree_cure_type'), 
         searchOption: true,
         tableOption: {
             sort: 3
@@ -606,7 +606,7 @@ export const   protectFields = [
         label: '保护类型',
         key: 'protectType',
         type: 'FormDynamicSelect',
-        options: buildDynamicSelectOption('tree_protect_type'), 
+       dictType:('tree_protect_type'), 
         searchOption: {
             key: 'cureType'
         },

@@ -188,7 +188,7 @@ export default {
             }
         },
         routeChange(newVal, oldVal) {
-            if (newVal.name == oldVal.name) {
+            if (newVal.name == oldVal.name&&newVal.query.action=='refresh') {
                 this.reload()
             }
         },

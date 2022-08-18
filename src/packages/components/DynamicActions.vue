@@ -153,17 +153,10 @@ export default {
             }
             this.actionHandle(action, actionData)
         },
-        actionHandle(action, actionData) {
+        
             
-            if (typeof action.actionHook === 'function') {
-                action.actionHook(action, actionData)
-            }
-            if (action.isLoadData === false) {
-                actionData = {}
-            }
-            this.actionHandles(action, actionData)
-        },
-
+          
+      
         openPop(action) {
             this.$set(this.popoverVisible, action.label, true)
             this.activeAction = action

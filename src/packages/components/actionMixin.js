@@ -6,7 +6,13 @@ export default {
     computed: {},
     inject: ['setGlobalDialogForm', 'setGlobalDialogPage', 'isGlobalDialogFormActive','refreshComponentKey'],
     methods: {
-        actionHandles(action = {}, actionData = {}) {
+        actionHandle(action = {}, actionData = {}) {
+            if (typeof action.actionHook === 'function') {
+                action.actionHook(action, actionData)
+            }
+            if (action.isLoadData === false) {
+                actionData = {}
+            }
             debugger
             switch (action.actionType) {
                 case 'dialogPage':

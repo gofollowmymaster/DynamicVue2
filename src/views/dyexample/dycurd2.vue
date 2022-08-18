@@ -90,7 +90,7 @@ export default {
                         icon: 'el-icon-plus',
                         type: 'primary'
                     },
-                    container: 'dy-page',
+                    // container: 'dy-page',
                     containerProperties: {
                         title: '新增不动产'
                     },
@@ -130,11 +130,10 @@ export default {
                     detail: {
                         label: '查看',
                         actionType: 'routerDialogFormAction',
-                        container: 'dy-page',
+                        // container: 'dy-page',
                         apiPromise: treeStreetDetailApi,
                         containerProperties: {
                             title: '查看不动产',
-                            width: '60%'
                         },
                         borderForm: false,
                         textMode: true,

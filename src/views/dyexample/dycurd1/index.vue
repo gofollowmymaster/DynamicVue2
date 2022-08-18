@@ -67,8 +67,8 @@ export default {
                         detail: null,
                         detail2: {
                             label: '详情',
-                            actionType: 'dialogPageAction',
-                            container:'dy-page',
+                            actionType: 'routerDialogPageAction',
+                            // container:'dy-page',
                             // sort:60,
                             permission: '详情',
                             containerProperties: {

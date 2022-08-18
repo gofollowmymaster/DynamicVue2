@@ -4,6 +4,7 @@ import Mock from 'mockjs'
 const Random = Mock.Random
 
 const mockDb = new Map()
+export const dictMapDb= new Map()
 
 export function mockDyFields(fields) {
     const mockInfo = {}
@@ -16,11 +17,11 @@ export function mockDyFields(fields) {
                 mockInfo[field.key + '|1'] = '@datetime'
                 break
             case 'FormRadio':
+            case 'FormCheckbox':
             case 'FormSelect':
-                // mockInfo[field.key + "|1"] = field.options(
-                //   Random.integer(0, field.options.length - 1)
-                // );
-                mockInfo[field.key + '|0-3'] = 1
+                mockInfo[field.key + "|1"] = field.options[Random.integer(0, field.options.length - 1)]
+              
+                // mockInfo[field.key + '|0-3'] = 1
                 break
             case 'FormNumber':
                 mockInfo[field.key + '|1-100'] = 1
@@ -30,6 +31,17 @@ export function mockDyFields(fields) {
                 break
             case 'FormHide':
                 mockInfo[field.key + '|1-1000000'] = 1
+                break
+            case 'FormInput':
+            case 'FormTextarea':
+                mockInfo[field.key + '|1'] =  '@cword(3)'
+                break
+            case 'FormDrawElement':
+            case 'FormOldtreeSelector':
+                mockInfo[field.key] = []
+                break
+            case 'FormDynamicSelect':
+                mockInfo[field.key] = dictMapDb.get(field.dictType)?.[0]?.id??1
                 break
             default:
                 mockInfo[field.key + '|1'] = '@cword(3)'

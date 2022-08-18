@@ -196,7 +196,7 @@ export default {
 
     methods: {
         initRefreshEvent() {
-            this.$dynamicBus.$off('dynamicRefresh')
+            // this.$dynamicBus.$off('dynamicRefresh')
             this.$dynamicBus.$on('dynamicRefresh', () => {
                 this.refresh()
             })

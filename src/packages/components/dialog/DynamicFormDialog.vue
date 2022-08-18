@@ -94,9 +94,7 @@ export default {
         reset() {
             this.$refs.DynamicFormContent.resetFields()
         },
-        actionHandle(action) {
-            this.actionHandles(action)
-        },
+     
         formDataUpdateHandle(formVm, param) {
             if (this.body.formDataUpdateHandle) {
                 this.body.formDataUpdateHandle(formVm, param)

@@ -110,11 +110,11 @@ export default {
             // if(action.dialog.body?.actions){
             //   action.dialog.body.actions={}
             // }
-            this.actionHandles(action, actionData)
+            this.actionHandle(action, actionData)
             this.pageOpened = true
         },
         closeDetail() {
-            this.pageOpened === true && this.actionHandles({ actionType: 'close' })
+            this.pageOpened === true && this.actionHandle({ actionType: 'close' })
         }
     }
 }

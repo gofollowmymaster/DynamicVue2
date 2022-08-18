@@ -50,7 +50,7 @@ export default {
                             /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd2.vue'
                         ),
                     meta: {
-                        title: '自定义组合CURD'
+                        title: '自定义组合CURD2'
                     }
                 },
                 {
@@ -61,7 +61,18 @@ export default {
                             /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd3.vue'
                         ),
                     meta: {
-                        title: '自定义组合CURD'
+                        title: '自定义组合CURD3'
+                    }
+                },
+                {
+                    path: 'dycurd4',
+                    name: 'dycurd-4',
+                    component: () =>
+                        import(
+                            /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/order/list.vue'
+                        ),
+                    meta: {
+                        title: '自定义组合CURD4'
                     }
                 },
                 

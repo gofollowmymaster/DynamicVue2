@@ -76,14 +76,14 @@ export default {
                     lineActions: {
                         update: null,
                         atransToEvent: {
-                            actionType: 'dialogFormAction',
+                            actionType: 'routerDialogFormAction',
                             label: '转事件',
                             sort: 0,
                             permission: '',
-                            container:'dy-page',
+                            // container:'dy-page',
                             containerProperties: {
                                 title: '转事件',
-                                width: '70%'
+                                // width: '70%'
                             },
                             colNum: 2,
 

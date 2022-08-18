@@ -120,9 +120,7 @@ export default {
         reset() {
             this.$refs.DynamicFormContent.resetFields()
         },
-        actionHandle(action) {
-            this.actionHandles(action)
-        },
+  
         formDataUpdated(vm, data) {
 
         }

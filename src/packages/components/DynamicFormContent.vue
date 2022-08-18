@@ -6,8 +6,7 @@
                      ref="form"
                      :class="{'form-text-mode': textMode }"
                      :model="data"
-                     :validate-on-rule-change="true"
-            >
+                     :validate-on-rule-change="true">
                 <template v-for="formSection of formItemList">
                     <main
                         v-if=" !formSection.hidden && filterFormHide(formSection.children).length "
@@ -24,8 +23,7 @@
                             <span
                                 v-if="showFoldBtn"
                                 class="block-fold-btn"
-                                @click="foldBlock(formSection)"
-                            >
+                                @click="foldBlock(formSection)">
                                 {{ isBlocked(formSection) ? "展开" : "收起" }}
                                 <i :class="[ 'el-icon-arrow-' + (isBlocked(formSection) ? 'down' : 'up'), ]" />
                             </span>

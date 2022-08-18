@@ -4,6 +4,7 @@ import Mock from 'mockjs'
 
 import { downFile } from '@/util/index'
 import { SysAdmListAdmTreeInfo } from '@/api/home'
+import { dictMapDb } from "./mockUtil"
 
 /* **************************** 系统配置-相关 **************************** */
 
@@ -74,39 +75,29 @@ export function elementUploadFileApi(options = {}) {
         } params   示例:
  * @returns   Promise
  */
-export function selectDictDataInfoApi(params) {
-    return Promise.resolve([
-        {
-            id: 1, dictLabel: Mock.mock('@cword(3)')
-        },
-        {id: 2, dictLabel: Mock.mock('@cword(3)')},
-        {id: 3, dictLabel: Mock.mock('@cword(3)')}
-    ])
-}
 
 
-const dictMap=new Map()
-export function buildDynamicSelectOption(dictType) {
-    debugger
-  
-        const apiPromise= ()=>{ 
-            let  data= dictMap.get('dict-map:'+dictType)
-            if(Array.isArray(data)){
-                return Promise.resolve(data)
-            }else{
-                return selectDictDataInfoApi({ dictType }).then((data)=>{
-                    dictMap.set('dict-map:'+dictType,data)
-                    return data
-                }) 
-            }
-        }
- 
-    return {
-        value: 'id',
-        label: 'dictLabel',
-        apiPromise 
+export function selectDictDataInfoApi({dictType}) {
+    if(!dictMapDb.get(dictType)){
+        dictMapDb.set( dictType, [
+            {
+                id: 1, dictLabel: Mock.mock('@cword(3)')
+            },
+            {id: 2, dictLabel: Mock.mock('@cword(3)')},
+            {id: 3, dictLabel: Mock.mock('@cword(3)')}
+        ])
     }
+    
+
+
+    return Promise.resolve(dictMapDb.get(dictType))
 }
+
+ 
+
+
+
+
 
 const treeRootCode =  '500103000000'
 
