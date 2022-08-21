@@ -1,6 +1,6 @@
 <template>
     <!-- 普通输入框 -->
-    <section  style="position: absolute;"
+    <section style="position: absolute;"
              class="  absolute-vertical-center  "
     >
         <el-radio-group v-if="!isTextMode"
@@ -40,11 +40,11 @@ export default {
             return (content && content.label) || ''
         },
         bindOptions() {
-            const options= this.getDefaultBindOptions(this.item)
-            options.itemProperties=options.itemProperties?options.itemProperties:{}
+            const options = this.getDefaultBindOptions(this.item)
+            options.itemProperties = options.itemProperties ? options.itemProperties : {}
             return options
          
-        },
+        }
 
     }
 

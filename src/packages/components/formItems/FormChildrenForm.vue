@@ -6,12 +6,12 @@
         <ul class="chilren-form-list">
             <li v-for="(formData,index) in val" :key="formData.id" class="children-form-item relative mt12 border-r4 flex align-center pl6 pr28 pt8">
                 <span class="absolute top6 left6">{{ index+1 }}</span>
-                <i  v-if="!isTextMode"  class="action-icon absolute top3 right3 el-icon-delete" @click="deleteItem(index)" />
+                <i v-if="!isTextMode" class="action-icon absolute top3 right3 el-icon-delete" @click="deleteItem(index)" />
                 <DynamicFormContent
                     v-bind="formOption"
                     :ref="'dynamicForm'+formData.id"
                     class="  "
-                    :textMode="isTextMode"
+                    :text-mode="isTextMode"
                     :data="formData"
                     :form-item-list="formItemList"
                     :all-disabled="isTextMode?true:isDisabled"

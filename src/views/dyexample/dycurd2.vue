@@ -43,7 +43,6 @@
                 </section>
             </curdLayout>
         </DynamicPageWrapper>
- 
     </div>
 </template>
 <script>
@@ -62,7 +61,7 @@ import {
 import fields from './fixedAssetsFields'
 import {formSections} from './fixedAssetsFields'
 
-const formFields = buildFormFields(fields,formSections)
+const formFields = buildFormFields(fields, formSections)
 const searchFields = buildSearchFields(fields)
 const tableFields = buildTableFields(fields)
 
@@ -76,11 +75,11 @@ export default {
             },
             searchFields,
             topToolBar: {
-                link :{
-                    isLoadData:false,
+                link: {
+                    isLoadData: false,
                     actionType: 'link',
-                    link:'http://www.baidu.com',
-                    window:'_blank'
+                    link: 'http://www.baidu.com',
+                    window: '_blank'
                 },
                 create: {
                     isLoadData: false,
@@ -106,10 +105,10 @@ export default {
                     label: '批量删除',
                     actionType: 'requestApiAction',
                     apiPromise: treeStreetDeleteApi,
-                     msgBox:this.$dynamicConfig['msgBoxTipOptions']
+                    msgBox: this.$dynamicConfig['msgBoxTipOptions']
                 }
             },
-            tableOption:  {
+            tableOption: {
                 loadListApi: treeStreetListApi,
                 'current-change': 'handleCurrentChange', // 事件 暂不支持
                 lineActions: {
@@ -120,7 +119,7 @@ export default {
                         containerProperties: {
                             title: '更新不动产'
                         },
-                        borderForm:false,
+                        borderForm: false,
                         colNum: 3,
                         formItemList: formFields,
                         saveAction: {
@@ -133,7 +132,7 @@ export default {
                         // container: 'dy-page',
                         apiPromise: treeStreetDetailApi,
                         containerProperties: {
-                            title: '查看不动产',
+                            title: '查看不动产'
                         },
                         borderForm: false,
                         textMode: true,
@@ -148,7 +147,7 @@ export default {
                             class: ['text-grey-dark2']
                         },
                         apiPromise: treeStreetDeleteApi,
-                        msgBox:this.$dynamicConfig['msgBoxTipOptions']
+                        msgBox: this.$dynamicConfig['msgBoxTipOptions']
                     }
                 }
             },
@@ -157,7 +156,7 @@ export default {
 
             searchParams: { refreshKey: '' },
             selected: [],
-            total: 1,
+            total: 1
        
         }
     },

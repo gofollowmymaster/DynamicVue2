@@ -18,27 +18,29 @@ export function generateDefaultValue(fields) {
 function setDialogPageAction(options) {
     const baseOption = setActionBaseOption(options)
 
-    options.container=options.container || presetConfig.getConfig('defaultContainerType')||'el-dialog'
-    const containerType=options.container=='el-drawer'?'drawerProperties':(options.container=='el-dialog'?'dialogProperties':'pageProperties')
-    const containerProperties= presetConfig.getConfig(containerType)
+    options.container = options.container || presetConfig.getConfig('defaultContainerType') || 'el-dialog'
+    const containerType = options.container == 'el-drawer' ? 'drawerProperties' : (options.container == 'el-dialog' ? 'dialogProperties' : 'pageProperties')
+    const containerProperties = presetConfig.getConfig(containerType)
   
     // action = setDialogPageAction(options)
-    let actionType ='dialogPage',routerAction='push'
-    if(['DyPage','dy-page'].includes(options.container)){
-        actionType='routerDialogPage'
-        routerAction= options.routerAction || 'push'
+    let actionType = 'dialogPage', routerAction = 'push', router
+    if (['DyPage', 'dy-page'].includes(options.container)) {
+        actionType = 'routerDialogPage'
+        routerAction = options.routerAction || 'push'
+        router =  options.router
     }
   
     const actionOption = {
         ...baseOption,
         actionType,
         routerAction,
+        router,
         dialog: {
             key: options.key,
             properties: {
                 ...containerProperties,
                 title: options.title,
-                ...(options.containerProperties || {}),
+                ...(options.containerProperties || {})
             },
             container: options.container || 'dy-page',
             // layout: options.layout||'LayoutGrid',
@@ -104,15 +106,15 @@ function setResetAction(options) {
     }
     return actionOption
 }
-function setLinkAction(options){
+function setLinkAction(options) {
     options = setDetaultOptions(options)
     const baseOption = setActionBaseOption(options)
     const actionOption = {
         ...baseOption,
         actionType: 'link',
         label: options.label || '跳转',
-        link:options.link,
-        window:options.window||'_blank'
+        link: options.link,
+        window: options.window || '_blank'
     }
     return actionOption
 }
@@ -158,34 +160,35 @@ function setActionBaseOption(options) {
 function setDialogFormAction(options) {
     const baseOption = setActionBaseOption(options)
 
-    options.container=options.container || presetConfig.getConfig('defaultContainerType')||'el-dialog'
+    options.container = options.container || presetConfig.getConfig('defaultContainerType') || 'el-dialog'
  
-    const containerType=options.container=='el-drawer'?'drawerProperties':(options.container=='el-dialog'?'dialogProperties':'pageProperties')
-    const containerProperties= presetConfig.getConfig(containerType)
+    const containerType = options.container == 'el-drawer' ? 'drawerProperties' : (options.container == 'el-dialog' ? 'dialogProperties' : 'pageProperties')
+    const containerProperties = presetConfig.getConfig(containerType)
 
-    let actionType ='dialogForm',routerAction='push'
-    if(['DyPage','dy-page'].includes(options.container)){
-        actionType='routerDialogForm'
-        routerAction= options.routerAction || 'push'
+    let actionType = 'dialogForm', routerAction = 'push', router  
+    if (['DyPage', 'dy-page'].includes(options.container)) {
+        actionType = 'routerDialogForm'
+        routerAction = options.routerAction || 'push'
+        router = options.router
     }
 
     const actionOption = {
         ...baseOption,
+        router,
         isLoadData: options.isLoadData ?? true,
         actionType,
         routerAction,
         apiPromise: options.apiPromise || '',
-
         dialog: {
             key: options.key,
-            container: options.container ,
+            container: options.container,
             properties: {
                 ...containerProperties,
                 title: options.title || '',
-                ...(options.containerProperties || {}),
+                ...(options.containerProperties || {})
             },
             body: {
-                formOption:  generateFormOptions(options) ,
+                formOption: generateFormOptions(options),
                 formItemList: options.formItemList,
                 // data: options.data || {},
                 formDataUpdateHandle: options.formDataUpdateHandle || ((formVm, param) => null),
@@ -219,7 +222,7 @@ function setRequestApiAction(options) {
         ...baseOption,
 
         actionType: 'requestApi',
-        apiPromise: typeof options.apiPromise=='function' ?options.apiPromise: (() => Promise.resolve()),
+        apiPromise: typeof options.apiPromise == 'function' ? options.apiPromise : (() => Promise.resolve()),
         callback: {
             showTip: true,
             refresh: true,
@@ -235,7 +238,7 @@ function setDownloadAction(options) {
         ...baseOption,
         actionType: 'download',
         label: options.label || '下载',
-        apiPromise: typeof options.apiPromise=='function' ?options.apiPromise: (() => Promise.resolve()),
+        apiPromise: typeof options.apiPromise == 'function' ? options.apiPromise : (() => Promise.resolve()),
         callback: {
             showTip: true,
             ...(options.callback || {})
@@ -289,6 +292,7 @@ export function generateActionOption(type, options = {}) {
     options = setDetaultOptions(options)
     
     let action
+    
     switch (type) {
         case 'submit':
         case 'submitAction':
@@ -304,9 +308,9 @@ export function generateActionOption(type, options = {}) {
 
             options.container = 'dy-page'
             action = setDialogPageAction(options)
-            action.actionType = 'routerDialogPage'
-            action.routerAction = options.routerAction || 'push'
-            // action.container ='dy-page'
+            // action.actionType = 'routerDialogPage'
+            // action.routerAction = options.routerAction || 'push'
+
             return action
         case 'dialogForm':
         case 'dialogFormAction':
@@ -320,6 +324,7 @@ export function generateActionOption(type, options = {}) {
             action = setDialogFormAction(options)
             action.actionType = 'routerDialogForm'
             action.routerAction = options.routerAction || 'push'
+            action.router =  options.router
             // action.dialog.body.formOption.formProperties['label-width'] = '150px'
             return action
         case 'requestApiActionOption':
@@ -352,7 +357,7 @@ export function generateActionOption(type, options = {}) {
 }
 
 export function loadActionTipConfig() {
-    const actionTip =presetConfig.getConfig('actionTip')
+    const actionTip = presetConfig.getConfig('actionTip')
     return actionTip === 'pop'
         ?   presetConfig.getConfig('popTipOptions')
         : {
@@ -361,22 +366,24 @@ export function loadActionTipConfig() {
             }
         }
 }
-export function generateFormOptions(options){
+export function generateFormOptions(options) {
+    debugger
  
-    let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition,formProperties,showFoldBtn,borderForm ,colNum} = presetConfig.getConfig('formOption')
+    let { 'label-width': labelWidth, pageLabelWidth, 'label-position': labelPosition, formProperties, showFoldBtn, borderForm, colNum, testTool} = presetConfig.getConfig('formOption')
     labelWidth = ['dy-page', 'DyPage'].includes(options.container) ? pageLabelWidth : labelWidth
     return  {
-            formProperties: {
-                ...formProperties,
-                'label-width': options['label-width'] || labelWidth,
-                'label-position': options['label-position'] || labelPosition,
-                ...(options.formProperties || {}),
+        formProperties: {
+            ...formProperties,
+            'label-width': options['label-width'] || labelWidth,
+            'label-position': options['label-position'] || labelPosition,
+            ...(options.formProperties || {})
 
-            },
-            showFoldBtn: options.showFoldBtn ?? showFoldBtn,
-            borderForm: options.borderForm ?? borderForm,
-            textMode: options.textMode ?? false,
-            colNum: options.colNum ??  colNum
+        },
+        showFoldBtn: options.showFoldBtn ?? showFoldBtn,
+        borderForm: options.borderForm ?? borderForm,
+        textMode: options.textMode ?? false,
+        colNum: options.colNum ??  colNum,
+        testTool: options.testTool ?? testTool
     }
 }
  

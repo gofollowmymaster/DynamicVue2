@@ -17,7 +17,7 @@
             :options="options.searchOption"
             @search="onSearch"
         />
-        <section  class="flex flex-direction " >
+        <section class="flex flex-direction ">
             <DynamicTable
                 class="table-wraper flex1"
                 :table="options.listOption"

@@ -5,12 +5,12 @@
         >
             <template #actionBtnSlot>
                 <section class="  ">
-                    <el-button v-if="searchFormOption.trigger=='click'" class="lh10" type="primary" size="small" icon="el-icon-search" @click="submit">{{ searchFormOption.searchLabel||'搜索' }}</el-button>
-                    <el-button v-if="searchFormOption.resetable" class="lh10" size="small" icon="el-icon-refresh" @click="reset">重置</el-button>
+                    <el-button v-if="searchFormOption.trigger=='click'" class="lh10" type="primary" :size="btnSize" icon="el-icon-search" @click="submit">{{ searchFormOption.searchLabel||'搜索' }}</el-button>
+                    <el-button v-if="searchFormOption.resetable" class="lh10" :size="btnSize" icon="el-icon-refresh" @click="reset">重置</el-button>
                 </section>
             </template>
         </DynamicFormContent>
-        <el-button v-if="searchFormOption.mainNum<fields[0].children.length" class="ml12 align-self-start " type="text" size="small" @click="switchSearchBar">
+        <el-button v-if="searchFormOption.mainNum<fields[0].children.length" class="ml12 align-self-start " type="text" :size="btnSize" @click="switchSearchBar">
             高级筛选
             <i :class="[isExpand?'el-icon-arrow-up':'el-icon-arrow-down']" />
         </el-button>
@@ -18,6 +18,7 @@
 </template>
 <script>
 import { deepCopy, loadPresetConfig } from '../utils/tool'
+import { presetConfig }  from '../presetConfig'
 
 export default {
     name: 'DymamicSearchForm',
@@ -44,12 +45,13 @@ export default {
     },
     data: function() {
         return {
+            btnSize: presetConfig.getConfig('btnSize'),
             isExpand: false
         }
     },
     computed: {
-        searchFormOption(){
-            return  this.$appendToPreset('searchOption', this.options )
+        searchFormOption() {
+            return  this.$appendToPreset('searchOption', this.options)
         },
         formFields() {
             const fieldsClone = deepCopy(this.fields)

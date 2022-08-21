@@ -58,7 +58,7 @@ export const assetsFields = [
         key: 'distribution',
         label: '分布特点',
         type: 'FormDynamicSelect',
-        dictType:  ('tree_manage_distribution'), 
+        dictType: ('tree_manage_distribution'), 
         formOption: {
         }
     },
@@ -77,7 +77,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         label: '权属',
  
-       dictType:('tree_manage_ownership'), 
+        dictType: ('tree_manage_ownership'), 
         formOption: {
         }
     },
@@ -85,13 +85,13 @@ export const assetsFields = [
         key: 'famousWood',
         type: 'FormDynamicSelect',
         label: '名木',
-       dictType:('tree_manage_famous_wood'), 
+        dictType: ('tree_manage_famous_wood'), 
        
         tableOption: {
-            colProperties:{
-                width:80
+            colProperties: {
+                width: 80
             },
-            sort: 6,
+            sort: 6
         },
         formOption: {
             rules: ['required']
@@ -116,7 +116,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         label: '保护等级',
         searchOption: true,
-       dictType:('tree_manage_protect_lev'), 
+        dictType: ('tree_manage_protect_lev'), 
    
         formOption: {
             rules: ['required'],
@@ -176,7 +176,7 @@ export const assetsFields = [
         type: 'FormTextarea',
         label: '设备性状描述',
         formOption: {
-            col : 5
+            col: 5
         }
     },
 
@@ -185,7 +185,7 @@ export const assetsFields = [
         label: '资产照片',
         type: 'FormUpload',
         formOption: {
-            col : 5,
+            col: 5,
             'list-type': 'picture-card',
             accept: 'img',
             btn_text: '上传',
@@ -211,7 +211,7 @@ export const assetsFields = [
     {
         label: '详细地址',
         formSection: '地理位置',
-        type:'FormSelectPoint',
+        type: 'FormSelectPoint',
         key: 'address',
         formOption: {
             rules: ['required']
@@ -223,7 +223,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '地理位置',
         label: '使用场所',
-       dictType:('tree_manage_growing_place'),
+        dictType: ('tree_manage_growing_place'),
         formOption: {
         }
  
@@ -270,7 +270,7 @@ export const assetsFields = [
         formSection: '使用信息',
         label: '使用态势',
         searchOption: true,
-       dictType:('tree_manage_growth_situation'), 
+        dictType: ('tree_manage_growth_situation'), 
         formOption: {
             rules: ['required']
         },
@@ -285,7 +285,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用现状',
-       dictType:('tree_manage_growth_status'), 
+        dictType: ('tree_manage_growth_status'), 
         formOption: {
         }
  
@@ -296,7 +296,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用环境',
-       dictType:('tree_manage_growth_environment'),
+        dictType: ('tree_manage_growth_environment'),
         formOption: {
             rules: ['required']
         }
@@ -328,7 +328,7 @@ export const assetsFields = [
         formOption: {
             rules: ['required', /^[\d|-]{9,12}$/],
             disabled: true,
-            span:24
+            span: 24
 
         }
     },
@@ -338,7 +338,7 @@ export const assetsFields = [
         label: '管养方案',
         formSection: '管理信息',
         formOption: {
-            col : 5
+            col: 5
         }
     },
     {
@@ -347,7 +347,7 @@ export const assetsFields = [
         type: 'FormUpload',
         formSection: '管理信息',
         formOption: {
-            col : 5,
+            col: 5,
             'list-type': 'table',
             accept: '*',
             limit: 200,
@@ -427,7 +427,7 @@ export const maintainFields = [
         label: '养护类型',
         key: 'cureType',
         type: 'FormDynamicSelect',
-       dictType:('tree_cure_type'), 
+        dictType: ('tree_cure_type'), 
         searchOption: true,
         tableOption: {
             sort: 3
@@ -606,7 +606,7 @@ export const   protectFields = [
         label: '保护类型',
         key: 'protectType',
         type: 'FormDynamicSelect',
-       dictType:('tree_protect_type'), 
+        dictType: ('tree_protect_type'), 
         searchOption: {
             key: 'cureType'
         },

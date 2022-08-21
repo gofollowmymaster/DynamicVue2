@@ -58,11 +58,10 @@ export default {
             },
             set(v) {
                 this.$emit('input', v)
-
                
-                    this.statusChangeFn.valueUpdateEvent({
-                        [this.item.key]: v
-                    })
+                this.statusChangeFn.valueUpdateEvent({
+                    [this.item.key]: v
+                })
                
             }
         }

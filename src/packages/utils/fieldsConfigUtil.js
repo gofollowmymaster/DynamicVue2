@@ -142,7 +142,7 @@ export function buildTableFields(fields, isEditable = false) {
             .filter(item => item.tableOption || isEditable)
             .map(item => {
                 if (isEditable) {
-                    item.formOption = deepMerge(formOptionDefault, {...item.formOption,type:item.type}, true)
+                    item.formOption = deepMerge(formOptionDefault, {...item.formOption, type: item.type}, true)
 
                     return item
                 } else {

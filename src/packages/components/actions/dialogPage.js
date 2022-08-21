@@ -40,7 +40,7 @@ export default class dialogPage {
             container: DY_DIALOG,
             ...deepCopy(action.dialog),
             ...extra,
-            actionKey:action.actionKey
+            actionKey: action.actionKey
         }
         currentDialogContent.data = data
         if (typeof this.vm.setGlobalDialogPage === 'function') {

@@ -146,7 +146,6 @@ export default {
                     componentProperties: {
                         size: 'medium'
                     },
-                    actionType: '',
                     isLoadData: false,
                     actionHandle: data => {
                         this.active = 0
@@ -181,8 +180,9 @@ export default {
         
             buildingProjectDetailApi(data.id).then(data => {
                 this.buildingDetail = data
-            }).then(() => {
-                this.orderLibraryId = this.buildingDetail.orderLibraryId
+                console.log('----loadDetail-data-----', data)
+
+                this.orderLibraryId = data.orderLibraryId
                 planProjectDetailApi(this.orderLibraryId).then(data => {
                     this.planDetail = data
                 })

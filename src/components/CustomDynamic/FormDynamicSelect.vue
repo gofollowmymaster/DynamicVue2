@@ -24,7 +24,7 @@
 
 <script>
 import FormMixin from '@/packages/components/formItems/mixin'
-import { selectDictDataInfoApi } from "@/api/global"
+import { selectDictDataInfoApi } from '@/api/global'
 
 export default {
     name: 'FormDynamicSelect',
@@ -35,7 +35,8 @@ export default {
             dynamicDict: {},
            
             dictLabel: 'dictLabel',
-            dictValue: 'id'
+            dictValue: 'id',
+            dictListApi: selectDictDataInfoApi
         }
     },
     computed: {
@@ -45,10 +46,24 @@ export default {
         }
     },
     mounted() {
-   
-  
+        if (this.item.options?.label) {
+            this.dictLabel = this.item.options.label
+        }
 
-        selectDictDataInfoApi(this.item.dictType).then(res => {
+        if (this.item.options?.value) {
+            this.dictValue = this.item.options.value
+        }
+  
+        let apiPromise
+        if (this.item.options?.apiPromise) {
+            this.dictListApi = this.item.options.apiPromise
+            apiPromise = this.dictListApi(this.formData)
+              
+        } else {
+            apiPromise = this.dictListApi(this.item.dictType)
+        }
+
+        apiPromise.then(res => {
             this.dynamicDict = res.reduce((prev, next) => {
                 prev[next[this.dictValue] + ''] = next
                 return prev
@@ -57,5 +72,4 @@ export default {
     }
 }
 </script>
-
  

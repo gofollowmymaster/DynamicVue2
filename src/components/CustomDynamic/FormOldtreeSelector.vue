@@ -60,7 +60,7 @@ const fields = [
         key: 'famousWood',
         type: 'FormSelect',
         label: '等级',
-        dictType:  ('tree_manage_famous_wood'),
+        dictType: ('tree_manage_famous_wood'),
 
         tableOption: {
             sort: 6

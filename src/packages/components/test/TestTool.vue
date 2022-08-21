@@ -5,9 +5,9 @@
       <el-option label="合法边界数据" value="border" />
       <el-option label="非法超限数据" value="outlimit" />
     </el-select> -->
-      <el-tooltip class="item" effect="dark" content="快速生成测试数据" placement="top">
-        <el-button size="small" @click="makeTestData"  icon="el-icon-lollipop" circle > </el-button>
-    </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="快速生成测试数据" placement="top">
+            <el-button size="small" icon="el-icon-lollipop" circle @click="makeTestData" />
+        </el-tooltip>
     </div>
 </template>
 <script>

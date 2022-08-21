@@ -11,7 +11,7 @@
                     scene="page"
                     mode="dialog"
                     label="待处理警告"
-                    componentId="pending"
+                    component-id="pending"
                 />
 
                 <DynamicCurd
@@ -23,7 +23,7 @@
                     :options-props="processedPageOptions"
                     :api-promises="processedApiPromises"
                     label="已处理警告"
-                    componentId="processed"
+                    component-id="processed"
                 />
             </LayoutTabs>
         </DynamicPageWrapper>
@@ -82,7 +82,7 @@ export default {
                             permission: '',
                             // container:'dy-page',
                             containerProperties: {
-                                title: '转事件',
+                                title: '转事件'
                                 // width: '70%'
                             },
                             colNum: 2,
@@ -127,7 +127,7 @@ export default {
                                
                                 return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 }
                             },
-                            container:'el-dialog',
+                            container: 'el-dialog',
                             containerProperties: {
                                 title: '不予处理',
                                 width: '36%'
@@ -141,16 +141,16 @@ export default {
                                 label: '不予处理',
                                 apiPromise: warningUnhandleApi
                             }
-                        },
+                        }
                       
                     }
-                },
+                }
             },
             processedPageOptions: {
                 topToolBar: null,
                 listOption: {
                     lineActions: {
-                        update: null,
+                        update: null
                     }
                 }
 

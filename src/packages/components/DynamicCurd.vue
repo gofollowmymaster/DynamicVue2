@@ -30,7 +30,7 @@
                 :data="options.data"
                 :table="options.listOption"
                 :columns="options.tableFields"
-                :api-promise="loadListApiPromise"
+                :api-promise="listApiPromise"
                 @selection-change="selectChange"
             />
             <el-pagination
@@ -44,7 +44,6 @@
                 @current-change="handleCurrentChange"
             />
         </section>
-
     </curdLayout>
 </template>
 <script>
@@ -65,6 +64,11 @@ import actionPresetMixin from './actionPresetMixin'
 export default {
     name: 'DynamicCurd',
     mixins: [actionPresetMixin],
+    provide() {
+        return {
+            refreshComponentKey: this.componentId
+        }
+    },
     props: {
         // data: {
         //     type: [Object]
@@ -110,12 +114,8 @@ export default {
                 pageSize: 10
             },
             total: 1,
-            selected: []
-        }
-    },
-    provide() {
-        return {
-            refreshComponentKey: this.componentId,
+            selected: [],
+            listApiPromise: null
         }
     },
     computed: {
@@ -162,24 +162,26 @@ export default {
         queryParams() {
             return { ...this.searchParams, ...this.pagination }
         },
-        loadListApiPromise() {
+       
+        actionData() {
+            return { selected: this.selected, queryParams: this.queryParams }
+        }
+    },
+    watch: {
+        queryParams(params) {
             if (typeof this.options.listOption.loadListApi === 'function') {
-                const queryParams = { ...this.queryParams }
+                const queryParams = { ...params }
                 delete queryParams.refreshKey
-                return this.options.listOption
+                this.listApiPromise = this.options.listOption
                     .loadListApi(queryParams)
                     .then((data = {}) => {
                         debugger
                         data = data.data || data
-                        this.total = data.total||data.totalCount
+                        this.total = data.total || data.totalCount
                         return data.list
                     })
             }
-            return null
-        },
-        actionData() {
-            return { selected: this.selected, queryParams: this.queryParams }
-        }
+        } 
     },
     created() {
         this.searchParams = {

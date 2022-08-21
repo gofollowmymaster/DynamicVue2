@@ -85,8 +85,6 @@ export function warningPendingDeleteApi(list = []) {
     return apiDeleteMock(warningFields, list)
 }
 
-
-
 //
 
 export function warningDetailApi(data) {

@@ -51,9 +51,9 @@
                                    v-else
                                    :row-data="scope.row"
                                    :col-options="col"
-                                    :style="col.style || {}"
-                                    :class="`form-unqiue-${col.key}`"
-                                    class="table-col-box"
+                                   :style="col.style || {}"
+                                   :class="`form-unqiue-${col.key}`"
+                                   class="table-col-box"
                         />
                     </template>
                 </el-table-column>
@@ -110,8 +110,8 @@ export default {
         }
     },
     computed: {
-        tableOption(){
-            return this.$appendToPreset('tableOption', this.table )
+        tableOption() {
+            return this.$appendToPreset('tableOption', this.table)
         },
         columnsComputed() {
             const columns = this.columns.map((item, index) => {
@@ -129,7 +129,7 @@ export default {
                     type: 'index',
                     colProperties: {
                         'class-name': 'index-col',
-                        ...this.tableOption.indexCol,
+                        ...this.tableOption.indexCol
                     }
                 })
             }
@@ -186,13 +186,13 @@ export default {
             handler(tableData) {
                 this.$nextTick(() => {
                     debugger
-                    this.$refs.table&&this.$refs.table.doLayout()
+                    this.$refs.table && this.$refs.table.doLayout()
                     this.$forceUpdate()
 
                     this.selectRefresh()
                 })
             },
-            deep: true,
+            deep: true
             // immediate: true
         },
         selected: {

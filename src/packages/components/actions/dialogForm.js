@@ -22,7 +22,7 @@ export default class dialogForm {
           : res => {
               return res || {}
           }
-          debugger
+        debugger
         if (!action.apiPromise) {
             const data = dataAdapter(actionData)
             this.setCurrentDialogForm(action, data, extra)
@@ -41,7 +41,7 @@ export default class dialogForm {
             container: DY_DIALOG,
             ...deepCopy(action.dialog),
             ...extra,
-            actionKey:action.actionKey
+            actionKey: action.actionKey
         }
         currentDialogForm.body.data = data
 

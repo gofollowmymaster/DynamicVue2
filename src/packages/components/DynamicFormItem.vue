@@ -21,7 +21,7 @@
         :rules="!isTextMode ? formItem.rules : []"
         :class="setFormItemClass(formItem.wraperProperties.class)"
         :prop="formItem.key"
-         :label="label"
+        :label="label"
     >
         <template v-if="formItem.labelTip" #label>
             <LabelWithTip :label="label" :tip="formItem.labelTip" :icon="formItem.infoIcon" />
@@ -66,7 +66,7 @@ export default {
                 return null
             }
         },
-        label: String,
+        label: String
     },
     data() {
         return {
@@ -82,14 +82,13 @@ export default {
                 this.$emit('input', v)
             }
         },
-                // 是否采用文字模式
+        // 是否采用文字模式
         isTextMode() {
             if (this.changeData.textMode) {
                 return true
             }
             return false
-        },
-  
+        }
 
     },
     watch: {
@@ -109,14 +108,12 @@ export default {
             })
             const colNum = this.colNum >= 1 ? this.colNum : 1
             let layoutClass = 'grid-col-' + Math.ceil(24 / colNum)
-            const col = this.formItem.col>=colNum?colNum:this.formItem.col
+            const col = this.formItem.col >= colNum ? colNum : this.formItem.col
             if (col) {
-                layoutClass = 'grid-col-' + 24*(col/colNum)
+                layoutClass = 'grid-col-' + 24 * (col / colNum)
             }
 
             classList.push(layoutClass)
-
-
 
             return classList
         }

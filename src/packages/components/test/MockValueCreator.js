@@ -4,8 +4,6 @@ import dayjs from 'dayjs'
 
 import Mock from 'mockjs'
 
-
-
 const DATAENUM = {
     // 合法标准随机数据
     StandardData: 0,
@@ -207,9 +205,9 @@ class TestValueCreator {
 
   makeDynamicSelectValue(formItem) {
       const formItemIns = this.formIns.$refs[formItem.key][0]
-      if(!formItemIns.$refs.formitem) throw new Error('获取动态表单实力失败') 
-      const formitem=formItemIns.$refs.formitem
-      const dynamicDict=formitem.dynamicDict
+      if (!formItemIns.$refs.formitem) throw new Error('获取动态表单实力失败') 
+      const formitem = formItemIns.$refs.formitem
+      const dynamicDict = formitem.dynamicDict
 
       const length = Object.values(dynamicDict).length
       const index = generatRandomNum(length - 1)

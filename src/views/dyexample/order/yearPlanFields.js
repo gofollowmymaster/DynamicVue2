@@ -3,24 +3,18 @@ import { yearProgressListApi } from '@/api/orderManage'
 
 export const
     fields = [
-
         {
             'key': 'year',
             'label': '年度',
             type: 'FormDynamicSelect',
             options: {
-                key: 'value',
                 value: 'value',
                 label: 'label',
                 apiPromise: formData => {
-                    // orderLibraryId
-                   
                     return yearProgressListApi(formData.id).then(res => {
-                       
                         res.data.sort((prev, next) => {
                             return prev - next
                         })
-
                         return res.data.map(year => {
                             return {
                                 value: year,
@@ -100,7 +94,7 @@ export const
             'key': 'useLandDictId',
             'label': '用地性质',
             'type': 'FormDynamicSelect',
-           dictType:('order_use_land'),
+            dictType: ('order_use_land'),
             searchOption: {
                 sort: 5
             },
@@ -115,7 +109,7 @@ export const
             'key': 'orderAttributeDictId',
             'label': '订单属性',
             'type': 'FormDynamicSelect',
-           dictType:('order_attribute'),
+            dictType: ('order_attribute'),
             searchOption: {
                 sort: 6
             },
@@ -130,7 +124,7 @@ export const
             'key': 'orderTypeDictId',
             'label': '订单类别',
             'type': 'FormDynamicSelect',
-           dictType:('order_type'),
+            dictType: ('order_type'),
             searchOption: {
                 sort: 6
             },
@@ -168,7 +162,6 @@ export const
             },
             'formOption': {},
             'tableOption': {
-
             }
         },
         {

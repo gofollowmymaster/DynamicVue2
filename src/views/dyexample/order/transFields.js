@@ -1,14 +1,14 @@
 import {   elementUploadFileApi, globalDownloadFileById } from '@/api/global'
 
 const equipmentFields = [
-    {
-        type: 'index',
-        key: 'index',
-        label: '序号',
-        tableOption: {
-            width: 60
-        }
-    },
+    // {
+    //     type: 'index',
+    //     key: 'index',
+    //     label: '序号',
+    //     tableOption: {
+    //         width: 60
+    //     }
+    // },
     {
         type: 'FormHide',
         key: 'id',
@@ -23,7 +23,7 @@ const equipmentFields = [
         key: 'typeDictId',
         type: 'FormDynamicSelect',
         label: '设施小类',
-       dictType:('park_equipment_type'),
+        dictType: ('park_equipment_type'),
         tableOption: {
             key: 'typeDictLabel'
         },
@@ -58,14 +58,14 @@ const equipmentFields = [
   
 ]
 const mainPlantFields = [
-    {
-        type: 'index',
-        key: 'index',
-        label: '序号',
-        tableOption: {
-            width: 60
-        }
-    },
+    // {
+    //     type: 'index',
+    //     key: 'index',
+    //     label: '序号',
+    //     tableOption: {
+    //         width: 60
+    //     }
+    // },
     {
         type: 'FormHide',
         key: 'id',
@@ -87,7 +87,7 @@ const mainPlantFields = [
         key: 'plantSpecificationDictId',
         type: 'FormDynamicSelect',
         label: '植物规格',
-       dictType:('order_plant_specification'),
+        dictType: ('order_plant_specification'),
         tableOption: {
             key: 'plantSpecificationDictLabel'
         },
@@ -152,7 +152,7 @@ export default  [
     {
         'key': 'orderContractorId',
         'label': '承建商',
-        'type': 'FormContractorSelector',
+        'type': 'FormInput',
         formSection: '验收信息',
         'formOption': {
             rules: ['required']
@@ -348,11 +348,9 @@ export default  [
         'type': 'FormUpload',
         'formOption': {
             col: 2,
-            properties: {
-                'list-type': 'table',
-                accept: '*'
-          
-            },
+            'list-type': 'table',
+            accept: '*',
+            'auto-load': true,
             extra: {
                 btn_text: '上传',
                 tip: '程图纸建议打包上传，单个附件大小限制200 Mb，最多上传20个附件',

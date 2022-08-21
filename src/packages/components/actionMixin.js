@@ -4,7 +4,7 @@ import callbackActionHandles from './actions/callback.js'
 export default {
     props: {},
     computed: {},
-    inject: ['setGlobalDialogForm', 'setGlobalDialogPage', 'isGlobalDialogFormActive','refreshComponentKey'],
+    inject: ['setGlobalDialogForm', 'setGlobalDialogPage', 'isGlobalDialogFormActive', 'refreshComponentKey'],
     methods: {
         actionHandle(action = {}, actionData = {}) {
             if (typeof action.actionHook === 'function') {
@@ -56,26 +56,30 @@ export default {
                 )
             }
         },
-        linkHandle(action,actionData) {
-            const link = typeof action.link=='function'?action.link(actionData):action.link
+        linkHandle(action, actionData) {
+            const link = typeof action.link == 'function' ? action.link(actionData) : action.link
             window.open(link, action.window)
         },
         routerHandle(action, actionData) {
-            const path = typeof action.router === 'function'? action.router(actionData): action.router
+            const path = typeof action.router === 'function' ? action.router(actionData) : action.router
             this.$router[action.routerAction || 'push'](path)
         },
 
         routerDialogHandle(action, actionData) {
             const mainKey = action.mainKey || 'id'
             let path; let query = {}
+            debugger
             if (typeof action.router === 'function') {
-                path = action.router(actionData)
+                const routerInfo = action.router(actionData)
+                path = routerInfo.path
+                query = routerInfo.query   
             } else {
                 path = this.$route.fullPath.split('#')[0].replace(/[\/|\\]$/, '') + '/'
-                const actionKey = (action.router && (typeof action.router === 'string')) ? (action.router.replace(/[\/|\\]$/, '') + '/') : (action.actionKey)
-                // path =path
-                query = { id: actionData?.[mainKey], action: actionKey }
             }
+            const actionKey =  action.actionKey
+            // path =path
+            query = {...query, id: actionData?.[mainKey], action: actionKey }
+
             this.$router[action.routerAction || 'push']({ path, query })
         },
 

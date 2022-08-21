@@ -77,6 +77,7 @@ export default {
                 containerProperties: {
                     title: '编辑' + this.entityLabel
                 },
+                testTool: false,
 
                 formItemList: buildFormFields(this.fields, this.formSections),
                 saveAction: {

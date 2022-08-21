@@ -34,7 +34,7 @@ import transForm from './transForm.vue'
 import completeForm from './completeForm.vue'
 // import popProjectRadio from './components/PopProjectRadio.vue'
 import orderRadio from './components/ProjectRadio.vue'
-console.log('---orderRadio----',orderRadio)
+console.log('---orderRadio----', orderRadio)
 import FormProjectEvaluate from './components/FormProjectEvaluate.vue'
 
 import Vue from 'vue'
@@ -44,8 +44,7 @@ Vue.component('TransForm', transForm)
 Vue.component('CompleteForm', completeForm)
 Vue.component('FormProjectEvaluate', FormProjectEvaluate)
 // Vue.component('PopProjectRadio', popProjectRadio)
-Vue.component('orderRadio', orderRadio)
-
+Vue.component('OrderRadio', orderRadio)
 
 const entityLabel = '订单库管理'
 const formSections = {
@@ -123,7 +122,7 @@ const fields = [
         'key': 'useLandDictId',
         'label': '用地性质',
         'type': 'FormDynamicSelect',
-        dictType:('order_use_land'),
+        dictType: ('order_use_land'),
         searchOption: {},
         tableOption: {
             key: 'useLandDictLabel'
@@ -133,7 +132,7 @@ const fields = [
         'key': 'orderAttributeDictId',
         'label': '订单属性',
         'type': 'FormDynamicSelect',
-        dictType:('order_attribute'),
+        dictType: ('order_attribute'),
         tableOption: {
             key: 'orderAttributeDictLabel'
         },
@@ -143,7 +142,7 @@ const fields = [
         'key': 'orderTypeDictId',
         'label': '订单类别',
         'type': 'FormDynamicSelect',
-        dictType:('order_type'),
+        dictType: ('order_type'),
         tableOption: {
             key: 'orderTypeDictLabel'
         },
@@ -172,14 +171,15 @@ const fields = [
             }
         ],
         tableOption: {
-            key: 'orderStatusDesc',
-            template(row) {
-                if (row.orderStatusDesc === '完成') {
-                    return '已完成'
-                } else {
-                    return row.orderStatusDesc 
-                }
-            }
+            //  'type': 'FormSelect',
+            // key: 'orderStatusDesc',
+            // template(row) {
+            //     if (row.orderStatusDesc === '完成') {
+            //         return '已完成'
+            //     } else {
+            //         return row.orderStatusDesc 
+            //     }
+            // }
         },
         searchOption: {}
     }
@@ -212,15 +212,15 @@ export default {
             },
       
             pageOptions: {
-                tableUp:{
-                  component:'DyTmpl',
-                  properties:{
-                    tmpl:'总数量:<span class="text-blue py4 px4">#{num}</span>,总数量1:<span class="text-red py4 px4">#{num1}</span>',
-                    data:{
-                      num:123254,
-                      num1:5546
+                tableUp: {
+                    component: 'DyTmpl',
+                    properties: {
+                        tmpl: '总数量:<span class="text-blue py4 px4">#{num}</span>,总数量1:<span class="text-red py4 px4">#{num1}</span>',
+                        data: {
+                            num: 123254,
+                            num1: 5546
+                        }
                     }
-                  }
                 },
                 topToolBar: {
                     create: null,
@@ -241,9 +241,9 @@ export default {
                             },)
                         },
                         actionHook: (action, actionData) => {
-                           debugger
+                            debugger
                             action.dialog.body[0].component = orderStatusFormMap[self.orderStatus || 0]
-                                // self.pageOptions.listOption.lineActions.view.body[0].component=orderStatusFormMap[self.orderStatus]
+                            // self.pageOptions.listOption.lineActions.view.body[0].component=orderStatusFormMap[self.orderStatus]
 
                         },
                         componentProperties: {
@@ -274,6 +274,7 @@ export default {
                             label: '转处理中',
                             actionType: 'dialogFormAction',
                             isShow: data => {
+                                debugger
                                 return data.orderStatus == '0'
                             },
                             permission: '转处理中',
@@ -310,8 +311,8 @@ export default {
                             },
                             formItemList: this.$buildFormFields(transFields),
 
-                            saveAction:   {
-                                actionType:'submitActionOption',
+                            saveAction: {
+                                actionType: 'submitActionOption',
                                 apiPromise: transProjectSaveApi
                             }
                         },
@@ -333,8 +334,8 @@ export default {
                             },
 
                             formItemList: this.$buildFormFields(completeFields),
-                            saveAction:   {
-                                actionType:'submitActionOption',
+                            saveAction: {
+                                actionType: 'submitActionOption',
                                 apiPromise: completeProjectSaveApi
                             }
                         },
@@ -342,7 +343,11 @@ export default {
                             label: '修改',
                             actionType: 'dialogPageActionOption',
                             permission: '修改',
+                            router: actionData => {
+                                return  {path: this.$route.path, query: {orderStatus: actionData.orderStatus, id: actionData.id} }
+                            },
                             actionHook: (action, actionData) => {
+                                debugger
                                 const status = parseInt(actionData.orderStatus)
                                 action.dialog.body[0].component = orderStatusFormMap[status]
                             },
@@ -363,12 +368,16 @@ export default {
                         view: {
                             label: '详情',
                             actionType: 'dialogPageAction',
+
+                            router: actionData => {
+                                return  {path: this.$route.path, query: {orderStatus: actionData.orderStatus, id: actionData.id} }
+                            },
                             actionHook: (action, actionData) => {
-                               debugger
+                                debugger
                                 const status = parseInt(actionData.orderStatus)
                                 // action.dialog.body[0].component = orderStatusFormMap[status]
-                                this.$set(action.dialog.body[0],'component', orderStatusFormMap[status])
-                                self.pageOptions.listOption.lineActions.view.body[0].component=orderStatusFormMap[status]
+                                this.$set(action.dialog.body[0], 'component', orderStatusFormMap[status])
+                                // self.pageOptions.listOption.lineActions.view.body[0].component=orderStatusFormMap[status]
                             },
                            
                             dataAdapter: data => {

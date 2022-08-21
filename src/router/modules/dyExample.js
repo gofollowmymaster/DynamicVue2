@@ -74,7 +74,18 @@ export default {
                     meta: {
                         title: '自定义组合CURD4'
                     }
-                },
+                }
+                // {
+                //     path: 'dycurd4',
+                //     name: 'dycurd-4',
+                //     component: () =>
+                //         import(
+                //             /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/order/list.vue'
+                //         ),
+                //     meta: {
+                //         title: '自定义组合CURD4'
+                //     }
+                // },
                 
             ]
         }

@@ -93,6 +93,8 @@
 
 <script>
 import FormMixin from './mixin'
+import { getFormatDate } from  '../../utils/date'
+import { deepCopy } from '../../utils/tool'
 
 const fileFields = [
 
@@ -101,7 +103,7 @@ const fileFields = [
         label: '名称',
         tableOption: {},
         formOption: {
-            span:24
+            span: 24
         }
     },
     {
@@ -110,7 +112,7 @@ const fileFields = [
         label: '大小',
         // tableOption:true,
         formOption: {
-            span:24
+            span: 24
         }
     },
     {
@@ -119,7 +121,7 @@ const fileFields = [
         label: '上传时间',
         tableOption: true,
         formOption: {
-            span:24
+            span: 24
         }
     }
 ]
@@ -182,7 +184,7 @@ export default {
     },
     computed: {
         accept() {
-            debugger
+             
             let accept = ''
             const listType = this.item['list-type']
             if (['picture', 'picture-card'].includes(listType)) {
@@ -219,6 +221,8 @@ export default {
             delete obj.apiPromise
             delete obj.downloadApi
             delete obj.hidden
+            obj['auto-load'] = obj['auto-load'] !== undefined ? obj['auto-load'] : true
+            obj['auto-load'] = !!obj['auto-load']
 
             return obj
         },
@@ -239,10 +243,10 @@ export default {
                 ? this.value.filter(file => file.fileId || file.id || file.uid)
                     .map(file => {
                         file.fileUrl = file.fileUrl ?  file.fileUrl : file.url
-                        file.uploadTime = file.createTime || file.upLoadTime
+                        file.uploadTime = file.createTime || file.uploadTime
                         file.fileName =
                             file.fileName || file.sourceName || file.saveName || file.name
-                        file.fileId = file.fileId || file.id || file.uid
+                        file.fileId = file.fileId || file.id 
                         return file
                     })
                 : []
@@ -261,6 +265,9 @@ export default {
                         update: null,
                         detail: null,
                         download: {
+                            isShow: data => {
+                                return data.showDownload !== false
+                            },
                             actionType: 'downloadAction',
                             apiPromise: this.item.downloadApi,
                             label: '下载'
@@ -285,18 +292,19 @@ export default {
                             file.fileName || file.sourceName || file.saveName || file.name,
                         fileSize: file.fileSize,
                         fileType: file.fileType,
-                        uploadTime: file.createTime || file.upLoadTime
+                        uploadTime: file.createTime || file.uploadTime
                     }
                 })
             : []
     },
     methods: {
         handleRemove(file, fileList) {
-            debugger
+             
             this.val = this.value.filter(
                 unit => {
-                    const id = unit.id || unit.fileId
-                    return unit.uid !== file.uid && id !== file.fileId
+                    //   const id = unit.id || unit.fileId
+
+                    return unit.uid !== file.uid // ||  !file.fileId||(file.fileId&& unit.fileId === file.fileId)
                 }
             )
         },
@@ -308,7 +316,7 @@ export default {
             if (!res) return // 有重复请求   OPTION?
             if (!file.response) return //
 
-            const fileId = file.response.fileId||file.response.id
+            const fileId = file.response.fileId || file.response.id
             const fileUrl = file.response.fileUrl || file.url
             const fileName = file.raw.name
             const fileSize = file.raw.size
@@ -321,7 +329,9 @@ export default {
                 fileName,
                 fileSize,
                 uploadTime,
-                uid
+                uid,
+                showDownload: false
+
             })
             this.val = current
         },
@@ -330,8 +340,13 @@ export default {
         },
         handleBeforeUpload() {},
         handleChange(file, fileList) {
-            if (!this.bindOptions['auto-upload']) {
+            if (this.bindOptions['auto-upload'] === false) {
                 debugger
+                fileList = deepCopy(this.fileList)
+                file.showDownload = !!file.fileId
+                file.uploadTime = file.uploadTime || getFormatDate()
+        
+                fileList.push(file)
                 this.val = fileList
             }
         }

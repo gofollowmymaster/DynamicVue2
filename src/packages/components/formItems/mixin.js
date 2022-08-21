@@ -60,14 +60,14 @@ export default {
             }
             return false
         },
-         // 获取输入框的 placeholder
-         placeholder() {
+        // 获取输入框的 placeholder
+        placeholder() {
             return  this.getPlaceholder(this.item)
-        },
+        }
     },
-    data(){
+    data() {
         return {
-            action:formTypeActionMap[this.$options.name]||'请选择'
+            action: formTypeActionMap[this.$options.name] || '请选择'
         }
     },
     created() {
@@ -76,10 +76,10 @@ export default {
         }
     },
     methods: {
-        getDefaultBindOptions(item){
+        getDefaultBindOptions(item) {
             let obj = Object.assign({}, item)
 
-            obj = { ...obj, ...obj.properties,...obj.extra }
+            obj = { ...obj, ...obj.properties, ...obj.extra }
             delete obj.wraperProperties
             delete obj.key
             delete obj.expressProp
@@ -101,13 +101,9 @@ export default {
 
             obj.maxlength = obj.maxlength || 255
 
-
-      
-
-
             return obj
         },
-    // 获取输入框的 placeholder
+        // 获取输入框的 placeholder
         getPlaceholder(formItem) {
             // todo 这里可能还要加一个全部 disable 的判断
             // 如果已禁用，那么不显示 placeholder
@@ -122,7 +118,6 @@ export default {
             return `${this.action}${formItem.label}`
         },
 
-
         // 当取消焦点
         onFocus(e) {
             // 表单要素有 onFocus 事件，那么则触发
@@ -131,7 +126,7 @@ export default {
                     event: e,
                     option: this.item,
                     value: this.value,
-                    formVm:this.form
+                    formVm: this.form
                 })
             }
         },
@@ -144,7 +139,7 @@ export default {
                     event: e,
                     option: this.item,
                     value: this.value,
-                    formVm:this.form
+                    formVm: this.form
                 })
             }
         },

@@ -1,14 +1,14 @@
 import {  elementUploadFileApi, globalDownloadFileById } from '@/api/global'
 
 const subProjectFields = [
-    {
-        type: 'index',
-        key: 'index',
-        label: '序号',
-        tableOption: {
-            width: 60
-        }
-    },
+    // {
+    //     type: 'index',
+    //     key: 'index',
+    //     label: '序号',
+    //     tableOption: {
+    //         width: 60
+    //     }
+    // },
     {
         type: 'FormHide',
         key: 'id',
@@ -136,7 +136,6 @@ export default  [
         'label': '已投入总资金(元)',
         'tableOption': {}
     },
-
  
     {
         'key': 'startTime',
@@ -183,11 +182,9 @@ export default  [
             wraperProperties: {
                 class: ['grid-col-24']
             },
-            properties: {
-                'list-type': 'table',
-                accept: '*'
-        
-            },
+            'list-type': 'table',
+            accept: '*',
+            'auto-load': true,
             extra: {
                 btn_text: '上传',
                 tip: '单个附件大小限制200Mb，最多上传20个附件',

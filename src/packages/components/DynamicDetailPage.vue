@@ -34,7 +34,7 @@ export default {
                 return {}
             }
         },
-        detailId: [String, Number, Object],
+        query: [    Object],
         actionKey: [String],
         entityLabel: String
     },
@@ -60,20 +60,20 @@ export default {
             }
             return lineActions
         },
-        actionAndDetailid() {
+        actionAndQuery() {
             return {
-                detailId: this.detailId,
+                query: this.query,
                 actionKey: this.actionKey
             }
         }
 
     },
     watch: {
-        actionAndDetailid: {
-            handler({ actionKey, detailId }) {
+        actionAndQuery: {
+            handler({ actionKey, query }) {
                 debugger
-                if (detailId || actionKey) {
-                    this.openPage(detailId, actionKey)
+                if (query.id || actionKey) {
+                    this.openPage(query, actionKey)
                     return
                 }
                 this.closeDetail()
@@ -88,14 +88,14 @@ export default {
     },
 
     methods: {
-        openPage(detailId, actionKey) {
+        openPage(query, actionKey) {
             console.log('----this.actionList---', this.actionList)
             if (!this.actionList[actionKey]) {
                 actionKey = Object.keys(this.actionList).filter(action => this.actionList[action]).filter(action => action.startsWith('detail'))[0]
             }
             let action = deepCopy(this.actionList[actionKey])
             action = this.$generateActionOption(action.actionType, action)
-            const actionData = (detailId instanceof Object) ? detailId : { id: detailId || '' }
+            const actionData = query
 
             if (action.actionType.startsWith('router')) {
                 action.actionType = action.actionType.replace('router', '').replace(/(^\w)/, function(start) {

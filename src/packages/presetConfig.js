@@ -49,7 +49,7 @@ export const tableOption = {
     indexCol: {
         width: 48,
         fixed: 'left',
-        label: '序号',
+        label: '序号'
     }
 }
 
@@ -90,7 +90,8 @@ export const formOption = {
     'label-width': '130px',
     'label-position': 'right',
     pageLabelWidth: '160px',
-    colNum: 2
+    colNum: 2,
+    testTool: false
 
 }
 export const submitActionOption = {
@@ -152,38 +153,38 @@ const msgBoxTipOptions =  {
     lockScroll: true
 }
 
-export const drawerProperties={
-    size:'40%',
-    fullscreen:false,
-    top:'15vh',
-    modal:true,
-    'modal-append-to-body':true,
-    'append-to-body':false,
-    'lock-scroll':true,
-    'wrapperClosable':true,
-    'close-on-press-escape':true,
-    'show-close':true,
-    'center':false,
-    'destroy-on-close':false,
-    direction:'rtl',
-    withHeader:true
+export const drawerProperties = {
+    size: '40%',
+    fullscreen: false,
+    top: '15vh',
+    modal: true,
+    'modal-append-to-body': true,
+    'append-to-body': false,
+    'lock-scroll': true,
+    'wrapperClosable': true,
+    'close-on-press-escape': true,
+    'show-close': true,
+    'center': false,
+    'destroy-on-close': false,
+    direction: 'rtl',
+    withHeader: true
 
 }
-export const dialogProperties={
-    width:'40%',
-    fullscreen:false,
-    top:'15vh',
-    modal:true,
-    'modal-append-to-body':true,
-    'append-to-body':false,
-    'lock-scroll':true,
-    'close-on-click-modal':false,
-    'close-on-press-escape':true,
-    'show-close':true,
-    'center':false,
-    'destroy-on-close':false,
+export const dialogProperties = {
+    width: '40%',
+    fullscreen: false,
+    top: '15vh',
+    modal: true,
+    'modal-append-to-body': true,
+    'append-to-body': false,
+    'lock-scroll': true,
+    'close-on-click-modal': false,
+    'close-on-press-escape': true,
+    'show-close': true,
+    'center': false,
+    'destroy-on-close': false
 }
-export const pageProperties={
+export const pageProperties = {
    
 }
 
@@ -194,7 +195,7 @@ export const presetConfig = {
         actionTip: 'tip',
         mainKey: 'id',
         defaultDialogActionMode: 'dialog',
-        defaultContainerType:'el-drawer',
+        defaultContainerType: 'el-drawer',
         searchOption,
         tableOption,
         pagination,

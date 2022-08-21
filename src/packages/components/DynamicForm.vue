@@ -24,7 +24,7 @@
 <script>
 import actionMixin from './actionMixin'
 import { JSONDeepCopy } from '../utils/tool'
-import { generateFormOptions }  from "../utils/actionTools"
+import { generateFormOptions }  from '../utils/actionTools'
 export default {
     name: 'DynamicForm',
     components: {
@@ -67,7 +67,7 @@ export default {
         }
     },
     computed: {
-        dynamicFormOption(){
+        dynamicFormOption() {
             const options = this.formOption
             return   generateFormOptions(options)
         },

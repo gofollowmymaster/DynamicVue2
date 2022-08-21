@@ -3,10 +3,10 @@
         <DynamicCurd
             ref="dynamicCurd"
             :options-props="curdOptions"
-            :fields="item.fields"
+            v-bind="bindOptions"
             :api-promises="apiPromises"
-            :entity-label="item.entityLabel"
-            :componentId="item.key"
+            :component-id="item.key"
+            mode="dialog"
         />
     </section>
 </template>
@@ -127,16 +127,18 @@ export default {
         value: {
             handler(tableList) {
                 let tableMap = {}
-                if (tableList?.length) {
-                    tableMap = tableList.reduce((prev, next) => {
-                        prev[next.id] = next
-                        return prev
-                    }, {})
+                if (!Array.isArray(tableList)) {
+                    console.warn('FormCurd 表单组件期望值为Array类型，传入值为' + tableList)
+                    return 
                 }
+                tableMap = tableList.reduce((prev, next) => {
+                    prev[next.id] = next
+                    return prev
+                }, {})
 
                 localStorage.setItem(this.localTableName, JSON.stringify(tableMap))
                 this.$nextTick(() => {
-                     this.$refs.dynamicCurd&&this.$refs.dynamicCurd.refresh()
+                    this.$refs.dynamicCurd && this.$refs.dynamicCurd.refresh()
                 })
             },
             immediate: true

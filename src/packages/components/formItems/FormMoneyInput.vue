@@ -113,11 +113,10 @@ export default {
                     n = this.setNumberMultiplyTenThousands(n)
                 }
                 this.$emit('input', n)
-
                
-                    this.statusChangeFn.valueUpdateEvent({
-                        [this.item.key]: n
-                    })
+                this.statusChangeFn.valueUpdateEvent({
+                    [this.item.key]: n
+                })
                 
             }
         }

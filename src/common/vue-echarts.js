@@ -7,25 +7,25 @@ import * as echarts from 'echarts'
 import { CanvasRenderer } from 'echarts/renderers'
 import { BarChart, PieChart, LineChart } from 'echarts/charts'
 import {
-  GridComponent,
-  TooltipComponent,
-  LegendComponent,
-  TitleComponent,
-  GraphicComponent
+    GridComponent,
+    TooltipComponent,
+    LegendComponent,
+    TitleComponent,
+    GraphicComponent
 } from 'echarts/components'
 
 use([
-  CanvasRenderer,
-  BarChart,
-  LegendComponent,
-  GridComponent,
-  TooltipComponent,
-  TitleComponent,
-  GraphicComponent,
-  PieChart,
-  LineChart
+    CanvasRenderer,
+    BarChart,
+    LegendComponent,
+    GridComponent,
+    TooltipComponent,
+    TitleComponent,
+    GraphicComponent,
+    PieChart,
+    LineChart
 ])
 
 // register globally (or you can do it locally)
-Vue.component('v-chart', ECharts)
+Vue.component('VChart', ECharts)
 Vue.prototype.$echarts = echarts

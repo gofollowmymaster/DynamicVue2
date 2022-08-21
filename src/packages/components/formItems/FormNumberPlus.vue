@@ -110,9 +110,9 @@ export default {
                 if (isEmpty(this.value, true)) {
                     this.$emit('input', v)
                 
-                        this.statusChangeFn.valueUpdateEvent({
-                            [this.item.key]: v
-                        })
+                    this.statusChangeFn.valueUpdateEvent({
+                        [this.item.key]: v
+                    })
                    
                     return
                 }
@@ -146,11 +146,10 @@ export default {
                     n = '0'
                 }
                 this.$emit('input', n)
-
                 
-                    this.statusChangeFn.valueUpdateEvent({
-                        [this.item.key]: n
-                    })
+                this.statusChangeFn.valueUpdateEvent({
+                    [this.item.key]: n
+                })
                 
             }
         }

@@ -4,7 +4,7 @@ import Mock from 'mockjs'
 const Random = Mock.Random
 
 const mockDb = new Map()
-export const dictMapDb= new Map()
+export const dictMapDb = new Map()
 
 export function mockDyFields(fields) {
     const mockInfo = {}
@@ -19,7 +19,7 @@ export function mockDyFields(fields) {
             case 'FormRadio':
             case 'FormCheckbox':
             case 'FormSelect':
-                mockInfo[field.key + "|1"] = field.options[Random.integer(0, field.options.length - 1)]
+                mockInfo[field.key + '|0-2'] = 1
               
                 // mockInfo[field.key + '|0-3'] = 1
                 break
@@ -37,11 +37,15 @@ export function mockDyFields(fields) {
                 mockInfo[field.key + '|1'] =  '@cword(3)'
                 break
             case 'FormDrawElement':
+                mockInfo[field.key] = '[]'
+                break
             case 'FormOldtreeSelector':
+            case 'FormCurd':
                 mockInfo[field.key] = []
                 break
             case 'FormDynamicSelect':
-                mockInfo[field.key] = dictMapDb.get(field.dictType)?.[0]?.id??1
+                console.log('--dictMapDb.get(field.dictType)?.[0]?.id---', field.dictType, dictMapDb.get(field.dictType)?.[0])
+                mockInfo[field.key] = dictMapDb.get(field.dictType)?.[0]?.id ?? 1
                 break
             default:
                 mockInfo[field.key + '|1'] = '@cword(3)'
@@ -51,7 +55,8 @@ export function mockDyFields(fields) {
 }
  
 export function  apiListMock(fields, params) {
-
+    params.pageSize = params.pageSize || 10
+    params.pageNo  = params.pageNo || 1
     let res = mockDb.get(fields)
     
     if (!res) {
@@ -65,12 +70,12 @@ export function  apiListMock(fields, params) {
 }
 
 export function  apiDetailMock(fields, data) {
-
-    let {list} = mockDb.get(fields), res
+    debugger
+    let {list} = mockDb.get(fields) || {}, res
     
     if (list && list.length) {
         const index = list.findIndex(item => item.id == data.id)
-        res = list[index]
+        res = list[index] || Mock.mock(mockDyFields(fields)) 
     } else {
         res = Mock.mock(mockDyFields(fields)) 
     }

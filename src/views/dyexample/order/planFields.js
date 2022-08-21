@@ -2,8 +2,8 @@ import {    elementUploadFileApi, globalDownloadFileById } from '@/api/global'
 
 export default  [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
-    { key: 'id', type: 'FormHide', label: '', formOption: {},  formSection: '立项信息',  
-},
+    { key: 'id', type: 'FormHide', label: '', formOption: {},  formSection: '立项信息'  
+    },
 
     {
         'key': 'orderCode',
@@ -97,7 +97,7 @@ export default  [
         'label': '用地性质',
         formSection: '立项信息',  
         'type': 'FormDynamicSelect', 
-       dictType:('order_use_land'), 
+        dictType: ('order_use_land'), 
         'formOption': {},
         searchOption: {},
         tableOption: {
@@ -109,7 +109,7 @@ export default  [
         'label': '订单属性',
         formSection: '立项信息',  
         'type': 'FormDynamicSelect', 
-       dictType:('order_attribute'), 
+        dictType: ('order_attribute'), 
         tableOption: {
             key: 'orderAttributeDictLabel'
         },
@@ -120,7 +120,7 @@ export default  [
         'label': '订单类别',
         formSection: '立项信息',  
         'type': 'FormDynamicSelect', 
-       dictType:('order_type'), 
+        dictType: ('order_type'), 
         'formOption': {
             key: 'orderTypeDictLabel'
         },
@@ -161,7 +161,7 @@ export default  [
         formSection: '立项信息',
         'type': 'FormDrawElement',
         'formOption': {
-            defaultValue:[]
+            defaultValue: []
         }
     },
     {
@@ -211,10 +211,9 @@ export default  [
         'type': 'FormUpload',
         'formOption': {
             col: 2,
-            properties: {
-                'list-type': 'table',
-                accept: '*'
-            },
+            'list-type': 'table',
+            accept: '*',
+            'auto-upload': false,
             extra: {
                 btn_text: '上传',
                 tip: '单个附件大小限制200Mb，最多上传20个附件',
@@ -258,10 +257,9 @@ export default  [
         'type': 'FormUpload',
         'formOption': {
             col: 2,
-            properties: {
-                'list-type': 'table',
-                accept: '*'
-            },
+            'list-type': 'table',
+            accept: '*',
+            'auto-load': true,
             extra: {
                 btn_text: '上传',
                 tip: '单个附件大小限制200Mb，最多上传20个附件',
@@ -309,8 +307,8 @@ export default  [
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
-            expressProp:{
-                hidden: '#{approveStatus}!=1',
+            expressProp: {
+                hidden: '#{approveStatus}!=1'
             },
             rules: ['required']
         }
@@ -322,8 +320,8 @@ export default  [
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
-            expressProp:{
-                hidden: '#{approveStatus}!=1',
+            expressProp: {
+                hidden: '#{approveStatus}!=1'
             },
             rules: ['required']
         }
@@ -335,8 +333,8 @@ export default  [
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
-            expressProp:{
-                hidden: '#{approveStatus}!=1',
+            expressProp: {
+                hidden: '#{approveStatus}!=1'
             },
             rules: ['required']
         }
@@ -348,8 +346,8 @@ export default  [
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
-            expressProp:{
-                hidden: '#{approveStatus}!=1',
+            expressProp: {
+                hidden: '#{approveStatus}!=1'
             },
             rules: ['required']
         }
@@ -361,7 +359,7 @@ export default  [
         'type': 'FormDate',
         'formOption': {
             rules: ['required'],
-            expressProp:{
+            expressProp: {
                 hidden: '#{approveStatus}!=1'
             }
         }
@@ -372,14 +370,13 @@ export default  [
         formSection: '报批信息',
         'type': 'FormUpload',
         'formOption': {
-            expressProp:{
-            hidden: '#{approveStatus}!=1',
+            expressProp: {
+                hidden: '#{approveStatus}!=1'
             },
             col: 2,
-            properties: {
-                'list-type': 'table',
-                accept: '*'
-            },
+            'list-type': 'table',
+            accept: '*',
+            'auto-load': true,
             btn_text: '上传',
             tip: '单个附件大小限制200Mb，最多上传20个附件',
             apiPromise: elementUploadFileApi,
@@ -424,7 +421,7 @@ export default  [
         'type': 'FormDate',
         'formOption': {
             rules: ['required'],
-            expressProp:{
+            expressProp: {
                 hidden: '#{bidStatus}!=1'
             }
         }
@@ -436,7 +433,7 @@ export default  [
         'type': 'FormInput',
         'formOption': {
             rules: ['required'],
-            expressProp:{
+            expressProp: {
                 hidden: '#{bidStatus}!=1'
             }
         }
@@ -449,7 +446,7 @@ export default  [
         'formOption': {
             rules: ['required'],
             max: 1000000000,
-            expressProp:{
+            expressProp: {
                 hidden: '#{bidStatus}!=1'
             }
         }
@@ -460,16 +457,16 @@ export default  [
         formSection: '招投标信息',
         'type': 'FormUpload',
         'formOption': {
-            expressProp:{
-                hidden: '#{bidStatus}!=1',
+            expressProp: {
+                hidden: '#{bidStatus}!=1'
             },
             col: 2,
-                'list-type': 'table',
-                accept: '*',
-                btn_text: '上传',
-                tip: '单个附件大小限制200Mb，最多上传20个附件',
-                apiPromise: elementUploadFileApi,
-                downloadApi: globalDownloadFileById
+            'list-type': 'table',
+            accept: '*',
+            btn_text: '上传',
+            tip: '单个附件大小限制200Mb，最多上传20个附件',
+            apiPromise: elementUploadFileApi,
+            downloadApi: globalDownloadFileById
         }
     }
   

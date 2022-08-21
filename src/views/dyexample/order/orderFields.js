@@ -50,17 +50,17 @@ export  default    [
         'label': '建设类型',
         'type': 'FormSelect',
         options: [{
-                      value: 0,
-                      label: '新建'
+            value: 0,
+            label: '新建'
 
-                  }, {
-                      value: 1,
-                      label: '占绿恢复'
-                  },
-                  {
-                      value: 2,
-                      label: '改建'
-                  }],
+        }, {
+            value: 1,
+            label: '占绿恢复'
+        },
+        {
+            value: 2,
+            label: '改建'
+        }],
         'tableOption': {},
         searchOption: {}
     },
@@ -68,7 +68,7 @@ export  default    [
         'key': 'useLandDictId',
         'label': '用地性质',
         'type': 'FormDynamicSelect',
-       dictType:('order_use_land'),
+        dictType: ('order_use_land'),
         searchOption: {},
         tableOption: {
             key: 'useLandDictLabel'
@@ -78,7 +78,7 @@ export  default    [
         'key': 'orderAttributeDictId',
         'label': '订单属性',
         'type': 'FormDynamicSelect',
-       dictType:('order_attribute'),
+        dictType: ('order_attribute'),
         tableOption: {
             key: 'orderAttributeDictLabel'
         },
@@ -88,7 +88,7 @@ export  default    [
         'key': 'orderTypeDictId',
         'label': '订单类别',
         'type': 'FormDynamicSelect',
-       dictType:('order_type'),
+        dictType: ('order_type'),
         tableOption: {
             key: 'orderTypeDictLabel'
         },

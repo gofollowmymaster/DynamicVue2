@@ -5,7 +5,7 @@
                 :style="colOptions.style || {}"
                 v-bind="bindOptions"
                 :value="rowData[colOptions.key]"
-                  v-on="bindEvents"
+                v-on="bindEvents"
             />
             <!-- <el-button slot="reference">hover 激活</el-button> -->
 

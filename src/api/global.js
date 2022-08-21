@@ -4,7 +4,7 @@ import Mock from 'mockjs'
 
 import { downFile } from '@/util/index'
 import { SysAdmListAdmTreeInfo } from '@/api/home'
-import { dictMapDb } from "./mockUtil"
+import { dictMapDb } from './mockUtil'
 
 /* **************************** 系统配置-相关 **************************** */
 
@@ -76,10 +76,9 @@ export function elementUploadFileApi(options = {}) {
  * @returns   Promise
  */
 
-
 export function selectDictDataInfoApi({dictType}) {
-    if(!dictMapDb.get(dictType)){
-        dictMapDb.set( dictType, [
+    if (!dictMapDb.get(dictType)) {
+        dictMapDb.set(dictType, [
             {
                 id: 1, dictLabel: Mock.mock('@cword(3)')
             },
@@ -87,17 +86,9 @@ export function selectDictDataInfoApi({dictType}) {
             {id: 3, dictLabel: Mock.mock('@cword(3)')}
         ])
     }
-    
-
 
     return Promise.resolve(dictMapDb.get(dictType))
 }
-
- 
-
-
-
-
 
 const treeRootCode =  '500103000000'
 

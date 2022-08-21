@@ -1,7 +1,7 @@
 <template>
     <main>
         <transition name="slide-fade-left">
-            <div v-show="!actionKey">
+            <div v-if="!actionKey">
                 <slot />
             </div>
         </transition>
@@ -11,7 +11,7 @@
         <DynamicFormDialog v-bind="currentPageForm" key="pageForm" />
         <!-- 页面内容 -->
         <DynamicPageDialog v-bind="currentDialogPage" key="pageContent" />
-        <DynamicDetailPage v-bind="$props" :detail-id="detailId" :action-key="actionKey" />
+        <DynamicDetailPage v-bind="$props" :query="query" :action-key="actionKey" />
     </main>
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
             setGlobalDialogForm: this.setCurrentDialogForm,
             setGlobalDialogPage: this.setCurrentDialogPage,
             isGlobalDialogFormActive: this.isGlobalDialogFormActive,
-            refreshComponentKey: '',
+            refreshComponentKey: ''
        
         }
     },
@@ -65,7 +65,7 @@ export default {
             currentPageForm: {
                 visible: { value: false }
             },
-            detailId: '',
+            query: '',
             actionKey: 'detail'
         }
     },
@@ -74,7 +74,7 @@ export default {
             '$route',
             (toParams, previousParams) => {
                 // 对路由变化做出响应...
-                this.getRouterIdInParams()
+                this.getRouterParams()
             }, {
                 immediate: true
             }
@@ -83,17 +83,18 @@ export default {
     mounted() {},
 
     methods: {
-        getRouterIdInParams() {
-            debugger
-            this.detailId = this.$route.params?.id || this.$route.query?.id
+        getRouterParams() {
             this.actionKey = this.$route.params?.action || this.$route.query.action
+            const query = Object.keys(this.$route.params).length ? this.$route.params : this.$route.query
+            delete query.action
+            this.query = query
         },
         setCurrentDialogForm(currentDialogForm) {
-            debugger
+             
             if (['dy-page', 'DyPage'].includes(currentDialogForm.container)) {
                 currentDialogForm.visible = { value: true }
                 this.currentPageForm = currentDialogForm
-                this.actionKey = this.actionKey? this.actionKey: currentDialogForm.actionKey
+                this.actionKey = this.actionKey ? this.actionKey : currentDialogForm.actionKey
 
             } else {
                 currentDialogForm.visible = { value: true }
@@ -106,9 +107,9 @@ export default {
             debugger
             currentDialogPage.visible = { value: true }
             this.currentDialogPage = currentDialogPage
-             if (['dy-page', 'DyPage'].includes(currentDialogPage.container)) {
-                this.actionKey = this.actionKey? this.actionKey: currentDialogPage.actionKey
-             }
+            if (['dy-page', 'DyPage'].includes(currentDialogPage.container)) {
+                this.actionKey = this.actionKey ? this.actionKey : currentDialogPage.actionKey
+            }
         },
 
         // 关闭弹窗  兜底

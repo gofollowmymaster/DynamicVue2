@@ -28,7 +28,7 @@
                     :key="action.label"
                     v-permission="action.permission"
                     size="medium"
-                    @click="actionHandle(action)"
+                    @click="doActionHandle(action)"
                 >
                     {{ action.label }}
                 </el-button>
@@ -91,6 +91,16 @@ export default {
     mounted() {
     },
     methods: {
+        doActionHandle(action, actionData) {
+            
+            // if (typeof action.actionHook === 'function') {
+            //     action.actionHook(action, actionData)
+            // }
+            // if (action.isLoadData === false) {
+            //     actionData = {}
+            // }
+            this.actionHandle(action, actionData)
+        }, 
         reset() {
             this.$refs.DynamicFormContent.resetFields()
         },

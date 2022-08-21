@@ -142,7 +142,7 @@ export default {
                     beforeClose: (operate, instance, done) => {
                         debugger
                         if (operate === 'confirm') {
-                            this.actionHandle(action, actionData)
+                            this.doActionHandle(action, actionData)
                             done()
                         } else {
                             done()
@@ -151,11 +151,19 @@ export default {
                 }).then(operate => {})
                 return
             }
-            this.actionHandle(action, actionData)
+            this.doActionHandle(action, actionData)
         },
         
+        doActionHandle(action, actionData) {
             
-          
+            // if (typeof action.actionHook === 'function') {
+            //     action.actionHook(action, actionData)
+            // }
+            // if (action.isLoadData === false) {
+            //     actionData = {}
+            // }
+            this.actionHandle(action, actionData)
+        },  
       
         openPop(action) {
             this.$set(this.popoverVisible, action.label, true)

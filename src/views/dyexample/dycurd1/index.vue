@@ -50,7 +50,7 @@ export default {
                 update: assetsUpdateApi
             },
             pageOptions: {
-                treeOption:{
+                treeOption: {
 
                 },
                 topToolBar: {
@@ -113,7 +113,7 @@ export default {
         
                         }
                     }
-                },
+                }
             }
         }
     }

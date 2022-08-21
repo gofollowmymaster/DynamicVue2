@@ -1,5 +1,4 @@
 <template>
- 
     <section>
         <el-slider
             v-if="!isTextMode"

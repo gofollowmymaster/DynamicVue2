@@ -57,9 +57,9 @@ export default {
             set(v) {
                 // console.log(`|${v}|`);
                 this.$emit('input', v[this.item.options['node-key']])
-                    this.statusChangeFn.valueUpdateEvent({
-                        [this.item.key]: v
-                    })
+                this.statusChangeFn.valueUpdateEvent({
+                    [this.item.key]: v
+                })
             
             }
         }

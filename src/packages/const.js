@@ -10,5 +10,3 @@ export default {
     DY_PAGE_WRAPER
 }
 
-
-

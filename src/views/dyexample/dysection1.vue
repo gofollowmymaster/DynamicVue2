@@ -39,11 +39,11 @@ const searchFieldsTmpl = [
                 size: 'small'
             },
             
-                button: true,
+            button: true,
             
-            itemProperties:{
+            itemProperties: {
                 style: { width: '120px' },
-                border: true,
+                border: true
             }
            
         }
@@ -80,7 +80,7 @@ export default {
             searchFields.push({
                 key: 'tip',
                 type: 'FormText',
-                span:8,
+                span: 8,
                 searchOption: {
                     content: `该区域下固定资产总共${this.num}台`
                 }
@@ -92,7 +92,7 @@ export default {
                     props:
                         {
                             class: ['grid-col-24'],
-                            options:  {
+                            options: {
                                 properties: {
                                     'label-width': '100px',
                                     'label-position': 'right'
@@ -100,7 +100,7 @@ export default {
                                 borderForm: false,
                                 trigger: 'change',
                                 resetable: false,
-                                testTool:false,
+                                testTool: false
                             },
                             fields: this.$buildSearchFields(searchFields)
                         }
@@ -133,7 +133,7 @@ export default {
                             class: ['grid-col-12'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table:  {
+                            table: {
                                 hasCheckbox: false
                             },
                             columns: [
@@ -223,7 +223,7 @@ export default {
                             class: ['grid-col-12'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table:  {
+                            table: {
                                 hasCheckbox: false
                             },
                             columns: [ 
@@ -266,7 +266,7 @@ export default {
                             class: ['grid-col-24'],
                             style: { height: '300px' },
                             title: '统计表',
-                            table:{
+                            table: {
                                 hasCheckbox: false
                             },
                             columns: [ 

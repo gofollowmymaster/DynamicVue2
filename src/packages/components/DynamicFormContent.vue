@@ -6,7 +6,8 @@
                      ref="form"
                      :class="{'form-text-mode': textMode }"
                      :model="data"
-                     :validate-on-rule-change="true">
+                     :validate-on-rule-change="true"
+            >
                 <template v-for="formSection of formItemList">
                     <main
                         v-if=" !formSection.hidden && filterFormHide(formSection.children).length "
@@ -23,7 +24,8 @@
                             <span
                                 v-if="showFoldBtn"
                                 class="block-fold-btn"
-                                @click="foldBlock(formSection)">
+                                @click="foldBlock(formSection)"
+                            >
                                 {{ isBlocked(formSection) ? "展开" : "收起" }}
                                 <i :class="[ 'el-icon-arrow-' + (isBlocked(formSection) ? 'down' : 'up'), ]" />
                             </span>
@@ -83,7 +85,7 @@ export default {
             formData: this.getData,
             formProperties: () => this.formProperties,
             colNum: this.colNum,
-            form:this,
+            form: this
 
         }
     },
@@ -376,7 +378,7 @@ export default {
         setElementDisable(key, beDisable = true) {
             this.formItemForEach(formItem => {
                 if (formItem.key === key) {
-                    this.$set(formItem, 'disabled',   beDisable )
+                    this.$set(formItem, 'disabled',   beDisable)
                     return true
                 }
             })
@@ -450,5 +452,4 @@ export default {
     }
 }
 </script>
-
  

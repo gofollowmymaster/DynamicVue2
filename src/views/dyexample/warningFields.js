@@ -351,7 +351,7 @@ export const warningProcessedFields = [
         type: 'FormTextarea',
         formSection: '处理信息',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=3'
             }
         }
@@ -363,7 +363,7 @@ export const warningProcessedFields = [
         formSection: '处理信息',
 
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=3'
             }
         },
@@ -378,7 +378,7 @@ export const warningProcessedFields = [
         type: 'FormTextarea',
         formSection: '处理信息',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=2'
             }
         },
@@ -392,7 +392,7 @@ export const warningProcessedFields = [
         type: 'FormTextarea',
         formSection: '处理信息',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=2'
             }
         }
@@ -404,7 +404,7 @@ export const warningProcessedFields = [
         key: 'videos',
         type: 'FormTextarea',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=2'
             }
         }
@@ -416,7 +416,7 @@ export const warningProcessedFields = [
         key: 'handleTime',
         type: 'FormDateTime',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}==1'
             }
         },
@@ -431,7 +431,7 @@ export const warningProcessedFields = [
         key: 'eventNumber',
         type: 'FormInput',
         formOption: {
-            expressProp:{
+            expressProp: {
                 hidden: '#{treatmentMethod}!=1'
             }
         }
@@ -464,7 +464,7 @@ export const eventFields = [
         key: 'equipmentName',
         type: 'FormTextarea',
         formOption: {
-            col : 5,
+            col: 5,
             rules: ['required']
         }
     },
@@ -474,7 +474,7 @@ export const eventFields = [
         key: 'equipmentName1',
         type: 'FormTextarea',
         formOption: {
-            col : 5
+            col: 5
         }
     },
     {
@@ -592,9 +592,9 @@ export const eventFields = [
         formSection: '附件信息',
         formOption: {
 
-                // disabled: true,
-                'list-type': 'picture-card',
-                accept: 'img',
+            // disabled: true,
+            'list-type': 'picture-card',
+            accept: 'img',
             btn_text: '上传',
             // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
             apiPromise: elementUploadFileApi
@@ -692,7 +692,7 @@ export const unhandleFields = [
         key: 'message',
         type: 'FormInput',
         formOption: {
-            rules: ['required'],
+            rules: ['required']
         }
     },
 

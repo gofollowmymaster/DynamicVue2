@@ -14,7 +14,6 @@
 <script>
 import popMixin from '@/packages/components/popContents/mixin'
 
-
 export default {
     name: 'ProjectRadio',
     mixins: [popMixin],

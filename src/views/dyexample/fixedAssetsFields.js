@@ -17,7 +17,7 @@ const mainPlaintFields = [
             sort: 3
         },
         formOption: {
-            col : 5,
+            col: 5,
             rules: ['required']
         }
     },
@@ -40,7 +40,7 @@ const mainPlaintFields = [
             }
         ],
         formOption: {
-            col : 5,
+            col: 5,
             rules: ['required']
         }
     },
@@ -50,7 +50,7 @@ const mainPlaintFields = [
         label: '备注',
         tableOption: true,
         formOption: {
-            col : 5,
+            col: 5,
             rules: ['required']
         }
     }
@@ -87,7 +87,7 @@ export const mainPlaintOption = {
     }
 }
 
-//没有联动
+// 没有联动
 const mainPlaintTableFields = [
 
     {
@@ -153,7 +153,7 @@ const mainPlaintTableFields = [
         label: '备注',
         tableOption: {},
         formOption: {
-            disabled:true,
+            disabled: true
         }
     }
 
@@ -163,7 +163,7 @@ export const mainPlaintTableOption = {
 }
 export const formSections = {
     '主要配件': {
-        hidden: "#{plantedInGreen}"
+        hidden: '#{plantedInGreen}'
     }
 }
 export default [
@@ -227,7 +227,7 @@ export default [
         label: '不动产范围绘制',
         formSection: '基本信息',
         formOption: {
-            rules: ['required'],
+            rules: ['required']
         }
     },
 
@@ -238,9 +238,9 @@ export default [
         formSection: '基本信息',
         formOption: {
             rules: ['required'],
-            expressProp:{
-                value:"#{plantedInGreen}?1:100",
-                required:"#{plantedInGreen}==1",
+            expressProp: {
+                value: '#{plantedInGreen}?1:100',
+                required: '#{plantedInGreen}==1'
             }
         }
     },
@@ -262,14 +262,14 @@ export default [
         ],
         formOption: {
             rules: ['required'],
-            defaultValue:true,
-            changeHandle(data,vm){
+            defaultValue: true,
+            changeHandle(data, vm) {
                 debugger
                 vm.updateFormData({
-                    remark: data===true?'是':'否'
+                    remark: data === true ? '是' : '否'
                 })
-                vm.setElementDisable('remark', data===true)
-                vm.setElementHidden('pic',data)
+                vm.setElementDisable('remark', data === true)
+                vm.setElementHidden('pic', data)
             }
         }
     },
@@ -280,7 +280,7 @@ export default [
         formSection: '基本信息',
         type: 'FormTextarea',
         formOption: {
-            col : 5,
+            col: 5
             
         }
     },
@@ -291,7 +291,7 @@ export default [
         type: 'FormUpload',
         formSection: '基本信息',
         formOption: {
-            col : 5,
+            col: 5,
             limit: 5,
             'list-type': 'picture-card',
             btn_text: '上传',
@@ -315,34 +315,34 @@ export default [
     //   }
     // },
     {
-      key: 'mainPlant',
-      label: '',
-      type: 'FormTableEditable',
-      formSection: '主要配件',
-      formOption: {
-        col:3,
-        wraperProperties: {
-          'label-width':'0px'
-        },
-          fields: mainPlaintTableFields,
-          options: mainPlaintTableOption,
-          defaultValue:[
-            {
-              id:1,
-              treeId:2014,
-              treeStreetQuantity:15,
-              treeStreetType:'1',
-              treeStreetContext:'实打实大所多撒'
+        key: 'mainPlant',
+        label: '',
+        type: 'FormTableEditable',
+        formSection: '主要配件',
+        formOption: {
+            col: 3,
+            wraperProperties: {
+                'label-width': '0px'
             },
-            {
-              id:1,
-              treeId:2014,
-              treeStreetQuantity:15,
-              treeStreetType:'1',
-              treeStreetContext:'实打实大所多撒'
-            },
-          ]
-      }
+            fields: mainPlaintTableFields,
+            options: mainPlaintTableOption,
+            defaultValue: [
+                {
+                    id: 1,
+                    treeId: 2014,
+                    treeStreetQuantity: 15,
+                    treeStreetType: '1',
+                    treeStreetContext: '实打实大所多撒'
+                },
+                {
+                    id: 1,
+                    treeId: 2014,
+                    treeStreetQuantity: 15,
+                    treeStreetType: '1',
+                    treeStreetContext: '实打实大所多撒'
+                }
+            ]
+        }
     },
     // {
     //     key: 'mainPlant',

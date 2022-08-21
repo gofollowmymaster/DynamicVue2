@@ -1,6 +1,6 @@
 <template>
-    <div class="layout-wrapper   " :class="[mode + '-curd',scene+'-curd']">
-        <aside class="left-section">
+    <div class="layout-wrapper grid-wrap  " :class="[mode + '-curd',scene+'-curd']">
+        <aside class="left-section ">
             <slot name="left" />
         </aside>
         <main class="main-section    ">
@@ -47,6 +47,8 @@ export default {
         background-color: var(--main-color);
     }
     .main-section {
+        grid-column-end: 24;
+        grid-column-start: 1;
         padding: 24px 0 12px;
         .bottom-section {
             padding: 24px 24px 0;
@@ -55,12 +57,17 @@ export default {
 }
 .layout-wrapper.ltb-curd {
     display: flex;
+    position: relative;
     .left-section {
+        //  flex: 1;
+        // float: left;
+        grid-column-end: 6;
+        min-width: 240px;
         width: 320px;
         padding: 24px;
-        height: 100%;
-        position: sticky;
-        top: 12px;
+        // height: 100%;
+        // position: sticky;
+        // top: 12px;
         display: block;
     }
     .middle-gap {
@@ -68,7 +75,12 @@ export default {
         background-color: rgba(149, 54, 179, 0.15);
     }
     .main-section {
+        // float: left;
+         grid-column-end: 18;
+
+        // flex: 1;
         padding: 24px 24px 12px 0;
+        overflow-x: hidden;
         .bottom-section {
             padding: 24px 0 0;
         }
