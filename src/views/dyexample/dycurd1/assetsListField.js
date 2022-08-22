@@ -28,9 +28,7 @@ export const assetsFields = [
         label: '学名',
         labelTip: '请输入学术名称',
         formOption: {
-            properties: {
-               
-            },
+         
             rules: ['required'],
             formTip: '输入学术名称'
 
@@ -107,7 +105,8 @@ export const assetsFields = [
         formOption: {
             // rules:['required'],
             expressProp: {
-                required: '[\'99999010\',\'99999011\',\'99999012\'].includes(#{famousWood})'
+                required: '[1,2,].includes(#{famousWood})',
+                disabled: '[1,2,].includes(#{famousWood})'
             }
         }
     },
@@ -121,8 +120,8 @@ export const assetsFields = [
         formOption: {
             rules: ['required'],
             expressProp: {
-                disabled: '[\'99999010\',\'99999011\',\'99999012\'].includes(#{famousWood})',
-                value: 'if([\'99999010\',\'99999011\',\'99999012\'].includes(#{famousWood})){  if(#{age}>=300){  return \'99999001\';  }  if(#{age}>=200){    return \'99999002\' ;  }   if(#{age}>=100){    return \'99999003\' ; }  }else{ return #{protectLev} ;  }'
+                disabled: '[1,2,3].includes(#{famousWood})',
+                value: 'if([1,2,3].includes(#{famousWood})){  if(#{age}>=300){  return 1;  }  if(#{age}>=200){    return2 ;  }   if(#{age}>=100){    return 3 ; }  }else{ return #{protectLev} ;  }'
      
             }
         },

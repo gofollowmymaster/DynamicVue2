@@ -232,7 +232,7 @@ export default {
                                     delete this.formItemList[index].children[innerIndex].expressProp[key]
                                     break
                                 default:
-                                    this.formItemList[index].children[innerIndex][key] = expressionValue
+                                     this.$set(this.formItemList[index].children[innerIndex],key , expressionValue)
                             }
                         }
                     }

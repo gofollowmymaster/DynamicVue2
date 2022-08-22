@@ -2,14 +2,14 @@ html {
   --col-num: 24;
   --layout-margin: 2.2rem;
   --layout-gap: 18px;
-  --layout-col-gap: 18px;
-  --layout-row-gap: 18px;
+  --layout-col-gap: 20px;
+  --layout-row-gap: 20px;
 }
 @media only screen and (max-width: 1266px) {
   html {
-    --layout-gap: 16px;
+    --layout-gap: 12px;
     --layout-col-gap: 10px;
-    --layout-row-gap: 16px;
+    --layout-row-gap: 18px;
   }
 }
 /*phone竖屏*/
@@ -5583,6 +5583,22 @@ html {
 .hz-low-code .dynamic-form .form-text-mode {
   --layout-row-gap: 0;
   --layout-gap: 0;
+}
+.hz-low-code .dynamic-form .form-text-mode .block-border {
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  background: #fff;
+}
+.hz-low-code .dynamic-form .form-text-mode .block-border .block-nav {
+  line-height: 40px;
+  padding: 14px 0 14px 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 1px solid #dde0ea;
+}
+.hz-low-code .dynamic-form .form-text-mode .block-border .block-content {
+  margin: 0;
 }
 .hz-low-code .dynamic-form .form-text-mode .el-form-item__label {
   border-bottom: 1px solid #ebeef5;
