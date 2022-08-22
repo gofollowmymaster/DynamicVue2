@@ -15,6 +15,7 @@
     </main>
 </template>
 <script>
+import {deepCopy} from  "../utils/tool"
 export default {
     name: 'DynamicPageWrapper',
     components: {},
@@ -85,7 +86,7 @@ export default {
     methods: {
         getRouterParams() {
             this.actionKey = this.$route.params?.action || this.$route.query.action
-            const query = Object.keys(this.$route.params).length ? this.$route.params : this.$route.query
+            const query = deepCopy(Object.keys(this.$route.params).length ? this.$route.params : this.$route.query)
             delete query.action
             this.query = query
         },

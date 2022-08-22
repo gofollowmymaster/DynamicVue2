@@ -111,10 +111,11 @@ export default {
             }
         },
         closeModal() {
-            this.visible.value = false
             if (this.$parent?.$options.name === 'DynamicPageWrapper' && ['DyPage', 'dy-page'].includes(this.container)) {
                 this.clearRouteQuery()
             }
+            this.visible.value = false
+
         },
         clearRouteQuery() {
             const { id, action } = this.$route.query
