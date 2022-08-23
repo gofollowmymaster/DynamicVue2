@@ -113,7 +113,7 @@ export default {
             set(tableList) {
                 this.$emit('input', tableList)
 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: tableList
                 })
             }

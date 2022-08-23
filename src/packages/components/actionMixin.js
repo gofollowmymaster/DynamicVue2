@@ -1,5 +1,6 @@
 import dynamicActions from './actions/index'
 import callbackActionHandles from './actions/callback.js'
+import { deepCopy } from '../utils/tool'
 
 export default {
     props: {},
@@ -14,6 +15,7 @@ export default {
                 actionData = {}
             }
             debugger
+            actionData=deepCopy(actionData)
             switch (action.actionType) {
                 case 'dialogPage':
                 case 'dialogForm':
@@ -71,8 +73,8 @@ export default {
             debugger
             if (typeof action.router === 'function') {
                 const routerInfo = action.router(actionData)
-                path = routerInfo.path
-                query = routerInfo.query   
+                path = routerInfo.path||''
+                query = routerInfo.query ||{}  
             } else {
                 path = this.$route.fullPath.split('#')[0].replace(/[\/|\\]$/, '') + '/'
             }

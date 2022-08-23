@@ -24,6 +24,7 @@ export default class dialogForm {
           }
         debugger
         if (!action.apiPromise) {
+            
             const data = dataAdapter(actionData)
             this.setCurrentDialogForm(action, data, extra)
             return

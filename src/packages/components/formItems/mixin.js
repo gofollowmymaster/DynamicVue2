@@ -12,14 +12,11 @@ export default {
             type: Boolean,
             default: false
         },
-        randomId: {
-            type: String,
-            default: ''
-        }
+ 
     },
     inject: [
-        'changeData',
-        'statusChangeFn',
+        'formProps',
+        'formMethods',
         'formData',
         'form'
     ],
@@ -48,14 +45,14 @@ export default {
                 this.$emit('input', v)
                 // 只有非子表单的情况下，才会冒泡上去数据变更
 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: v
                 })
             }
         },
         // 是否采用文字模式
         isTextMode() {
-            if (this.changeData.textMode) {
+            if (this.formProps.textMode) {
                 return true
             }
             return false

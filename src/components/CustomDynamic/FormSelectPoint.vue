@@ -61,7 +61,7 @@ export default {
             set(value) {
                 this.$emit('input', value)
                 // 更新数据
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: value
                 })
             }

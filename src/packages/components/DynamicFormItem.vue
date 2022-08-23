@@ -51,7 +51,7 @@ export default {
     },
     inject: [
         'colNum',
-        'changeData'
+        'formProps'
     ],
     props: {
         formItem: {
@@ -84,7 +84,7 @@ export default {
         },
         // 是否采用文字模式
         isTextMode() {
-            if (this.changeData.textMode) {
+            if (this.formProps.textMode) {
                 return true
             }
             return false
@@ -114,6 +114,9 @@ export default {
             }
 
             classList.push(layoutClass)
+            if(this.colNum===1 ){
+                classList.push('grid-full-row')
+            }
 
             return classList
         }

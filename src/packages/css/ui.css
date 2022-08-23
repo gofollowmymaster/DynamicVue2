@@ -199,6 +199,10 @@
 .dynamic-form .form-text-mode .grid-wrap .grid-item:last-child:first-child {
   grid-column-end: span 24;
 }
+.dynamic-form .form-text-mode .grid-wrap .grid-full-row {
+  border-bottom: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+}
 .dynamic-form .form-text-mode .single-wrap .grid-item {
   outline: none;
 }

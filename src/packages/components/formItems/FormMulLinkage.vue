@@ -42,7 +42,7 @@ export default {
             set(v) {
                 this.$emit('input', v)
 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: v
                 })
             }

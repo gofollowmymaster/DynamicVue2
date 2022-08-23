@@ -69,19 +69,19 @@ export default {
     provide() {
         return {
             // 状态切换函数
-            statusChangeFn: {
+            formMethods: {
                 // 设置为禁用
-                setElementDisable: this.setElementDisable,
+                setFormItemDisabled: this.setFormItemDisabled,
                 // 设置为隐藏
-                setElementHidden: this.setElementHidden,
+                setFormItemHidden: this.setFormItemHidden,
                 // 设置为必填
-                setElementRequired: this.setElementRequired,
+                setFormItemRequired: this.setFormItemRequired,
                 // 更新其他数据
                 updateFormData: this.updateFormData,
                 valueUpdateEvent: this.valueUpdateEvent
             },
             // 会动态变化的数据（注意，来自 props【更上级组件】的数据，不能放这个里面，只能显式的通过 props 往下面传）
-            changeData: this.changeData,
+            formProps: this.formProps,
             formData: this.getData,
             formProperties: () => this.formProperties,
             colNum: this.colNum,
@@ -145,7 +145,7 @@ export default {
     },
     data() {
         return {
-            changeData: {
+            formProps: {
                 // 所有动态数据，更准确的说，是会重新赋值的，需要放到 data 里，才能实现响应式。这是因为 provide 本身的特性导致的
                 allDisabled: this.allDisabled,
                 textMode: this.textMode
@@ -218,7 +218,7 @@ export default {
                         if (isDynamicValue) {
                             switch (key) {
                                 case 'required':
-                                    this.setElementRequired(item.key, expressionValue)
+                                    this.setFormItemRequired(item.key, expressionValue)
                                     delete this.formItemList[index].children[innerIndex].expressProp[key]
                                     break
                                 case 'value':
@@ -334,7 +334,7 @@ export default {
         // 设置某个要素必填
         // key：操作的 key
         // Required true，表示隐藏。而 false，表示取消隐藏
-        setElementRequired(key, beRequired = true) {
+        setFormItemRequired(key, beRequired = true) {
             this.formItemForEach(formItem => {
                 if (formItem.key === key) {
                     let rules = formItem.rules
@@ -369,13 +369,13 @@ export default {
         },
         setSectionElementDisable(subFieldsList, beDisable = false) {
             subFieldsList.forEach((field, index) => {
-                this.setElementDisable(field.key, beDisable)
+                this.setFormItemDisabled(field.key, beDisable)
             })
         },
         // 设置某个要素禁用
         // key：操作的 key
         // beDisable：必填，默认是 true，表示禁用。而 false，表示取消禁用
-        setElementDisable(key, beDisable = true) {
+        setFormItemDisabled(key, beDisable = true) {
             this.formItemForEach(formItem => {
                 if (formItem.key === key) {
                     this.$set(formItem, 'disabled',   beDisable)
@@ -387,7 +387,7 @@ export default {
         // 设置某个要素隐藏
         // key：操作的 key
         // beHidden：必填，默认是 true，表示隐藏。而 false，表示取消隐藏
-        setElementHidden(key, beHidden = true) {
+        setFormItemHidden(key, beHidden = true) {
             this.formItemForEach(formItem => {
                 if (formItem.key === key) {
                     this.$set(formItem, 'hidden', beHidden)

@@ -68,49 +68,49 @@ export const tableOption = {
 }
 
 export const pagination = {
-    // small: false,
-    // 'current-page': 1,
-    // pageSize: 10,
-    // layout: 'total,sizes, prev, pager, next, jumper',
-    // 'hide-on-single-page': false,
-    // 'page-sizes': [10, 20, 30, 40, 50]
-    // background:true
+    small: false,
+    'current-page': 1,
+    pageSize: 10,
+    layout: 'total,sizes, prev, pager, next, jumper',
+    'hide-on-single-page': false,
+    'page-sizes': [10, 20, 30, 40, 50],
+    background:true
 }
 
 export const treeOption = {
-    // lazy: true,
-    // 'node-key': 'deptId',
-    // props: {
-    //   label: 'deptName',
-    //   children: 'children',
-    //   isLeaf: 'leaf'
-    // },
-    // 'current-node-key': null,
-    // 'highlight-current': true,
-    // fieldName: 'test'
+    lazy: true,
+    'node-key': 'deptId',
+    props: {
+      label: 'deptName',
+      children: 'children',
+      isLeaf: 'leaf'
+    },
+    'current-node-key': null,
+    'highlight-current': true,
+    fieldName: 'test'
 }
 
 export const formOption = {
-    // formProperties: {
-    //   'hide-required-asterisk': false,
-    //   'label-width': '160px',
-    //   'label-position': 'right',
-    //   // size:'medium'
-    // },
-    // borderForm: false,
-    // showFoldBtn: true,
+    formProperties: {
+      'hide-required-asterisk': false,
+      'label-width': '160px',
+      'label-position': 'right',
+      // size:'medium'
+    },
+    borderForm: false,
+    showFoldBtn: true,
     testTool: true
 
 }
 
 export const popTipOptions = {
-    // actionPopComponent: 'popConfirm',
-    // actionPopProperties: {
-    //     'confirm-button-text': '确定',
-    //     'cancel-button-text': '取消',
-    //     title: '确定执行该操作吗？',
-    //     icon: 'el-icon-warning'
-    // }
+    actionPopComponent: 'popConfirm',
+    actionPopProperties: {
+        'confirm-button-text': '确定',
+        'cancel-button-text': '取消',
+        title: '确定执行该操作吗？',
+        icon: 'el-icon-warning'
+    }
 }
 
 export const msgBoxTipOptions = {
@@ -157,11 +157,7 @@ export const pageProperties = {
 }
 
 export default {
-
-    baseFormSectionName: '基本信息',
-    actionTip: 'msg',
-    btnSize: 'mini',
-    isDebug,
+    //模板项目配置用
     tinymceLanguageUrl: '/dyvue2-admin/static/tinymce/langs/zh_CN.js',
     tinymceSkinUrl: '/dyvue2-admin/static/tinymce/skins/ui/oxide',
     amapWebKey,
@@ -169,17 +165,33 @@ export default {
     mapCenter: [106.680603, 29.402348],
     tandiMapKey,
     amapStyleConfig,
-    regionCode: '500103000000',
-    defaultDialogActionMode: 'router',
-    defaultContainerType: 'el-dialog',
-    searchOption,
-    tableOption,
-    pagination,
-    treeOption,
-    formOption,
-    popTipOptions,
-    msgBoxTipOptions,
-    drawerProperties,
-    dialogProperties,
-    pageProperties
+
+
+    //dyVue 全局配置
+    baseFormSectionName: '基本信息',       //表单默认区块（formSection）默认名字
+    btnSize: 'mini',                      //按钮尺寸
+    mainKey: 'id',                        //主键
+    isDebug,                              //是否调试模式  调试模式时在开发环境中会出现自动填充表单按钮
+    defaultDialogActionMode: 'router',   //打开‘弹窗’操作 默认模式 router  dailog 可选
+    defaultContainerType: 'el-dialog',   //弹窗    默认容器    （defaultDialogActionMode = dialog 有效）
+    searchOption,                        //搜索表单配置
+    tableOption,                         //表格配置
+    pagination,                          //分页配置
+    treeOption,                          //树配置
+    formOption,                          //表单配置
+    popTipOptions,                       //操作提示气泡配置
+    msgBoxTipOptions,                    //操作提示消息配置
+    actionTip: 'msg',                    //操作提示方式  气泡（tip）、消息（msg）可选
+    drawerProperties,                    //抽屉属性
+    dialogProperties,                    //弹窗属性
+    pageProperties,                         
+    // dynamicFormOption,
+    // formWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],    // 表单
+    // detailWraperClass: ['grid-col-xs-24', 'grid-col-pp-24'],  //
+    // searchFormWraperClass: [                                  //
+    //     'grid-col-sm-8',
+    //     'grid-col-ss-8',
+    //     'grid-col-xs-12',
+    //     'grid-col-pp-24'
+    // ]
 }

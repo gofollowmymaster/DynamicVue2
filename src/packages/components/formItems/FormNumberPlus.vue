@@ -110,7 +110,7 @@ export default {
                 if (isEmpty(this.value, true)) {
                     this.$emit('input', v)
                 
-                    this.statusChangeFn.valueUpdateEvent({
+                    this.formMethods.valueUpdateEvent({
                         [this.item.key]: v
                     })
                    
@@ -147,7 +147,7 @@ export default {
                 }
                 this.$emit('input', n)
                 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: n
                 })
                 
@@ -184,7 +184,7 @@ export default {
             if (this.tempVal === '') {
                 this.$emit('input', this.tempVal)
 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: this.tempVal
                 })
                 return

@@ -268,8 +268,8 @@ export default [
                 vm.updateFormData({
                     remark: data === true ? '是' : '否'
                 })
-                vm.setElementDisable('remark', data === true)
-                vm.setElementHidden('pic', data)
+                vm.setFormItemDisabled('remark', data === true)
+                vm.setFormItemHidden('pic', data)
             }
         }
     },

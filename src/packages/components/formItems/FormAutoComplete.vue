@@ -94,7 +94,7 @@ export default {
                 payload[key] = selectedItem.item[key]
             })
             // 再调用方法，推到 wti_form 这个组件中
-            this.statusChangeFn.updateFormData(payload)
+            this.formMethods.updateFormData(payload)
 
             if (this.item.onSelect) {
                 this.item.onSelect(selectedItem, this.randomId)

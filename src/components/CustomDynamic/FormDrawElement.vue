@@ -81,7 +81,7 @@ export default {
             set(lnglat) {
                 this.$emit('input', JSON.stringify(lnglat))
 
-                this.statusChangeFn.valueUpdateEvent({
+                this.formMethods.valueUpdateEvent({
                     [this.item.key]: lnglat
                 })
             }
