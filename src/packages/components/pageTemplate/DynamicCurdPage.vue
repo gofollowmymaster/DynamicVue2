@@ -1,5 +1,5 @@
 <template>
-    <div class=" hz-low-code flex flex-direction full-width">
+    <div class=" hz-low-code relative flex flex-direction full-width">
         <DynamicPageWrapper class="flex1   " :actions="actionList" :fields="fields" :entity-label="entityLabel"
                             :api-promises="apiPromises" :form-sections="formSections"
         >

@@ -1,5 +1,5 @@
 <template>
-    <div class=" hz-low-code  ">
+    <div class=" ">
         <DynamicPageWrapper :actions="{...pendingPageOptions.listOption.lineActions}" :api-promises="pendingApiPromises" entity-label="不动产管理">
             <LayoutTabs class="pt12 ">
                 <DynamicCurd

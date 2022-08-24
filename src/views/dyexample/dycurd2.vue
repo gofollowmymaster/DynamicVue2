@@ -1,5 +1,5 @@
 <template>
-    <div class=" hz-low-code  ">
+    <div class="  ">
         <DynamicPageWrapper
             class="flex1"
             :actions="{ ...topToolBar, ...tableOption.lineActions }"

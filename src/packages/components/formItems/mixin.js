@@ -95,6 +95,7 @@ export default {
 
             delete obj.hidden
             delete obj.value
+            delete obj.loadOptionsApi
 
             obj.maxlength = obj.maxlength || 255
 

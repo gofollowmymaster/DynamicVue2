@@ -1,5 +1,5 @@
 <template>
-    <div class="layout">
+    <div class="layout  ">
         <div id="app-main" :style="{
             '--real-sidebar-width': realSidebarWidth
         }"
@@ -79,11 +79,12 @@
                     <div class="main">
                         <transition name="main" mode="out-in">
                             <keep-alive v-if="isRouterAlive" :include="$store.state.keepAlive.list">
-                                <RouterView :key="$route.path" class="main-view" />
+                                <RouterView :key="$route.path" class="main-view hz-low-code " />
                             </keep-alive>
                         </transition>
+                        <Copyright v-if="$store.state.settings.showCopyright" />
                     </div>
-                    <Copyright v-if="$store.state.settings.showCopyright" />
+                    
                 </div>
             </div>
             <el-backtop :right="20" :bottom="20" :title="$route.path " />
@@ -441,17 +442,20 @@ header {
     .main-container {
         display: flex;
         flex-direction: column;
-        min-height: 100%;
+        height: 100vh;
         margin-left: $g-sidebar-width;
         background-color: #f5f7f9;
         box-shadow: 1px 0 0 0 darken($g-main-bg, 10);
         transition: 0.3s;
         .main {
-            height: 100%;
-            flex: auto;
+            // height: 100%;
+            flex: 1;
             position: relative;
-            padding: $g-topbar-height 0 0;
-            overflow: hidden;
+            margin: $g-topbar-height 0 0;
+            overflow-y: scroll;
+            // height: 100%;
+
+            // height: calc(100vh - );
         }
     }
 }
@@ -506,8 +510,8 @@ header + .wrapper {
 }
 .main-view {
     margin-left: 18px;
-    margin-right: 12px;
-    margin-top: 18px;
+    margin-right: 10px;
+    // margin-top: 18px;
     background: white;
     position: relative;
 }

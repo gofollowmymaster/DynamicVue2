@@ -22,72 +22,52 @@ export default {
                 title: '动态页面'
             }
         },
+ 
         {
-            path: 'curd',
-            name: 'dycurd',
-            component: EmptyLayout,
-            redirect: '/dyexample/dycurd1',
+            path: 'dycurd1',
+            name: 'dycurd-1',
+            component: () =>
+                import(
+                    /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd1/index.vue'
+                ),
             meta: {
-                title: '动态表格页面'
-            },
-            children: [
-                {
-                    path: 'dycurd1',
-                    name: 'dycurd-1',
-                    component: () =>
-                        import(
-                            /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd1/index.vue'
-                        ),
-                    meta: {
-                        title: '模板CURD页面'
-                    }
-                },
-                {
-                    path: 'dycurd2',
-                    name: 'dycurd-2',
-                    component: () =>
-                        import(
-                            /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd2.vue'
-                        ),
-                    meta: {
-                        title: '自定义组合CURD2'
-                    }
-                },
-                {
-                    path: 'dycurd3',
-                    name: 'dycurd-3',
-                    component: () =>
-                        import(
-                            /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd3.vue'
-                        ),
-                    meta: {
-                        title: '自定义组合CURD3'
-                    }
-                },
-                {
-                    path: 'dycurd4',
-                    name: 'dycurd-4',
-                    component: () =>
-                        import(
-                            /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/order/list.vue'
-                        ),
-                    meta: {
-                        title: '自定义组合CURD4'
-                    }
-                }
-                // {
-                //     path: 'dycurd4',
-                //     name: 'dycurd-4',
-                //     component: () =>
-                //         import(
-                //             /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/order/list.vue'
-                //         ),
-                //     meta: {
-                //         title: '自定义组合CURD4'
-                //     }
-                // },
-                
-            ]
+                title: '模板CURD页面'
+            }
+        },
+        {
+            path: 'dycurd2',
+            name: 'dycurd-2',
+            component: () =>
+                import(
+                    /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd2.vue'
+                ),
+            meta: {
+                title: '自定义组合CURD2'
+            }
+        },
+        {
+            path: 'dycurd3',
+            name: 'dycurd-3',
+            component: () =>
+                import(
+                    /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/dycurd3.vue'
+                ),
+            meta: {
+                title: '自定义组合CURD3'
+            }
+        },
+        {
+            path: 'dycurd4',
+            name: 'dycurd-4',
+            component: () =>
+                import(
+                    /* webpackChunkName: 'multilevel_menu_example' */ '@/views/dyexample/order/list.vue'
+                ),
+            meta: {
+                title: '自定义组合CURD4'
+            }
         }
+   
+  
     ]
 }

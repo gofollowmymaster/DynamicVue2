@@ -47,7 +47,7 @@ export default {
         background-color: var(--main-color);
     }
     .main-section {
-        grid-column-end: 24;
+        grid-column-end: 25;
         grid-column-start: 1;
         padding: 24px 0 12px;
         .bottom-section {
@@ -66,13 +66,14 @@ export default {
         width: 320px;
         padding: 24px;
         // height: 100%;
-        // position: sticky;
-        // top: 12px;
+        position: sticky;
+        top: 12px;
         display: block;
+        height: calc(100% - 20px) ;
     }
     .middle-gap {
-        height: 1px;
-        background-color: rgba(149, 54, 179, 0.15);
+        background-color:  var(--main-color);
+         width: calc(100%);
     }
     .main-section {
         // float: left;

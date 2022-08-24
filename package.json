@@ -19,7 +19,7 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build:test": "vue-cli-service build --mode test --dest dist-test",
-        "build": "vue-cli-service build  --dest project",
+        "build": "vue-cli-service build  --dest docs",
         "lib": "vue-cli-service build --target lib --name dyvue2  --dest lib ./index.js",
         "lint": "vue-cli-service lint",
         "stylelint": "vue-cli-service lint:style",

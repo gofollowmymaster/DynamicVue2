@@ -1,11 +1,14 @@
 <template>
-    <div class="full-width p20 bg-white ">
-        <DynamicSection :data="pageData" :body="body" />
+    <div class="full-width   bg-white ">
+          <dyBrandBar>
+                <span slot="title">不动产管理</span>
+            </dyBrandBar>
+        <DynamicSection class="p24" :data="pageData" :body="body" />
     </div>
 </template>
 <script>
 import { deepCopy } from '@/util/index'
-import { protectLevStatisticApi, growthSituationStatisticApi, treeAgeStatisticApi, treeSpeciesStatisticApi } from '@/api/assets.js'
+import { protectLevStatisticApi, growthSituationStatisticApi, assetAgeStatisticApi, assetSpeciesStatisticApi } from '@/api/assets.js'
 
 const searchFieldsTmpl = [
 
@@ -318,7 +321,7 @@ export default {
                 })
             })
 
-            treeAgeStatisticApi().then(data => {
+            assetAgeStatisticApi().then(data => {
                 this.pageData.treeAge = {
                     使用年数: data.map(item => {
                         return { value: item.countNumber, label: item.categoryName }
@@ -329,7 +332,7 @@ export default {
                 })
             })
 
-            treeSpeciesStatisticApi().then(data => {
+            assetSpeciesStatisticApi().then(data => {
                 this.pageData.treeSpecies = {
                     资产类型: data.map(item => {
                         return { value: item.countNumber, label: item.categoryName?.slice(0, 5) }

@@ -46,10 +46,10 @@ export const tableOption = {
         align: 'left',
         'row-key': 'id',
         'header-align': 'left',
-        'row-style': { height: '48px' },
-        // 'cell-style' :{padding:'4px 8px'},
-        'header-row-style': { height: '48px', 'line-height': '48px', padding: '0px 8px' },
-        'header-cell-style': { 'text-overflow': 'ellipsis', padding: '0px 0px 0px 0px', height: '36px', 'line-height': '36px' }
+        'row-style': { height: '42px' },
+        'cell-style' :{padding:'8px 0px'},
+        'header-row-style': { height: '42px', 'line-height': '42px', padding: '0px 8px' },
+        'header-cell-style': { 'text-overflow': 'ellipsis', padding: '0px 0px 0px 0px', height: '32px', 'line-height': '32px' }
     },
     colOptions: {
     // width:120,
