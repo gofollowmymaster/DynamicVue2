@@ -2,8 +2,8 @@ const path = require('path')
 module.exports = {
     // devtool: 'source-map',
     productionSourceMap:false,
-    publicPath: '/dyvue2-admin/',
-    assetsDir: './dyvue2-admin/',
+    publicPath: '/DynamicVue2/',
+    assetsDir: './DynamicVue2/',
     lintOnSave: true,
     configureWebpack: {
       resolve: {

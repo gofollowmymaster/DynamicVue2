@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/DynamicVue2/favicon.ico"><meta name="keywords" content="DyVue2-admin,后台系统,管理后台,后台模版,vue后台,vue-admin,vue-element-admin,vue-admin-template"><meta name="description" content="DyVue2-admin 是一款开箱即用的 Vue 中后台管理系统模版"><title>dyvue2</title><style>.vaa-home {
+            position: absolute;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            user-select: none;
+            color: #736477;
+            background-color: snow;
+        }
+        .vaa-home .loading {
+            position: relative;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            color: inherit;
+            vertical-align: middle;
+            pointer-events: none;
+            transform: scale(3);
+        }
+        .vaa-home .loading::before,
+        .vaa-home .loading::after {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: currentColor;
+            left: 50%;
+            right: 0;
+            top: 0;
+            bottom: 50%;
+            box-shadow: -0.5em 0 0 currentColor;
+            animation: loading 1s linear infinite;
+        }
+        .vaa-home .loading::after {
+            top: 50%;
+            bottom: 0;
+            animation-delay: 0.25s;
+        }
+        @keyframes loading {
+            0%,
+            100% {
+                box-shadow: -0.5em 0 0 transparent;
+                background-color: currentColor;
+            }
+            50% {
+                box-shadow: -0.5em 0 0 currentColor;
+                background-color: transparent;
+            }
+        }
+        .vaa-home .text {
+            font-size: 24px;
+            margin-top: 50px;
+        }</style><link href="/DynamicVue2/DynamicVue2/css/chunk-65271960.556fcc2e.css" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/css/chunk-f8ee18a4.c18b9c63.css" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/css/multilevel_menu_example.aed80825.css" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/chunk-2d0b59f4.3116df50.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/chunk-2d0b68f8.0eb5163c.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/chunk-2d0c7e72.dcd08ee2.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/chunk-65271960.4e7641c5.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/chunk-f8ee18a4.ad7976eb.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/js/multilevel_menu_example.44a5baa7.js" rel="prefetch"><link href="/DynamicVue2/DynamicVue2/css/app.4b24a250.css" rel="preload" as="style"><link href="/DynamicVue2/DynamicVue2/css/chunk-vendors.3bf32569.css" rel="preload" as="style"><link href="/DynamicVue2/DynamicVue2/js/app.6d3a50a0.js" rel="preload" as="script"><link href="/DynamicVue2/DynamicVue2/js/chunk-vendors.e37605f2.js" rel="preload" as="script"><link href="/DynamicVue2/DynamicVue2/css/chunk-vendors.3bf32569.css" rel="stylesheet"><link href="/DynamicVue2/DynamicVue2/css/app.4b24a250.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but dyvue2 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"><div class="vaa-home"><div class="loading"></div><div class="text">dyvue2载入中…</div></div></div><script src="/DynamicVue2/DynamicVue2/js/chunk-vendors.e37605f2.js"></script><script src="/DynamicVue2/DynamicVue2/js/app.6d3a50a0.js"></script></body></html>

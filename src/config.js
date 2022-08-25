@@ -158,8 +158,8 @@ export const pageProperties = {
 
 export default {
     //模板项目配置用
-    tinymceLanguageUrl: '/dyvue2-admin/static/tinymce/langs/zh_CN.js',
-    tinymceSkinUrl: '/dyvue2-admin/static/tinymce/skins/ui/oxide',
+    tinymceLanguageUrl: '/DynamicVue2/static/tinymce/langs/zh_CN.js',
+    tinymceSkinUrl: '/DynamicVue2/static/tinymce/skins/ui/oxide',
     amapWebKey,
     amapWebMapKey,
     mapCenter: [106.680603, 29.402348],
