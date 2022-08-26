@@ -22,9 +22,9 @@
 </template>
 <script>
 import {
-    planProjectUpdateApi,
-    planProjectSaveApi,
-    planProjectDetailApi
+    planOrderUpdateApi,
+    planOrderSaveApi,
+    planOrderDetailApi
 } from '@/api/orderManage.js'
 import fields from './planFields.js'
 
@@ -51,7 +51,7 @@ export default {
             formItemList: this.$buildFormFields(fields),
             actions: {
                 save: {
-                    apiPromise: planProjectSaveApi,
+                    apiPromise: planOrderSaveApi,
                     actionType: 'submitAction',
                     componentProperties: {
                         size: 'medium'
@@ -74,10 +74,10 @@ export default {
     },
     methods: {
         loadDetail(data) {
-            planProjectDetailApi(data.id).then(data => {
+            planOrderDetailApi(data.id).then(data => {
            
                 this.planDetail = data
-                this.actions.save.apiPromise = planProjectUpdateApi
+                this.actions.save.apiPromise = planOrderUpdateApi
             })
         }
     }

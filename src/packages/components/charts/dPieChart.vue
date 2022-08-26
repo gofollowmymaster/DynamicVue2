@@ -33,7 +33,7 @@ export default {
     computed: {
         pieChartOption() {
             const pieChartOptionTemplate = this.pieChartOptionTemplate
-            if (this.data.length < 1) return pieChartOptionTemplate
+            // if (this.data.length < 1) return pieChartOptionTemplate
             debugger
             pieChartOptionTemplate.color = [...this.data.reduce((prev, next) => {
                 prev.push(next.color)

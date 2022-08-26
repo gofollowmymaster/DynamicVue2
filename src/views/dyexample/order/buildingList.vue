@@ -11,9 +11,9 @@
 <script>
 import {
 
-    buildingProjectListApi,
+    buildingOrderListApi,
     orderDeleteApi,
-    transProjectSaveApi
+    transOrderSaveApi
 } from '@/api/orderManage.js'
  
 import fields from './buildingFields.js'
@@ -43,7 +43,7 @@ export default {
             // 页面配置
             apiPromises: {
                 bulkdelete: orderDeleteApi,
-                list: buildingProjectListApi
+                list: buildingOrderListApi
             },
             pageOptions: {
                 topToolBar: {
@@ -118,7 +118,7 @@ export default {
                             formItemList: this.$buildFormFields(transFields),
           
                             saveAction: {
-                                apiPromise: transProjectSaveApi,
+                                apiPromise: transOrderSaveApi,
                                 callback: {
                   
                                 }

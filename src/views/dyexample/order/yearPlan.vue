@@ -20,7 +20,7 @@ import {
  
 import { fields, modifyFields } from './yearPlanFields.js'
 
-const entityLabel = '年度建设计划监管'
+const entityLabel = '年度计划监管'
 
 export default {
     name: 'YearPlan',
@@ -83,11 +83,11 @@ export default {
                         update: null,
                         delete: null,
                         modify: {
-                            label: '调整年度计划',
+                            label: '调整计划',
                             actionType: 'dialogFormAction',
-                            permission: '调整年度计划',
+                            permission: '调整计划',
                             containerProperties: {
-                                title: '调整年度计划',
+                                title: '调整计划',
                                 width: '480px'
                             },
                             colNum: 1,       

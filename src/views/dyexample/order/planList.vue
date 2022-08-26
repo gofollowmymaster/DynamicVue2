@@ -10,13 +10,13 @@
 </template>
 <script>
 import {
-    planProjectUpdateApi,
-    planProjectSaveApi,
-    planProjectListApi,
+    planOrderUpdateApi,
+    planOrderSaveApi,
+    planOrderListApi,
     orderDeleteApi,
-    planProjectEditDetailApi,
+    planOrderEditDetailApi,
     exportassetsApi,
-    buildingProjectSaveApi
+    buildingOrderSaveApi
 } from '@/api/orderManage.js'
  
 import fields from './planFields.js'
@@ -44,11 +44,11 @@ export default {
             fields,
             // 页面配置
             apiPromises: {
-                create: planProjectSaveApi,
+                create: planOrderSaveApi,
                 bulkdelete: orderDeleteApi,
-                list: planProjectListApi,
-                detail: planProjectEditDetailApi,
-                update: planProjectUpdateApi
+                list: planOrderListApi,
+                detail: planOrderEditDetailApi,
+                update: planOrderUpdateApi
             },
             pageOptions: {
                 topToolBar: {
@@ -96,7 +96,7 @@ export default {
                             },
                             formItemList: this.$buildFormFields(buildingFields, formSections),
                             saveAction: this.$appendToPreset('submitActionOption', {
-                                apiPromise: buildingProjectSaveApi
+                                apiPromise: buildingOrderSaveApi
                             })
                         },
                         modify: {

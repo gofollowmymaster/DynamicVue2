@@ -98,7 +98,7 @@ export function  apiDeleteMock(fields, data) {
 export function  apiSaveMock(fields, data) {
 
     let {list = []} = mockDb.get(fields) 
-    data.id = Math.Random() * 100000
+    data.id = Math.random() * 100000
     if (list && list.length) {
         
     } 

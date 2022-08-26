@@ -10,8 +10,8 @@
 </template>
 <script>
 import {
-    completeProjectSaveApi,
-    transProjectListApi,
+    completeOrderSaveApi,
+    transOrderListApi,
     orderDeleteApi
 } from '@/api/orderManage.js'
  
@@ -42,7 +42,7 @@ export default {
             // 页面配置
             apiPromises: {
                 bulkdelete: orderDeleteApi,
-                list: transProjectListApi
+                list: transOrderListApi
             },
             pageOptions: {
                 topToolBar: {
@@ -97,7 +97,7 @@ export default {
          
                             formItemList: this.$buildFormFields(completeFields),
                             saveAction: {
-                                apiPromise: completeProjectSaveApi,
+                                apiPromise: completeOrderSaveApi,
                                 actionType: 'submitAction'
                             }
 

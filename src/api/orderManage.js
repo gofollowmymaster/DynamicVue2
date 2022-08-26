@@ -6,7 +6,7 @@ import { isEmpty } from '@/util/index'
 import orderFields  from '@/views/dyexample/order/orderFields'
 import planFields  from '@/views/dyexample/order/planFields'
 
-import buildingProjectFields from '@/views/dyexample/order/buildingFields'
+import buildingOrderFields from '@/views/dyexample/order/buildingFields'
 import buildingProgressFields from '@/views/dyexample/order/progressFields'
 import transFields from '@/views/dyexample/order/transFields'
 import completeFields from '@/views/dyexample/order/progressFields'
@@ -21,7 +21,7 @@ const defaultConfig = {
 
 export function orderListApi(params) {
     apiListMock(planFields, params)
-    apiListMock(buildingProjectFields, params)
+    apiListMock(buildingOrderFields, params)
     apiListMock(transFields, params)
     apiListMock(completeFields, params)
 
@@ -31,16 +31,16 @@ export function orderListApi(params) {
    
 }
 
-export function planProjectListApi(params) {
+export function planOrderListApi(params) {
     
 }
 
-export function planProjectUpdateApi(params) {
+export function planOrderUpdateApi(params) {
     return apiUpdateMock(planFields, params)
     
 }
 
-export function planProjectSaveApi(params) {
+export function planOrderSaveApi(params) {
     return apiSaveMock(planFields, params)
    
 }
@@ -51,30 +51,30 @@ export function orderDeleteApi(list) {
     
 }
 
-export function planProjectDetailApi(id) {
-    console.log('----planProjectDetailApi----', id)
+export function planOrderDetailApi(id) {
+    console.log('----planOrderDetailApi----', id)
     return apiDetailMock(planFields, {id})
     
 }
 
-export function buildingProjectListApi(params) {
+export function buildingOrderListApi(params) {
    
 }
 
-export function buildingProjectSaveApi(params) {
-    return apiSaveMock(buildingProjectFields, params)
+export function buildingOrderSaveApi(params) {
+    return apiSaveMock(buildingOrderFields, params)
     
 }
 
-export function buildingProjectUpdateApi(params) {
-    return apiUpdateMock(buildingProjectFields, params)
+export function buildingOrderUpdateApi(params) {
+    return apiUpdateMock(buildingOrderFields, params)
    
 }
 
-export function buildingProjectDetailApi(id) {
-    console.log('----buildingProjectDetailApi----', id)
+export function buildingOrderDetailApi(id) {
+    console.log('----buildingOrderDetailApi----', id)
 
-    return apiDetailMock(buildingProjectFields, {id})
+    return apiDetailMock(buildingOrderFields, {id})
 }
 
 export function orderProgressUpdateApi(params) {
@@ -87,33 +87,33 @@ export function orderProgressListApi(params) {
     
 }
 
-export function transProjectListApi(params) {
+export function transOrderListApi(params) {
      
 }
 
-export function transProjectSaveApi(params) {
+export function transOrderSaveApi(params) {
      
 }
 
-export function transProjectUpdateApi(params) {
+export function transOrderUpdateApi(params) {
     
 }
 
-export function transProjectDetailApi(id) {
-    console.log('----transProjectDetailApi----', id)
+export function transOrderDetailApi(id) {
+    console.log('----transOrderDetailApi----', id)
 
     return apiDetailMock(transFields, {id})
 }
 
-export function completeProjectDetailApi(id) {
+export function completeOrderDetailApi(id) {
     return apiDetailMock(completeFields, {id})
 }
 
-export function completeProjectUpdateApi(params) {
+export function completeOrderUpdateApi(params) {
     
 }
 
-export function completeProjectSaveApi(params) {
+export function completeOrderSaveApi(params) {
    
 }
 

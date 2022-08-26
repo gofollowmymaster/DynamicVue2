@@ -1,4 +1,5 @@
 <template>
+    <!-- slot -->
     <component
         :is="formItem.wrapertype||'div'"
         v-if="!formItem.hidden && formItem.type === 'slot'"
@@ -9,11 +10,13 @@
     >
         <slot :name="formItem.key" />
     </component>
+    <!-- hide -->
     <FormHide
         v-else-if="!formItem.hidden && formItem.type === 'FormHide'"
         :key="formItem.key"
         v-model="label"
     />
+    <!-- common -->
     <el-form-item
         v-else-if="!formItem.hidden"
         v-bind="formItem.wraperProperties"

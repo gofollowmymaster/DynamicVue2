@@ -55,15 +55,15 @@
 </template>
 <script>
 import {
-    planProjectUpdateApi,
-    planProjectSaveApi,
-    planProjectDetailApi,
-    buildingProjectSaveApi,
-    buildingProjectDetailApi,
-    buildingProjectUpdateApi,
-    transProjectSaveApi,
-    transProjectDetailApi,
-    transProjectUpdateApi
+    planOrderUpdateApi,
+    planOrderSaveApi,
+    planOrderDetailApi,
+    buildingOrderSaveApi,
+    buildingOrderDetailApi,
+    buildingOrderUpdateApi,
+    transOrderSaveApi,
+    transOrderDetailApi,
+    transOrderUpdateApi
 } from '@/api/orderManage.js'
 import planFields from './planFields.js'
 import buildingFields from './buildingFields.js'
@@ -93,7 +93,7 @@ export default {
             planActions: {
                 save: {
                     actionType: 'submitActionOption',
-                    apiPromise: planProjectSaveApi,
+                    apiPromise: planOrderSaveApi,
                     label: '下一步',
                     componentProperties: {
                         size: 'medium'
@@ -141,7 +141,7 @@ export default {
                             return 
                         }
                         data.orderLibraryId = this.orderLibraryId   
-                        return buildingProjectSaveApi(data)
+                        return buildingOrderSaveApi(data)
                     },
                     callback: {
                         closeModal: false,
@@ -154,36 +154,7 @@ export default {
                         }
                     }
                 },
-                update: {
-                    actionType: 'submitActionOption',
-                    label: '下一步',
-                    componentProperties: {
-                        size: 'medium'
-                    },
-                    isShow(data) {
-                       
-                        return !!data.id
-                    },
-                    apiPromise: data => {
-                       
-                        if (!this.orderLibraryId) {
-                            console.error('没有orderLibraryId ')
-                            return 
-                        }
-                        // data.id=this.orderLibraryId
-                        return buildingProjectUpdateApi(data)
-                    },
-                    callback: {
-                        closeModal: false,
-                        refresh: false,
-                        showTip: false,
-                        reset: false,
-                        next: (vm, res) => {
-              
-                            this.active = 2
-                        }
-                    }
-                },
+                 
                 prev: {
                     actionType: 'prev',
                     label: '上一步',
@@ -196,7 +167,7 @@ export default {
                         this.active = 0
                         this.planActions.save.apiPromise = data => {
 
-                            return planProjectUpdateApi(data)
+                            return planOrderUpdateApi(data)
                         }
                     }
                 }
@@ -208,7 +179,7 @@ export default {
         
                 save: {
                     actionType: 'submitActionOption',
-                    apiPromise: transProjectSaveApi,
+                    apiPromise: transOrderSaveApi,
                     label: '保存',
                     componentProperties: {
                         size: 'medium'
@@ -243,7 +214,7 @@ export default {
                         this.active = 1
                         this.buildingActions.save.apiPromise = data => {
 
-                            return buildingProjectUpdateApi(data)
+                            return buildingOrderUpdateApi(data)
                         }
                     }
                 }
@@ -266,18 +237,18 @@ export default {
     methods: {
         loadDetail(data) {
             this.active = 2
-            transProjectDetailApi(data.id).then(data => {
+            transOrderDetailApi(data.id).then(data => {
                 this.transDetail = data
-                this.transActions.save.apiPromise = transProjectUpdateApi 
+                this.transActions.save.apiPromise = transOrderUpdateApi 
             }).then(() => {
                 this.orderLibraryId = this.transDetail.orderLibraryId
-                planProjectDetailApi(this.orderLibraryId).then(data => {
+                planOrderDetailApi(this.orderLibraryId).then(data => {
                     this.planDetail = data
-                    this.planActions.save.apiPromise = planProjectUpdateApi
+                    this.planActions.save.apiPromise = planOrderUpdateApi
                 })
-                buildingProjectDetailApi(this.orderLibraryId).then(data => {
+                buildingOrderDetailApi(this.orderLibraryId).then(data => {
                     this.buildingDetail = data
-                    this.buildingActions.save.apiPromise = buildingProjectUpdateApi
+                    this.buildingActions.save.apiPromise = buildingOrderUpdateApi
                 })
             })
         },

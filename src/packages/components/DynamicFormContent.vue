@@ -14,12 +14,8 @@
                         :ref="'form-section'+formSection.label"
                         :key="formSection.label"
                         :class="getBlockClass(formSection)"
-                        class="pb18 form-section  "
-                    >
-                        <header
-                            v-if="formSection.label"
-                            class="block-nav flex justify-between"
-                        >
+                        class="pb18 form-section  "  >
+                        <header v-if="formSection.label"  class="block-nav flex justify-between" >
                             <span class="block-text">{{ formSection.label }}</span>
                             <span
                                 v-if="showFoldBtn"
@@ -30,9 +26,7 @@
                                 <i :class="[ 'el-icon-arrow-' + (isBlocked(formSection) ? 'down' : 'up'), ]" />
                             </span>
                         </header>
-                        <article
-                            class="block-content relative grid-wrap"
-                        >
+                        <article  class="block-content relative grid-wrap" >
                             <template v-for="(formItem) in formSection.children">
                                 <DynamicFormItem
                                     :ref="formItem.key"
@@ -274,36 +268,36 @@ export default {
 
                 // 判断是否需要校验子表单
                 const childFormKeyList = []
-                this.formItemList.forEach(filed => {
-                    if (filed.children && filed.children.length > 0) {
-                        filed.children.forEach(formItem => {
-                            // 如果某一项是
-                            if (formItem.type === 'FormChildrenForm') {
-                                childFormKeyList.push(formItem.key)
-                            }
-                        })
+                this.formItemForEach((formItem)=>{
+                    if (formItem.type === 'FormChildrenForm') {
+                        childFormKeyList.push(formItem.key)
                     }
                 })
-
-                if (childFormKeyList.length === 0) {
-                    if (valid) {
-                        fn(true, data)
-                    } else {
-                        fn(false, data)
-                    }
+                // this.formItemList.forEach(filed => {
+                //     if (filed.children && filed.children.length > 0) {
+                //         filed.children.forEach(formItem => {
+                //             // 如果某一项是
+                //             if (formItem.type === 'FormChildrenForm') {
+                //                 childFormKeyList.push(formItem.key)
+                //             }
+                //         })
+                //     }
+                // })
+                // valid=valid?childFormKeyList.length===0:false
+                // if (childFormKeyList.length === 0) {
+                //         fn(valid?true:false, data)
+                // } else {
+                const validateList = childFormKeyList.map(key => {
+                    return this.$refs[key][0].$refs.formitem.validateForm()
+                })
+                if (valid&&(validateList.length===0||validateList.every(item => item))) {
+                    // 父表单校验也通过了，才算都通过
+                    fn(true, data)
                 } else {
-                    const validateList = childFormKeyList.map(key => {
-                        console.log('---valid----', this.$refs)
-                        return this.$refs[key][0].$refs.formitem.validateForm()
-                    })
-                    if (validateList.every(item => item) && valid) {
-                        // 父表单校验也通过了，才算都通过
-                        fn(true, data)
-                    } else {
-                        // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
-                        fn(false, data)
-                    }
+                    // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
+                    fn(false, data)
                 }
+                // }
             })
         },
         filterData(data) {
@@ -408,6 +402,10 @@ export default {
                     } else if (a) {
                         a.resetFields()
                     }
+                }else if(formItem.defaultValue){
+                    this.data[formItem.key]=formItem.defaultValue
+                }else{
+                    delete this.data[formItem.key]
                 }
             })
         },

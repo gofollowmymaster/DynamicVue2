@@ -1,7 +1,7 @@
 <template>
     <div class="full-width   bg-white ">
           <dyBrandBar>
-                <span slot="title">不动产管理</span>
+                <span slot="title">不动产统计</span>
             </dyBrandBar>
         <DynamicSection class="p24" :data="pageData" :body="body" />
     </div>

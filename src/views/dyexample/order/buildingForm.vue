@@ -49,12 +49,12 @@
 </template>
 <script>
 import {
-    planProjectUpdateApi,
-    planProjectSaveApi,
-    planProjectDetailApi,
-    buildingProjectSaveApi,
-    buildingProjectDetailApi,
-    buildingProjectUpdateApi
+    planOrderUpdateApi,
+    planOrderSaveApi,
+    planOrderDetailApi,
+    buildingOrderSaveApi,
+    buildingOrderDetailApi,
+    buildingOrderUpdateApi
 } from '@/api/orderManage.js'
 import planFields from './planFields.js'
 import buildingFields from './buildingFields.js'
@@ -83,7 +83,7 @@ export default {
             planActions: {
                 save: {
                     actionType: 'submitAction',
-                    apiPromise: planProjectSaveApi,
+                    apiPromise: planOrderSaveApi,
                     label: '下一步',
                     componentProperties: {
                         size: 'medium'
@@ -124,7 +124,7 @@ export default {
                     apiPromise: data => {
                        
                         data.orderLibraryId = this.orderLibraryId
-                        return buildingProjectSaveApi(data)
+                        return buildingOrderSaveApi(data)
                     }
                 },
                 update: {
@@ -136,7 +136,7 @@ export default {
                         size: 'medium'
                     },
                     apiPromise: data => {
-                        return buildingProjectUpdateApi(data)
+                        return buildingOrderUpdateApi(data)
                     }
                 },
                 prev: {
@@ -151,7 +151,7 @@ export default {
                         this.active = 0
                         this.planActions.save.apiPromise = data => {
 
-                            return planProjectUpdateApi(data)
+                            return planOrderUpdateApi(data)
                         }
                     }
                 }
@@ -175,15 +175,15 @@ export default {
     methods: {
         loadDetail(data) {
             this.active = 1
-            this.buildingActions.save.apiPromise = buildingProjectUpdateApi 
-            this.planActions.save.apiPromise = planProjectUpdateApi
+            this.buildingActions.save.apiPromise = buildingOrderUpdateApi 
+            this.planActions.save.apiPromise = planOrderUpdateApi
         
-            buildingProjectDetailApi(data.id).then(data => {
+            buildingOrderDetailApi(data.id).then(data => {
                 this.buildingDetail = data
                 console.log('----loadDetail-data-----', data)
 
                 this.orderLibraryId = data.orderLibraryId
-                planProjectDetailApi(this.orderLibraryId).then(data => {
+                planOrderDetailApi(this.orderLibraryId).then(data => {
                     this.planDetail = data
                 })
             })

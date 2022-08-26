@@ -12,16 +12,16 @@
 <script>
 import {
     orderListApi,
-    planProjectUpdateApi,
-    planProjectSaveApi,
+    planOrderUpdateApi,
+    planOrderSaveApi,
  
     orderDeleteApi,
-    planProjectEditDetailApi,
-    buildingProjectSaveApi,
+    planOrderEditDetailApi,
+    buildingOrderSaveApi,
  
-    transProjectSaveApi,
+    transOrderSaveApi,
  
-    completeProjectSaveApi
+    completeOrderSaveApi
 
 } from '@/api/orderManage.js'
 
@@ -204,11 +204,11 @@ export default {
             fields,
             // 页面配置
             apiPromises: {
-                create: planProjectSaveApi,
+                create: planOrderSaveApi,
                 bulkdelete: orderDeleteApi,
                 list: orderListApi,
-                detail: planProjectEditDetailApi,
-                update: planProjectUpdateApi
+                detail: planOrderEditDetailApi,
+                update: planOrderUpdateApi
             },
       
             pageOptions: {
@@ -239,6 +239,9 @@ export default {
                                     }
                                 }
                             },)
+                        },
+                        router: actionData => {
+                            return  {path: this.$route.path, query: {orderStatus: self.orderStatus, id: actionData.id} }
                         },
                         actionHook: (action, actionData) => {
                             debugger
@@ -291,7 +294,7 @@ export default {
                             formItemList: this.$buildFormFields(buildingFields, formSections),
                             saveAction: {
                                 actionType: 'submitAction',
-                                apiPromise: buildingProjectSaveApi
+                                apiPromise: buildingOrderSaveApi
                             }
                         },
                         trans: {
@@ -313,7 +316,7 @@ export default {
 
                             saveAction: {
                                 actionType: 'submitActionOption',
-                                apiPromise: transProjectSaveApi
+                                apiPromise: transOrderSaveApi
                             }
                         },
                         complete: {
@@ -336,7 +339,7 @@ export default {
                             formItemList: this.$buildFormFields(completeFields),
                             saveAction: {
                                 actionType: 'submitActionOption',
-                                apiPromise: completeProjectSaveApi
+                                apiPromise: completeOrderSaveApi
                             }
                         },
                         modify: {
