@@ -2,13 +2,13 @@ import {    elementUploadFileApi, globalDownloadFileById } from '@/api/global'
 
 export default  [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
-    { key: 'id', type: 'FormHide', label: '', formOption: {},  formSection: '立项信息'  
+    { key: 'id', type: 'FormHide', label: '', formOption: {},  formSection: '基础信息'  
     },
 
     {
         'key': 'orderCode',
         'label': '订单编号',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormInput',
         'formOption': {
             rules: ['required']
@@ -18,7 +18,7 @@ export default  [
     {
         'key': 'orderName',
         'label': '订单名称',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormInput',
         'formOption': {
             rules: ['required']
@@ -26,43 +26,11 @@ export default  [
         },
         'tableOption': {}
     },
-    {
-        'key': 'overallArea',
-        'label': '总体规划面积',
-        formSection: '立项信息',  
-        'type': 'FormNumber',
-        'formOption': {
-            rules: ['required'],
-            append: '㎡'
-        },
-        'tableOption': {}
-    },
-    {
-        'key': 'greenArea',
-        'label': '绿地规划面积',
-        formSection: '立项信息',  
-        'type': 'FormNumber',
-        'formOption': {
-            rules: ['required'],
-            append: '㎡'
-        },
-        'tableOption': {}
-    },
-    {
-        'key': 'waterArea',
-        'label': '水体规划面积',
-        formSection: '立项信息',  
-        'type': 'FormNumber',
-        'formOption': {
-            rules: ['required'],
-            append: '㎡'
-        },
-        'tableOption': {}
-    },
+    
     {
         'key': 'capitalBudgeting',
         'label': '投资预算',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormNumber',
         'formOption': {
             rules: ['required'],
@@ -73,7 +41,7 @@ export default  [
     {
         'key': 'buildType',
         'label': '建设类型',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormSelect',
         options: [{
             value: '0',
@@ -95,7 +63,7 @@ export default  [
     {
         'key': 'useLandDictId',
         'label': '用地性质',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormDynamicSelect', 
         dictType: ('order_use_land'), 
         'formOption': {},
@@ -107,7 +75,7 @@ export default  [
     {
         'key': 'orderAttributeDictId',
         'label': '订单属性',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormDynamicSelect', 
         dictType: ('order_attribute'), 
         tableOption: {
@@ -118,7 +86,7 @@ export default  [
     {
         'key': 'orderTypeDictId',
         'label': '订单类别',
-        formSection: '立项信息',  
+        formSection: '基础信息',  
         'type': 'FormDynamicSelect', 
         dictType: ('order_type'), 
         'formOption': {
@@ -126,20 +94,11 @@ export default  [
         },
         searchOption: {}
     },
-    {
-        'key': 'admId',
-        'label': '行政区划',
-        formSection: '立项信息',
-        'type': 'FormInput',
-        searchOption: {sort: 2},
-        'formOption': {
-            rules: ['required']
-        }
-    },
+ 
     {
         'key': 'orderPosition',
         'label': '订单位置',
-        formSection: '立项信息',
+        formSection: '基础信息',
         'type': 'FormSelectPoint',
         'formOption': {
             rules: ['required']
@@ -148,7 +107,7 @@ export default  [
     {
         'key': 'deptId',
         'label': '责任单位',
-        formSection: '立项信息',
+        formSection: '基础信息',
         'type': 'FormInput',
         'formOption': {},
         'tableOption': {
@@ -157,8 +116,8 @@ export default  [
     },
     {
         'key': 'geogId',
-        'label': '地理图层ID',
-        formSection: '立项信息',
+        'label': '地理区域',
+        formSection: '基础信息',
         'type': 'FormDrawElement',
         'formOption': {
             defaultValue: []
@@ -167,7 +126,7 @@ export default  [
     {
         'key': 'planStartTime',
         'label': '计划处理日期',
-        formSection: '立项信息',
+        formSection: '基础信息',
         'type': 'FormDate',
         'formOption': {
             rules: ['required']
@@ -176,8 +135,8 @@ export default  [
     },
     {
         'key': 'planEndTime',
-        'label': '计划竣工日期',
-        formSection: '立项信息',
+        'label': '计划完成日期',
+        formSection: '基础信息',
         'type': 'FormDate',
         'formOption': {
             rules: ['required']
@@ -185,19 +144,11 @@ export default  [
         'tableOption': {}
     },
    
-    {
-        'key': 'planDate',
-        'label': '计划制定日期',
-        formSection: '立项信息',
-        'type': 'FormDate',
-        'formOption': {
-            rules: ['required']
-        }
-    },
+   
     {
         'key': 'description',
         'label': '订单简介',
-        formSection: '立项信息',
+        formSection: '基础信息',
         'type': 'FormTextarea',
         'formOption': {
             col: 2,
@@ -207,7 +158,7 @@ export default  [
     {
         'key': 'planFileIds',
         'label': '附件',
-        formSection: '立项信息',
+        formSection: '基础信息',
         'type': 'FormUpload',
         'formOption': {
             col: 2,
@@ -224,8 +175,8 @@ export default  [
     },
     {
         'key': 'designUnit',
-        'label': '设计单位',
-        formSection: '设计信息',
+        'label': '客户单位',
+        formSection: '客户信息',
         'type': 'FormInput',
         'formOption': {
             rules: ['required'],
@@ -234,8 +185,8 @@ export default  [
     },
     {
         'key': 'designUser',
-        'label': '设计人',
-        formSection: '设计信息',
+        'label': '客户人',
+        formSection: '客户信息',
         'type': 'FormInput',
         'formOption': {
             maxlength: 50
@@ -243,8 +194,8 @@ export default  [
     },
     {
         'key': 'designDate',
-        'label': '设计完成时间',
-        formSection: '设计信息',
+        'label': '客户完成时间',
+        formSection: '客户信息',
         'type': 'FormDate',
         'formOption': {
 
@@ -253,13 +204,13 @@ export default  [
     {
         'key': 'designFileIds',
         'label': '附件',
-        formSection: '设计信息',
+        formSection: '客户信息',
         'type': 'FormUpload',
         'formOption': {
             col: 2,
             'list-type': 'table',
             accept: '*',
-            'auto-load': true,
+            'auto-load': false,
             extra: {
                 btn_text: '上传',
                 tip: '单个附件大小限制200Mb，最多上传20个附件',
@@ -270,13 +221,13 @@ export default  [
     },
     {
         'key': 'approveStatus',
-        'label': '报批是否已通过',
-        formSection: '报批信息',
+        'label': '申请是否已通过',
+        formSection: '申请信息',
         'type': 'FormRadio',
         options: [
             {
                 value: '0',
-                label: '无需报批'
+                label: '无需申请'
             },
             {
                 value: '1',
@@ -292,18 +243,18 @@ export default  [
             rules: ['required']
         },
         'tableOption': {
-            label: '报批信息'
+            label: '申请信息'
         },
         searchOption: {
-            label: '报批信息',
+            label: '申请信息',
             'type': 'FormSelect'
 
         }
     },
     {
         'key': 'approveOverallArea',
-        'label': '批复总体规划面积',
-        formSection: '报批信息',
+        'label': '申请总体数量',
+        formSection: '申请信息',
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
@@ -315,8 +266,8 @@ export default  [
     },
     {
         'key': 'approveGreenArea',
-        'label': '批复绿地规划面积',
-        formSection: '报批信息',
+        'label': '申请绿地数量',
+        formSection: '申请信息',
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
@@ -328,8 +279,8 @@ export default  [
     },
     {
         'key': 'approveWaterArea',
-        'label': '批复水体规划面积',
-        formSection: '报批信息',
+        'label': '申请水体数量',
+        formSection: '申请信息',
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
@@ -341,8 +292,8 @@ export default  [
     },
     {
         'key': 'approveCapitalBudgeting',
-        'label': '批复投资预算',
-        formSection: '报批信息',
+        'label': '申请投资预算',
+        formSection: '申请信息',
         'type': 'FormNumber',
         'formOption': {
             append: '㎡',
@@ -354,8 +305,8 @@ export default  [
     },
     {
         'key': 'approveDate',
-        'label': '报批通过日期',
-        formSection: '报批信息',
+        'label': '申请通过日期',
+        formSection: '申请信息',
         'type': 'FormDate',
         'formOption': {
             rules: ['required'],
@@ -367,7 +318,7 @@ export default  [
     {
         'key': 'approveFileIds',
         'label': '附件',
-        formSection: '报批信息',
+        formSection: '申请信息',
         'type': 'FormUpload',
         'formOption': {
             expressProp: {

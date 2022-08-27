@@ -80,12 +80,7 @@ export default  [
     { key: 'orderLibraryId', type: 'FormHide', label: '', formSection: '订单处理信息', formOption: {}},
     { key: 'id', type: 'FormHide', label: '', formSection: '订单处理信息', formOption: {}},
     { key: 'index', type: 'index', label: '序号', tableOption: {width: 60}},
-    {
-        'key': 'admId',
-        'label': '行政区划',
-        'type': 'FormInput',
-        searchOption: {sort: 2}
-    },
+ 
     {
         'key': 'orderCode',
         'label': '订单编号',

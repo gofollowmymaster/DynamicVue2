@@ -59,15 +59,7 @@ export const warningFields = [
         formSection: '基本信息',
         formOption: {}
     },
-    {
-        label: '行政区划',
-        formSection: '基本信息',
-        type: 'FormInput',
-        key: 'districtName',
-        tableOption: { sort: 3 },
-        formOption: {},
-        searchOption: true
-    },
+ 
     {
         label: '固定资产编号',
         key: 'treeNumber',
@@ -230,15 +222,7 @@ export const warningProcessedFields = [
             label: '设备位置'
         }
     },
-    {
-        label: '行政区划',
-        formSection: '基本信息',
-        type: 'FormInput',
-        key: 'districtName',
-        tableOption: { sort: 8 },
-        formOption: true,
-        searchOption: true
-    },
+ 
     {
         label: '固定资产编号',
         key: 'treeNumber',
@@ -449,15 +433,7 @@ export const eventFields = [
             rules: ['required']
         }
     },
-    {
-        label: '行政区划',
-        formSection: '基本信息',
-        type: 'FormInput',
-        key: 'region',
-        formOption: {
-            rules: ['required']
-        }
-    },
+ 
     {
         label: ' 事件概述',
         formSection: '基本信息',

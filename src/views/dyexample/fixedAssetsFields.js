@@ -89,13 +89,7 @@ export const mainPlaintOption = {
 
 // 没有联动
 const mainPlaintTableFields = [
-
-    {
-        type: 'FormText',
-        label: 'id',
-        key: 'id',
-        tableOption: {}
-    },
+ 
     {
         key: 'treeId',
         type: 'FormInput',
@@ -169,25 +163,7 @@ export const formSections = {
 export default [
     { key: 'keyword', type: 'FormInput', label: '关键字', searchOption: true },
     { key: 'id', type: 'FormHide', formOption: true },
-    {
-        key: 'area',
-        type: 'FormInput',
-        label: '行政区划',
-        formSection: '基本信息',
-        searchOption: true,
-
-        tableOption: {
-            width: 180,
-            sortable: true,
-            sort: 4,
-            key: 'areaName'
-        },
-        formOption: {
-            rules: ['required'],
-            isMultSelect: false,
-            dialogTitle: '选择行政区划'
-        }
-    },
+ 
 
     {
         key: 'treeName',
@@ -196,9 +172,6 @@ export default [
         searchOption: true,
         tableOption: {
             sort: 2,
-            template(rowData) {
-                return rowData.species && rowData.species.map(item => item.species).join(',')
-            }
         }
     },
     {
@@ -335,7 +308,7 @@ export default [
                     treeStreetContext: '实打实大所多撒'
                 },
                 {
-                    id: 1,
+                    id: 2,
                     treeId: 2014,
                     treeStreetQuantity: 15,
                     treeStreetType: '1',
@@ -421,7 +394,6 @@ export default [
         formSection: '管理信息',
         formOption: {
             rules: ['required', /^[\d|-]{9,12}$/],
-            disabled: true
         },
         tableOption: {
             sort: 8

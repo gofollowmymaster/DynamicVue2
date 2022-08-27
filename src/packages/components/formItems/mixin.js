@@ -103,7 +103,6 @@ export default {
         },
         // 获取输入框的 placeholder
         getPlaceholder(formItem) {
-            // todo 这里可能还要加一个全部 disable 的判断
             // 如果已禁用，那么不显示 placeholder
             if (this.isDisabled) {
                 return ''

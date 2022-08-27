@@ -39,51 +39,23 @@ export const assetsFields = [
     },
   
     {
-        key: 'latinSciName',
-        type: 'FormInput',
-        label: '拉丁学名',
-        formOption: {
-        }
-    },
-    {
-        key: 'originalTreeNumber',
-        type: 'FormInput',
-        label: '原资产编号',   
-        formOption: {
-        }
-    },
-    {
-        key: 'distribution',
-        label: '分布特点',
-        type: 'FormDynamicSelect',
-        dictType: ('tree_manage_distribution'), 
-        formOption: {
-        }
-    },
-    {
-        key: 'investNumber',
-        type: 'FormNumber',
-        label: '调查顺序号',
-        formOption: {
-            changeHandle(value, data, items, vm) {
-               
+        key: 'assetType',
+        type: 'FormSelect',
+        label: '资产类别',
+        options:[
+            {
+                value:1,
+                label:'精密设备'
+            },
+            {
+                value:2,
+                label:'高新设备'
+            },
+            {
+                value:3,
+                label:'通用设备'
             }
-        }
-    },
-    {
-        key: 'ownership',
-        type: 'FormDynamicSelect',
-        label: '权属',
- 
-        dictType: ('tree_manage_ownership'), 
-        formOption: {
-        }
-    },
-    {
-        key: 'famousWood',
-        type: 'FormDynamicSelect',
-        label: '名木',
-        dictType: ('tree_manage_famous_wood'), 
+        ],
        
         tableOption: {
             colProperties: {
@@ -98,30 +70,42 @@ export const assetsFields = [
     {
         key: 'age',
         type: 'FormNumberPlus',
-        label: '树龄（年）',
+        label: '年限',
         tableOption: {
             sort: 5
         },
         formOption: {
             // rules:['required'],
             expressProp: {
-                required: '[1,2,].includes(#{famousWood})',
-                disabled: '[1,2,].includes(#{famousWood})'
+                required: '[1,2,].includes(#{assetType})',
             }
         }
     },
     {
         key: 'protectLev',
-        type: 'FormDynamicSelect',
-        label: '保护等级',
+        type: 'FormSelect',
+        label: '资产等级',
         searchOption: true,
-        dictType: ('tree_manage_protect_lev'), 
+        options:[
+            {
+                value:1,
+                label:'一级'
+            },
+            {
+                value:2,
+                label:'二级'
+            },
+            {
+                value:3,
+                label:'三级'
+            }
+        ],
    
         formOption: {
             rules: ['required'],
             expressProp: {
-                disabled: '[1,2,3].includes(#{famousWood})',
-                value: 'if([1,2,3].includes(#{famousWood})){  if(#{age}>=300){  return 1;  }  if(#{age}>=200){    return2 ;  }   if(#{age}>=100){    return 3 ; }  }else{ return #{protectLev} ;  }'
+                disabled: '[1,2].includes(#{assetType})',
+                value: 'if([1,2].includes(#{assetType})){  if(#{age}>=300){  return 1;  }  if(#{age}>=200){    return2 ;  }   if(#{age}>=0){    return 3 ; }  }else{ return #{protectLev} ;  }'
      
             }
         },
@@ -133,43 +117,12 @@ export const assetsFields = [
     {
         key: 'treeHigh',
         type: 'FormNumberPlus',
-        label: '树高（米）',
+        label: '高（米）',
         formOption: {
             rules: ['required']
         }
     },
-    {
-        key: 'crownWidth',
-        type: 'FormNumberPlus',
-        label: '平均面积(米)',
-        formOption: {
-            rules: ['required']
-        }
-    },
-    {
-        key: 'bust',
-        type: 'FormNumberPlus',
-        label: '胸（地）围(厘米)',
-        formOption: {
-            rules: ['required']
-        }
-    },
-    {
-        key: 'crownWidthNorthSouth',
-        type: 'FormNumberPlus',
-        label: '面积-南北向(米)',
-        formOption: {
    
-        }
-    },
-    {
-        key: 'crownWidthEastWest',
-        type: 'FormNumberPlus',
-        label: '面积- 东西向(米)',
-        formOption: {
-   
-        }
-    },
     {
         key: 'treeDesc',
         type: 'FormTextarea',
@@ -193,19 +146,7 @@ export const assetsFields = [
         }
     },
 
-    {
-        key: 'district',
-        type: 'FormInput',
-        formSection: '地理位置',
-        label: '行政区划',
-        searchOption: true,
-        tableOption: {
-            sort: 8
-        },
-        formOption: {
-            rules: ['required']
-        }
-    },
+   
     
     {
         label: '详细地址',
@@ -246,22 +187,7 @@ export const assetsFields = [
  
     },
 
-    {
-        key: 'altitude',
-        type: 'FormNumberPlus',
-        formSection: '地理位置',
-        label: '海拔(米)',
-        formOption: {
-        }
-    },
-    {
-        key: 'slopePosition',
-        type: 'FormNumberPlus',
-        formSection: '地理位置',
-        label: '坡位',
-        formOption: {
-        }
-    },
+  
 
     {
         key: 'growthSituation',
@@ -326,7 +252,6 @@ export const assetsFields = [
         formSection: '管理信息',
         formOption: {
             rules: ['required', /^[\d|-]{9,12}$/],
-            disabled: true,
             span: 24
 
         }
@@ -752,13 +677,7 @@ export const transFields = [
             rules: ['required']
         }
     },
-    {
-        label: '行政区划',
-        key: 'district-old',
-        formOption: {
-            rules: ['required']
-        }
-    },
+ 
     {
         label: '详细地址',
         key: 'address-old',
@@ -793,15 +712,7 @@ export const transFields = [
         detailable: true
     },
 
-    {
-        label: '行政区划',
-        key: 'district',
-        type: 'FormInput',
-        formSection: '转移后信息',
-        formOption: {
-            key: 'district'
-        }
-    },
+ 
     {
         label: '经纬度',
         key: 'lonLat',

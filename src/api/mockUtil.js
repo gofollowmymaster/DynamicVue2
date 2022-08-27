@@ -97,7 +97,7 @@ export function  apiDeleteMock(fields, data) {
 }
 export function  apiSaveMock(fields, data) {
 
-    let {list = []} = mockDb.get(fields) 
+    let {list = []} = mockDb.get(fields) ||{}
     data.id = Math.random() * 100000
     if (list && list.length) {
         
@@ -108,7 +108,7 @@ export function  apiSaveMock(fields, data) {
 }
 export function  apiUpdateMock(fields, data) {
 
-    let {list} = mockDb.get(fields)
+    let {list} = mockDb.get(fields)||{}
     
     if (list && list.length) {
         const index = list.findIndex(item => item.id == data.id)

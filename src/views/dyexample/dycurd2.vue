@@ -168,7 +168,7 @@ export default {
         loadListApi() {
             return this.tableOption.loadListApi(this.queryParams).then(data => {
                 data = data.data || data
-                this.total = data.totalCount
+                this.total = data.total || data.totalCount
                 return data.list
             })
         }

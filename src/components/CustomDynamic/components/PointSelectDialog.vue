@@ -14,7 +14,6 @@
             ref="map"
             class="amap-box"
             vid="amap-vue"
-            :layers="layers"
             :events="events"
             v-bind="amapStyleConfig"
         >
@@ -49,9 +48,6 @@
 <script>
 
 import {gcj02ToWgs, wgs84togcj02}  from  '@/common/mapClient/amap/utils/mapUtils'
-const TK_KEY = 'af3a42f19a33f75acc37a6f5b7e81331'
-const vecLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=vec_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
-const cvaLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=cva_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
 
 export default {
     name: 'PointSelectDialog',
@@ -101,8 +97,7 @@ export default {
             amapStyleConfig: this.$dynamicConfig.amapStyleConfig,
             path: this.$dynamicConfig.regionPath || [],
             center: this.$dynamicConfig.mapCenter,
-            layers: [   { type: 'tile', url: cvaLayer },
-                        { type: 'tile', url: vecLayer }],
+       
             events: {
                 click: selectedPoint => {
                     const { lng, lat } = selectedPoint.lnglat
@@ -133,7 +128,7 @@ export default {
             handler(lnglat) {
                 if (!lnglat?.length || !this.changed) return
          
-                lnglat = wgs84togcj02(lnglat)
+                lnglat =  this.amapStyleConfig.layers?.length?wgs84togcj02(lnglat):lnglat
                 this.geocoder.getAddress(lnglat, (status, result) => {
                     if (status === 'complete' && result.regeocode) {
                         debugger

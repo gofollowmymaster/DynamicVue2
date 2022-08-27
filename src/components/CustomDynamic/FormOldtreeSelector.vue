@@ -78,27 +78,6 @@ const fields = [
     },
 
     {
-        key: 'districtName',
-        label: '行政区划',
-        searchOption: {
-            wraperProperties: {
-                class: ['grid-col-8'],
-                'label-width': '90px'
-            },
-            key: 'district'
-
-        },
-        tableOption: {
-            width: 140,
-            sort: 9,
-            sortable: false,
-            template(row) {
-                return row.admName
-            }
-        }
-    },
-
-    {
         label: '详细地址',
         key: 'address',
         tableOption: {}

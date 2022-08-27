@@ -25,16 +25,17 @@
 import { deepMerge, isObjEmpty } from '../../utils/tool'
 import presetConfig from '../../presetConfig'
 
-const defaultTableOptions = {
+const defaultTableOptions = deepMerge(presetConfig,{
     hasCheckbox: false,
     properties: {
+
         'header-cell-style': {
             'background-color': '#F5F5F5'
         }
     },
 
     lineActions: {}
-}
+},true)
 export default {
     name: 'TableEditable',
     props: {
@@ -79,13 +80,15 @@ export default {
     },
     computed: {
         tableOption() {
-            const defaultOptions = defaultTableOptions
+            let defaultOptions = defaultTableOptions
 
             if (this.isTextMode) {
                 defaultOptions.lineActions = {}
 
                 return deepMerge(defaultOptions, this.table || {})
             }
+            defaultOptions= deepMerge(defaultOptions, this.table)
+            // const 
 
             defaultOptions.lineActions = {
                 update: {
@@ -97,7 +100,10 @@ export default {
                     },
                     actionHandle: actionData => {
                         debugger
-                        this.$set(actionData, 'editable', true)
+                          const index = this.tableData.findIndex(item => {
+                            return item.dyTbid=== actionData.dyTbid
+                        })
+                        this.$set(this.tableData[index], 'editable', true)
                     }
 
                 },
@@ -111,7 +117,10 @@ export default {
                     },
                     actionHandle: actionData => {
                         debugger
-                        this.$set(actionData, 'editable', false)
+                        const index = this.tableData.findIndex(item => {
+                            return item.dyTbid=== actionData.dyTbid
+                        })
+                        this.$set(this.tableData[index], 'editable', false)
                     }
 
                 },
@@ -121,13 +130,15 @@ export default {
 
                     actionHandle: actionData => {
                         const index = this.tableData.findIndex(item => {
-                            return item === actionData
+                            return item.dyTbid=== actionData.dyTbid
                         })
                         const initValue = this.columns.reduce((prev, next) => {
                             prev[next.key] = next.defaultValue || null
                             return prev
                         }, {})
                         initValue.editable = true
+                        initValue.dyTbid = new Date().getTime() 
+
                         this.tableData.splice(index + 1, 0, initValue)
                         // this.$set(this.tableData,index+1,initValue)
                     }
@@ -140,7 +151,7 @@ export default {
                         debugger
                         console.log('-tableData-', this.tableData)
                         const index = this.tableData.findIndex(item => {
-                            return item === actionData
+                            return item.dyTbid === actionData.dyTbid
                         })
                         this.$delete(this.tableData, index)
                     },
@@ -153,8 +164,8 @@ export default {
                     }
                 }
             }
-            // defaultOptions.
-            return deepMerge(defaultOptions, this.table)
+
+            return defaultOptions
         },
         editableColumns() {
             return this.$buildTableFields(this.columns, true)
@@ -173,7 +184,7 @@ export default {
                     .then((data = {}) => {
                         debugger
                         data = data.data || data
-                        this.total = data.totalCount
+                        this.total = data.total || data.totalCount
                         return data.list
                     })
             }
@@ -185,7 +196,10 @@ export default {
     watch: {
         data: {
             handler(data) {
-                this.tableData = data
+                this.tableData = data.map(item=>{
+                    item.dyTbid= Math.floor(Math.random()*100000)
+                    return item
+                })
             },
             deep: true,
             immediate: true

@@ -3,12 +3,7 @@ export  default    [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
 
-    {
-        'key': 'admId',
-        'label': '行政区划',
-        'type': 'FormInput',
-        searchOption: true
-    },
+ 
     {
         'key': 'orderCode',
         'label': '订单编号',

@@ -74,7 +74,7 @@ const mainPlantFields = [
     {
         key: 'plantSpecies',
         type: 'FormInput',
-        label: '植物种类',
+        label: '商品种类',
         formOption: {
             col: 2,
             rules: [
@@ -86,7 +86,7 @@ const mainPlantFields = [
     {
         key: 'plantSpecificationDictId',
         type: 'FormDynamicSelect',
-        label: '植物规格',
+        label: '商品规格',
         dictType: ('order_plant_specification'),
         tableOption: {
             key: 'plantSpecificationDictLabel'
@@ -128,13 +128,7 @@ export default  [
     { key: 'id', type: 'FormHide', label: '', formSection: '验收信息', formOption: {}},
 
     { key: 'index', type: 'index', label: '序号', tableOption: {width: 60}},
-    {
-        'key': 'admId',
-        'label': '行政区划',
-        'type': 'FormInput',
-        searchOption: {sort: 2}
-    
-    },
+ 
 
     {
         'key': 'orderCode',
@@ -176,91 +170,18 @@ export default  [
     },
     {
         'key': 'endGreenArea',
-        'label': '竣工绿地面积',
+        'label': '完成绿地面积',
         formSection: '验收信息',
         'type': 'FormNumber',
         'tableOption': {
-            'label': '竣工绿地面积(m²)'
+            'label': '完成绿地面积(m²)'
         },
         'formOption': {
             append: 'm²',
             rules: ['required']
         }
     },
-    {
-        'key': 'designGreenCoverArea',
-        'label': '设计绿化覆盖面积',
-        formSection: '验收信息',
-        'type': 'FormNumber',
-        'tableOption': {
-            'label': '设计绿化覆盖面积(m²)'
-        },
-        'formOption': {
-            append: 'm²',
-            rules: ['required']
-        }
-    },
-    {
-        'key': 'endGreenCoverArea',
-        'label': '竣工绿化覆盖面积',
-        formSection: '验收信息',
-        'type': 'FormNumber',
-        'tableOption': {
-            'label': '竣工绿化覆盖面积(m²)'
-        },
-        'formOption': {
-            append: 'm²',
-            rules: ['required']
-        }
-    },
-     
-    {
-        key: 'designGreenRate',
-        'label': '设计绿地率',
-        formSection: '验收信息',
-        type: 'FormRateInput',
-        'tableOption': {},
-        'formOption': {
-            rules: ['required']
-        }
-    },
-         
-    {
-        'key': 'endGreenRate',
-        'label': '竣工绿地率',
-        formSection: '验收信息',
-        'type': 'FormRateInput',
-        'tableOption': {},
-        'formOption': {
-            rules: ['required']
-        }
-    },
-    {
-        'key': 'designWaterArea',
-        'label': '设计水体面积',
-        formSection: '验收信息',
-        'type': 'FormNumber',
-        'tableOption': {
-            'label': '设计水体面积(m²)'
-        },
-        'formOption': {
-            append: 'm²',
-            rules: ['required']
-        }
-    },
-    {
-        'key': 'endWaterArea',
-        'label': '竣工水体面积',
-        formSection: '验收信息',
-        'type': 'FormNumber',
-        'tableOption': {
-            'label': '竣工水体面积(m²)'
-        },
-        'formOption': {
-            append: 'm²',
-            rules: ['required']
-        }
-    },
+    
     {
         'key': 'requirementFlag',
         'label': '是否符合设计要求',
@@ -293,7 +214,7 @@ export default  [
     },
     {
         'key': 'transferEndTime',
-        'label': '实际竣工日期',
+        'label': '实际完成日期',
         formSection: '验收信息',
         'type': 'FormDate',
         'formOption': {
@@ -301,7 +222,6 @@ export default  [
         },
         searchOption: {
             wraperProperties: {
-                class: ['grid-col-6', 'grid-col-sm-8', 'grid-col-ss-10', 'grid-col-xs-16', 'grid-col-pp-24'],
                 'label-width': '120px'
             }
         }
@@ -318,7 +238,6 @@ export default  [
         },
         searchOption: {
             wraperProperties: {
-                class: ['grid-col-6', 'grid-col-sm-8', 'grid-col-ss-10', 'grid-col-xs-16', 'grid-col-pp-24'],
                 'label-width': '120px'
             }
         }
@@ -411,7 +330,7 @@ export default  [
 
     {
         'key': 'plantList',
-        'label': '主要植物',
+        'label': '主要商品',
         formSection: '运输中信息',
         'type': 'FormCurd',
         'formOption': {
@@ -419,7 +338,7 @@ export default  [
  
             extra: {
                 fields: mainPlantFields,
-                entityLabel: '主要植物'
+                entityLabel: '主要商品'
             }
         }
     },

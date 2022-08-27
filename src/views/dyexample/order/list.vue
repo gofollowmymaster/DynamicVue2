@@ -57,12 +57,7 @@ const fields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
 
-    {
-        'key': 'admId',
-        'label': '行政区划',
-        'type': 'FormInput',
-        searchOption: true
-    },
+  
     {
         'key': 'orderCode',
         'label': '订单编号',
@@ -215,7 +210,7 @@ export default {
                 tableUp: {
                     component: 'DyTmpl',
                     properties: {
-                        tmpl: '总数量:<span class="text-blue py4 px4">#{num}</span>,总数量1:<span class="text-red py4 px4">#{num1}</span>',
+                        tmpl: '总数量:<span class="text-blue py4 px4">#{num}</span>,总金额:<span class="text-red py4 px4">#{num1}</span>',
                         data: {
                             num: 123254,
                             num1: 5546

@@ -30,6 +30,7 @@
             </el-button>
         </div>
         <DrawElementGis
+            v-if="visible.value"
             v-model="val"
             :visible="visible"
             :zoom="zoom"

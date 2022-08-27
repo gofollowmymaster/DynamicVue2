@@ -1,17 +1,24 @@
 const amapWebKey = 'ffe3f53e63db6ca6bbe1d85264a8fc5b'
 const amapWebMapKey = '467fddcf60be0b46a5506d94cd2cc858'
 const tandiMapKey = 'b0c8343e73356d02148906ef935c9cf8'
+
+const TK_KEY = 'af3a42f19a33f75acc37a6f5b7e81331'
+const vecLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=vec_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
+const cvaLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=cva_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
+
+
 const amapStyleConfig = {
     zoom: 15,
     zooms: [13, 18],
-    showLabel: false,
+    showLabel: true,
     expandZoomRange: false,
     animateEnable: true,
     jogEnable: true,
     center: [106.559675, 29.559168],
     labelzIndex: 120,
     lockMapBound: 10000,
-    regionPath: []
+    regionPath: [],
+    // layers: [   { type: 'tile', url: cvaLayer },{ type: 'tile', url: vecLayer }],
 }
 const isDebug = true
 

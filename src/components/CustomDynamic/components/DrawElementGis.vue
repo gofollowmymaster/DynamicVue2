@@ -14,7 +14,6 @@
             class="amap-box"
             vid="amap-vue"
             :events="events"
-            :layers="layers"
             v-bind="amapStyleConfig"
             @created="mapCreated"
         >
@@ -29,10 +28,7 @@
 
 <script>
  
-const TK_KEY = 'af3a42f19a33f75acc37a6f5b7e81331'
-const vecLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=vec_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
-const cvaLayer = `http://t{0,1,2,3,4,5,6,7}.tianditu.gov.cn/DataServer?T=cva_w&tk=${TK_KEY}&x=[x]&y=[y]&l=[z]`
-
+ 
 export default {
     name: 'DrawElementGis',
     model: {
@@ -80,10 +76,7 @@ export default {
         return {
             amapStyleConfig: this.$dynamicConfig.amapStyleConfig,
             path: this.$dynamicConfig.regionPath,
-            center: [106.680603, 29.402348],
             events: {},
-            layers: [   { type: 'tile', url: cvaLayer },
-                        { type: 'tile', url: vecLayer }],
             drawTypeClone: ''
             // overlays:[]
         }
@@ -102,7 +95,7 @@ export default {
                 case 'polyline':
                     if (!Array.isArray(this.elementdata)) {
                         console.warn('数据格式错误：' + this.elementdata)
-                        return 
+                        return  {path:[]}
                     }
                     return {path: this.elementdata}
                 case 'circle':

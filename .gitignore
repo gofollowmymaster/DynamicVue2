@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist*
+/lib*
+
 /src/assets/sprites/*.*
 !/src/assets/sprites/_.scss
 
