@@ -1,12 +1,6 @@
 import { generatRandomNum } from '../../utils/tool'
-import dayjs from 'dayjs'
-/**
- * Created by 王冬 on 2021/9/18.
- * QQ: 20004604
- * weChat: qq20004604
- * 功能说明：
- * 测试数据生成器
- */
+import {getFormatDate} from '../../utils/date'
+ 
 const DATAENUM = {
     // 合法标准随机数据
     StandardData: 0,
@@ -16,14 +10,6 @@ const DATAENUM = {
     OutLimitData: 2
 }
 /* 测试数据生成类
- * 1. 入参是 formItem（即单个表单元素的值）
- * 2. 生成的数据分为多种：
- * 2.1 【自定义数据】，用户对某字段，传入自定义数据生成函数时，优先采用这个；
- * 2.2 【合法标准随机数据】；
- * 2.3 【合法边界数据】（比如长度最大或者最小）；
- * 2.4 【非法超限数据】（过长或者过短）（并且该 key 未被添加到 this.exceptOutLimitKeys 里）
- * 具体生成哪个，根据配置决定；
- * 3. 超限数据的话，需要当前 key 在超限范围列表里的时候，才会生成（否则生成【合法标准随机数据】
  * */
 class TestValueCreator {
     constructor(formIns) {
@@ -191,7 +177,7 @@ class TestValueCreator {
       }
   }
 
-  // 生成文本输入看的
+  // 选择类数据
   makeSelectRadioValue(formItem) {
       // 此时无需判断 type，因为 type 必然是符合的（调用时判断）
       // 需要获取的是 label，以及解析 rules 的规则
@@ -221,7 +207,7 @@ class TestValueCreator {
           return s
       }
   }
-
+  //生成动态多选数据
   makeDynamicSelectValue(formItem) {
 
       const formItemIns = this.formIns.$refs[formItem.key][0]
@@ -241,13 +227,13 @@ class TestValueCreator {
   makeDateValue(formItem) {
       switch (formItem.type) {
           case 'FormDate':
-              return dayjs().format('YYYY-MM-DD')
+              return getFormatDate(new Date(),'yyyy-MM-dd')
           case 'FormDateTime':
-              return dayjs().format('YYYY-MM-DD hh:mm:ss')
+              return getFormatDate(new Date(),'yyyy-MM-dd hh:mm:ss')
           case 'FormDateRange':
-              return dayjs().format('YYYY-MM-DD') + '-' + dayjs().endOf('month').format('YYYY-MM-DD')
+              return getFormatDate(new Date(),'yyyy-MM-dd') + '-' + getFormatDate(new Date().getTime - 2592000000,'yyyy-MM-dd')
           case 'FormDateTimeRange':
-              return dayjs().format('YYYY-MM-DD hh:mm:ss') + '-' + dayjs().endOf('month').format('YYYY-MM-DD hh:mm:ss')
+              return getFormatDate(new Date(),'yyyy-MM-dd hh:mm:ss') + '-' + getFormatDate(new Date().getTime - 2592000000,'yyyy-MM-dd hh:mm:ss')
       }
   }
 

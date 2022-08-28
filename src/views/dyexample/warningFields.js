@@ -62,7 +62,7 @@ export const warningFields = [
  
     {
         label: '固定资产编号',
-        key: 'treeNumber',
+        key: 'assetNumber',
         formSection: '基本信息',
         type: 'FormInput',
         tableOption: {
@@ -73,7 +73,7 @@ export const warningFields = [
     },
     {
         label: '资产类型名称',
-        key: 'treeName',
+        key: 'assetsName',
         type: 'FormInput',
         formSection: '基本信息',
         tableOption: {
@@ -225,7 +225,7 @@ export const warningProcessedFields = [
  
     {
         label: '固定资产编号',
-        key: 'treeNumber',
+        key: 'fixedAssetsNumber',
         formSection: '基本信息',
         type: 'FormInput',
         tableOption: {
@@ -236,7 +236,7 @@ export const warningProcessedFields = [
     },
     {
         label: '资产类型名称',
-        key: 'treeName',
+        key: 'fixedAssetsName',
         type: 'FormInput',
         formSection: '基本信息',
         tableOption: {
@@ -579,7 +579,7 @@ export const eventFields = [
 ]
 
 export const handleFields = [
-    { key: 'treeGiveAnAlarmId', type: 'FormHide', formOption: true },
+    { key: 'fixedAssetsGiveAnAlarmId', type: 'FormHide', formOption: true },
     { key: 'treatmentMethod', type: 'FormHide', formOption: true },
     {
         label: '处理结果',
@@ -660,7 +660,7 @@ export const handleFields = [
 ]
 
 export const unhandleFields = [
-    { key: 'treeGiveAnAlarmId', type: 'FormHide', formOption: true },
+    { key: 'fixedAssetsGiveAnAlarmId', type: 'FormHide', formOption: true },
     { key: 'treatmentMethod', type: 'FormHide', formOption: true },
 
     {

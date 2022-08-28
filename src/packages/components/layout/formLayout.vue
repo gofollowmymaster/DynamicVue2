@@ -1,7 +1,7 @@
 <template>
     <div class="layout-wrapper relative ">
-        <ul v-if="formItemList.length>3" class="left-section relative   flex flex-direction justify-right mr12"  >
-            <template v-for="formSection of formItemList">
+        <ul v-if="formItemListVisible.length>3" class="left-section relative   flex flex-direction justify-right mr12"  >
+            <template v-for="formSection of formItemListVisible">
                 <li v-if="!formSection.hidden" :key="formSection.label" class="py6 pr12 text-right cursor-point"
                     :class="[curSetion==formSection.label?'active':'']"
                 >
@@ -33,7 +33,11 @@ export default {
             scrollTop: 0
         }
     },
-    computed: {},
+    computed: {
+        formItemListVisible(){
+            return this.formItemList.filter((item)=>!item.hidden)
+        }
+    },
     created() {},
     mounted() {
         // window.addEventListener('scroll', this.onScroll)

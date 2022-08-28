@@ -35,7 +35,7 @@ export default {
     },
     computed: {
         formOption() {
-            return { ...presetConfig.getConfig('formOption'), formProperties: { 'label-width': '80px' }, borderForm: false, colNum: 4, ...this.item.formOption }
+            return {...presetConfig.getConfig('formOption'), formProperties: { 'label-width': '80px' ,size:'mini',  }, borderForm: false, colNum: 4, ...this.item.formOption }
         },
         formItemList() {
             debugger
@@ -101,7 +101,7 @@ export default {
   background-color: var(--main-color);
  }
 .hz-low-code .dynamic-form .form-text-mode .el-form-item__content .form-item-box.chilren-form-wrapper {
- border: solid 1px var(--main-color);
+ /* border: solid 1px var(--main-color); */
  padding: 8px;
  position: relative;
  top: 0px;

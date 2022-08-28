@@ -9,15 +9,12 @@
 <script>
 
 import {
-    maintainUpdateApi,
-    maintainSaveApi,
     maintainDetailApi,
     maintainListApi,
-    maintainDeleteApi
 } from '@/api/assetsMaintain.js'
 
 import {maintainFields}  from './assetsListField'
-const entityLabel = '养护记录'
+const entityLabel = '维护记录'
 
 export default {
     name: 'MaitainLog',
@@ -47,8 +44,7 @@ export default {
                             label: '查看',
                             actionType: 'routerAction',
                             router: data => {
-                                // return `/assets/manage/maitain/${data.id}`
-                                return `/assets/manage/maitain?id=${data.id}&action=detail`
+                                return ''
                             },
                             routerAction: 'push'
                         },

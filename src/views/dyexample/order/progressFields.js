@@ -17,62 +17,29 @@ export default  [
                 disabled: true
             },
             rules: ['required'],
-            span: 24
+            col: 2
         },
         'tableOption': {}
     },
     {
         'key': 'buildingArea',
-        'label': '建设总体面积（m²）',
+        'label': '运输总里程',
         'type': 'FormNumber',
         'formOption': {
             append: 'm²',
             rules: ['required'],
-            span: 24
+            col: 2
         },
         'tableOption': {}
     },
   
     {
         'key': 'areaProportion',
-        'label': '总体完成比例',
-        'type': 'FormInput',
+        'label': '完成比例',
+        'type': 'FormRateInput',
         'tableOption': {}
     },
-    {
-        'key': 'buildingGreenArea',
-        'label': '建设绿地面积（m²）',
-        'type': 'FormNumber',
-        'formOption': {
-            append: 'm²',
-            rules: ['required'],
-            span: 24
-        },
-        'tableOption': {}
-    },
-    {
-        'key': 'greenAreaProportion',
-        'label': '绿地完成比例',
-        'type': 'FormInput',
-        'tableOption': {}
-    },
-    {
-        'key': 'buildingWaterArea',
-        'label': '建设水体面积（m²）',
-        'type': 'FormNumber',
-        'formOption': {
-            append: 'm²',
-            rules: ['required'],
-            span: 24
-        },
-        'tableOption': {}
-    },
-    {
-        'key': 'waterAreaProportion',
-        'label': '水体完成比例',
-        'type': 'FormInput',
-        'tableOption': {}
-    },
+    
     {
         'key': 'buildingMoney',
         'label': '已用资金（元）',
@@ -80,7 +47,7 @@ export default  [
         'formOption': {
             append: '元',
             rules: ['required'],
-            span: 24
+            col : 2
         },
         'tableOption': {}
     },
@@ -89,14 +56,14 @@ export default  [
         'label': '备注',
         'type': 'FormTextarea',
         'formOption': {
-            span: 24
+            col : 2
         },
         'tableOption': {}
     },
     {
         'key': 'lastUpdateTime',
         'label': '更新时间',
-        'type': 'FormInput',
+        'type': 'FormDateTime',
         'tableOption': {}
     }
   

@@ -14,22 +14,21 @@ const equipmentFields = [
         key: 'id',
         formable: true
     },
-    {
-        key: 'typeParentDictLabel',
-        label: '设施大类',
-        tableOption: true
-    },
+ 
     {
         key: 'typeDictId',
         type: 'FormDynamicSelect',
-        label: '设施小类',
+        label: '类别',
         dictType: ('park_equipment_type'),
         tableOption: {
-            key: 'typeDictLabel'
+            key: 'typeDictId'
         },
         formOption: {
-            span: 4,
-            rules: ['required']
+            col: 2,
+            rules: ['required'],
+            changeHandle(data,vm){
+
+            }
         }
     },
     {
@@ -57,69 +56,7 @@ const equipmentFields = [
     }
   
 ]
-const mainPlantFields = [
-    // {
-    //     type: 'index',
-    //     key: 'index',
-    //     label: '序号',
-    //     tableOption: {
-    //         width: 60
-    //     }
-    // },
-    {
-        type: 'FormHide',
-        key: 'id',
-        formable: true
-    },
-    {
-        key: 'plantSpecies',
-        type: 'FormInput',
-        label: '商品种类',
-        formOption: {
-            col: 2,
-            rules: [
-                'required'
-            ]
-        },
-        tableOption: true
-    },
-    {
-        key: 'plantSpecificationDictId',
-        type: 'FormDynamicSelect',
-        label: '商品规格',
-        dictType: ('order_plant_specification'),
-        tableOption: {
-            key: 'plantSpecificationDictLabel'
-        },
-        formOption: {
-            col: 2,
-            rules: ['required']
-        }
-    },
-    {
-        key: 'amount',
-        label: '数量',
-        type: 'FormNumber',
-        formOption: {
-            col: 2,
-            rules: ['required']
-        },
-        tableOption: true
-    },
-
-    {
-        key: 'transferDate',
-        type: 'FormDate',
-        label: '运输中日期',
-        tableOption: {
-        },
-        formOption: {
-            col: 2,
-            rules: ['required']
-        }
-    }
-  
-]
+ 
 
 export default  [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchable: true },
@@ -145,7 +82,7 @@ export default  [
     
     {
         'key': 'orderContractorId',
-        'label': '承建商',
+        'label': '客户',
         'type': 'FormInput',
         formSection: '验收信息',
         'formOption': {
@@ -251,14 +188,7 @@ export default  [
         'formOption': {
         }
     },
-    {
-        'key': 'orderContractorEvaluate',
-        'label': '承建商评价',
-        formSection: '验收信息',
-        'type': 'FormProjectEvaluate',
-        'formOption': {
-        }
-    },
+   
     
     {
         'key': 'fileIds',
@@ -281,77 +211,52 @@ export default  [
     
     {
         'key': 'transferArea',
-        'label': '运输中总面积',
-        formSection: '运输中信息',
+        'label': '运输总里程',
+        formSection: '运输信息',
         'type': 'FormNumber',
         'tableOption': {
-            'label': '运输中总面积(m²)'
+            'label': '运输里程(km)'
         },
         'formOption': {
-            append: 'm²',
+            append: 'km',
             rules: ['required']
         }
     },
     {
         'key': 'transferGreenArea',
-        'label': '运输中绿地面积',
-        formSection: '运输中信息',
+        'label': '已运输里程',
+        formSection: '运输信息',
         'type': 'FormNumber',
         'tableOption': {
-            'label': '运输中绿地面积(m²)'
+            'label': '已运输里程(km)'
         },
         'formOption': {
-            append: 'm²',
+            append: 'km',
             rules: ['required']
-        }
-    },
-    {
-        'key': 'transferWaterArea',
-        'label': '运输中水体面积',
-        formSection: '运输中信息',
-        'type': 'FormNumber',
-        'tableOption': {
-            'label': '运输中水体面积(m²)'
-        },
-        'formOption': {
-            append: 'm²',
-            rules: ['required']
-        }
-    },
-    {
-        key: 'remark',
-        type: 'FormTextarea',
-        label: '备注',
-        formSection: '运输中信息',
-        formOption: {
-            span: 24
         }
     },
 
     {
-        'key': 'plantList',
-        'label': '主要商品',
-        formSection: '运输中信息',
-        'type': 'FormCurd',
-        'formOption': {
-            col: 2,
- 
-            extra: {
-                fields: mainPlantFields,
-                entityLabel: '主要商品'
-            }
+        key: 'remark',
+        type: 'FormTextarea',
+        label: '备注',
+        formSection: '运输信息',
+        formOption: {
+            col: 2
         }
     },
+
+   
     {
         key: 'equipmentList',
         type: 'FormCurd',
-        label: '附属设施',
-        formSection: '运输中信息',
+        label: '子订单信息',
+        formSection: '子订单信息',
         formOption: {
             col: 2,
+            fields: equipmentFields,
             extra: {
-                fields: equipmentFields,
-                entityLabel: '附属设施'
+                entityLabel: '子订单信息'
             }
  
         }

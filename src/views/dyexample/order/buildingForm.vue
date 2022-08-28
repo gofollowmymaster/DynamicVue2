@@ -11,7 +11,7 @@
                     <span class="circle" @click="switchStep(0)">1</span>
                 </template>
                 <template slot="title">
-                    <span @click="switchStep(0)">计划</span>
+                    <span @click="switchStep(0)">下单中</span>
                 </template>
             </el-step>
             <el-step>
@@ -137,7 +137,8 @@ export default {
                     },
                     apiPromise: data => {
                         return buildingOrderUpdateApi(data)
-                    }
+                    },
+                    
                 },
                 prev: {
                     actionType: 'prev',

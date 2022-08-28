@@ -8,7 +8,7 @@
         >
             <el-step>
                 <template slot="title">
-                    <span @click="switchStep(0)">1. 计划</span>
+                    <span @click="switchStep(0)">1. 下单中</span>
                 </template>
             </el-step>
             <el-step>
@@ -186,14 +186,7 @@ export default {
                     },
                     callback: {
                         next: (vm, res) => {
-                           
-                            if (!this.orderLibraryId) {
-                                if (!res.data) {
-                                    console.error('接口没有返回orderLibraryId?查看network验证')
-                                    return 
-                                }
-                                this.orderLibraryId = res.data
-                            }
+                          
               
                         },
                         closeModal: false,

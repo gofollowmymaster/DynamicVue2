@@ -52,7 +52,7 @@ export default  [
         label: '备注',
         formSection: '订单处理信息',
         formOption: {
-            span: 24
+            col: 2
         }
     }
   

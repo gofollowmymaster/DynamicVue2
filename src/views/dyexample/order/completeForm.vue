@@ -11,7 +11,7 @@
                     <span class="circle" @click="switchStep(0)">1</span>
                 </template>
                 <template slot="title">
-                    <span @click="switchStep(0)">计划</span>
+                    <span @click="switchStep(0)">下单中</span>
                 </template>
             </el-step>
             <el-step>
@@ -67,7 +67,7 @@
             :actions="transActions"
             :data="transDetail"
         />
-        </DynamicForm>
+   
         <DynamicForm
             v-show="active===3"
             class="relative"
@@ -199,11 +199,7 @@ export default {
                 save: {
                     actionType: 'submitActionOption',
                     apiPromise: data => {
-                        console.log('----this.orderLibraryId---', this.orderLibraryId)
-                        if (!this.orderLibraryId) {
-                            console.error('没有orderLibraryId ')
-                            return 
-                        }
+                    
                         return transOrderSaveApi(data)
                     },
                     label: '下一步',
@@ -266,19 +262,13 @@ export default {
                     },
                     callback: {
                         next: (vm, res) => {
-                           
-                            if (!this.orderLibraryId) {
-                                if (!res.data) {
-                                    console.error('接口没有返回orderLibraryId?查看network验证')
-                                    return 
-                                }
-                                this.orderLibraryId = res.data
-                            }
+                            
                         },
                         closeModal: false,
-                        refresh: false,
-                        showTip: false,
-                        reset: false
+                        refresh: true,
+                        showTip: true,
+                        reset: true,
+                        back:-1
                     }
                 },
                 prev: {

@@ -102,7 +102,7 @@ export default {
                             sort: 1,
                             permission: '',
                             dataAdapter: data => {
-                                return { treeGiveAnAlarmId: data.id, treatmentMethod: 2 }
+                                return { assetsAlarmId: data.id, treatmentMethod: 2 }
                             },
                             title: '现场处理',
                             containerProperties: {
@@ -125,7 +125,7 @@ export default {
                             permission: '',
                             dataAdapter: data => {
                                
-                                return { treeGiveAnAlarmId: data.id, treatmentMethod: 3 }
+                                return { assetsAlarmId: data.id, treatmentMethod: 3 }
                             },
                             container: 'el-dialog',
                             containerProperties: {

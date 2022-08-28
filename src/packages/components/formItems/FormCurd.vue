@@ -1,5 +1,5 @@
 <template>
-    <section class="form-curd-wraper pl0">
+    <section class="form-curd-wraper">
         <DynamicCurd
             ref="dynamicCurd"
             :options-props="curdOptions"
@@ -222,6 +222,7 @@ export default {
  position: relative;
  top: 0px;
  transform: rotateY(0);
+ padding-left: 0px;
 }
 
   .hz-low-code .dynamic-form > .form-text-mode .el-form-item__content .hz-text-box {

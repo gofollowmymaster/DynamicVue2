@@ -1,5 +1,4 @@
 
-import request from './request'
 import { assetsFields, transFields, maintainFields, protectFields} from '@/views/dyexample/dycurd1/assetsListField'
 import {apiListMock, apiDetailMock } from './mockUtil'
 // import qs from 'qs'
@@ -8,32 +7,9 @@ const defaultConfig = {
     refuseToken: false,
     json: true
 }
+ 
 
-// export function assetsUpdateApi(params) {
-
-//     return apiUpdateMock(assetsFields,params)
-   
-// }
-
-// export function assetsSaveApi(params) {
-//     return apiSaveMock(assetsFields,params)
-
-// }
-
-// export function assetsDeleteApi(list) {
-
-//     return apiDeleteMock(assetsFields,list)
-// }
-
-// export function assetsDetailApi(data) {
-//     return apiDetailMock(assetsFields, data)
-// }
-
-// export function assetsEditDetailApi(data) {
-//     return apiDetailMock(assetsFields, data)
-// }
-
-// -------养护记录--------------------
+// -------维护记录--------------------
 export function maintainListApi(params = {}) {
     // const handleTime= JSON.parse(params.handleTime)
     return apiListMock(maintainFields, params)

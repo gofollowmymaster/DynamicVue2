@@ -72,31 +72,26 @@ const fields = [
     },
     {
         'key': 'overallArea',
-        'label': '总体规划面积',
+        'label': '订单金额',
         'type': 'FormNumber',
         'tableOption': {}
     },
-    {
-        'key': 'greenArea',
-        'label': '绿地规划面积',
-        'type': 'FormNumber',
-        'tableOption': {}
-    },
+ 
     {
         'key': 'waterArea',
-        'label': '水体规划面积',
+        'label': '订单折扣',
         'type': 'FormNumber',
         'tableOption': {}
     },
     {
         'key': 'capitalBudgeting',
-        'label': '投资预算',
+        'label': '订单毛利润',
         'type': 'FormNumber',
         'tableOption': {}
     },
     {
         'key': 'buildType',
-        'label': '建设类型',
+        'label': '客户来源',
         'type': 'FormSelect',
         options: [{
                       value: 0,
@@ -115,7 +110,7 @@ const fields = [
     },
     {
         'key': 'useLandDictId',
-        'label': '用地性质',
+        'label': '支付方式',
         'type': 'FormDynamicSelect',
         dictType: ('order_use_land'),
         searchOption: {},
@@ -123,16 +118,7 @@ const fields = [
             key: 'useLandDictLabel'
         }
     },
-    {
-        'key': 'orderAttributeDictId',
-        'label': '订单属性',
-        'type': 'FormDynamicSelect',
-        dictType: ('order_attribute'),
-        tableOption: {
-            key: 'orderAttributeDictLabel'
-        },
-        searchOption: {}
-    },
+ 
     {
         'key': 'orderTypeDictId',
         'label': '订单类别',
@@ -166,15 +152,7 @@ const fields = [
             }
         ],
         tableOption: {
-            //  'type': 'FormSelect',
-            // key: 'orderStatusDesc',
-            // template(row) {
-            //     if (row.orderStatusDesc === '完成') {
-            //         return '已完成'
-            //     } else {
-            //         return row.orderStatusDesc 
-            //     }
-            // }
+      
         },
         searchOption: {}
     }

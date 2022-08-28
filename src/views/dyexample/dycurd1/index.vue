@@ -23,12 +23,10 @@ import {
  
 import { assetsFields as fields} from './assetsListField.js'
 import maitainLog  from './maitainLog.vue'
-import protectLog  from './protectLog.vue'
 import transLog  from './transLog.vue'
 
 import Vue  from  'vue'
 Vue.component('MaitainLog', maitainLog)
-Vue.component('ProtectLog', protectLog)
 Vue.component('TransLog', transLog)
 
 const entityLabel = '资产'
@@ -36,7 +34,6 @@ const entityLabel = '资产'
 export default {
     name: 'AssetsManage',
     data() {
-       
         return {
             entityLabel,
             // form字段
@@ -81,29 +78,25 @@ export default {
                                     name: '@object@',
                                     label: '基本信息',
                                     props: this.$appendToPreset('dynamicFormOption',
-                                                                {
-                                                                    apiPromise: assetsDetailApi,
-                                                                    formItemList: this.$buildDetailFields(fields),
-                                                                    formOption: {
-                                                                        borderForm: false,
-                                                                        textMode: true,
-                                                                        formProperties: {
-                                                                            'label-position': 'right'
-                                                                        }
-                                                                    },
-                                                                    actions: null
-                                                                }, true)
+                                        {
+                                            apiPromise: assetsDetailApi,
+                                            formItemList: this.$buildDetailFields(fields),
+                                            formOption: {
+                                                borderForm: false,
+                                                textMode: true,
+                                                formProperties: {
+                                                    'label-position': 'right'
+                                                }
+                                            },
+                                            actions: null
+                                        }, true)
                                 },
                                 {
                                     component: 'maitainLog',
-                                    label: '养护记录',
+                                    label: '维护记录',
                                     name: '@object@'
                                 },
-                                {
-                                    component: 'protectLog',
-                                    label: '保护记录',
-                                    name: '@object@'
-                                },
+                             
                                 {
                                     component: 'transLog',
                                     label: '转移记录',

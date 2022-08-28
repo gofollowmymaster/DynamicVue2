@@ -42,7 +42,7 @@ export  default    [
     },
     {
         'key': 'buildType',
-        'label': '建设类型',
+        'label': '客户来源',
         'type': 'FormSelect',
         options: [{
             value: 0,
@@ -61,7 +61,7 @@ export  default    [
     },
     {
         'key': 'useLandDictId',
-        'label': '用地性质',
+        'label': '支付方式',
         'type': 'FormDynamicSelect',
         dictType: ('order_use_land'),
         searchOption: {},
@@ -96,7 +96,7 @@ export  default    [
         options: [
             {
                 value: 0,
-                label: '计划'
+                label: '下单中'
             },
             {
                 value: 1,
@@ -108,14 +108,14 @@ export  default    [
             },
             {
                 value: 3,
-                label: '已竣工'
+                label: '已完成'
             }
         ],
         tableOption: {
             key: 'orderStatusDesc',
             template(row) {
                 if (row.orderStatusDesc === '完成') {
-                    return '已竣工'
+                    return '已完成'
                 } else {
                     return row.orderStatusDesc 
                 }

@@ -22,7 +22,7 @@ export default {
     computed: {
         formItem() {
             return {
-                ...this.colOptions, ...this.colOptions.formOption
+                size:'mini',...this.colOptions, ...this.colOptions.formOption
             }
         }
     },

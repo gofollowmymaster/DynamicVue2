@@ -98,14 +98,21 @@ export const treeOption = {
 }
 
 export const formOption = {
+    
     formProperties: {
-      'hide-required-asterisk': false,
-      'label-width': '160px',
-      'label-position': 'right',
-      // size:'medium'
+        'hide-required-asterisk': false,
+        'label-position': 'right',
+        'label-width': '130px'
+
+        // "inline-message":true,
+        // size:'medium'
     },
     borderForm: false,
     showFoldBtn: true,
+    'label-width': '130px',
+    'label-position': 'right',
+    pageLabelWidth: '160px',
+    colNum: 2,
     testTool: true
 
 }

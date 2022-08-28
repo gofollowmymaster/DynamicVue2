@@ -1,13 +1,17 @@
 <template>
     <div>
-        <DynamicTable
-            class="table-wraper "
-            :data="tableData"
-            :table="tableOption"
-            :columns="editableColumns"
-            :api-promise="loadListApiPromise"
-            @selection-change="selectChange"
-        />
+        <section class="relative">
+            <DynamicTable
+                class="table-wraper "
+                :data="tableData"
+                :table="tableOption"
+                :columns="editableColumns"
+                :api-promise="loadListApiPromise"
+                @selection-change="selectChange"
+            />
+            <el-button v-if="tableData.length<1&&!isTextMode" class="center-btn" type="text" size="medium" icon="el-icon-plus" @click="addfirstData"></el-button>
+        </section>
+
         <el-pagination
             v-if="!isObjEmpty(pagination)"
             class="mt16  text-right"
@@ -132,12 +136,8 @@ export default {
                         const index = this.tableData.findIndex(item => {
                             return item.dyTbid=== actionData.dyTbid
                         })
-                        const initValue = this.columns.reduce((prev, next) => {
-                            prev[next.key] = next.defaultValue || null
-                            return prev
-                        }, {})
-                        initValue.editable = true
-                        initValue.dyTbid = new Date().getTime() 
+
+                        const initValue=this.generateData()
 
                         this.tableData.splice(index + 1, 0, initValue)
                         // this.$set(this.tableData,index+1,initValue)
@@ -201,13 +201,25 @@ export default {
                     return item
                 })
             },
-            deep: true,
+            deep: false,
             immediate: true
         }
     },
     mounted() {},
     methods: {
-
+        addfirstData(){
+            const initValue = this.generateData()
+            this.tableData.splice(1, 0, initValue)
+        },
+        generateData(){
+            const initValue = this.columns.reduce((prev, next) => {
+                prev[next.key] = next.defaultValue || null
+                return prev
+            }, {})
+            initValue.editable = true
+            initValue.dyTbid = new Date().getTime() 
+            return initValue
+        },
         selectChange(selected) {
             this.selected = selected
         },
@@ -229,4 +241,14 @@ export default {
     }
 }
 </script>
+<style lang="css" scoped>
+.center-btn{
+    position: absolute;
+    top: calc(50% + 20px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: #fff;
+    width: 200px;
+}
+</style>
  

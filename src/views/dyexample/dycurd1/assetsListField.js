@@ -4,16 +4,16 @@ export const assetsFields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
 
-    {key: 'treeNumber', label: '资产编号', tableOption: {
+    {key: 'assetsNumber', label: '资产编号', tableOption: {
         width: 120, sort: 1
     }},
     {
-        key: 'treeNameId',
+        key: 'assetsNameId',
         type: 'FormInput',
         label: '类别名称',
         tableOption: {
             sort: 2,
-            key: 'treeName'
+            key: 'assetsName'
         },
         formOption: {
             rules: [
@@ -115,7 +115,7 @@ export const assetsFields = [
         }
     },
     {
-        key: 'treeHigh',
+        key: 'assetsHigh',
         type: 'FormNumberPlus',
         label: '高（米）',
         formOption: {
@@ -124,7 +124,7 @@ export const assetsFields = [
     },
    
     {
-        key: 'treeDesc',
+        key: 'assetsDesc',
         type: 'FormTextarea',
         label: '设备性状描述',
         formOption: {
@@ -163,7 +163,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '地理位置',
         label: '使用场所',
-        dictType: ('tree_manage_growing_place'),
+        dictType: ('assets_manage_growing_place'),
         formOption: {
         }
  
@@ -195,7 +195,7 @@ export const assetsFields = [
         formSection: '使用信息',
         label: '使用态势',
         searchOption: true,
-        dictType: ('tree_manage_growth_situation'), 
+        dictType: ('assets_manage_growth_situation'), 
         formOption: {
             rules: ['required']
         },
@@ -210,7 +210,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用现状',
-        dictType: ('tree_manage_growth_status'), 
+        dictType: ('assets_manage_growth_status'), 
         formOption: {
         }
  
@@ -221,7 +221,7 @@ export const assetsFields = [
         type: 'FormDynamicSelect',
         formSection: '使用信息',
         label: '使用环境',
-        dictType: ('tree_manage_growth_environment'),
+        dictType: ('assets_manage_growth_environment'),
         formOption: {
             rules: ['required']
         }
@@ -287,7 +287,7 @@ export const assetsFields = [
 
 export const manageLogFields = [
     { key: 'keyWord', type: 'FormInput', label: '关键字', searchOption: true },   
-    { key: 'treeNumber', type: 'FormInput', label: '资产', searchOption: false, tableOption: {} },   
+    { key: 'assetsNumber', type: 'FormInput', label: '资产', searchOption: false, tableOption: {} },   
 
     { key: 'type', type: 'FormSelect', label: '类型', searchOption: false, tableOption: {} }   
 
@@ -297,7 +297,7 @@ export const maintainFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
         label: '资产名称',
-        key: 'treeManageId',
+        key: 'assetsManageId',
         type: 'FormassetsSelector',
         formOption: {
         }
@@ -305,7 +305,7 @@ export const maintainFields = [
  
     {
         label: '资产编号',
-        key: 'treeNumber',
+        key: 'assetsNumber',
         type: 'FormInput',
         formOption: {
         }
@@ -336,7 +336,7 @@ export const maintainFields = [
         }
     },
     {
-        label: '养护人员',
+        label: '维护人员',
         key: 'userId',
         type: 'FormInput',
         formOption: {
@@ -348,10 +348,10 @@ export const maintainFields = [
     },
    
     {
-        label: '养护类型',
+        label: '维护类型',
         key: 'cureType',
         type: 'FormDynamicSelect',
-        dictType: ('tree_cure_type'), 
+        dictType: ('assets_cure_type'), 
         searchOption: true,
         tableOption: {
             sort: 3
@@ -360,7 +360,7 @@ export const maintainFields = [
         }
     },
     {
-        label: '养护时间',
+        label: '维护时间',
         key: 'cureTime',
         type: 'FormDateTime',
         tableOption: {
@@ -371,7 +371,7 @@ export const maintainFields = [
         }
     },
     {
-        label: '养护时间',
+        label: '维护时间',
         key: 'handleTime',
         type: 'FormDateTimeRange',
         searchOption: {
@@ -398,7 +398,7 @@ export const maintainFields = [
         detailable: true
     },
     {
-        label: ' 养护内容',
+        label: ' 维护内容',
         key: 'context',
         type: 'FormTextarea',
         tableOption: {
@@ -413,7 +413,7 @@ export const maintainFields = [
     },
     {
         key: 'filesBefore',
-        label: '养护前照片',
+        label: '维护前照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {
@@ -434,7 +434,7 @@ export const maintainFields = [
  
     {
         key: 'filesAfter',
-        label: '养护后照片',
+        label: '维护后照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {
@@ -464,7 +464,7 @@ export const   protectFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
         label: '资产名称',
-        key: 'treeManageId',
+        key: 'assetsManageId',
         type: 'FormassetsSelector',
         formOption: {
       
@@ -473,7 +473,7 @@ export const   protectFields = [
  
     {
         label: '资产编号',
-        key: 'treeNumber',
+        key: 'assetsNumber',
         type: 'FormInput',
  
         formOption: {
@@ -530,7 +530,7 @@ export const   protectFields = [
         label: '保护类型',
         key: 'protectType',
         type: 'FormDynamicSelect',
-        dictType: ('tree_protect_type'), 
+        dictType: ('assets_protect_type'), 
         searchOption: {
             key: 'cureType'
         },
@@ -593,7 +593,7 @@ export const   protectFields = [
     },
     {
         key: 'filesBefore',
-        label: '养护前照片',
+        label: '维护前照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {
@@ -615,7 +615,7 @@ export const   protectFields = [
  
     {
         key: 'filesAfter',
-        label: '养护后照片',
+        label: '维护后照片',
         type: 'FormUpload',
         formSection: '附件信息',
         formOption: {
@@ -645,14 +645,14 @@ export const transFields = [
     { key: 'id', type: 'FormHide', label: '', formOption: {}},
     {
         label: '资产名称',
-        key: 'treeManageId',
+        key: 'assetsManageId',
         type: 'FormassetsSelector',
         formOption: {}
     },
 
     {
         label: '资产编号',
-        key: 'treeNumber',
+        key: 'assetsNumber',
         type: 'FormInput',
 
         formOption: {}

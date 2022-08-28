@@ -92,10 +92,11 @@ export function transOrderListApi(params) {
 }
 
 export function transOrderSaveApi(params) {
-     
+    return apiDetailMock(transFields, params)
 }
 
 export function transOrderUpdateApi(params) {
+    return apiDetailMock(transFields, params)
     
 }
 
@@ -110,11 +111,11 @@ export function completeOrderDetailApi(id) {
 }
 
 export function completeOrderUpdateApi(params) {
-    
+    return apiDetailMock(completeFields, params)
 }
 
 export function completeOrderSaveApi(params) {
-   
+    return apiDetailMock(completeFields, params)
 }
 
 export function yearPlanListApi(params) {
@@ -136,43 +137,7 @@ export function buildDynamicYearSelectOption(dictType) {
 export function yearPlanUpdateApi(params) {
     
 }
-
-// ----------------------社会订单-------------------
-export function socialProjectListApi(params) {
-    
-}
-
-export function socialProjectUpdateApi(params) {
-    
-}
-
-export function socialProjectSaveApi(params) {
-    
-}
-
-export function socialProjectDeleteApi(list) {
-    
-}
-
-export function socialProjectDetailApi(data) {
-    
-}
-
-export function getSocialProjectAirInfoApi(id) {
- 
-}
-
-export function socialProjecValidSavetApi(params) {
-   
-    params.files = Array.isArray(params.files) ? params.files.map(item => item.fileId) : []
-    
-}
-
-export function socialProjecValidUpdatetApi(params) {
-   
-    params.files = Array.isArray(params.files) ? params.files.map(item => item.fileId) : []
- 
-}
+  
 
 export function mounthProgressYearListApi(id) {
    

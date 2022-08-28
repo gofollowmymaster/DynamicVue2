@@ -1,8 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 import { Loading, Message } from 'element-ui'
-// import store from '@/store'
-// import router from '@/router'
+ 
 let isLoading
 function loading(boolean) {
     if (boolean) {
@@ -25,8 +24,8 @@ const message = config => {
     Message(config)
 }
 
-const NODE_ENV = '//23.13.5.135:8090' // dev
-const FILE_UP = NODE_ENV + '/file/uploadFile' // 附件上传
+const NODE_ENV = ' ' // dev
+const FILE_UP = NODE_ENV + '/file/upload' // 附件上传
 const STATICENV = NODE_ENV + '/file/static' //
 
 const request = function(config) {
@@ -90,21 +89,14 @@ const request = function(config) {
                     return response.data
                 }
             }
-            if (response.config.origin === 'amap') {
-                if (response.config.responseOrigin) {
-                    return response
-                } else {
-                    return response.data
-                }
-            }
+ 
             if (
-                response.data.code !== '200' &&
-        !response.config.baseURL.startsWith('https://restapi.amap.com')
+                response.data.code !== '200' 
             ) {
                 message({
                     type: 'error',
                     message:
-            response.data.msg || response.data.message || '后台状态码code错误！'
+                     response.data.msg || response.data.message || '后台状态码code错误！'
                 })
                 throw new Error(
                     response.data.msg || response.data.message || '后台状态码code错误！'

@@ -52,11 +52,11 @@ import {
     buildSearchFields
 } from '@/packages/utils/fieldsConfigUtil'
 import {
-    treeStreetUpdateApi,
-    treeStreetSaveApi,
-    treeStreetListApi,
-    treeStreetDetailApi,
-    treeStreetDeleteApi
+    fixedAssetsUpdateApi,
+    fixedAssetsSaveApi,
+    fixedAssetsListApi,
+    fixedAssetsDetailApi,
+    fixedAssetsDeleteApi
 } from '@/api/assets.js'
 import fields from './fixedAssetsFields'
 import {formSections} from './fixedAssetsFields'
@@ -66,12 +66,12 @@ const searchFields = buildSearchFields(fields)
 const tableFields = buildTableFields(fields)
 
 export default {
-    name: 'StreetTree',
+    name: 'FixedAssets',
     data: function() {
         return {
             fields,
             apiPromises: {
-                save: treeStreetSaveApi
+                save: fixedAssetsSaveApi
             },
             searchFields,
             topToolBar: {
@@ -97,40 +97,40 @@ export default {
                     saveAction: {
                         actionType: 'submit',
                         label: '保存',
-                        apiPromise: treeStreetSaveApi
+                        apiPromise: fixedAssetsSaveApi
                     }
                 },
 
                 bulkdelete: {
                     label: '批量删除',
                     actionType: 'requestApiAction',
-                    apiPromise: treeStreetDeleteApi,
+                    apiPromise: fixedAssetsDeleteApi,
                     msgBox: this.$dynamicConfig['msgBoxTipOptions']
                 }
             },
             tableOption: {
-                loadListApi: treeStreetListApi,
+                loadListApi: fixedAssetsListApi,
                 'current-change': 'handleCurrentChange', // 事件 暂不支持
                 lineActions: {
                     update: {
                         label: '编辑',
                         actionType: 'routerDialogFormAction',
-                        apiPromise: treeStreetDetailApi,
+                        apiPromise: fixedAssetsDetailApi,
                         containerProperties: {
                             title: '更新不动产'
                         },
                         borderForm: false,
-                        colNum: 3,
+                        colNum: 2,
                         formItemList: formFields,
                         saveAction: {
-                            apiPromise: treeStreetUpdateApi
+                            apiPromise: fixedAssetsUpdateApi
                         }
                     },
                     detail: {
                         label: '查看',
                         actionType: 'routerDialogFormAction',
                         // container: 'dy-page',
-                        apiPromise: treeStreetDetailApi,
+                        apiPromise: fixedAssetsDetailApi,
                         containerProperties: {
                             title: '查看不动产'
                         },
@@ -146,7 +146,7 @@ export default {
                         componentProperties: {
                             class: ['text-grey-dark2']
                         },
-                        apiPromise: treeStreetDeleteApi,
+                        apiPromise: fixedAssetsDeleteApi,
                         msgBox: this.$dynamicConfig['msgBoxTipOptions']
                     }
                 }

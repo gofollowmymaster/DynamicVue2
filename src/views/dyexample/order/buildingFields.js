@@ -41,7 +41,7 @@ const subProjectFields = [
     {
         key: 'endTime',
         type: 'FormDate',
-        label: '竣工日期',
+        label: '完成日期',
         tableOption: {
         },
         formOption: {
@@ -157,7 +157,7 @@ export default  [
     },
     {
         'key': 'planEndTime',
-        'label': '计划竣工日期',
+        'label': '计划完成日期',
         'type': 'FormDateRange',
         'tableOption': {},
         searchOption: {
@@ -195,14 +195,11 @@ export default  [
         'type': 'FormCurd',
         'formOption': {
 
-            wraperProperties: {
-                class: ['grid-col-24' ]
-                // 'label-width':'0px'
-            },
+            col:2,
 
             extra: {
                 fields: subProjectFields,
-                entityLabel: '主要植物'
+                entityLabel: '子订单信息'
             }
         }
     },
@@ -211,9 +208,9 @@ export default  [
         type: 'slot',
         formSection: '进度信息',
         detailOption: {
+            col:2,
             wrapertype: 'el-form-item',
             wraperProperties: {
-                class: ['grid-col-24' ],
                 'label-width': '0px'
             }
         }

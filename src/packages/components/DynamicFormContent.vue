@@ -70,7 +70,7 @@ export default {
                 setFormItemHidden: this.setFormItemHidden,
                 // 设置为必填
                 setFormItemRequired: this.setFormItemRequired,
-                // 更新其他数据
+                // 更新表单数据
                 updateFormData: this.updateFormData,
                 valueUpdateEvent: this.valueUpdateEvent
             },
@@ -80,7 +80,6 @@ export default {
             formProperties: () => this.formProperties,
             colNum: this.colNum,
             form: this
-
         }
     },
     props: {
@@ -112,18 +111,18 @@ export default {
             type: Boolean,
             default: false
         },
-        // 是否给表单显示border 外框，包含区块外侧有一个 boder，以及区块标题的灰色背景
+        // 是否给表单显示border 外框，包含区块外侧有 boder
         borderForm: {
             type: Boolean,
             default: true
         },
-        // 文字模式。不显示表单组件，而是只显示纯文字内容
+        // 文字模式。不显示表单组件，只显示纯文字内容
         // 同时，纯文本模式（即值为 true 的时候），会隐藏表单要素 label 左边的星号
         textMode: {
             type: Boolean,
             default: false
         },
-        // 布局模式。
+        // 布局模式，中列数
         colNum: {
             type: Number,
             default: 2
@@ -132,6 +131,7 @@ export default {
             type: String,
             default: 'dialog'
         },
+        //是否展示数据填充按钮
         testTool: {
             type: Boolean,
             default: true
@@ -144,7 +144,7 @@ export default {
                 allDisabled: this.allDisabled,
                 textMode: this.textMode
             },
-            foldBlockList: [] // 收起的区块（放在这个里面，该区块就只显示区块标题，不显示内容）
+            foldBlockList: [] // 收起的区块
         }
     },
     computed: {
@@ -262,7 +262,6 @@ export default {
             // 先校验父级表单的值
             this.$refs.form.validate(valid => {
                 debugger
-                // if (!valid) return
                 // 克隆一份数据
                 const data = JSONDeepCopy(this.getData())
 
@@ -273,31 +272,17 @@ export default {
                         childFormKeyList.push(formItem.key)
                     }
                 })
-                // this.formItemList.forEach(filed => {
-                //     if (filed.children && filed.children.length > 0) {
-                //         filed.children.forEach(formItem => {
-                //             // 如果某一项是
-                //             if (formItem.type === 'FormChildrenForm') {
-                //                 childFormKeyList.push(formItem.key)
-                //             }
-                //         })
-                //     }
-                // })
-                // valid=valid?childFormKeyList.length===0:false
-                // if (childFormKeyList.length === 0) {
-                //         fn(valid?true:false, data)
-                // } else {
+
                 const validateList = childFormKeyList.map(key => {
                     return this.$refs[key][0].$refs.formitem.validateForm()
                 })
                 if (valid&&(validateList.length===0||validateList.every(item => item))) {
-                    // 父表单校验也通过了，才算都通过
+                    // 父 子表单校验通过
                     fn(true, data)
                 } else {
-                    // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
+                    // 父或子表单校验通过
                     fn(false, data)
                 }
-                // }
             })
         },
         filterData(data) {

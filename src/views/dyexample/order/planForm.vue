@@ -6,7 +6,7 @@
                   class="mx24 my12"
                   align-center
         >
-            <el-step title="计划" @click="active = 0" />
+            <el-step title="下单中" @click="active = 0" />
             <el-step title="处理中" />
             <el-step title="运输中" />
             <el-step title="完成" />

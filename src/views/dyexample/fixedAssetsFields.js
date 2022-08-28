@@ -1,6 +1,6 @@
 import { elementUploadFileApi } from '@/api/global'
 
-const mainPlaintFields = [
+const materialFields = [
 
     {
         type: 'FormHide',
@@ -9,7 +9,7 @@ const mainPlaintFields = [
     },
 
     {
-        key: 'treeStreetQuantity',
+        key: 'assetsQuantity',
         type: 'FormNumber',
         label: '数量',
         tableOption: {
@@ -17,13 +17,13 @@ const mainPlaintFields = [
             sort: 3
         },
         formOption: {
-            col: 5,
+            col: 1,
             rules: ['required']
         }
     },
 
     {
-        key: 'treeStreetType',
+        key: 'unit',
         type: 'FormSelect',
         label: '单位',
         tableOption: {
@@ -40,23 +40,23 @@ const mainPlaintFields = [
             }
         ],
         formOption: {
-            col: 5,
+            col: 1,
             rules: ['required']
         }
     },
     {
-        key: 'treeStreetContext',
-        type: 'FormTextarea',
+        key: 'context',
+        type: 'FormDate',
         label: '备注',
         tableOption: true,
         formOption: {
-            col: 5,
+            col: 1,
             rules: ['required']
         }
     }
 
 ]
-export const mainPlaintOption = {
+export const materialOption = {
     topToolBar: {
         bulkdelete: null,
         create: {
@@ -88,22 +88,22 @@ export const mainPlaintOption = {
 }
 
 // 没有联动
-const mainPlaintTableFields = [
+const materialTableFields = [
  
     {
-        key: 'treeId',
+        key: 'materialId',
         type: 'FormInput',
         label: '类别',
 
         tableOption: {
             sort: 2,
-            key: 'treeName'
+            key: 'materialId'
         },
         formOption: {
         }
     },
     {
-        key: 'treeStreetQuantity',
+        key: 'quantity',
         type: 'FormNumber',
         label: '数量',
         tableOption: {
@@ -115,7 +115,7 @@ const mainPlaintTableFields = [
     },
 
     {
-        key: 'treeStreetType',
+        key: 'assetsype',
         type: 'FormSelect',
         label: '单位',
         tableOption: {
@@ -142,7 +142,7 @@ const mainPlaintTableFields = [
         }
     },
     {
-        key: 'treeStreetContext',
+        key: 'assetsContext',
         type: 'FormInput',
         label: '备注',
         tableOption: {},
@@ -152,7 +152,7 @@ const mainPlaintTableFields = [
     }
 
 ]
-export const mainPlaintTableOption = {
+export const materialTableOption = {
     hasCheckbox: false
 }
 export const formSections = {
@@ -166,7 +166,7 @@ export default [
  
 
     {
-        key: 'treeName',
+        key: 'assetName',
         type: 'FormInput',
         label: '资产类型名',
         searchOption: true,
@@ -195,7 +195,7 @@ export default [
     },
 
     {
-        key: 'streetTreeRange',
+        key: 'assetsRange',
         type: 'FormDrawElement',
         label: '不动产范围绘制',
         formSection: '基本信息',
@@ -264,7 +264,7 @@ export default [
         type: 'FormUpload',
         formSection: '基本信息',
         formOption: {
-            col: 5,
+            col: 3,
             limit: 5,
             'list-type': 'picture-card',
             btn_text: '上传',
@@ -282,8 +282,8 @@ export default [
     //     wraperProperties: {
     //       'label-width': '0px'
     //     },
-    //       fields: mainPlaintFields,
-    //       options: mainPlaintOption,
+    //       fields: materialFields,
+    //       options: materialOption,
     //       entityLabel: '主要配件'
     //   }
     // },
@@ -297,55 +297,55 @@ export default [
             wraperProperties: {
                 'label-width': '0px'
             },
-            fields: mainPlaintTableFields,
-            options: mainPlaintTableOption,
+            fields: materialTableFields,
+            options: materialTableOption,
+            defaultValue: [
+                // {
+                //     id: 1,
+                //     materialId: 2014,
+                //    materialQuantity: 15,
+                //    materialType: '1',
+                //    materialContext: '实打实大所多撒'
+                // },
+                // {
+                //     id: 2,
+                //     materialId: 2014,
+                //    materialQuantity: 15,
+                //    materialType: '1',
+                //    materialContext: '实打实大所多撒'
+                // }
+            ]
+        }
+    },
+    {
+        key: 'mainPlant1',
+        label: '',
+        type: 'FormChildrenForm',
+        formSection: '主要配件1',
+        formOption: {
+            col : 3,
+            wraperProperties: {
+                'label-width': '0px'
+            },
+            fields: materialFields,
             defaultValue: [
                 {
                     id: 1,
-                    treeId: 2014,
-                    treeStreetQuantity: 15,
-                    treeStreetType: '1',
-                    treeStreetContext: '实打实大所多撒'
+                    materialId: 2014,
+                   materialQuantity: 15,
+                   materialType: '1',
+                   materialContext: '实打实大所多撒'
                 },
                 {
                     id: 2,
-                    treeId: 2014,
-                    treeStreetQuantity: 15,
-                    treeStreetType: '1',
-                    treeStreetContext: '实打实大所多撒'
+                    materialId: 2014,
+                   materialQuantity: 15,
+                   materialType: '1',
+                   materialContext: '实打实大所多撒'
                 }
             ]
         }
     },
-    // {
-    //     key: 'mainPlant',
-    //     label: '',
-    //     type: 'FormChildrenForm',
-    //     formSection: '主要配件',
-    //     formOption: {
-    //         col : 5,
-    //         wraperProperties: {
-    //             'label-width': '0px'
-    //         },
-    //         fields: mainPlaintTableFields,
-    //         defaultValue: [
-    //             {
-    //                 id: 1,
-    //                 treeId: 2014,
-    //                 treeStreetQuantity: 15,
-    //                 treeStreetType: '1',
-    //                 treeStreetContext: '实打实大所多撒'
-    //             },
-    //             {
-    //                 id: 2,
-    //                 treeId: 2014,
-    //                 treeStreetQuantity: 15,
-    //                 treeStreetType: '1',
-    //                 treeStreetContext: '实打实大所多撒'
-    //             }
-    //         ]
-    //     }
-    // },
     {
         key: 'unit',
         type: 'FormInput',

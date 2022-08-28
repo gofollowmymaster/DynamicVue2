@@ -40,7 +40,7 @@ export default {
                             label: '查看',
                             actionType: 'routerAction',
                             router: data => {
-                                return `/assets/manage/trans?id=${data.id}&action=detail`
+                                return  ''
                             },
                             routerAction: 'push'
                         },

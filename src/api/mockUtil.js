@@ -2,11 +2,15 @@
 import Mock from 'mockjs'
 
 const Random = Mock.Random
+function randomInteger(max){
+    return  Math.floor(Math.random()*max)
+}
 
 const mockDb = new Map()
 export const dictMapDb = new Map()
 
 export function mockDyFields(fields) {
+    
     const mockInfo = {}
     fields.forEach(field => {
         switch (field.type) {
@@ -19,13 +23,13 @@ export function mockDyFields(fields) {
             case 'FormRadio':
             case 'FormCheckbox':
             case 'FormSelect':
-                mockInfo[field.key + '|0-2'] = 1
-              
-                // mockInfo[field.key + '|0-3'] = 1
+                mockInfo[field.key] = field.options[randomInteger(field.options.length)].value
                 break
             case 'FormNumber':
                 mockInfo[field.key + '|1-100'] = 1
                 break
+
+            case 'FormRateInput':
             case 'FormNumberPlus':
                 mockInfo[field.key + '|1-100.1-3'] = 1
                 break
@@ -40,11 +44,17 @@ export function mockDyFields(fields) {
                 mockInfo[field.key] = '[]'
                 break
             case 'FormOldtreeSelector':
-            case 'FormCurd':
                 mockInfo[field.key] = []
                 break
+            case 'FormTableEditable':
+            case 'FormChildrenForm':
+            case 'FormCurd':
+                mockInfo[field.key] = Mock.mock({
+                    ['list|' + 5]: [mockDyFields(field.formOption.fields||field.formOption.extra?.fields||[])],
+                    totalCount: 100
+                }).list
+                break
             case 'FormDynamicSelect':
-                console.log('--dictMapDb.get(field.dictType)?.[0]?.id---', field.dictType, dictMapDb.get(field.dictType)?.[0])
                 mockInfo[field.key] = dictMapDb.get(field.dictType)?.[0]?.id ?? 1
                 break
             default:

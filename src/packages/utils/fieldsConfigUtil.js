@@ -90,7 +90,7 @@ export function buildFormFields(fields, formSections = {}) {
 
 const detailOptionDefault = {
     wraperProperties: {
-        class: presetConfig.getConfig('detailWraperClass')
+        // class: presetConfig.getConfig('detailWraperClass')
     },
     rules: [],
     properties: {

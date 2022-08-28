@@ -40,7 +40,7 @@ export default  [
     },
     {
         'key': 'buildType',
-        'label': '建设类型',
+        'label': '客户来源',
         formSection: '基础信息',  
         'type': 'FormSelect',
         options: [{
@@ -62,7 +62,7 @@ export default  [
     },
     {
         'key': 'useLandDictId',
-        'label': '用地性质',
+        'label': '支付方式',
         formSection: '基础信息',  
         'type': 'FormDynamicSelect', 
         dictType: ('order_use_land'), 

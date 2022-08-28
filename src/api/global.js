@@ -3,7 +3,6 @@ import qs from 'qs'
 import Mock from 'mockjs'
 
 import { downFile } from '@/util/index'
-import { SysAdmListAdmTreeInfo } from '@/api/home'
 import { dictMapDb } from './mockUtil'
 
 /* **************************** 系统配置-相关 **************************** */
@@ -11,15 +10,12 @@ import { dictMapDb } from './mockUtil'
 /* **************************** 文件下载-相关 **************************** */
 
 export function globalFileGetFileList(idList) {
-    return request({
-        method: 'post',
-        url: `/file/getFileList?${idList.map(unit => `ids=${unit}`).join('&')}`
-    })
+ 
 }
 
 export function globalDownloadBaseFileId(fileId) {
     return request({
-        url: '/file/downloadFile',
+        url: '',
         method: 'post',
         responseType: 'blob',
         responseOrigin: true,
@@ -38,7 +34,7 @@ export function globalDownloadBaseFileId(fileId) {
 export function globalDownloadFileById(params) {
     const fileId = params.fileId || params.id
     return request({
-        url: '/file/downloadFile',
+        url: '',
         method: 'post',
         responseType: 'blob',
         responseOrigin: true,
@@ -89,28 +85,7 @@ export function selectDictDataInfoApi({dictType}) {
 
     return Promise.resolve(dictMapDb.get(dictType))
 }
-
-const treeRootCode =  '500103000000'
-
-export function asyncAdministractiveTreeNode(node, resolve) {
-    if (node.level === 0) {
-        resolve([{ id: '2115', admName: '渝中区', ancestorAdmName: '重庆市渝中区', admCode: '500103000000', parentAdmCode: '500000000000', haveChildNode: true }])
-        return
-    }
-    SysAdmListAdmTreeInfo({
-        method: 'get',
-        params: {
-            parentAdmCode: node.level === 0 ? treeRootCode : node.data.admCode
-        }
-    }).then(res => {
-        const list = (res?.data ?? []).map(unit => ({
-            ...unit,
-            leaf: !unit.haveChildNode
-        }))
-        // if( node.level === 0 )
-        resolve(list)
-    })
-}
+ 
 
 export function srcDownloadFileById(url) {
     return request({
