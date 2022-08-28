@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="css">
 
 .form-input-text {
     position: relative;

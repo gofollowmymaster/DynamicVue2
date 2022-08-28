@@ -234,4 +234,22 @@ export const presetConfig = {
     }
 }
 
+
+export function loadPresetConfig(presetKey) {
+    return presetConfig.getConfig(presetKey)
+}
+export function appendToPreset(presetKey, obj = {}, isDeleteNull = false) {
+    const preset = presetConfig.getConfig(presetKey)
+
+    if (!preset) {
+        throw new Error('没有找到指定预设配置' + presetKey)
+    }
+    if (superType(preset) !== superType(obj)) {
+        throw new Error('自定义配置与预设配置类型不同' + presetKey + '自定义：' + JSON.stringify(obj))
+    }
+    if (['array', 'object'].includes(superType(preset))) {
+        return deepMerge(preset, obj, isDeleteNull)
+    }
+}
+
 export default presetConfig

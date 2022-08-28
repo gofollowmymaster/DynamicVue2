@@ -291,7 +291,7 @@ export default [
         key: 'mainPlant',
         label: '',
         type: 'FormTableEditable',
-        formSection: '主要配件',
+        formSection: '可编辑表格',
         formOption: {
             col: 3,
             wraperProperties: {
@@ -321,7 +321,7 @@ export default [
         key: 'mainPlant1',
         label: '',
         type: 'FormChildrenForm',
-        formSection: '主要配件1',
+        formSection: '子表单',
         formOption: {
             col : 3,
             wraperProperties: {

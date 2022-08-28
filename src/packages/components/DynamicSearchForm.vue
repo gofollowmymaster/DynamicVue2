@@ -17,8 +17,8 @@
     </main>
 </template>
 <script>
-import { deepCopy, loadPresetConfig } from '../utils/tool'
-import { presetConfig }  from '../presetConfig'
+import { deepCopy,  } from '../utils/tool'
+import { presetConfig,loadPresetConfig }  from '../presetConfig'
 
 export default {
     name: 'DymamicSearchForm',

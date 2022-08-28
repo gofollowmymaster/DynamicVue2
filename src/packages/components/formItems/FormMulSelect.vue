@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="css">
 
 .el-select-dropdown__item.selected {
     color: #606266;

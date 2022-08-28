@@ -32,7 +32,7 @@ export default {
             fields: maintainFields,
             // 页面配置
             apiPromises: {
-                list: params => maintainListApi({treeMangeId: this.data.id, ...params}),
+                list: params => maintainListApi({assetsId: this.data.id, ...params}),
                 detail: maintainDetailApi
             },
             pageOptions: {
@@ -52,7 +52,6 @@ export default {
                         //  router:'/'
                     }
                 },
-                treeOption: null
             }
         }
     }

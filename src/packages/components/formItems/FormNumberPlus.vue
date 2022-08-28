@@ -251,7 +251,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-                                                                                                                                                                                .input-wr {
+.input-wr {
     z-index: 100;
 }
 .input-readonly {
@@ -274,7 +274,7 @@ export default {
     .input-readonly {
     }
 }
-                                                                                                                                                                                .input-wr /deep/ .el-input__inner {
+ .input-wr /deep/ .el-input__inner {
     line-height: 1px !important;
 }
 </style>

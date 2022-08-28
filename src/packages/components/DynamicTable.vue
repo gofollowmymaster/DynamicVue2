@@ -62,7 +62,9 @@
     </main>
 </template>
 <script>
-import { deepCopy, loadPresetConfig } from '../utils/tool'
+import { deepCopy,  } from '../utils/tool'
+import {  loadPresetConfig } from '../presetConfig'
+
 
 export default {
     name: 'DanamicTable',

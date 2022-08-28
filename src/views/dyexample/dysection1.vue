@@ -27,11 +27,11 @@ const searchFieldsTmpl = [
             },
             {
                 label: '使用年数',
-                value: 'treeAge'
+                value: 'assetsAge'
             },
             {
                 label: '资产类型',
-                value: 'treeSpecies'
+                value: 'assetsSpecies'
             }
         ],
         searchOption: {
@@ -62,12 +62,12 @@ export default {
                 statisticType: { statisticType: 'protectLev' },
                 protectLev: { '': [] },
                 growStatus: { '': [] },
-                treeAge: { '': [] },
-                treeSpecies: { '': [] },
+                assetsAge: { '': [] },
+                assetsSpecies: { '': [] },
                 protectLevTable: [],
                 growStatusTable: [],
-                treeAgeTable: [],
-                treeSpeciesTable: []
+                assetsAgeTable: [],
+                assetsSpeciesTable: []
 
             },
             num: 100,
@@ -201,25 +201,25 @@ export default {
 
                 {
                     component: 'componentWithTitle',
-                    name: 'treeAge',
-                    key: 'treeAgeChart',
-                    hidden: this.pageData.statisticType.statisticType !== 'treeAge',
+                    name: 'assetsAge',
+                    key: 'assetsAgeChart',
+                    hidden: this.pageData.statisticType.statisticType !== 'assetsAge',
                     props:
                         {
                             bodyComponent: 'dBarChart',
                             title: '统计图',
                             class: ['grid-col-12'],
                             style: { height: '300px' },
-                            // data:this.treeAgeData,
+                            // data:this.assetsAgeData,
                             extraOptions: {
                             }
                         }
                 },
                 {
                     component: 'componentWithTitle',
-                    name: 'treeAgeTable',
-                    key: 'treeAgeTable',
-                    hidden: this.pageData.statisticType.statisticType !== 'treeAge',
+                    name: 'assetsAgeTable',
+                    key: 'assetsAgeTable',
+                    hidden: this.pageData.statisticType.statisticType !== 'assetsAge',
                     props:
                         {
                             bodyComponent: 'DynamicTable',
@@ -245,9 +245,9 @@ export default {
                 },
                 {
                     component: 'componentWithTitle',
-                    name: 'treeSpecies',
-                    key: 'treeSpeciesChart',
-                    hidden: this.pageData.statisticType.statisticType !== 'treeSpecies',
+                    name: 'assetsSpecies',
+                    key: 'assetsSpeciesChart',
+                    hidden: this.pageData.statisticType.statisticType !== 'assetsSpecies',
                     props:
                         {
                             bodyComponent: 'dBarChart',
@@ -260,9 +260,9 @@ export default {
                 },
                 {
                     component: 'componentWithTitle',
-                    name: 'treeSpeciesTable',
-                    key: 'treeSpeciesTable',
-                    hidden: this.pageData.statisticType.statisticType !== 'treeSpecies',
+                    name: 'assetsSpeciesTable',
+                    key: 'assetsSpeciesTable',
+                    hidden: this.pageData.statisticType.statisticType !== 'assetsSpecies',
                     props:
                         {
                             bodyComponent: 'DynamicTable',
@@ -322,23 +322,23 @@ export default {
             })
 
             assetAgeStatisticApi().then(data => {
-                this.pageData.treeAge = {
+                this.pageData.assetsAge = {
                     使用年数: data.map(item => {
                         return { value: item.countNumber, label: item.categoryName }
                     })
                 }
-                this.pageData.treeAgeTable = data.map(item => {
+                this.pageData.assetsAgeTable = data.map(item => {
                     return { value: item.countNumber, label: item.categoryName }
                 })
             })
 
             assetSpeciesStatisticApi().then(data => {
-                this.pageData.treeSpecies = {
+                this.pageData.assetsSpecies = {
                     资产类型: data.map(item => {
                         return { value: item.countNumber, label: item.categoryName?.slice(0, 5) }
                     })
                 }
-                this.pageData.treeSpeciesTable = data.map(item => {
+                this.pageData.assetsSpeciesTable = data.map(item => {
                     return { value: item.countNumber, label: item.categoryName?.slice(0, 5) }
                 })
             })

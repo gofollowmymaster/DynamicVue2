@@ -73,8 +73,6 @@ export default {
              
                         }
                 },
-                // pagination: null,
-                treeOption: null
             }
         }
     }

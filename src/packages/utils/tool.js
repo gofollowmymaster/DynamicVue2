@@ -1,4 +1,4 @@
-import presetConfig from '../presetConfig'
+ 
 
 export function parseExpression(tmpl, obj) {
     let expression = tmpl.replace(/#\{(.+?)\}/g, 'obj.$1')
@@ -233,22 +233,6 @@ export function deepMergeByKey(obj1, obj2, clone = true) {
     return obj1
 }
 
-export function loadPresetConfig(presetKey) {
-    return presetConfig.getConfig(presetKey)
-}
-export function appendToPreset(presetKey, obj = {}, isDeleteNull = false) {
-    const preset = presetConfig.getConfig(presetKey)
-
-    if (!preset) {
-        throw new Error('没有找到指定预设配置' + presetKey)
-    }
-    if (superType(preset) !== superType(obj)) {
-        throw new Error('自定义配置与预设配置类型不同' + presetKey + '自定义：' + JSON.stringify(obj))
-    }
-    if (['array', 'object'].includes(superType(preset))) {
-        return deepMerge(preset, obj, isDeleteNull)
-    }
-}
 
 export function generatRandomNum(max) {
     return Math.round(Math.random() * max)

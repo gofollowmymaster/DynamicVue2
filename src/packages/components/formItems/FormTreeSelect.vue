@@ -123,7 +123,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .option {
     height: auto;
     line-height: 1;

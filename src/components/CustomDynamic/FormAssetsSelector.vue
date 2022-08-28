@@ -84,7 +84,7 @@ const fields = [
     }
 ]
 export default {
-    name: 'FormOldtreeSelector',
+    name: 'FormAssetsSelector',
     mixins: [FormMixin],
 
     props: {

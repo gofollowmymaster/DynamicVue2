@@ -377,7 +377,6 @@ export default {
                         }
                     }
                 },
-                treeOption: null
             }
         }
     },

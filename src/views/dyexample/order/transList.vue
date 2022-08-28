@@ -141,7 +141,6 @@ export default {
                         }
                     }
                 },
-                treeOption: null
             }
         }
     }

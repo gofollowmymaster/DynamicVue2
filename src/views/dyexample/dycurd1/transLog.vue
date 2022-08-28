@@ -28,7 +28,7 @@ export default {
             // 页面配置
             apiPromises: {
                 list: params =>
-                    transListApi({ treeMangeId: this.data.id, ...params }),
+                    transListApi({ assetsId: this.data.id, ...params }),
                 detail: transDetailApi
             },
             pageOptions: {
