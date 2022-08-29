@@ -26,7 +26,7 @@ const message = config => {
 
 const NODE_ENV = ' ' // dev
 const FILE_UP = NODE_ENV + '/file/upload' // 附件上传
-const STATICENV = NODE_ENV + '/file/static' //
+ 
 
 const request = function(config) {
     const instance = axios.create({
@@ -138,4 +138,3 @@ const request = function(config) {
 }
 
 export default request
-export { NODE_ENV as env, STATICENV, FILE_UP }

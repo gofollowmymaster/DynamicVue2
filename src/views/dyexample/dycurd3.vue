@@ -40,7 +40,6 @@ import {
     warningPendingDeleteApi
 } from '@/api/assets.js'
 import {
-    eventFields,
     warningFields,
     handleFields,
     unhandleFields,
@@ -75,27 +74,7 @@ export default {
                 listOption: {
                     lineActions: {
                         update: null,
-                        atransToEvent: {
-                            actionType: 'routerDialogFormAction',
-                            label: '转事件',
-                            sort: 0,
-                            permission: '',
-                            // container:'dy-page',
-                            containerProperties: {
-                                title: '转事件'
-                                // width: '70%'
-                            },
-                            colNum: 2,
-
-                            // props: formOption,
-                            formItemList: this.$buildFormFields(eventFields),
-                            formDataUpdateHandle(formVm, param) {},
-                            saveAction: {
-                                label: '转事件提交',
-                                apiPromise: () => Promise.resolve()
-                            }
-
-                        },
+                      
                         handleForm: {
                             label: '处理',
                             actionType: 'dialogFormAction',

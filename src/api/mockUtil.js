@@ -12,7 +12,7 @@ export const dictMapDb = new Map()
 export function mockDyFields(fields) {
     
     const mockInfo = {}
-    fields.forEach(field => {
+    fields.filter(item=>item.formOption||item.tableOption).forEach(field => {
         switch (field.type) {
             case 'FormDate':
                 mockInfo[field.key + '|1'] = '@date'
@@ -23,7 +23,7 @@ export function mockDyFields(fields) {
             case 'FormRadio':
             case 'FormCheckbox':
             case 'FormSelect':
-                mockInfo[field.key] = field.options[randomInteger(field.options.length)].value
+                mockInfo[field.key+'|1-'+field.options.length] = 1
                 break
             case 'FormNumber':
                 mockInfo[field.key + '|1-100'] = 1
@@ -76,7 +76,24 @@ export function  apiListMock(fields, params) {
         })
         mockDb.set(fields, res)
     }
-    return  Promise.resolve({list: res.list.slice(params.pageSize * (params.pageNo - 1), params.pageSize * params.pageNo), totalCount: res.list.length})
+
+    const keywordKeys=Object.keys(res.list[0]).slice(0,5)
+    //搜索
+    const list=  res.list.filter((item)=>{
+       const searchKeys=Object.keys(params).filter(key=>!['pageNo','pageSize'].includes(key))
+        for (const searchKey of searchKeys) {
+            if(!params[searchKey]) continue
+            if(['keyword','keyWord'].includes(searchKey)&&keywordKeys.some(key=>item[key]&&item[key].indexOf&&item[key].indexOf(params[searchKey])!==-1)){
+                return true
+            }
+            if(item[searchKey]==params[searchKey])return true;
+            if(!item[searchKey]||(typeof item[searchKey] =='number' &&item[searchKey]!=params[searchKey])||(typeof item[searchKey] =='string' &&item[searchKey].indexOf(params[searchKey]))===-1){
+                return false
+            }
+        }
+        return true
+    })
+    return  Promise.resolve({list: list.slice(params.pageSize * (params.pageNo - 1), params.pageSize * params.pageNo), totalCount: list.length})
 }
 
 export function  apiDetailMock(fields, data) {

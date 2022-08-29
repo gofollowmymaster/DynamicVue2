@@ -64,16 +64,16 @@ export const pagination = {
 }
 
 export const treeOption = {
-    lazy: true,
-    'node-key': 'deptId',
+    lazy: false,
+    'node-key': 'id',
     props: {
-        label: 'deptName',
+        label: 'name',
         children: 'children',
         isLeaf: 'leaf'
     },
     'current-node-key': null,
     'highlight-current': true,
-    fieldName: 'test'
+    fieldName: 'category'
 }
 
 export const formOption = {

@@ -4,6 +4,7 @@
              slot="left" class="tree-container scroll "
         >
             <el-tree v-bind="options.treeOption" @node-click="treeClick" />
+            
         </div>
         <DynamicSearchForm
             v-if="
@@ -24,15 +25,19 @@
                 :action-data="actionData"
                 :action-bar-wraper="$parent.$el"
             />
-            <component :is="options.tableUp.component" v-if="options.tableUp" v-bind="options.tableUp.properties" />
+            <component :is="options.tableUp.component" v-if="options.tableUp&&!$slots.tableUp" v-bind="options.tableUp.properties" />
+            <slot name="tableUp" :data="dataLoaded" ></slot>
             <DynamicTable
+                 v-if="!$slots.list"
                 class="table-wraper "
-                :data="options.data"
+                :data="dataList"
                 :table="options.listOption"
                 :columns="options.tableFields"
-                :api-promise="listApiPromise"
+                :api-promise="listApiPromise"  
                 @selection-change="selectChange"
             />
+            <slot name="list" :data="dataList" :actions="options.listOption.lineActions"></slot>
+
             <el-pagination
                 v-if="!isEmpty(options.pagination)"
                 class="mt16 text-right"
@@ -70,9 +75,12 @@ export default {
         }
     },
     props: {
-        // data: {
-        //     type: [Object]
-        // },
+        data: {
+            type: [Array],
+            default(){
+                return []
+            },
+        },
         fields: {
             type: Array,
             required: false,
@@ -115,7 +123,9 @@ export default {
             },
             total: 1,
             selected: [],
-            listApiPromise: null
+            listApiPromise: null,
+            dataList:[],
+            dataLoaded:{}
         }
     },
     computed: {
@@ -135,7 +145,7 @@ export default {
             const optionsOrigin = deepMerge(
                 {
                     searchOption: presetConfig.getConfig('searchOption'),
-                    // treeOption,
+                    treeOption: presetConfig.getConfig('treeOption'),
                     pagination: presetConfig.getConfig('pagination'),
                     topToolBar: {
                         create: createOptions,
@@ -160,6 +170,7 @@ export default {
             return optionsOrigin
         },
         queryParams() {
+            debugger
             return { ...this.searchParams, ...this.pagination }
         },
        
@@ -172,12 +183,15 @@ export default {
             if (typeof this.options.listOption.loadListApi === 'function') {
                 const queryParams = { ...params }
                 delete queryParams.refreshKey
-                this.listApiPromise = this.options.listOption
+                // this.listApiPromise =
+                 this.options.listOption
                     .loadListApi(queryParams)
                     .then((data = {}) => {
                         debugger
                         data = data.data || data
                         this.total = data.total || data.totalCount
+                        this.dataList=data.list
+                        this.dataLoaded=data
                         return data.list
                     })
             }
@@ -192,9 +206,12 @@ export default {
             this.options.pagination?.pageSize || this.pagination.pageSize
         debugger
         this.initRefreshEvent()
+
     },
 
-    mounted() {},
+    mounted() {
+        this.dataList=this.data||[]
+    },
 
     methods: {
         initRefreshEvent() {

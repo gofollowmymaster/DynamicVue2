@@ -48,7 +48,32 @@ export default {
             },
             pageOptions: {
                 treeOption: {
-
+                    fieldName: 'assetType',
+                    data: [ {
+                            id: 1,
+                            label: '精密资产',
+                            children: [{
+                                id: 4,
+                                label: '通用资产'
+                                }, {
+                                id: 5,
+                                label: '三级 3-1-2',
+                                disabled: true
+                                }]
+                        }, {
+                            id: 2,
+                            label: '高新设备',
+                            disabled: true,
+                            children: [{
+                                id: 3,
+                                label: '浮动资产'
+                                }, {
+                                id: 7,
+                                label: '三级 3-2-2',
+                                disabled: true
+                                }]
+                        }
+                    ],    
                 },
                 topToolBar: {
                     export: {

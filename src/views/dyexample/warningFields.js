@@ -291,11 +291,10 @@ export const warningProcessedFields = [
         formSection: '基本信息',
         formOption: {
 
-            properties: {
                 // disabled: true,
-                'list-type': 'picture-card',
-                accept: 'video'
-            },
+            'list-type': 'picture-card',
+            accept: 'video',
+            'auto-load':false,
             btn_text: '上传',
             tip: '单个附件大小限制20Mb，最多上传200个附件',
             apiPromise: elementUploadFileApi
@@ -342,7 +341,7 @@ export const warningProcessedFields = [
     },
     {
         label: '处理人',
-        key: 'handleUserName',
+        key: 'userName',
         type: 'FormTextarea',
         formSection: '处理信息',
 
@@ -421,163 +420,7 @@ export const warningProcessedFields = [
         }
     }
 ]
-
-export const eventFields = [
-    { key: 'id', type: 'FormHide', label: 'ID', formOption: true },
-    {
-        label: '事件编号',
-        key: 'equipmentId',
-        formSection: '基本信息',
-        type: 'FormInput',
-        formOption: {
-            rules: ['required']
-        }
-    },
  
-    {
-        label: ' 事件概述',
-        formSection: '基本信息',
-        key: 'equipmentName',
-        type: 'FormTextarea',
-        formOption: {
-            col: 5,
-            rules: ['required']
-        }
-    },
-    {
-        label: '事件详述',
-        formSection: '基本信息',
-        key: 'equipmentName1',
-        type: 'FormTextarea',
-        formOption: {
-            col: 5
-        }
-    },
-    {
-        label: ' 事件类型',
-        formSection: '基本信息',
-        key: 'equipmentName2',
-        type: 'FormSelect',
-        options: [
-            {
-                value: 1,
-                label: '123'
-            }
-        ],
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: ' 来源',
-        formSection: '基本信息',
-        key: 'equipmentName3',
-        type: 'FormSelect',
-        options: [
-            {
-                value: 1,
-                label: '123'
-            }
-        ],
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: '采集渠道',
-        formSection: '基本信息',
-        key: 'equipmentName4',
-        type: 'FormSelect',
-        options: [
-            {
-                value: 1,
-                label: '123'
-            }
-        ],
-        formOption: {
-            rules: ['required']
-        }
-    },
-    {
-        label: '事件等级',
-        formSection: '基本信息',
-        key: 'equipmentName5',
-        type: 'FormSelect',
-        options: [
-            {
-                value: 1,
-                label: '123'
-            }
-        ],
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: '经纬度',
-        formSection: '基本信息',
-        key: 'equipmentName6',
-        type: 'FormSelectPoint',
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: '位置/范围',
-        formSection: '基本信息',
-        key: 'equipmentName7',
-        type: 'FormSelectPoint',
-        formOption: {
-            rules: ['required']
-        }
-    },
-    {
-        label: '上报人',
-        formSection: '基本信息',
-        key: 'equipmentName8',
-        type: 'FormInput',
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: '上报人联系方式',
-        formSection: '基本信息',
-        key: 'equipmentName9',
-        formOption: {
-            rules: ['required']
-        }
-    },
-
-    {
-        label: '详细地址',
-        formSection: '基本信息',
-        key: 'address',
-        formOption: {}
-    },
-
-    {
-        key: 'pic',
-        label: '上传图片',
-        type: 'FormUpload',
-        formSection: '附件信息',
-        formOption: {
-
-            // disabled: true,
-            'list-type': 'picture-card',
-            accept: 'img',
-            btn_text: '上传',
-            // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
-            apiPromise: elementUploadFileApi
-        }
-    }
-]
-
 export const handleFields = [
     { key: 'fixedAssetsGiveAnAlarmId', type: 'FormHide', formOption: true },
     { key: 'treatmentMethod', type: 'FormHide', formOption: true },
@@ -596,11 +439,9 @@ export const handleFields = [
         type: 'FormUpload',
         formOption: {
 
-            properties: {
-                // disabled: true,
-                'list-type': 'picture-card',
-                accept: 'img'
-            },
+            'list-type': 'picture-card',
+            accept: 'img',
+            'auto-load':false,
             btn_text: '上传',
             // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
             apiPromise: elementUploadFileApi
@@ -611,26 +452,22 @@ export const handleFields = [
         label: '上传视频',
         type: 'FormUpload',
         formOption: {
-
-            properties: {
-                // 'list-type': 'picture-card',
-                accept: 'video'
-            },
+            accept: 'video',
+            'auto-load':false,
             btn_text: '上传',
-            // tip: '支持格式：.jpg  .png  .gif ，单个文件不能超过20MB，最多上传5张',
             apiPromise: elementUploadFileApi
         }
     },
     {
         label: '处理人',
-        key: 'handleUserId',
+        key: 'userId',
         type: 'FormInput',
         formOption: {
 
             rules: ['required'],
             changeHandle(data, vm) {
                 vm.updateFormData({
-                    handleUserIdPhone: data[0].phoneNum
+                    userIdPhone: data[0].phoneNum
                 })
             }
 
@@ -638,7 +475,7 @@ export const handleFields = [
     },
     {
         label: '上报人联系方式',
-        key: 'handleUserIdPhone',
+        key: 'userIdPhone',
         formOption: {
 
             properties: {
@@ -674,7 +511,7 @@ export const unhandleFields = [
 
     {
         label: '处理人',
-        key: 'handleUserId',
+        key: 'userId',
         type: 'FormInput',
         formOption: {
             rules: ['required']

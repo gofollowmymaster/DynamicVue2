@@ -13,7 +13,6 @@ export const assetsFields = [
         label: '类别名称',
         tableOption: {
             sort: 2,
-            key: 'assetsName'
         },
         formOption: {
             rules: [
@@ -45,7 +44,7 @@ export const assetsFields = [
         options:[
             {
                 value:1,
-                label:'精密设备'
+                label:'精密资产'
             },
             {
                 value:2,
@@ -53,13 +52,17 @@ export const assetsFields = [
             },
             {
                 value:3,
-                label:'通用设备'
+                label:'浮动资产'
+            },
+            {
+                value:4,
+                label:'通用资产'
             }
         ],
        
         tableOption: {
             colProperties: {
-                width: 80
+                width: 120
             },
             sort: 6
         },

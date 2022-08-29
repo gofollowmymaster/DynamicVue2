@@ -207,7 +207,9 @@ export default {
         },
         data: {
             handler(data) {
+                debugger
                 if (data) {
+
                     this.tableData = data
                 }
             },
