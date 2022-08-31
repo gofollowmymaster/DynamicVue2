@@ -19,53 +19,12 @@
 
 </template>
 <script>
-
-let form =  [
-    {
-        "categoryName": "",
-        "isShow": true,
-        "isTitleShow": false,
-        "showExtend": true,
-        "list": [
-           
-            {
-              "type": "treeSearchAble",
-              "label": "上级类型",
-              "placeholder": "请选择上级类别",
-               span:24,
-               rootCode:'-1',
-              loadListApi:()=>{},
-              // loadTreeApi:getKnowCategory,
-              'props':{
-                nodeKey: 'id',
-                nodeLabel: 'name',
-              },
-              "prop": "parentId",
-              "asynchandler": (item, form) => {   },
-              "required": true,
-              "required_msg": "请选择上级类别",
-            },
-            {
-                "type": "Input",
-                "label": "类型名称",
-                span:24,
-                "placeholder": "请输入类型名称",
-                "prop": "name",
-                "asynchandler": (item, form) => {   },
-                "required_msg": "请输入类型名称",
-                "changehandler": (value, form, item, e, oldForm) => { }
-            },
-             
-        ]
-    },
  
-]
-
  
 
 
   export default {
-    name:"categoryDetail",
+    name:"editForm",
     components: {
      
     },

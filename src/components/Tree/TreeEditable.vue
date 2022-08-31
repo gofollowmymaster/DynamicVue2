@@ -28,15 +28,15 @@
           
           <template v-if="editable" v-slot:bottomBtn>
               <div  class="tree-bottom">
-               <svg-icon @click="addCategory()" :icon-class="'addicon'" class="action-svg cursor-pointer" />
+               <svg-icon @click="addItem()" :icon-class="'addicon'" class="action-svg cursor-pointer" />
             </div>
            </template>
         </TreeBar>
 
       <editForm  
         v-if="editable" 
-        :dialogVisible.sync="categoryDialogShow"
-        :formData="categoryFormData"
+        :dialogVisible.sync="DialogShow"
+        :formData="FormData"
         :action="action"
         :apiPromises="apiPromises"
         @formSubmited="formSubmited">
@@ -50,7 +50,7 @@ import editForm from "./editForm";
 
 
 export default {
-  name:'categoryTree',
+  name:'TreeEditable',
   components:{
     TreeBar,editForm
   },
@@ -82,8 +82,8 @@ export default {
   data () {
     return {
       action:'create',
-        categoryFormData:{parentId: []},
-        categoryDialogShow:false,
+        FormData:{parentId: []},
+        DialogShow:false,
 
     
     }
@@ -96,50 +96,50 @@ export default {
       debugger
         switch (command) {
           case 'add':
-            this.addCategory(node,data)
+            this.addItem(node,data)
             break;
           case 'update':
-          this.modifyCategory(node,data)
+          this.modifyItem(node,data)
           break;
           case 'delete':
-          this.deleteCategory(node,data)
+          this.deleteItem(node,data)
           break;
         }
     },
-    deleteCategory(node,data){
+    deleteItem(node,data){
       debugger
       delKnowCategory(data.id).then(()=>{
       const parentId=data.parentId
       this.$refs.treeBar.refreshNodeBy(parentId)
       })
     },
-    modifyCategory(node,data){
+    modifyItem(node,data){
       debugger
       this.title = '编辑专家知识类型';
       this.action ='update'
-      this.categoryDialogShow = true;
-      this.categoryFormData.parentId = [];
+      this.DialogShow = true;
+      this.FormData.parentId = [];
       const parentName=data.parentId=='-1'?'顶级分类':data.parentName
 
       //新增----保存选中节点为上级
-      this.$set(this.categoryFormData,'parentId',[{name:parentName,id:data.parentId}]) ;
-      this.$set(this.categoryFormData,'name',data.name) ;
-      this.categoryFormData.id=data.id
+      this.$set(this.FormData,'parentId',[{name:parentName,id:data.parentId}]) ;
+      this.$set(this.FormData,'name',data.name) ;
+      this.FormData.id=data.id
     },
  
      // 新增分类
-    addCategory(node, data) {
+    addItem(node, data) {
       debugger
       // 新增
       this.title = '新增专家知识类型';
       this.action ='create'
-      this.categoryDialogShow = true;
-       this.categoryFormData.parentId = [];
+      this.DialogShow = true;
+       this.FormData.parentId = [];
       if (data) {
         //新增----保存选中节点为上级
-        this.$set(this.categoryFormData,'parentId',[{name:data.name,id:data.id}]) ;
-        this.$set(this.categoryFormData,'name','') ;
-        this.categoryFormData.id=null
+        this.$set(this.FormData,'parentId',[{name:data.name,id:data.id}]) ;
+        this.$set(this.FormData,'name','') ;
+        this.FormData.id=null
 
       } 
     },
