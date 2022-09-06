@@ -7,7 +7,8 @@
     </div>
 </template>
 <script>
-
+import TestValueCreator from './NormalValueCreator'
+// import MockValueCreator from './MockValueCreator'
 
 export default {
     name: 'TestTool',
@@ -42,11 +43,12 @@ export default {
     created() {
         if (this.$parent.$options.name !== 'DynamicFormContent') {
             console.error('获取表单示例失败!表单测试数据填充器必须包裹在DynamicFormContent内')
+            return 
         }
-        // const valueCreator=   (process.env.NODE_ENV === 'development' ? 'MockValueCreator' : 'NormalValueCreator')  +'.js'
-        import('./NormalValueCreator.js').then(({default:valueCreator})=>{
-            this.valueCreator =new valueCreator(this.$parent) 
-        })
+        this.valueCreator=    new TestValueCreator(this.$parent)
+        // import('./NormalValueCreator.js').then(({default:valueCreator})=>{
+        //     this.valueCreator =new valueCreator(this.$parent) 
+        // })
 
         // require(['./NormalValueCreator.js'],({default:valueCreator})=>{
         //     debugger
