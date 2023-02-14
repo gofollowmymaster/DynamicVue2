@@ -2,7 +2,7 @@
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Dynamic-Vue2</h1>
 <h4 align="center">只需要配置JSON数据，就可以实现功能健全的后台管理页面</h4>
  
-> 当前版本仅在一个项目中使用过，经过优化未进行大规模测试，您若需要使用推荐使用模板项目，也可联系作者： qq: 1950796924  微信: alaraveler     添加好友请备注  dyvue2
+> 当前版本仅在一个项目中使用过，经过优化未进行大规模测试，您若需要使用推荐使用模板项目，也可联系作者： qq: 1950796924  微信: laraveler2018     添加好友请备注  dyvue2
 [国内](https://gitee.com/alerting/DynamicVue2)
 [github](https://github.com/gofollowmymaster/DynamicVue2)
 
